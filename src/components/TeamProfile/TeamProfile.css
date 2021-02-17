@@ -1,0 +1,47 @@
+figure.team__detail {
+  margin-bottom: 30px;
+}
+.team__info {
+  text-align: center;
+  text-transform: capitalize;
+  margin: 10px 0px;
+  
+}
+.team__info > h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(39, 39, 39);
+ 
+}
+.team__title {
+  color: rgb(157, 3, 5);
+  font-weight: 500;
+}
+.team__profile {
+  font-size: smaller;
+  color: rgb(83, 83, 83);
+}
+
+figure.team__detail {
+  overflow: hidden;
+  min-width: 200px;
+  color: inherit;
+  text-align: center;
+  justify-self: center;
+}
+figure.team__detail img {
+  width: 100%;
+  min-width: 220px;
+  /* max-width: 300px; */
+  transition: all 0.5s ease-in-out;
+}
+figure.team__detail:hover > img {
+  transform: scale(1.05);
+}
+figure.team__detail figcaption {
+  position: relative;
+  background-color: #ffffff;
+}
+
+@media screen and (max-width: 824px) {
+}

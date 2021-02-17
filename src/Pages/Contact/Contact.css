@@ -1,0 +1,103 @@
+.contact {
+  width: 100vw;
+  /* height: 100vh; */
+  padding: 50px;
+  background-color: rgba(182, 220, 255, 0.315);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.contactus__header {
+  font-size: 25px;
+  font-weight: 400;
+}
+.contactus__headers {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.little__text {
+  font-size: smaller;
+  color: rgb(8, 60, 99);
+}
+.contactus__form {
+  width: 30vw;
+  min-width: 350px;
+  background-color: #fff;
+  padding: 30px 20px;
+  justify-self: center;
+}
+div.email__input,
+div.password__input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  text-align: left;
+}
+.contactus__inputs > div > label,
+.keep__signed {
+  font-size: 14px;
+  color: rgb(124, 124, 124);
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+.contactus__inputs > div > input[type="email"],
+.contactus__inputs > div > textarea {
+  height: 40px;
+  appearance: none;
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+}
+.contactus__inputs > div > textarea {
+  height: 150px;
+}
+.signin__headers,
+contactus__description {
+  text-align: center;
+  justify-self: center;
+}
+.contactus__description__top {
+  margin-bottom: 15px;
+}
+.contactus__description__bottom {
+  font-size: 16px;
+  margin-top: 15px;
+}
+.send__message__btn {
+  border: none;
+  appearance: none;
+  color: white;
+  width: 100%;
+  height: 40px;
+  background-color: rgb(8, 60, 99);
+  margin-bottom: 20px;
+}
+a {
+  text-decoration: none;
+  color: #083c63;
+}
+
+@media screen and (max-width: 375px) {
+  .contactus__form {
+    min-width: 300px;
+  }
+  .contactus__description__top {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 865px) {
+  form.message__inputs {
+    min-width: 300px;
+    display: grid;
+  }
+}
+
+@media screen and (max-width: 457px) {
+  .contact__contents {
+    padding: 20px;
+  }
+}

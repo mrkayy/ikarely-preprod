@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.landing,
+.contents {
+  width: 100%;
+  height: 140vh;
+  color: white;
+}
+
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+}
+.contents {
+  height: 100%;
+  background-color: rgba(76, 184, 242, 0.267);
+  background-image: linear-gradient(
+    to right,
+    rgba(223, 233, 235, 0.671) 0%,
+    rgba(69, 61, 211, 0) 100%
+  );
+  /*display: grid;
+  align-items: center;
+  justify-self: start;
+  /* justify-content: space-between; */
+  /*flex-direction: column;
+  padding: 0px 40px;
+  text-align: left; */
+}
+/* .word {
+  align-self: end;
+} */
+.fix {
+  position: relative;
+  margin-left: 5%;
+  margin-top: 15%;
+}
+.main__word {
+  font-size: 75px;
+  color: rgb(176, 16, 16);
+}
+.mainword__break {
+  color: #083c63;
+  font-size: 45px;
+  margin-left: 25%;
+  margin-top: 0;
+  font-weight: 400;
+  font-style: italic;
+}
+.button {
+  align-self: start;
+}
+.button > .getstarted__btn {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-size: smaller;
+  border: none;
+  margin-left: 30%;
+  margin-top: 20px;
+  background-color: #083c63;
+}
+.button > .getstarted__btn a {
+  text-decoration: none;
+  color: white;
+}
+@media screen and (max-width: 824px) {
+  .contents {
+    padding: 0px 20px;
+  }
+  .landing,
+  .contents {
+    width: 100%;
+    height: 50vh;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .main__word {
+    font-size: 32px;
+    margin-left: 0;
+    margin-top: 45%;
+  }
+  .mainword__break {
+    font-size: 25px;
+    margin-left: 20%;
+    margin-top: 0;
+    font-weight: 600;
+    font-style: italic;
+  }
+}
