@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, history } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./SignIn.css";
 
 import { observer } from "mobx-react";
@@ -22,6 +22,7 @@ const schema = {
 
 function SignIn() {
   const alert = useAlert();
+  const history = useHistory();
   const authcontext = useContext(AuthStore);
   const {
     error,
@@ -127,8 +128,8 @@ function SignIn() {
 
   useEffect(() => {
     if (authSuccess === "pass") {
-      history.push("/");
       console.log("redirecting to home page");
+      history.push("/");
     }
   }, [authSuccess]);
 
