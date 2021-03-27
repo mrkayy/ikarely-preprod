@@ -1,14 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+
+// optional configuration
+const options = {
+  // you can also just use 'bottom right'
+  position: positions.BOTTOM_RIGHT,
+  timeout:3000,
+  offset: "30px",
+  // you can also just use 'scale'
+  transition: transitions.SCALE,
+};
 
 ReactDOM.render(
-  <React.StrictMode>
+  <AlertProvider template={AlertTemplate} {...options}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </AlertProvider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
