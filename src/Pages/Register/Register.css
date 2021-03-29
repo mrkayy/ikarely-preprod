@@ -31,20 +31,16 @@
   padding: 50px 20px;
   justify-self: center;
 }
-.register__inputs > div {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-.register__inputs > div > label {
+
+.form__inputs > div > label {
   font-size: 14px;
   color: rgb(124, 124, 124);
   text-transform: capitalize;
   margin-bottom: 5px;
 }
-.register__inputs > div > input[type="text"],
-.register__inputs > div > input[type="email"],
-.register__inputs > div > input[type="password"] {
+.form__inputs > div > input[type="text"],
+.form__inputs > div > input[type="email"],
+.form__inputs > div > input[type="password"] {
   height: 40px;
   appearance: none;
   border: 1px solid rgb(216, 216, 216);

@@ -29,30 +29,12 @@
   padding: 50px 20px;
   justify-self: center;
 }
-div.email__input,
-div.password__input {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-.signin__inputs > div > label,
 .keep__signed {
   font-size: 14px;
   color: rgb(124, 124, 124);
   text-transform: capitalize;
   margin-bottom: 5px;
 }
-.signin__inputs > div > input[type="email"],
-.signin__inputs > div > input[type="password"] {
-  height: 40px;
-  appearance: none;
-  border: 1px solid rgb(216, 216, 216);
-  border-radius: 5px;
-  outline: none;
-  padding: 10px;
-  font-size: 16px;
-}
-
 .signin__submit__btn {
   border: none;
   appearance: none;

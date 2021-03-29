@@ -20,8 +20,8 @@ class AuthStore {
       errMessage: observable,
       successMessage: observable,
       authSuccess: observable,
-
       user: observable,
+
       login: action,
       logout: action,
       register: action,
@@ -93,16 +93,17 @@ class AuthStore {
           this.success = true;
           this.user = res.data.data;
           this.authSuccess = "pass";
-          this.successMessage = res.data.message;
+          // this.successMessage = res.data.message;
           WebStorage.save("user_token", res.data.data.token);
           console.log(res.data.data);
         }
       })
       .catch((err) => {
+        // console.log(err);
         this.loading = false;
         this.error = true;
-        this.errMessage = err.response.data.message;
-        console.log(err.response.data);
+        this.errMessage = err.response === undefined ? err.message: err.response.data.message;
+        // console.log(err.response.data);
       });
   };
 

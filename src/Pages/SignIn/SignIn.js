@@ -6,10 +6,12 @@ import { observer } from "mobx-react";
 import AuthStore from "../../stores/AuthStore";
 import dataHero from "data-hero";
 import { useAlert } from "react-alert";
+import InputBox from "../../shared/InputBox";
 
 const schema = {
   email: {
     min: 6,
+    email: true,
     isEmpty: true,
     message: "Please enter a valid email!",
   },
@@ -49,25 +51,27 @@ function SignIn() {
   });
 
   const { isValid, remember, touched, err, value } = formValue;
+
   const handleCheckBox = (e) => {
     e.persist();
     const { type, checked } = e.target;
-    setFormValue((state) => ({
-      ...state,
-      remember: type === "checked" ? !checked : checked,
-    }));
+    if (checked) {
+      setFormValue((state) => ({
+        ...state,
+        remember: type === "checkbox" ? checked : !checked,
+      }));
+    }
   };
 
   const handleFormChange = (e) => {
     e.persist();
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormValue((state) => ({
       ...state,
       value: {
         ...state.value,
         [name]: value,
       },
-      remember: type === "checked" ? !checked : checked,
       touched: {
         ...state.touched,
         [name]: true,
@@ -76,6 +80,7 @@ function SignIn() {
   };
 
   // validation with data-hero
+
   useEffect(() => {
     const errors = dataHero.validate(schema, value);
     // console.log(errors);
@@ -85,6 +90,7 @@ function SignIn() {
       err: errors || {},
     }));
   }, [value]);
+
   const hasError = (field) => touched[field] && err[field].error;
 
   // console.log("formValue: ", formValue);
@@ -95,40 +101,42 @@ function SignIn() {
       remember,
       value,
     };
-    console.log(data);
+    // console.log(data);
     if (isValid) {
       login(data);
     }
   };
 
-  //alert user on error
+  //alert user on error or success
   useEffect(() => {
     if (error) {
+      console.log({ errMessage });
       alert.error(`${errMessage}`);
     }
-    // if (success && !error) {
-    //   // console.log({ successMessage });
-    //   alert.success(`${successMessage}`);
-    // }
-    return () => {
-      // resetActions();
-    };
-  }, [error]);
-
-  //alert user on success
-  useEffect(() => {
-    if (success) {
-      // console.log({ successMessage });
-      alert.success(`${successMessage}`);
+    if (success && !error) {
+      console.log({ successMessage });
+      alert.success(`${"hello"}`);
     }
     return () => {
-      // resetActions();
+      resetActions();
     };
-  }, [success]);
+  }, [errMessage, successMessage]);
+
+  //alert user on success
+
+  // useEffect(() => {
+  //   if (success) {
+  //     console.log({ successMessage });
+  //     alert.success(`${successMessage}`);
+  //   }
+  //   return () => {
+  //     resetActions();
+  //   };
+  // }, [successMessage]);
 
   useEffect(() => {
     if (authSuccess === "pass") {
-      console.log("redirecting to home page");
+      // console.log("redirecting to home page");
       history.push("/");
     }
   }, [authSuccess]);
@@ -142,9 +150,9 @@ function SignIn() {
             <p className="little__text">Welcome to iKarely</p>
           </div>
 
-          <form action="submit" onSubmit={loginUser} className="signin__inputs">
-            <div className="email__input">
-              <label htmlFor="email">Email or Phone Number</label>
+          <form action="submit" onSubmit={loginUser} className="form__inputs">
+       
+              {/* <label htmlFor="email">Email or Phone Number</label>
               <input
                 type="email"
                 name="email"
@@ -153,13 +161,29 @@ function SignIn() {
               />{" "}
               <label htmlFor="email" className="has_error">
                 {hasError("email")
-                  ? err.email?.error && err.email.message
+                  ? err["email"]?.error && err.email.message
                   : null}
-              </label>
-            </div>
-
-            <div className="password__input">
-              <label htmlFor="password">Password</label>
+              </label> */}
+              <InputBox
+                label="Email or Phone Number"
+                name="email"
+                value={value}
+                onchange={handleFormChange}
+                hasError={hasError}
+                type="email"
+                err={err}
+              />
+       
+              <InputBox
+                label="Password"
+                name="password"
+                value={value}
+                onchange={handleFormChange}
+                hasError={hasError}
+                type="password"
+                err={err}
+              />
+              {/* <label htmlFor="password">Password</label>
               <input
                 type="password"
                 name="password"
@@ -170,8 +194,8 @@ function SignIn() {
                 {hasError("password")
                   ? err.password?.error && err.password.message
                   : null}
-              </label>
-            </div>
+              </label> */}
+            
 
             <div className="keep__signed">
               <input
@@ -187,7 +211,7 @@ function SignIn() {
               disabled={!isValid}
               className="register__submit__btn"
             >
-              {loading ? "loading..." : "Sign In"}
+              {loading ? "Loading..." : "Sign In"}
             </button>
             <p className="bottom__text">
               New user? <Link to="/register">Sign up</Link> for free

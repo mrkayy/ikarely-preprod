@@ -27,8 +27,7 @@
   padding: 30px 20px;
   justify-self: center;
 }
-div.email__input,
-div.password__input {
+div.input__box {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
