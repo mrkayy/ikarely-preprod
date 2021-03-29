@@ -12,9 +12,8 @@ import InputBox from "../../shared/InputBox";
 const schema = {
   full_name: {
     min: 6,
-    required: true,
     isEmpty: true,
-    message: 'Please enter your full name'
+    message: "Please enter your full name",
   },
   email: {
     min: 6,
@@ -24,21 +23,18 @@ const schema = {
   },
   phone: {
     min: 6,
-    required: true,
     isEmpty: true,
-    message: 'Phone number is required'
+    message: "Phone number is required",
   },
   city_of_residence: {
     min: 6,
-    required: true,
     isEmpty: true,
-    message: 'Please fill your city of residence'
+    message: "Please fill your city of residence",
   },
-  recurrent_ailment:{
+  recurrent_ailment: {
     min: 6,
-    required: true,
     isEmpty: true,
-    message: 'Cant be blank'
+    message: "Cant be blank",
   },
   password: {
     min: 6,
@@ -47,17 +43,14 @@ const schema = {
   },
   re_enter_password: {
     min: 6,
-    required: true,
     isEmpty: true,
-    message: 'Password too short!'
+    message: "Password too short!",
   },
   licence: {
     min: 6,
-    required: true,
     isEmpty: true,
-    message: 'Please upload your licence'
-  }
-
+    message: "Please upload your licence",
+  },
 };
 
 function Register() {
@@ -77,7 +70,7 @@ function Register() {
 
   // console.log({ errMessage });
 
-  const [formValue, setFormValue] = useState({
+  const [formValues, setFormValues] = useState({
     isValid: false,
     touched: {},
     err: {},
@@ -89,16 +82,16 @@ function Register() {
       recurrent_ailment: "",
       password: "",
       re_enter_password: "",
-      licence: "",
+      licence: "nil",
     },
   });
 
-  const { isValid, touched, err, value } = formValue;
+  const { isValid, touched, err, value } = formValues;
 
   const handleFormChange = (e) => {
     e.persist();
     const { name, value } = e.target;
-    setFormValue((state) => ({
+    setFormValues((state) => ({
       ...state,
       value: {
         ...state.value,
@@ -115,7 +108,7 @@ function Register() {
   useEffect(() => {
     const errors = dataHero.validate(schema, value);
     // console.log(errors);
-    setFormValue((state) => ({
+    setFormValues((state) => ({
       ...state,
       isValid: errors.email.error || errors.password.error ? false : true,
       err: errors || {},
@@ -124,12 +117,28 @@ function Register() {
 
   const hasError = (field) => touched[field] && err[field].error;
 
-  // console.log("formValue: ", formValue);
+  const {
+    full_name,
+    email,
+    phone,
+    city_of_residence,
+    recurrent_ailment,
+    password,
+    licence,
+  } = value;
+
 
   const registerUser = (e) => {
-    console.log(data)
     e.preventDefault();
-    const data = { value };
+    const data = {
+      full_name,
+      email,
+      phone,
+      city_of_residence,
+      recurrent_ailment,
+      password,
+      licence
+    };
     // console.log(data);
     if (isValid) {
       register(data);
@@ -144,7 +153,7 @@ function Register() {
     }
     if (success && !error) {
       console.log({ successMessage });
-      alert.success(`${"hello"}`);
+      alert.success(`${successMessage}`);
     }
     return () => {
       resetActions();
@@ -163,12 +172,12 @@ function Register() {
   //   };
   // }, [successMessage]);
 
-  useEffect(() => {
-    if (authSuccess === "pass") {
-      // console.log("redirecting to home page");
-      history.push("/");
-    }
-  }, [authSuccess]);
+  // useEffect(() => {
+  //   if (authSuccess === "pass") {
+  //     // console.log("redirecting to home page");
+  //     history.push("/");
+  //   }
+  // }, [authSuccess]);
 
   return (
     <div className="register">
@@ -246,18 +255,18 @@ function Register() {
             err={err}
           />
 
-          <div className="input__box">
+          {/* <div className="input__box">
             <label htmlFor="upload">Upload Professional License</label>
             <input type="file" required />
-          </div>
+          </div> */}
 
           <button
-              type="submit"
-              disabled={!isValid}
-              className="register__submit__btn"
-            >
-              {loading ? "Loading..." : "Create Account"}
-            </button>
+            type="submit"
+            disabled={!isValid}
+            className="register__submit__btn"
+          >
+            {loading ? "Loading..." : "Create Account"}
+          </button>
           <p className="bottom__text">
             Do you have an account ? <Link to="/signin">Log in</Link>
           </p>

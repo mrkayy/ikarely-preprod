@@ -13,7 +13,7 @@ const WebStorage = {
     },
      logout: () => {
         localStorage.removeItem('user_token');  
-        window.location.href = '/sign-in'; 
+        window.location.href = '/signin'; 
     }
 }
 module.exports = WebStorage;

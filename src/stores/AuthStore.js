@@ -65,14 +65,16 @@ class AuthStore {
         if (res.data.status) {
           this.success = true;
           this.successMessage = res.data.message;
-          console.log(res.data.data);
+          // console.log(res.data.data);
         }
+        window.location.href = '/signin'; 
       })
       .catch((err) => {
         this.loading = false;
         this.error = true;
         console.log(err.response);
-        this.errMessage = err.response.message;
+        // this.errMessage = err.response.message;
+        this.errMessage = err.response === undefined ? err.message: err.response.data.message;
       });
   };
 
@@ -95,7 +97,7 @@ class AuthStore {
           this.authSuccess = "pass";
           // this.successMessage = res.data.message;
           WebStorage.save("user_token", res.data.data.token);
-          console.log(res.data.data);
+          // console.log(res.data.data);
         }
       })
       .catch((err) => {
