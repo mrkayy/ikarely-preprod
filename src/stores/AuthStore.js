@@ -10,9 +10,11 @@ class AuthStore {
   errMessage = "";
   successMessage = "";
   authSuccess = "failed";
+  currUser = false;
   user = {};
 
   constructor() {
+    this.getCurrUser();
     makeObservable(this, {
       error: observable,
       loading: observable,
@@ -21,11 +23,13 @@ class AuthStore {
       successMessage: observable,
       authSuccess: observable,
       user: observable,
+      currUser: observable,
 
       login: action,
       logout: action,
       register: action,
       rememberMe: action,
+      getCurrUser: action,
       resetActions: action,
     });
   }
@@ -66,15 +70,16 @@ class AuthStore {
           this.success = true;
           this.successMessage = res.data.message;
           // console.log(res.data.data);
+          window.location.href = "/signin";
         }
-        window.location.href = '/signin'; 
       })
       .catch((err) => {
         this.loading = false;
         this.error = true;
         console.log(err.response);
         // this.errMessage = err.response.message;
-        this.errMessage = err.response === undefined ? err.message: err.response.data.message;
+        this.errMessage =
+          err.response === undefined ? err.message : err.response.data.message;
       });
   };
 
@@ -96,6 +101,7 @@ class AuthStore {
           this.user = res.data.data;
           this.authSuccess = "pass";
           // this.successMessage = res.data.message;
+          // saving the user token to local storage
           WebStorage.save("user_token", res.data.data.token);
           // console.log(res.data.data);
         }
@@ -104,13 +110,25 @@ class AuthStore {
         // console.log(err);
         this.loading = false;
         this.error = true;
-        this.errMessage = err.response === undefined ? err.message: err.response.data.message;
+        this.errMessage =
+          err.response === undefined ? err.message : err.response.data.message;
         // console.log(err.response.data);
+      })
+      .finally(() => {
+        this.getCurrUser();
       });
   };
 
   logout = () => {
     WebStorage.logout();
+    this.getCurrUser();
+  };
+
+  getCurrUser = () => {
+    this.currUser = WebStorage.get("user_token") ? true : false;
+    console.log("getting-user");
+    console.log(WebStorage.get("user_token"));
+    console.log(this.currUser);
   };
 
   resetActions = () => {

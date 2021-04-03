@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import Overlay from "../Overlay/Overlay";
+import WebStorage from "../../shared/LocalStorage";
 
-function NavBar({ slide, showMenu }) {
+function NavBar({ slide, showMenu, user }) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -43,12 +44,31 @@ function NavBar({ slide, showMenu }) {
           <li className="navbar__menus">
             <Link to="/contact">Contact us</Link>
           </li>
-          <li className="navbar__menus">
-            <Link to="/register">Sign Up</Link>
-          </li>
-          <li className="navbar__menus">
-            <Link to="/signin">Sign In</Link>
-          </li>
+          {user && user === true ? (
+            <>
+              <li className="navbar__menus">
+                <Link to="/profile">Accounts</Link>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="logout_btn"
+                  onClick={() => WebStorage.logout()}
+                >
+                  Log out
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="navbar__menus">
+                <Link to="/register">Sign Up</Link>
+              </li>
+              <li className="navbar__menus">
+                <Link to="/signin">Sign In</Link>
+              </li>{" "}
+            </>
+          )}
           <li className="hamburger__menu" onClick={() => showMenu(slide)}>
             <div className="first line"></div>
             <div className="first line"></div>

@@ -5,6 +5,7 @@ import WhyUs from "../../components/WhyChooseUs/WhyUs";
 import './Home.css'
 
 function Home() {
+
   return (
     <div className='home'>
       <Landing />

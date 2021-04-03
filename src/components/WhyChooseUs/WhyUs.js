@@ -28,11 +28,11 @@ function WhyUs() {
       <h1 className="main__header">Our Core Values</h1>
 
       <div className="whyus__options">
-        {whyus__options.map(({ icon, title, word }) => {
+        {whyus__options.map(({ icon, title, word }, index) => {
           return (
-            <div className="whyus__option">
+            <div className="whyus__option" key={index}>
               <div className="whyus__icon">
-                <img src={`images/icons/${icon}`} alt=""/>
+                <img src={`images/icons/${icon}`} alt="" />
               </div>
               <h2 className="whyus__title">{title}</h2>
               <p className="whyus__word">{word}</p>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
 import "./SignIn.css";
 
 import { observer } from "mobx-react";
@@ -22,7 +22,8 @@ const schema = {
   },
 };
 
-function SignIn() {
+function SignIn(props) {
+  const { currentUser } = props;
   const alert = useAlert();
   const history = useHistory();
   const authcontext = useContext(AuthStore);
@@ -140,7 +141,9 @@ function SignIn() {
       history.push("/");
     }
   }, [authSuccess]);
-
+  if (currentUser && currentUser) {
+    return <Redirect to={"/"} />;
+  }
   return (
     <div className="contact">
       <div className="signin">
@@ -151,8 +154,7 @@ function SignIn() {
           </div>
 
           <form action="submit" onSubmit={loginUser} className="form__inputs">
-       
-              {/* <label htmlFor="email">Email or Phone Number</label>
+            {/* <label htmlFor="email">Email or Phone Number</label>
               <input
                 type="email"
                 name="email"
@@ -164,26 +166,26 @@ function SignIn() {
                   ? err["email"]?.error && err.email.message
                   : null}
               </label> */}
-              <InputBox
-                label="Email or Phone Number"
-                name="email"
-                value={value}
-                onchange={handleFormChange}
-                hasError={hasError}
-                type="email"
-                err={err}
-              />
-       
-              <InputBox
-                label="Password"
-                name="password"
-                value={value}
-                onchange={handleFormChange}
-                hasError={hasError}
-                type="password"
-                err={err}
-              />
-              {/* <label htmlFor="password">Password</label>
+            <InputBox
+              label="Email or Phone Number"
+              name="email"
+              value={value}
+              onchange={handleFormChange}
+              hasError={hasError}
+              type="email"
+              err={err}
+            />
+
+            <InputBox
+              label="Password"
+              name="password"
+              value={value}
+              onchange={handleFormChange}
+              hasError={hasError}
+              type="password"
+              err={err}
+            />
+            {/* <label htmlFor="password">Password</label>
               <input
                 type="password"
                 name="password"
@@ -195,7 +197,6 @@ function SignIn() {
                   ? err.password?.error && err.password.message
                   : null}
               </label> */}
-            
 
             <div className="keep__signed">
               <input

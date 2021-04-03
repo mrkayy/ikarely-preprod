@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import PageLanding from "../../components/PageLanding/PageLanding";
 import "./Contact.css";
 
 function Contact() {
+
   return (
     <div className="contactus">
       

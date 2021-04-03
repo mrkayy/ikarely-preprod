@@ -1,14 +1,6 @@
 import React from "react";
 
-function InputBox({
-  value,
-  label,
-  name,
-  onchange,
-  err,
-  hasError,
-  type = "text",
-}) {
+function InputBox({ value, label, name, onchange, err, hasError, type }) {
   return (
     <div className="input__box">
       <label htmlFor={name}>{label}</label>

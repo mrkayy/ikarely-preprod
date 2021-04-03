@@ -80,6 +80,22 @@ div ul {
   }
 }
 
+.logout_btn {
+  margin: 0px;
+  padding: 0px;
+  color: #083c63;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.logout_btn:hover {
+  color: rgb(172, 11, 11);
+}
+.logout_btn:active {
+  border: none;
+}
+
 @media screen and (max-width: 894px) {
   .navbar__links ul > li {
     margin-right: 25px;

@@ -70,19 +70,18 @@ function Blog() {
       title: " 5 Tips on Improving your health",
     },
     {
-        picture: "hospice-care.png",
-        title: " 5 Tips on Improving your health",
-      },
-      {
-        picture: "hospice-care.png",
-        title: " 5 Tips on Improving your health",
-      }
+      picture: "hospice-care.png",
+      title: " 5 Tips on Improving your health",
+    },
+    {
+      picture: "hospice-care.png",
+      title: " 5 Tips on Improving your health",
+    },
   ];
 
   return (
     <div className="blog">
-     
-      <PageLanding image='appointment.jpg' title='Blog'/>
+      <PageLanding image="appointment.jpg" title="Blog" />
 
       <div className="blogposts__section">
         <div className="blogposts__header">
@@ -94,9 +93,10 @@ function Blog() {
         </div>
 
         <div className="blog__posts">
-          {blogposts.map(({ title, image, article, date }) => {
+          {blogposts.map(({ title, image, article, date }, index) => {
             return (
               <BlogPost
+                keys={index}
                 title={title}
                 image={image}
                 article={article}
@@ -116,10 +116,8 @@ function Blog() {
         <h2 className="featured__header">Featured Articles</h2>
 
         <div className="featured__articles">
-          {articles.map(({picture, title}) => {
-            return (
-            <Article />
-            );
+          {articles.map(({ picture, title }, index) => {
+            return <Article key={index} />;
           })}
         </div>
 

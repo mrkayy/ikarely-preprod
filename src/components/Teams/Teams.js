@@ -37,8 +37,8 @@ function Teams() {
         <h1 className="teams__header">Meet the Team</h1>
 
         <div className="teams__details">
-          {teams.map(({ picture, name, title }) => {
-            return <TeamProfile picture={picture} name={name} title={title} />;
+          {teams.map(({ picture, name, title },index) => {
+            return <TeamProfile key={index} picture={picture} name={name} title={title} />;
           })}
         </div>
       </div>
