@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import {observer} from "mobx-react"
 import "./App.css";
 import Home from "./Pages/Home/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -18,22 +19,22 @@ function App() {
   const authcontext = useContext(AuthStore);
   const { currUser, getCurrUser } = authcontext;
 
-  // const [user, setUser] = useState(false);
+  const [user, setUser] = useState(false);
   useEffect(() => {
-    //   if (currUser && currUser === true) {
-    //     console.log("re-rendering");
-    //     setUser(true);
-    //   } else if (currUser && currUser === false) {
-    //     console.log("re-rendering");
-    //     setUser(false);
-    //   }
+      if (currUser && currUser === true) {
+        console.log("re-rendering");
+        setUser(true);
+      } else if (currUser && currUser === false) {
+        console.log("re-rendering");
+        setUser(false);
+      }
     getCurrUser();
   }, [currUser]);
 
   return (
     <div className="App">
       <Router>
-        <PageContainer user={currUser}>
+        <PageContainer user={user}>
           <Switch>
             <Route exact path="/" render={() => <Home />} />
             <Route exact path="/service" render={() => <Service />} />
@@ -43,12 +44,12 @@ function App() {
             <Route
               exact
               path="/register"
-              render={() => <Register currentUser={currUser} />}
+              render={() => <Register currentUser={user} />}
             />
             <Route
               exact
               path="/signin"
-              render={() => <SignIn currentUser={currUser} />}
+              render={() => <SignIn currentUser={user} />}
             />
             <Route exact path="/*" render={() => <Error />} />
             <Route
@@ -63,4 +64,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);
