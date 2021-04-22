@@ -1,6 +1,7 @@
 import React from "react";
 
 import PageLanding from "../../components/PageLanding/PageLanding";
+import InputBox from "../../shared/InputBox";
 import "./Contact.css";
 
 function Contact() {
@@ -17,16 +18,18 @@ function Contact() {
         <div className="contactus__form">
           <div className="contactus__headers">
             <h3 className="contactus__header">Leave a Message</h3>
-    
           </div>
 
-          <form action="" className="contactus__inputs">
-            <div className="email__input">
-              <label htmlFor="email">Email or Phone Number</label>
-              <input type="email" required />
-            </div>
 
-            <div className="password__input">
+
+          <form action="" className="contactus__inputs">
+            <InputBox
+            label="Email or Phone" 
+            name="email"
+            type="email"
+             />
+
+            <div className="input__box">
               <label htmlFor="password">your message</label>
               <textarea />
             </div>

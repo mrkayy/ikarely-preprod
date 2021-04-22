@@ -1,6 +1,8 @@
 import React from "react";
 import PageLanding from "../../components/PageLanding/PageLanding";
 import "./Service.css";
+import Modal from "@material-ui/core/Modal";
+import ModalForm from "../../components/Modal/ModalForm";
 
 function Service() {
   const services = [
@@ -42,22 +44,25 @@ function Service() {
     },
   ];
 
-
   return (
     <div className="services">
-     
-     <PageLanding image='health-service.jpg' title='What we offer'/>
+      <PageLanding image="health-service.jpg" title="What we offer" />
 
       <div className="each__section">
         <div className="right__part">
           <h5>services</h5>
           <h1>Get the best medical aid at home</h1>
           <p className="section__word">
-          We believe there is no better time to decongest hospitals especially in Africa where there is the disproportionate patient-to-doctor ratio with facilities that are either unavailable or dysfunctional. It’s an incredibly exciting moment for healthcare to take advantage of digital technology and the growing number of internet-enabled mobile phones in Africa. 
-
-We are simply providing access to the very best prevention and treatment options at a fraction of the cost without necessarily leaving the comfort of your room. 
-
-With iKarely you’re getting the best and quality health care services just at your finger tip.
+            We believe there is no better time to decongest hospitals especially
+            in Africa where there is the disproportionate patient-to-doctor
+            ratio with facilities that are either unavailable or dysfunctional.
+            It’s an incredibly exciting moment for healthcare to take advantage
+            of digital technology and the growing number of internet-enabled
+            mobile phones in Africa. We are simply providing access to the very
+            best prevention and treatment options at a fraction of the cost
+            without necessarily leaving the comfort of your room. With iKarely
+            you’re getting the best and quality health care services just at
+            your finger tip.
           </p>
 
           {/* <button className="eachsection__btn">
@@ -75,10 +80,20 @@ With iKarely you’re getting the best and quality health care services just at 
           <h1 className="services__mainheader">Health Services we offer</h1>
         </div>
 
+        <Modal
+          open={true}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+
+          <ModalForm services={services} />
+          
+        </Modal>
+
         <div className="service__lists">
           {services.map(({ icon, title, word }) => {
             return (
-              <div className="service__list">
+              <div className="service__list" key={title}>
                 <div className="list__icon">
                   <img src={`images/icons/${icon}`} alt="" />
                 </div>
@@ -89,6 +104,13 @@ With iKarely you’re getting the best and quality health care services just at 
           })}
         </div>
       </div>
+
+      {/* <Modal 
+      aria-labelledby="modal-title" 
+      aria-describedby="modal-description">
+        <h2 id="modal-title">My Title</h2>
+        <p id="modal-description">My Description</p>
+      </Modal> */}
     </div>
   );
 }

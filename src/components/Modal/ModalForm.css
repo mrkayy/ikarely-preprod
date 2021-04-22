@@ -1,0 +1,60 @@
+
+
+.service__modal{
+    
+    background-color: #fff;
+    margin: 100px;
+    padding: 20px;
+    
+}
+.service__request{
+   text-align: center;
+   /* display: grid;
+    justify-content: center;
+    align-items: center; */
+}
+.request__mainheader, .request__word{
+    text-transform: uppercase;
+}
+.request__mainheader{
+    font-size: 18px;
+}
+.request__word{
+    font-size: 12px;
+}
+.progress__circles{
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.stage__circle{
+    text-align: center;
+    font-size: 14px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid blue;
+    border-radius: 100%;
+}
+.sub__topic{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    
+    /* text-align: center; */
+}
+.sub__topic__word{
+text-transform: uppercase;
+background-color: rgb(28, 10, 131);
+color: #fff;
+font-size: 12px;
+padding: 5px;
+}
+
+
+.request__form{
+    margin-top: 20px;
+}

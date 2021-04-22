@@ -42,21 +42,24 @@ div ul {
 }
 .navbar__links ul {
   display: flex;
-  flex: 0.7;
+  /* flex: 0.7; */
   text-align: center;
   justify-content: space-between;
 
   /* align-items: center; */
 }
 .navbar__links ul > li {
-  margin-right: 60px;
+  margin-right: 40px;
   font-size: 1em;
+}
+.navbar__links ul > li:last-child {
+  margin-right: 0px;
 }
 .navbar__links ul > li a {
   text-decoration: none;
   color: inherit;
 }
-.navbar__links a:hover {
+.navbar__links a:hover, .logout__btn {
   color: rgb(172, 11, 11);
 }
 .hamburger__menu > .line {
@@ -80,26 +83,14 @@ div ul {
   }
 }
 
-.logout_btn {
-  margin: 0px;
-  padding: 0px;
-  color: #083c63;
-  background-color: transparent;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-}
-.logout_btn:hover {
-  color: rgb(172, 11, 11);
-}
-.logout_btn:active {
-  border: none;
-}
 
 @media screen and (max-width: 894px) {
   .navbar__links ul > li {
     margin-right: 25px;
     font-size: 14px;
+  }
+  .navbar__links ul > li:last-child {
+    margin-right: 0px;
   }
   .navbar__content {
     padding: 20px;
@@ -110,6 +101,9 @@ div ul {
   .navbar__links ul > li {
     margin-right: 15px;
     font-size: 13px;
+  }
+  .navbar__links ul > li:last-child {
+    margin-right: 0px;
   }
 }
 @media screen and (max-width: 430px) {

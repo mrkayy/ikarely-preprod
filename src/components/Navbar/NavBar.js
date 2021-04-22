@@ -34,10 +34,10 @@ function NavBar({ slide, showMenu, user }) {
           <li className="navbar__menus">
             <Link to="/service">Services</Link>{" "}
           </li>
-          <li className="navbar__menus">
+          {/* <li className="navbar__menus">
             {" "}
             <Link to="/blog">Blog</Link>
-          </li>
+          </li> */}
           <li className="navbar__menus">
             <Link to="/about">About us</Link>
           </li>
@@ -49,14 +49,9 @@ function NavBar({ slide, showMenu, user }) {
               <li className="navbar__menus">
                 <Link to="/profile">Accounts</Link>
               </li>
-              <li>
-                <button
-                  type="button"
-                  className="logout_btn"
-                  onClick={() => WebStorage.logout()}
-                >
+              <li className="navbar__menus logout__btn"
+                  onClick={() => WebStorage.logout()}>
                   Log out
-                </button>
               </li>
             </>
           ) : (

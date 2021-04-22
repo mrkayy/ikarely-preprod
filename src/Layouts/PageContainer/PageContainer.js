@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 // all pages are passed in as children props to the PageContainer component
 const PageContainer = ({ children, user }) => {
   const [slide, setSlide] = useState(false);
-  console.log({ user });
+  // console.log({ user });
 
   const showMenu = (slide) => {
     setSlide(!slide);

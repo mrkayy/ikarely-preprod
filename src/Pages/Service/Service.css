@@ -51,7 +51,12 @@ border-radius: 6px;
   color: #535353;
 }
 .list__word {
-  color: #6e6e6e;
+  color: #6e6e6e; 
+}
+.modal{
+  background-color: #fff;
+  margin: 100px;
+  padding: 20px;
 }
 
 

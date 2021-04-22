@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import GlobalLayer from "./stores/GlobalLayer";
 
 // optional configuration
 const options = {
@@ -18,7 +19,9 @@ const options = {
 
 ReactDOM.render(
   <AlertProvider template={AlertTemplate} {...options}>
+    <GlobalLayer>
     <App />
+    </GlobalLayer>
   </AlertProvider>,
   document.getElementById("root")
 );

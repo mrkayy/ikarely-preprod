@@ -27,32 +27,6 @@
   padding: 30px 20px;
   justify-self: center;
 }
-div.input__box {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-  text-align: left;
-}
-.contactus__inputs > div > label,
-.keep__signed {
-  font-size: 14px;
-  color: rgb(124, 124, 124);
-  text-transform: capitalize;
-  margin-bottom: 5px;
-}
-.contactus__inputs > div > input[type="email"],
-.contactus__inputs > div > textarea {
-  height: 40px;
-  appearance: none;
-  border: 1px solid rgb(216, 216, 216);
-  border-radius: 5px;
-  outline: none;
-  padding: 10px;
-  font-size: 16px;
-}
-.contactus__inputs > div > textarea {
-  height: 150px;
-}
 .signin__headers,
 contactus__description {
   text-align: center;
