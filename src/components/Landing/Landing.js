@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Landing.css";
 
 function Landing() {
@@ -12,17 +11,16 @@ function Landing() {
     >
       <div className="contents" >
         <div className="word">
-          <h1 className="main__word fix">
-            Quality Health Service 
+          <h1 className="main__word">
+            Bringing Quality health <br/> <span className='mainword__break'>Services at your <br/> Doorstep</span> 
           </h1>
-          <div><span className='mainword__break'> at your Doorstep</span> </div>
         </div>
-        <div className="button">
+        
+      <div className="button">
         <button className="getstarted__btn">
-          <Link to="/register">Get Started</Link>
+          Get Started
         </button>
       </div>
-      
        
       </div>  
     </div>

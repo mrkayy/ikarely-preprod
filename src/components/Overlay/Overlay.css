@@ -1,31 +1,55 @@
 .overlay {
   width: 100vw;
   height: 100vh;
-  background-color: rgb(13, 33, 124);
+  background-color: rgb(255, 255, 255);
   z-index: 10000;
   position: fixed;
-  left: 50px;
+  /* left: 50px; */
   transform: translateX(100vw);
   transition: all 0.3s ease-in-out;
-  padding: 50px;
+  padding: 30px;
 }
-.overlay > img {
-  width: 16px;
-  object-fit: cover;
+.close__button {
   position: absolute;
-  top: 25px;
-  left: 25px;
+  top: 15px;
+  right: 25px;
+  cursor: pointer;
+}
+img.overlay__logo {
+  margin-left: -50px;
+  max-width: 250px;
+  object-fit: contain;
 }
 .hamburger__menus {
   height: 100vh;
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
 }
 .hamburger__menus > ul > li {
   margin: 15px;
 }
 .hamburger__menus > ul > li a {
   text-decoration: none;
+  font-size: 14px;
+}
+.more__links{
+  margin-top: 50px;
+}
+.login__link__btn,.register__link__btn{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #083c63;
+  border: 1px solid transparent;
+  color: white;
+  outline: none;
+}
+.login__link__btn{
+  border: 1px solid #083c63;
+  background-color: transparent;
+}
+.register__link__btn a{
   color: white;
 }
 

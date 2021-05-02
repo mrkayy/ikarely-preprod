@@ -1,60 +1,153 @@
-
-
-.service__modal{
-    
-    background-color: #fff;
-    margin: 100px;
-    padding: 20px;
-    
+.service__modal {
+  min-width: 300px;
+  background-color: #fff;
+  margin: 50px;
+  padding: 20px;
+  position: relative;
 }
-.service__request{
-   text-align: center;
-   /* display: grid;
-    justify-content: center;
-    align-items: center; */
+.service__request {
+  text-align: center;
 }
-.request__mainheader, .request__word{
-    text-transform: uppercase;
+.request__headers{
+  color: #083c63;
+  text-transform: uppercase;
+  margin-top: 20px;
+  
 }
-.request__mainheader{
-    font-size: 18px;
+.close__icon{
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
-.request__word{
-    font-size: 12px;
+.request__mainheader {
+  font-size: 18px;
 }
-.progress__circles{
-    margin: 30px;
-    display: flex;
-    justify-content: space-between;
-}
-.stage__circle{
-    text-align: center;
-    font-size: 14px;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid blue;
-    border-radius: 100%;
-}
-.sub__topic{
-    width: 100%;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    
-    /* text-align: center; */
-}
-.sub__topic__word{
-text-transform: uppercase;
-background-color: rgb(28, 10, 131);
-color: #fff;
-font-size: 12px;
-padding: 5px;
+.request__word {
+  font-size: 12px;
 }
 
-
-.request__form{
-    margin-top: 20px;
+.line__circle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
+.progress__line,
+.progress__linebg {
+  height: 4px;
+  background-color: #083c63;
+  position: absolute;
+  transition: 0.5s width;
+}
+.progress__linebg {
+  width: 100%;
+  background-color: rgba(146, 146, 146, 0.5);
+}
+.progress__circles {
+  width: 100%;
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Each stage circle styles */
+
+.stage__circle {
+  text-align: center;
+  font-size: 14px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #083c63;
+  border-radius: 100%;
+  background-color: white;
+  color: #083c63;
+  transition: 0.3s all ease-in;
+}
+.not {
+  color: #fff;
+  background-color: #083c63;
+}
+
+.sub__topic {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.sub__topic__word {
+  text-transform: uppercase;
+  background-color: rgba(180, 27, 27, 0.8);
+  color: #fff;
+  font-size: 10px;
+  padding: 5px;
+}
+.request__form {
+  margin: 20px 0px 20px 0px;
+  min-height: 250px;
+  /* border: 1px solid gray; */
+}
+
+
+.confirm__summary{
+  color: #083c63;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.booking__summary{
+  max-width: 302px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.booking__summary{
+  font-size: 18px;
+}
+.request__info{
+  overflow: hidden;
+  font-size: 12px;
+  text-align: left;
+  line-height: 2em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+.request__detail{
+  font-weight: bold;
+  color: #083c63;
+}
+.summary__message{
+  font-size: 12px;
+  color: rgba(180, 27, 27, 0.8);
+}
+.detail__value{
+  text-transform: capitalize;
+  /* font-size: 12px; */
+  font-weight: normal;
+}
+
+.prev__next__btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn {
+  padding: 5px 10px;
+  border: none;
+  background-color: #083c63;
+  color: #fff;
+}
+.notactive{
+  background-color: rgba(146, 146, 146, 0.5);
+}
+div > textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+

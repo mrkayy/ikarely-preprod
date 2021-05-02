@@ -1,5 +1,3 @@
-
-
 .services__section {
   padding: 50px;
   width: 100vw;
@@ -12,7 +10,7 @@
   text-align: center;
 }
 .service__headers {
-  color: #6e6e6e;
+  color: #083C63;
   margin-bottom: 50px;
 }
 .services__head {
@@ -31,36 +29,52 @@
   grid-gap: 20px;
 }
 .service__list {
-padding: 50px 30px;
-border-radius: 6px;
+  padding: 50px 30px;
+  margin-bottom: 20px;
+  border-radius: 6px;
   background-color: rgba(112, 112, 255, 0.1);
   position: relative;
 }
-.list__icon > img{
+.list__icon > img {
   position: absolute;
   right: 20px;
   top: 20px;
   object-fit: cover;
   width: 50px;
 }
+
 .list__title {
   font-size: 20px;
   font-weight: 500;
   text-transform: capitalize;
   margin-bottom: 20px;
-  color: #535353;
 }
-.list__word {
-  color: #6e6e6e; 
+
+.list__title, .list__word{
+  color: #083C63
 }
-.modal{
+.makerequest__btn{
+  border: none;
+  padding: 10px 15px;
+  margin-top: 20px;
+  background-color: #083c63;
+  text-transform: capitalize;
+  color: white;
+}
+.modal {
   background-color: #fff;
   margin: 100px;
   padding: 20px;
 }
 
+.main__modal {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
 
-@media screen and (max-width: 824px){
+@media screen and (max-width: 824px) {
   .services__section {
     padding: 20px;
   }

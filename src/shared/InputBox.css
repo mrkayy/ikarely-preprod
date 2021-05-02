@@ -3,7 +3,11 @@ div.input__box {
     flex-direction: column;
     margin-bottom: 15px;
     text-align: left;
-  }
+}
+
+.first__option{
+  color: grey;
+}
  div > label,
 .keep__signed {
   font-size: 14px;
@@ -14,8 +18,9 @@ div.input__box {
  div > input[type="text"],
  div > input[type="email"],
  div > input[type="password"],
+ div > input[type='date'],
  div > textarea,
- form > select {
+ form > div > select{
   height: 40px;
   appearance: none;
   border: 1px solid rgb(216, 216, 216);
@@ -24,9 +29,11 @@ div.input__box {
   padding: 10px;
   font-size: 16px;
 }
- div > textarea {
-  height: 150px;
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+  filter: invert(50%);
 }
+
 .has__error{
     color: rgba(255, 0, 0, 0.616);
     font-size: 12px;

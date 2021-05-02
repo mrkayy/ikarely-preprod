@@ -3,7 +3,7 @@ import WebStorage from "./shared/LocalStorage";
 
 const env = {
   production: "https://",
-  development: "https://ikarely-api.herokuapp.com/api/v1/auth/",
+  development: "https://ikarely-api.herokuapp.com/api/v1/",
   local: "http://localhost:8080/",
 };
 
@@ -24,7 +24,7 @@ const api = axios.create({
 
 api.interceptors.request.use(function (config) {
   var token = WebStorage.get("user_token");
-  config.headers.Authorization = `Bearer ${token}`;
+  config.headers.Authorization = `${token}`;
 
   return config;
 });

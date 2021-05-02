@@ -24,6 +24,7 @@ class AuthStore {
       authSuccess: observable,
       user: observable,
       currUser: observable,
+      sendRequest: observable,
 
       login: action,
       logout: action,
@@ -40,7 +41,7 @@ class AuthStore {
 
     const credentials = { email, password };
     api
-      .post("login", credentials)
+      .post("*", credentials)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
@@ -60,29 +61,28 @@ class AuthStore {
   register = (data) => {
     this.loading = true;
     api
-      .post("users", data)
+      .post("auth/users", data)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
           this.success = true;
           this.successMessage = res.data.message;
-          console.log(this.successMessage)
+          console.log(this.successMessage);
           window.location.href = "/signin";
         }
       })
       .catch((err) => {
         this.loading = false;
         this.error = true;
-        this.errMessage = 
-        err.response === undefined ? err.message : err.response.data.message;
-        
+        this.errMessage =
+          err.response === undefined ? err.message : err.response.data.message;
       });
   };
 
   login = (data) => {
     this.loading = true;
     api
-      .post("login", data)
+      .post("auth/login", data)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
@@ -107,6 +107,29 @@ class AuthStore {
       })
       .finally(() => {
         this.getCurrUser();
+      });
+  };
+
+  sendRequest = (data) => {
+    this.loading = true;
+    api
+      .post("/health/service-request", data)
+      .then((res) => {
+        //I want to see the response returned
+        // console.log(res.data);
+        this.loading = false;
+        if (res.data.status) {
+          this.success = true;
+          this.successMessage = res.data.message;
+          console.log(this.successMessage);
+          // window.location.href = "/";
+        }
+      })
+      .catch((err) => {
+        this.loading = false;
+        this.error = true;
+        this.errMessage =
+          err.response === undefined ? err.message : err.response.data.message;
       });
   };
 

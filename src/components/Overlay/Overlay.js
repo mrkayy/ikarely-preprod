@@ -13,10 +13,10 @@ function Overlay({ slide, showMenu, setSlide }) {
       value: "Services",
       directory: "/service",
     },
-    {
-      value: "Blog",
-      directory: "/blog",
-    },
+    // {
+    //   value: "Blog",
+    //   directory: "/blog",
+    // },
 
     {
       value: "About Us",
@@ -26,26 +26,22 @@ function Overlay({ slide, showMenu, setSlide }) {
       value: "Contact Us",
       directory: "/contact",
     },
-    {
-      value: "Sign Up",
-      directory: "/register",
-    },
-    {
-      value: "Sign in",
-      directory: "/signin",
-    },
   ];
+
   const viewLink = (slide) => {
     showMenu(slide);
     window.scrollTo(0, 0);
   };
   const content = (
     <div className={`overlay ${slide && "slide"}`}>
+      <div onClick={() => setSlide(false)} className="close__button">
+        X
+      </div>
+
       <img
-        src={`images/icons/close-button.svg`}
-        alt=""
-        onClick={() => setSlide(false)}
-        className="close__button"
+        src="images/ikarely_logo_overlay.png"
+        alt="ikarely_logo"
+        className="overlay__logo"
       />
 
       <div className="hamburger__menus">
@@ -61,6 +57,18 @@ function Overlay({ slide, showMenu, setSlide }) {
               </li>
             );
           })}
+        </ul>
+        <ul className="more__links">
+          <li className="navbar__slide" onClick={() => viewLink(slide)}>
+            <button className="login__link__btn">
+              <Link to={"/signin"}>{"Login"}</Link>{" "}
+            </button>
+          </li>
+          <li className="navbar__slide" onClick={() => viewLink(slide)}>
+            <button className="register__link__btn">
+              <Link to={"/register"}>{"Signup"}</Link>{" "}
+            </button>
+          </li>
         </ul>
       </div>
     </div>

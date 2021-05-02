@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import PageLanding from "../../components/PageLanding/PageLanding";
 import "./Service.css";
 import Modal from "@material-ui/core/Modal";
 import ModalForm from "../../components/Modal/ModalForm";
 
 function Service() {
+  const [openModal, setOpenModal] = useState(false);
+
   const services = [
     {
       icon: "wound.svg",
@@ -81,13 +83,11 @@ function Service() {
         </div>
 
         <Modal
-          open={true}
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
+          open={openModal}
+          onBackdropClick={() => setOpenModal(false)}
+          className="main__modal"
         >
-
-          <ModalForm services={services} />
-          
+          <ModalForm services={services} setOpenModal={setOpenModal} />
         </Modal>
 
         <div className="service__lists">
@@ -103,14 +103,18 @@ function Service() {
             );
           })}
         </div>
-      </div>
 
-      {/* <Modal 
-      aria-labelledby="modal-title" 
-      aria-describedby="modal-description">
-        <h2 id="modal-title">My Title</h2>
-        <p id="modal-description">My Description</p>
-      </Modal> */}
+        <button
+          className="makerequest__btn"
+          onClick={() => setOpenModal(!openModal)}
+        >
+          Make Request
+        </button>
+
+        {/* <button className="">
+          <Link to="/about">Read More</Link>
+        </button> */}
+      </div>
     </div>
   );
 }

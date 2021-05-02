@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Link, useHistory, Redirect } from "react-router-dom";
+import React, { useEffect, useState, useContext} from "react";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import "./SignIn.css";
 import { observer } from "mobx-react";
 import AuthStore from "../../stores/AuthStore";
-import dataHero from "data-hero";
 import { useAlert } from "react-alert";
 import InputBox from "../../shared/InputBox";
 import Joi from "joi-browser";
@@ -32,7 +31,10 @@ function SignIn(props) {
   useEffect(() => {
     setState((prevState) => ({
       ...prevState,
-      data: { email: "", password: "" },
+      data: { 
+        email: "", 
+        password: "" 
+      },
     }));
 
     setSchemas((prevState) => ({
@@ -53,10 +55,11 @@ function SignIn(props) {
     }
     if (success && !error) {
       alert.success(`${successMessage}`);
+      
     }
-    return () => {
-      resetActions();
-    };
+    // return () => {
+    //   resetActions();
+    // };
   }, [errMessage, successMessage]);
 
   useEffect(() => {
@@ -81,8 +84,8 @@ function SignIn(props) {
     console.log("Details submitted");
   };
 
-  // console.log(validate())
-
+  console.log(validate())
+// 
   return (
     <div className="contact">
       <div className="signin">

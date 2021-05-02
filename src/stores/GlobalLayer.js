@@ -26,7 +26,6 @@ const  GlobalLayer = ({children}) => {
     const obj = { [name]: value };
     const schema = { [name]: schemas[name] };
     const { error } = Joi.validate(obj, schema);
-
     return error ? error.details[0].message : null;
   };
 
@@ -38,9 +37,8 @@ const  GlobalLayer = ({children}) => {
     else delete errors[name];
 
     const data = { ...state.data };
-    
     data[name] = value;
-    console.log(data)
+    console.log(data[name])
     setState((state) => ({
       ...state,
       data,

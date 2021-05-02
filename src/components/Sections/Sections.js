@@ -15,7 +15,7 @@ function Sections() {
 
           <button className="eachsection__btn">
                <Link to="/about">Read More</Link>
-            </button>
+          </button>
         </div>
       </div>
 
