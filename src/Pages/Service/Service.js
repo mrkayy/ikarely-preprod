@@ -83,6 +83,7 @@ function Service() {
         </div>
 
         <Modal
+         disablePortal
           open={openModal}
           onBackdropClick={() => setOpenModal(false)}
           className="main__modal"

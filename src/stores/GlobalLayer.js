@@ -1,15 +1,11 @@
+import React, { useState, createContext } from "react";
+import Joi from "joi-browser";
 
-import React, { useState, createContext } from 'react'
-import Joi from 'joi-browser'
+export const GlobalContext = createContext();
 
-export const GlobalContext = createContext()
-
-
-const  GlobalLayer = ({children}) => {
-
-    const [state, setState] = useState({ data: {}, errors: {} });
-    const [schemas, setSchemas] = useState({})
-
+const GlobalLayer = ({ children }) => {
+  const [state, setState] = useState({ data: {}, errors: {} });
+  const [schemas, setSchemas] = useState({});
 
   const validate = () => {
     const options = { abortEarly: false };
@@ -21,7 +17,6 @@ const  GlobalLayer = ({children}) => {
     return errors;
   };
 
-
   const validateProperty = ({ name, value }) => {
     const obj = { [name]: value };
     const schema = { [name]: schemas[name] };
@@ -30,21 +25,24 @@ const  GlobalLayer = ({children}) => {
   };
 
   const handleChange = ({ currentTarget: input }) => {
-    const errors = { ...state.errors }
+    const errors = { ...state.errors };
     const errorMessage = validateProperty(input);
     const { name, value } = input;
     if (errorMessage) errors[name] = errorMessage;
     else delete errors[name];
 
+    if (name === "re_enter_password" && value === state.data.password) {
+      delete errors[name];
+    }
+
     const data = { ...state.data };
     data[name] = value;
-    console.log(data[name])
+    // console.log(data[name])
     setState((state) => ({
       ...state,
       data,
       errors,
     }));
-    
   };
 
   // const handleCheckBox = (e) => {
@@ -58,14 +56,21 @@ const  GlobalLayer = ({children}) => {
   //   }
   // };
 
+  return (
+    <GlobalContext.Provider
+      value={{
+        state,
+        setState,
+        schemas,
+        setSchemas,
+        validate,
+        validateProperty,
+        handleChange,
+      }}
+    >
+      {children}
+    </GlobalContext.Provider>
+  );
+};
 
-
-
-    return (
-        <GlobalContext.Provider value={{state, setState, schemas, setSchemas, validate, validateProperty, handleChange}}>
-            {children}
-        </GlobalContext.Provider>
-    )
-}
-
-export default GlobalLayer
+export default GlobalLayer;

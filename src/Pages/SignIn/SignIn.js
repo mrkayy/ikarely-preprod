@@ -99,13 +99,13 @@ function SignIn(props) {
             <InputBox label="Email or Phone Number" name="email" type="email" />
             <InputBox label="Password" name="password" type="password" />
 
-            <div className="keep__signed">
+            {/* <div className="keep__signed">
               <input
                 type="checkbox"
                 // onChange={handleCheckBox}
               />
               Keep me signed in
-            </div>
+            </div> */}
 
             <button
               type="submit"

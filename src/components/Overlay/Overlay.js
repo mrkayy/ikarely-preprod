@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ReactDom from "react-dom";
 import "./Overlay.css";
+import AuthStore from "../../stores/AuthStore";
 
 function Overlay({ slide, showMenu, setSlide }) {
+  const authcontext = useContext(AuthStore);
+  const { logout, currUser } = authcontext;
+  // console.log(currUser);
+
+
   const links = [
     {
       value: "Home",
@@ -59,16 +65,26 @@ function Overlay({ slide, showMenu, setSlide }) {
           })}
         </ul>
         <ul className="more__links">
-          <li className="navbar__slide" onClick={() => viewLink(slide)}>
-            <button className="login__link__btn">
-              <Link to={"/signin"}>{"Login"}</Link>{" "}
-            </button>
-          </li>
-          <li className="navbar__slide" onClick={() => viewLink(slide)}>
-            <button className="register__link__btn">
-              <Link to={"/register"}>{"Signup"}</Link>{" "}
-            </button>
-          </li>
+          {!currUser && (
+            <>
+              <li className="navbar__slide" onClick={() => viewLink(slide)}>
+                <button className="login__link__btn">
+                  <Link to={"/signin"}>{"Login"}</Link>{" "}
+                </button>
+              </li>
+
+              <li className="navbar__slide" onClick={() => viewLink(slide)}>
+                <button className="register__link__btn">
+                  <Link to={"/register"}>{"Signup"}</Link>{" "}
+                </button>
+              </li>
+            </>
+          )}
+          {currUser && (
+            <li className="navbar__slide" onClick={logout}>
+              <button className="register__link__btn">Logout</button>
+            </li>
+          )}
         </ul>
       </div>
     </div>

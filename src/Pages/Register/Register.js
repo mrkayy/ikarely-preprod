@@ -32,6 +32,7 @@ function Register(props) {
     setSchemas,
     validate,
     handleSubmit,
+    handleChange,
   } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -55,17 +56,25 @@ function Register(props) {
       email: Joi.string().email().required().label("Email"),
       city_of_residence: Joi.string().required().label("City"),
       password: Joi.string().required().min(5).label("Password"),
-      re_enter_password: Joi.any().valid(Joi.ref('password')).required().options({language: { any: {allowOnly: 'must match password'}}}),
+      re_enter_password: Joi
+        .string()
+        .required()
+        .valid(Joi.ref('password'))
+        .options({
+          language: {
+            any:{
+              allowOnly: '!!Passwords do not match',
+            }
+          }
+        }),
       user_type: Joi.string().required().label("User type"),
     }));
 
     return () => {
-      setState({data: {}, errors: {}})
-      setSchemas({})
-    }
+      setState({ data: {}, errors: {} });
+      setSchemas({});
+    };
   }, []);
-
-
 
   //alert user on error or success
   useEffect(() => {
@@ -87,12 +96,12 @@ function Register(props) {
 
   const { data, errors } = state;
 
-
   const registerSubmit = async (e) => {
     e.preventDefault();
     const errors = validate();
     setState((prevState) => ({
-      ...prevState, errors: errors || {} 
+      ...prevState,
+      errors: errors || {},
     }));
     if (errors) return;
     const {
@@ -150,12 +159,24 @@ function Register(props) {
             type={"password"}
           />
 
-          <InputBox label="User Type" name="user_type" type="text" />
+          <select
+            name="service"
+            onChange={handleChange}
+            value={state.data.user_type}
+            label="User Type"
+            name="user_type"
+            type="text"
+          >
+            <option value="Customer" className="first__option">
+              Customer
+            </option>
+            <option value="Professional" className="first__option">
+              Professional{" "}
+            </option>
+            ))
+          </select>
 
-          {/* <div className="input__box">
-            <label htmlFor="upload">Upload Professional License</label>
-            <input type="file" required />
-          </div> */}
+     
 
           <button
             type="submit"

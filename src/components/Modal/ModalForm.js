@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../stores/GlobalLayer";
+import jwt_decode from "jwt-decode";
 import "./ModalForm.css";
 import Joi from "joi-browser";
 import { observer } from "mobx-react";
@@ -12,6 +13,13 @@ function ModalForm({ services, setOpenModal }) {
   const alert = useAlert();
 
   const authcontext = useContext(AuthStore);
+  const { currUser } = authcontext;
+
+  const user_details = jwt_decode(currUser);
+  console.table(user_details);
+
+  const { full_name, phone, email } = user_details;
+
   const {
     error,
     loading,
@@ -19,6 +27,7 @@ function ModalForm({ services, setOpenModal }) {
     authSuccess,
     errMessage,
     successMessage,
+    getCurrUser,
     resetActions,
     sendRequest,
   } = authcontext;
@@ -80,8 +89,8 @@ function ModalForm({ services, setOpenModal }) {
   }, [errMessage, successMessage]);
 
   useEffect(() => {
-    setOpenModal(!success)
-  }, [success])
+    setOpenModal(!success);
+  }, [success]);
 
   const { data, errors } = state;
 
@@ -121,7 +130,7 @@ function ModalForm({ services, setOpenModal }) {
             </div>
           </>
         );
-      
+
       case 1:
         return (
           <>
@@ -131,7 +140,6 @@ function ModalForm({ services, setOpenModal }) {
           </>
         );
 
-
       case 2:
         return (
           <>
@@ -139,18 +147,37 @@ function ModalForm({ services, setOpenModal }) {
               <h2 className="confirm__summary">Request Summary</h2>
 
               <div className="request__info">
-                <div className="request__detail">Name: </div>
-                <div className="request__detail">Phone: </div> 
-                <div className="request__detail">Address:  <span className="detail__value">{`${data.address}`}, {`${data.bus_stop}`}</span></div>
-                <div className="request__detail">Date Booked: <span className="detail__value">{`${data.date}`}</span></div>
-                <div className="request__detail">Service: <span className="detail__value">{`${data.service}`}</span></div>
+                <div className="request__detail">
+                  Name: <span className="detail__value">{full_name}</span>{" "}
+                </div>
+                <div className="request__detail">
+                  Phone: <span className="detail__value">{phone}</span>
+                </div>
+                <div className="request__detail">
+                  Email: <span className="detail__value">{email}</span>
+                </div>
+                <div className="request__detail">
+                  Address:{" "}
+                  <span className="detail__value">
+                    {`${data.address}`}, {`${data.bus_stop}`}
+                  </span>
+                </div>
+                <div className="request__detail">
+                  Date Booked:{" "}
+                  <span className="detail__value">{`${data.date}`}</span>
+                </div>
+                <div className="request__detail">
+                  Service:{" "}
+                  <span className="detail__value">{`${data.service}`}</span>
+                </div>
               </div>
 
-            <p className="summary__message">OUR PROFESSIONAL WILL CALL YOU SHORTLY AFTER SUBMITTING.</p>
+              <p className="summary__message">
+                OUR PROFESSIONAL WILL CALL YOU SHORTLY AFTER SUBMITTING.
+              </p>
             </div>
           </>
         );
-   
     }
   };
 
@@ -189,14 +216,14 @@ function ModalForm({ services, setOpenModal }) {
 
     if (errors) return;
     // console.log(data)
-    const {service, more_details , address ,bus_stop , date } = data
+    const { service, more_details, address, bus_stop, date } = data;
 
     const datas = {
       additional_note: more_details,
       service,
-      location: `${address+bus_stop}`,
-      preferred_date_of_appointment: date
-    }
+      location: `${address + bus_stop}`,
+      preferred_date_of_appointment: date,
+    };
     sendRequest(datas);
     // console.log("You requests have been recieved!")
   };
@@ -211,7 +238,9 @@ function ModalForm({ services, setOpenModal }) {
     <div className="service__modal">
       <div className="service__request">
         <div className="request__headers">
-          <p className="close__icon" onClick={() => setOpenModal(false)}>x</p>
+          <p className="close__icon" onClick={() => setOpenModal(false)}>
+            x
+          </p>
           <h3 className="request__mainheader">BOOK service</h3>
           <p className="request__word">
             Kindly provide your details so we can reach you

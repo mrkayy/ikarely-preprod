@@ -67,7 +67,7 @@ class AuthStore {
         if (res.data.status) {
           this.success = true;
           this.successMessage = res.data.message;
-          console.log(this.successMessage);
+          // console.log(this.successMessage);
           window.location.href = "/signin";
         }
       })
@@ -139,7 +139,7 @@ class AuthStore {
   };
 
   getCurrUser = () => {
-    this.currUser = WebStorage.get("user_token") ? true : false;
+    this.currUser = WebStorage.get("user_token");
     // console.log("getting-user");
     // console.log(WebStorage.get("user_token"));
     // console.log(this.currUser);
