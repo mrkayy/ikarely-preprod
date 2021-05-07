@@ -20,16 +20,19 @@ function App() {
   const { currUser, getCurrUser } = authcontext;
 
   const [user, setUser] = useState(false);
+
   useEffect(() => {
-      if (currUser && currUser === true) {
-        console.log("re-rendering");
-        setUser(true);
-      } else if (currUser && currUser === false) {
-        console.log("re-rendering");
-        setUser(false);
-      }
     getCurrUser();
-  }, [currUser]);
+    if (currUser && currUser === true) {
+      console.log('re-rendering');
+      setUser(true);
+    } else if (currUser && currUser === false) {
+      console.log('re-rendering');
+      setUser(false);
+    }
+  }, [currUser, getCurrUser]);
+
+  console.log({currUser});
 
   return (
     <div className="App">
@@ -37,7 +40,11 @@ function App() {
         <PageContainer user={user}>
           <Switch>
             <Route exact path="/" render={() => <Home />} />
-            <Route exact path="/service" render={() => <Service />} />
+            <Route
+              exact
+              path="/service"
+              render={() => <Service currentUser={currUser} />}
+            />
             <Route exact path="/about" render={() => <About />} />
             <Route exact path="/blog" render={() => <Blog />} />
             <Route exact path="/contact" render={() => <Contact />} />
@@ -51,12 +58,12 @@ function App() {
               path="/signin"
               render={() => <SignIn currentUser={user} />}
             />
-            <Route exact path="/*" render={() => <Error />} />
             <Route
               exact
               path="/profile"
               render={() => <Profile currentUser={currUser} />}
             />
+            <Route exact path="/*" render={() => <Error />} />
           </Switch>
         </PageContainer>
       </Router>

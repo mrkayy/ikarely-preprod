@@ -67,9 +67,10 @@ function SignIn(props) {
       history.push("/");
     }
   }, [authSuccess]);
-  if (currentUser && currentUser) {
-    return <Redirect to={"/"} />;
-  }
+
+  // if (currentUser && currentUser) {
+  //   return <Redirect to={"/"} />;
+  // }
 
   const { data, errors } = state;
 
@@ -81,11 +82,11 @@ function SignIn(props) {
     }));
     if (errors) return;
     login(data);
-    console.log("Details submitted");
+    console.log("Details submitted!!!");
   };
 
-  console.log(validate())
-// 
+  // console.log(validate());
+
   return (
     <div className="contact">
       <div className="signin">
