@@ -1,20 +1,31 @@
 .service__modal {
-  min-width: 300px;
+  min-width: 500px;
   background-color: #fff;
   margin: 50px;
-  padding: 20px;
+  padding: 20px 45px;
   position: relative;
 }
+@media screen and (max-width: 425px) {
+  .service__modal {
+    min-width: 300px;
+    padding: 20px;
+  }
+}
+
+.loading__service {
+  padding: 50px;
+  text-align: center;
+}
+
 .service__request {
   text-align: center;
 }
-.request__headers{
+.request__headers {
   color: #083c63;
   text-transform: uppercase;
   margin-top: 20px;
-  
 }
-.close__icon{
+.close__icon {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -93,22 +104,21 @@
   /* border: 1px solid gray; */
 }
 
-
-.confirm__summary{
+.confirm__summary {
   color: #083c63;
   margin-bottom: 20px;
   font-size: 16px;
 }
 
-.booking__summary{
+.booking__summary {
   max-width: 302px;
   text-transform: uppercase;
   margin-bottom: 20px;
 }
-.booking__summary{
+.booking__summary {
   font-size: 18px;
 }
-.request__info{
+.request__info {
   overflow: hidden;
   font-size: 12px;
   text-align: left;
@@ -116,15 +126,15 @@
   text-transform: uppercase;
   margin-bottom: 40px;
 }
-.request__detail{
+.request__detail {
   font-weight: bold;
   color: #083c63;
 }
-.summary__message{
+.summary__message {
   font-size: 12px;
   color: rgba(180, 27, 27, 0.8);
 }
-.detail__value{
+.detail__value {
   text-transform: capitalize;
   /* font-size: 12px; */
   font-weight: normal;
@@ -142,12 +152,10 @@
   background-color: #083c63;
   color: #fff;
 }
-.notactive{
+.notactive {
   background-color: rgba(146, 146, 146, 0.5);
 }
 div > textarea {
   min-height: 120px;
   resize: none;
 }
-
-

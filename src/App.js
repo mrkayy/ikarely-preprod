@@ -24,15 +24,15 @@ function App() {
   useEffect(() => {
     getCurrUser();
     if (currUser && currUser === true) {
-      console.log('re-rendering');
+      // console.log('re-rendering');
       setUser(true);
     } else if (currUser && currUser === false) {
-      console.log('re-rendering');
+      // console.log('re-rendering');
       setUser(false);
     }
   }, [currUser, getCurrUser]);
 
-  console.log({currUser});
+  // console.log({currUser});
 
   return (
     <div className="App">
@@ -65,7 +65,7 @@ function App() {
             />
             <Route exact path="/*" render={() => <Error />} />
           </Switch>
-        </PageContainer>
+        </PageContainer> 
       </Router>
     </div>
   );

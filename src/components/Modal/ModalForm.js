@@ -17,11 +17,11 @@ function ModalForm({services, setOpenModal}) {
   const servicecontext = useContext(ServiceStore);
 
   const user_details = jwt_decode(token);
-  console.table(user_details);
+  // console.table(user_details);
   const {full_name, phone, email} = user_details;
 
   const {
-    // loadingReq,
+    loadingReq,
     reqError,
     reqSuccess,
     reqErrMessage,
@@ -72,23 +72,6 @@ function ModalForm({services, setOpenModal}) {
     };
   }, []);
 
-  useEffect(() => {
-    if (reqError) {
-      alert.error(`${reqErrMessage}`);
-    }
-    if (reqSuccess) {
-      alert.success(`${reqSuccessMessage}`);
-      // setOpenModal(false)
-    }
-    // return () => {
-    //   resetActions();
-    // };
-  }, [reqErrMessage, reqSuccessMessage]);
-
-  useEffect(() => {
-    setOpenModal(!reqSuccess);
-  }, [reqSuccess]);
-
   const {data, errors} = state;
 
   // console.log(data)
@@ -110,8 +93,8 @@ function ModalForm({services, setOpenModal}) {
                 <option value="" className="first__option">
                   Choose a service
                 </option>
-                {services.map(({title}) => (
-                  <option value={title} key={title}>
+                {services.map(({title,params}) => (
+                  <option value={params} key={title}>
                     {title}
                   </option>
                 ))}
@@ -139,7 +122,12 @@ function ModalForm({services, setOpenModal}) {
         );
 
       case 2:
-        return (
+        return loadingReq ? (<> 
+         <div className="loading__service">
+           <h3>Sending Service Request...</h3>
+         </div>
+        </>):
+        (
           <>
             <div className="booking__summary">
               <h2 className="confirm__summary">Request Summary</h2>
@@ -213,17 +201,15 @@ function ModalForm({services, setOpenModal}) {
     }));
 
     if (errors) return;
-    // console.log(data)
     const {service, more_details, address, bus_stop, date} = data;
 
-    const datas = {
+    const req_data = {
       additional_note: more_details,
       service,
       location: `${address + bus_stop}`,
       preferred_date_of_appointment: date,
     };
-    sendRequest(datas);
-    // console.log("You requests have been recieved!")
+    sendRequest(req_data);
   };
 
   const circleStage = (currentStage) => {
@@ -231,6 +217,9 @@ function ModalForm({services, setOpenModal}) {
       setStage(currentStage);
     }
   };
+  useEffect(() => {
+    circleStage(stage);
+  },[])
 
   return (
     <div className="service__modal">
@@ -239,7 +228,7 @@ function ModalForm({services, setOpenModal}) {
           <p className="close__icon" onClick={() => setOpenModal(false)}>
             x
           </p>
-          <h3 className="request__mainheader">BOOK service</h3>
+          <h3 className="request__mainheader">BOOK A SERVICE</h3>
           <p className="request__word">
             Kindly provide your details so we can reach you
           </p>
