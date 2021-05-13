@@ -91,9 +91,9 @@ function ModalForm({services, setOpenModal}) {
                 className="service select"
               >
                 <option value="" className="first__option">
-                  Choose a service
+                  choose a service
                 </option>
-                {services.map(({title,params}) => (
+                {services.map(({title, params}) => (
                   <option value={params} key={title}>
                     {title}
                   </option>
@@ -117,17 +117,22 @@ function ModalForm({services, setOpenModal}) {
           <>
             <InputBox label="Address" name="address" type="text" />
             <InputBox label="Closest Bustop" name="bus_stop" type="text" />
-            <InputBox label="Preffered Appointment Date" name="date" type="date" />
+            <InputBox
+              label="Preffered Appointment Date"
+              name="date"
+              type="date"
+            />
           </>
         );
 
       case 2:
-        return loadingReq ? (<> 
-         <div className="loading__service">
-           <h3>Sending Service Request...</h3>
-         </div>
-        </>):
-        (
+        return loadingReq ? (
+          <>
+            <div className="loading__service">
+              <h3>Sending Service Request...</h3>
+            </div>
+          </>
+        ) : (
           <>
             <div className="booking__summary">
               <h2 className="confirm__summary">Request Summary</h2>
@@ -154,7 +159,10 @@ function ModalForm({services, setOpenModal}) {
                 </div>
                 <div className="request__detail">
                   Service:{' '}
-                  <span className="detail__value">{`${data.service}`}</span>
+                  <span className="detail__value">{`${
+                    services.find((element) => element.params > data.service)
+                      .title
+                  }`}</span>
                 </div>
               </div>
 
@@ -219,7 +227,7 @@ function ModalForm({services, setOpenModal}) {
   };
   useEffect(() => {
     circleStage(stage);
-  },[])
+  }, []);
 
   return (
     <div className="service__modal">
