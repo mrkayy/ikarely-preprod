@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className="footer">
       <div className="footer__left">
-        <img src="images/logo.png" alt="" />
+        <img src="images/logo.png" alt=""/>
         <p className="terms">
           <li>
             <Link to="#">Terms and Policies</Link>
