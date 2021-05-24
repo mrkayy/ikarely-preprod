@@ -7,6 +7,8 @@ import { useAlert } from "react-alert";
 import InputBox from "../../shared/InputBox";
 import Joi from "joi-browser";
 import { GlobalContext } from "../../stores/GlobalLayer";
+import Loader from "../../shared/Loader";
+
 
 function SignIn(props) {
   const { currentUser } = props;
@@ -112,7 +114,7 @@ function SignIn(props) {
               disabled={validate()}
               className={!validate() ? "register__submit__btn" : "not__active"}
             >
-              {loading ? "Loading..." : "Sign In"}
+              {loading ? <><Loader /> `Loading...`</> : 'Signin'}
             </button>
             <p className="bottom__text">
               New user? <Link to="/register">Sign up</Link> for free
