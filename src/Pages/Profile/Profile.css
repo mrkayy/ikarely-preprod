@@ -1,0 +1,21 @@
+.profile {
+  width: 100vw;
+  height: 100vh;
+  padding: 50px;
+  padding-top: 100px;
+  background-color: #b6dcff50;
+  /* display: block;  */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.user_details{
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #000;
+}
+
+.user_info span{
+  font-weight: bold;
+}

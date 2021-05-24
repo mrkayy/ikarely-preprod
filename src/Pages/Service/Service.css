@@ -11,7 +11,7 @@
 }
 .service__headers {
   color: #083C63;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .services__head {
   font-size: smaller;
@@ -55,11 +55,22 @@
 }
 .makerequest__btn{
   border: none;
-  padding: 10px 15px;
+  padding: 20px 30px;
   margin-top: 20px;
+  margin-bottom: 50px;
   background-color: #083c63;
   text-transform: capitalize;
   color: white;
+  letter-spacing: 0.075rem;
+  font-size: 20px;
+}
+
+@media screen and (max-width:425px){
+.makerequest__btn{
+  padding: 12px 17px;
+  font-size: 14px;
+}
+
 }
 .modal {
   background-color: #fff;

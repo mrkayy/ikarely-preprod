@@ -57,21 +57,24 @@ function SignIn(props) {
     }
     if (success && !error) {
       alert.success(`${successMessage}`);
-      
     }
-    // return () => {
-    //   resetActions();
-    // };
+    return () => {
+      resetActions();
+    };
   }, [errMessage, successMessage]);
 
   useEffect(() => {
     if (authSuccess === "pass") {
-      history.push("/");
-    }
+      history.push('/service'); //redirect to service page
+      // history.push('/');
+    } return () => {
+      resetActions();
+    };
   }, [authSuccess]);
-  if (currentUser && currentUser) {
-    return <Redirect to={"/"} />;
-  }
+
+  // if (currentUser && currentUser) {
+  //   return <Redirect to={"/"} />;
+  // }
 
   const { data, errors } = state;
 
@@ -83,13 +86,12 @@ function SignIn(props) {
     }));
     if (errors) return;
     login(data);
-    console.log("Details submitted");
+    // console.log("Details submitted!!!");
   };
 
-  console.log(validate())
-// 
+  // console.log(validate());
+
   return (
-    <div className="contact">
       <div className="signin">
         <div className="signin__form">
           <div className="signin__headers">
@@ -122,7 +124,6 @@ function SignIn(props) {
           </form>
         </div>
       </div>
-    </div>
   );
 }
 

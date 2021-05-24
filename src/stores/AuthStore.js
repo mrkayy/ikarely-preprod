@@ -24,7 +24,6 @@ class AuthStore {
       authSuccess: observable,
       user: observable,
       currUser: observable,
-      sendRequest: observable,
 
       login: action,
       logout: action,
@@ -95,12 +94,16 @@ class AuthStore {
           this.user = res.data.data;
           this.authSuccess = "pass";
           WebStorage.save("user_token", res.data.data.token);
+          this.getCurrUser();
+          console.log({user:this.user})
+          console.log("logging in...");
         }
       })
       .catch((err) => {
         // console.log(err);
         this.loading = false;
         this.error = true;
+        this.getCurrUser();
         this.errMessage =
           err.response === undefined ? err.message : err.response.data.message;
         // console.log(err.response.data);
@@ -110,39 +113,14 @@ class AuthStore {
       });
   };
 
-  sendRequest = (data) => {
-    this.loading = true;
-    api
-      .post("/health/service-request", data)
-      .then((res) => {
-        //I want to see the response returned
-        // console.log(res.data);
-        this.loading = false;
-        if (res.data.status) {
-          this.success = true;
-          this.successMessage = res.data.message;
-          console.log(this.successMessage);
-          // window.location.href = "/";
-        }
-      })
-      .catch((err) => {
-        this.loading = false;
-        this.error = true;
-        this.errMessage =
-          err.response === undefined ? err.message : err.response.data.message;
-      });
-  };
-
   logout = () => {
     WebStorage.logout();
     this.getCurrUser();
   };
 
   getCurrUser = () => {
-    this.currUser = WebStorage.get("user_token");
-    // console.log("getting-user");
+    this.currUser = WebStorage.get("user_token")? true:false;
     // console.log(WebStorage.get("user_token"));
-    // console.log(this.currUser);
   };
 
   resetActions = () => {

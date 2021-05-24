@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
-import Overlay from "../Overlay/Overlay";
+// import Overlay from "../Overlay/Overlay";
 import WebStorage from "../../shared/LocalStorage";
 
 function NavBar({ slide, showMenu, user }) {
@@ -47,7 +47,7 @@ function NavBar({ slide, showMenu, user }) {
           {user && user === true ? (
             <>
               <li className="navbar__menus">
-                <Link to="/profile">Accounts</Link>
+                <Link to="/profile">Account</Link>
               </li>
               <li className="navbar__menus logout__btn"
                   onClick={() => WebStorage.logout()}>

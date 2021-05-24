@@ -1,50 +1,84 @@
-import React, { useState } from "react";
-import PageLanding from "../../components/PageLanding/PageLanding";
-import "./Service.css";
-import Modal from "@material-ui/core/Modal";
-import ModalForm from "../../components/Modal/ModalForm";
+import React, {useState, useContext, useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import PageLanding from '../../components/PageLanding/PageLanding';
+import './Service.css';
+import Modal from '@material-ui/core/Modal';
+import ModalForm from '../../components/Modal/ModalForm';
+import ServiceStore from '../../stores/Services';
+import {observer} from 'mobx-react';
+import {useAlert} from 'react-alert';
 
-function Service() {
+function Service({currentUser}) {
   const [openModal, setOpenModal] = useState(false);
+  const servicecontext = useContext(ServiceStore);
+  const alert = useAlert();  
 
   const services = [
     {
-      icon: "wound.svg",
-      title: "Woundcare",
+      icon: 'wound.svg',
+      title: 'Wound Care',
+      params: 'wound_care',
       word:
-        "Why go through the stress of going to and waiting in the hospital when dealing with wounds is enough stress on its own. We offer wound dressing services for patients with minor burns, pressure ulcer, diabetic foot and any other form of wounds at your utmost convenience.",
+        'Why go through the stress of going to and waiting in the hospital when dealing with wounds is enough stress on its own. We offer wound dressing services for patients with minor burns, pressure ulcer, diabetic foot and any other form of wounds at your utmost convenience.',
     },
     {
-      icon: "injection.svg",
-      title: "vaccination",
+      icon: 'injection.svg',
+      title: 'Vaccination',
+      params: 'vaccination',
       word:
         "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
     },
     {
-      icon: "Catherization.svg",
-      title: "Geriatric care",
+      icon: 'Catherization.svg',
+      title: 'Geriatric care',
+      params: 'catheterization',
       word:
         "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
     },
+    // {
+    //   icon: 'Chemotography.svg',
+    //   title: 'Chemotography',
+    // params: 'chemotherapy',
+    //   word:
+    //     'We offer home chemotherapy psychological support for people living with cancer. ',
+    // },
     {
-      icon: "Chemotography.svg",
-      title: "Chemotography",
-      word:
-        "We offer home chemotherapy psychological support for people living with cancer. ",
-    },
-    {
-      icon: "teeth-checkup.svg",
-      title: "dental care",
+      icon: 'teeth-checkup.svg',
+      title: 'Dental Care',
+      params: 'dental_care',
       word:
         "We provide a wide range of dental services etc dental cleanings, Fillings, root canals, and extractions. Imagine the comfort of having a dentist come to your home for your dental care, that's exactly what we are offering you.",
     },
     {
-      icon: "healthcare.svg",
-      title: "General Check up",
+      icon: 'healthcare.svg',
+      title: 'General Check-up',
+      params: 'general_checkup',
       word:
-        "You can request for our professional service for individual and family general check ups like Blood pressure, weight check, glucose check, malaria/HIV test, Body Mass Index (BMI) all at your convenience.",
+        'You can request for our professional service for individual and family general check ups like Blood pressure, weight check, glucose check, malaria/HIV test, Body Mass Index (BMI) all at your convenience.',
     },
   ];
+  const {
+    reqError,
+    reqSuccess,
+    reqErrMessage,
+    reqSuccessMessage,
+    resetActions,
+  } = servicecontext;
+
+  useEffect(() => {
+    if (reqError) {
+      alert.error(`${reqErrMessage}`);
+      console.log({reqErrMessage})
+    }
+    if (reqSuccess) {
+      alert.success(`${reqSuccessMessage}`);
+      console.log({reqSuccessMessage});      
+      setOpenModal(false)
+    }
+    return () => {
+    resetActions();
+    };
+  }, [reqErrMessage, reqSuccessMessage]);
 
   return (
     <div className="services">
@@ -82,8 +116,9 @@ function Service() {
           <h1 className="services__mainheader">Health Services we offer</h1>
         </div>
 
+        {/* service request modal */}
         <Modal
-         disablePortal
+          disablePortal
           open={openModal}
           onBackdropClick={() => setOpenModal(false)}
           className="main__modal"
@@ -91,8 +126,25 @@ function Service() {
           <ModalForm services={services} setOpenModal={setOpenModal} />
         </Modal>
 
+        {!currentUser ? (
+          <Link to="/signin">
+            <button className="makerequest__btn">Get Started</button>
+          </Link>
+        ) : (
+          <button
+            className="makerequest__btn"
+            onClick={() => setOpenModal(!openModal)}
+          >
+            Make Request
+          </button>
+        )}
+
+        {/* <button className="">
+          <Link to="/about">Read More</Link>
+        </button> */}
+
         <div className="service__lists">
-          {services.map(({ icon, title, word }) => {
+          {services.map(({icon, title, word}) => {
             return (
               <div className="service__list" key={title}>
                 <div className="list__icon">
@@ -104,20 +156,9 @@ function Service() {
             );
           })}
         </div>
-
-        <button
-          className="makerequest__btn"
-          onClick={() => setOpenModal(!openModal)}
-        >
-          Make Request
-        </button>
-
-        {/* <button className="">
-          <Link to="/about">Read More</Link>
-        </button> */}
       </div>
     </div>
   );
 }
 
-export default Service;
+export default observer(Service);

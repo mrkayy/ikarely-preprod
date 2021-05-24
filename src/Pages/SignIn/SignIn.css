@@ -1,6 +1,6 @@
 .signin {
   width: 100vw;
-  /* height: 100vh; */
+  height: 100vh;
   padding: 50px;
   background-color: rgba(182, 220, 255, 0.315);
   display: grid;
@@ -23,7 +23,7 @@
   width: 30vw;
   min-width: 350px;
   background-color: #fff;
-  padding: 50px 20px;
+  padding: 30px 35px;
   justify-self: center;
 }
 .keep__signed {

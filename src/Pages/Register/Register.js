@@ -139,7 +139,7 @@ function Register(props) {
         </div>
 
         <form action="" className="form__inputs" onSubmit={registerSubmit}>
-          <InputBox label="Full Name" name="full_name" type={"text"} />
+          <InputBox label="Full Name" name="full_name" type={'text'} />
 
           <InputBox label="Email" name="email" type="email" />
 
@@ -151,12 +151,12 @@ function Register(props) {
             type="text"
           />
 
-          <InputBox label="Password" name="password" type={"password"} />
+          <InputBox label="Password" name="password" type={'password'} />
 
           <InputBox
             label="Re-enter Password"
             name="re_enter_password"
-            type={"password"}
+            type={'password'}
           />
 
           <select
@@ -167,23 +167,24 @@ function Register(props) {
             name="user_type"
             type="text"
           >
+            <option value="" className="first__option">
+              --select account type--
+            </option>
             <option value="Customer" className="first__option">
               Customer
             </option>
             <option value="Professional" className="first__option">
-              Professional{" "}
+              Professional{' '}
             </option>
             ))
           </select>
 
-     
-
           <button
             type="submit"
             disabled={validate()}
-            className={!validate() ? "register__submit__btn" : "not__active"}
+            className={!validate() ? 'register__submit__btn' : 'not__active'}
           >
-            {loading ? "Creating..." : "Create Account"}
+            {loading ? 'Creating...' : 'Create Account'}
           </button>
           <p className="bottom__text">
             Do you have an account ? <Link to="/signin">Log in</Link>
