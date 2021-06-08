@@ -1,16 +1,16 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {GlobalContext} from '../../stores/GlobalLayer';
-import jwt_decode from 'jwt-decode';
-import './ModalForm.css';
-import Joi from 'joi-browser';
-import {observer} from 'mobx-react';
-import {useAlert} from 'react-alert';
-import ServiceStore from '../../stores/Services';
-import InputBox from '../../shared/InputBox';
-import WebStorage from '../../shared/LocalStorage';
+import React, { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../../stores/GlobalLayer";
+import jwt_decode from "jwt-decode";
+import "./ModalForm.css";
+import Joi from "joi-browser";
+import { observer } from "mobx-react";
+import { useAlert } from "react-alert";
+import ServiceStore from "../../stores/Services";
+import InputBox from "../../shared/InputBox";
+import WebStorage from "../../shared/LocalStorage";
 
-function ModalForm({services, setOpenModal}) {
-  const token = WebStorage.get('user_token');
+function ModalForm({ services, setOpenModal }) {
+  const token = WebStorage.get("user_token");
   const [stage, setStage] = useState(0);
   const alert = useAlert();
 
@@ -18,7 +18,7 @@ function ModalForm({services, setOpenModal}) {
 
   const user_details = jwt_decode(token);
   // console.table(user_details);
-  const {full_name, phone, email} = user_details;
+  const { full_name, phone, email } = user_details;
 
   const {
     loadingReq,
@@ -29,14 +29,8 @@ function ModalForm({services, setOpenModal}) {
     sendRequest,
   } = servicecontext;
 
-  const {
-    state,
-    setState,
-    schema,
-    setSchemas,
-    handleChange,
-    validate,
-  } = useContext(GlobalContext);
+  const { state, setState, schema, setSchemas, handleChange, validate } =
+    useContext(GlobalContext);
 
   const year = new Date().getFullYear();
   const month = new Date().getMonth() + 1;
@@ -49,30 +43,30 @@ function ModalForm({services, setOpenModal}) {
     setStage((prevState) => ({
       ...prevState,
       data: {
-        service: '',
-        more_details: '',
-        address: '',
-        bus_stop: '',
+        service: "",
+        more_details: "",
+        address: "",
+        bus_stop: "",
         date: todayDate,
       },
     }));
 
     setSchemas((prevState) => ({
       ...prevState,
-      service: Joi.string().required().label('Service'),
-      more_details: Joi.string().allow('').optional().label('More details'),
-      address: Joi.string().required().label('Address'),
-      bus_stop: Joi.string().required().label('Bus Stop'),
-      date: Joi.string().required().label('Date'),
+      service: Joi.string().required().label("Service"),
+      more_details: Joi.string().allow("").optional().label("More details"),
+      address: Joi.string().required().label("Address"),
+      bus_stop: Joi.string().required().label("Bus Stop"),
+      date: Joi.string().required().label("Date"),
     }));
 
     return () => {
-      setState({data: {}, errors: {}});
+      setState({ data: {}, errors: {} });
       setSchemas({});
     };
   }, []);
 
-  const {data, errors} = state;
+  const { data, errors } = state;
 
   // console.log(data)
 
@@ -93,7 +87,7 @@ function ModalForm({services, setOpenModal}) {
                 <option value="" className="first__option">
                   choose a service
                 </option>
-                {services.map(({title, params}) => (
+                {services.map(({ title, params }) => (
                   <option value={params} key={title}>
                     {title}
                   </option>
@@ -139,7 +133,7 @@ function ModalForm({services, setOpenModal}) {
 
               <div className="request__info">
                 <div className="request__detail">
-                  Name: <span className="detail__value">{full_name}</span>{' '}
+                  Name: <span className="detail__value">{full_name}</span>{" "}
                 </div>
                 <div className="request__detail">
                   Phone: <span className="detail__value">{phone}</span>
@@ -148,20 +142,19 @@ function ModalForm({services, setOpenModal}) {
                   Email: <span className="detail__value">{email}</span>
                 </div>
                 <div className="request__detail">
-                  Address:{' '}
+                  Address:{" "}
                   <span className="detail__value">
                     {`${data.address}`}, {`${data.bus_stop}`}
                   </span>
                 </div>
                 <div className="request__detail">
-                  Date Booked:{' '}
+                  Date Booked:{" "}
                   <span className="detail__value">{`${data.date}`}</span>
                 </div>
                 <div className="request__detail">
-                  Service:{' '}
+                  Service:{" "}
                   <span className="detail__value">{`${
-                    services.find((element) => element.params > data.service)
-                      .title
+                    services.find((element) => element.params > data.service).title
                   }`}</span>
                 </div>
               </div>
@@ -209,7 +202,7 @@ function ModalForm({services, setOpenModal}) {
     }));
 
     if (errors) return;
-    const {service, more_details, address, bus_stop, date} = data;
+    const { service, more_details, address, bus_stop, date } = data;
 
     const req_data = {
       additional_note: more_details,
@@ -246,24 +239,24 @@ function ModalForm({services, setOpenModal}) {
           <div className="progress__linebg">
             <div
               className="progress__line"
-              style={{width: `${50 * stage}%`}}
+              style={{ width: `${50 * stage}%` }}
             ></div>
           </div>
           <div className="progress__circles">
             <div
-              className={`stage__circle ${stage >= 0 && 'not'}`}
+              className={`stage__circle ${stage >= 0 && "not"}`}
               onClick={() => circleStage(0)}
             >
               Service
             </div>
             <div
-              className={`stage__circle ${stage >= 1 && 'not'}`}
+              className={`stage__circle ${stage >= 1 && "not"}`}
               onClick={() => circleStage(1)}
             >
               Location
             </div>
             <div
-              className={`stage__circle ${stage > 1 && 'not'}`}
+              className={`stage__circle ${stage > 1 && "not"}`}
               onClick={() => circleStage(2)}
             >
               Confirm
@@ -281,7 +274,7 @@ function ModalForm({services, setOpenModal}) {
         <div className="prev__next__btn">
           {
             <button
-              className={`prev btn ${stage == 0 ? 'notactive' : ''}`}
+              className={`prev btn ${stage == 0 ? "notactive" : ""}`}
               onClick={prevStage}
             >
               Prev
@@ -290,11 +283,11 @@ function ModalForm({services, setOpenModal}) {
           {
             <button
               className={`next btn ${
-                checkStageFilled(stage) != undefined ? 'notactive' : ''
+                checkStageFilled(stage) != undefined ? "notactive" : ""
               }`}
               onClick={stage < 2 ? nextStage : confirm}
             >
-              {stage < 2 ? 'Next' : 'Confirm'}
+              {stage < 2 ? "Next" : "Confirm"}
             </button>
           }
         </div>

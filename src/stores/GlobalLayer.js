@@ -10,7 +10,6 @@ const GlobalLayer = ({ children }) => {
   const validate = () => {
     const options = { abortEarly: false };
     const { error } = Joi.validate(state.data, schemas, options);
-    // console.log(error)
     if (!error) return null;
     const errors = {};
     for (let item of error.details) errors[item.path[0]] = item.message;

@@ -57,6 +57,10 @@ class AuthStore {
       });
   };
 
+  sendMessage = () => {
+    // Recieve data and post with firebase
+  };
+
   register = (data) => {
     this.loading = true;
     api
@@ -95,7 +99,7 @@ class AuthStore {
           this.authSuccess = "pass";
           WebStorage.save("user_token", res.data.data.token);
           this.getCurrUser();
-          console.log({user:this.user})
+          console.log({ user: this.user });
           console.log("logging in...");
         }
       })
@@ -119,7 +123,7 @@ class AuthStore {
   };
 
   getCurrUser = () => {
-    this.currUser = WebStorage.get("user_token")? true:false;
+    this.currUser = WebStorage.get("user_token") ? true : false;
     // console.log(WebStorage.get("user_token"));
   };
 

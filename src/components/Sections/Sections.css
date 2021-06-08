@@ -99,3 +99,10 @@ p.section__word {
     max-width: 100%;
   }
 }
+
+
+@media screen and (max-width: 1060px){
+  .right__part > h1 {
+    font-size: 32px;
+  }
+}

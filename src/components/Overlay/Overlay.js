@@ -73,7 +73,9 @@ function Overlay({slide, showMenu, setSlide}) {
               </li>
 
               <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                <button className="register__link__btn"></button>
+                <button className="register__link__btn">
+                <Link to={'/register'}>{'Register'}</Link>{' '}
+                </button>
               </li>
             </>
           )}

@@ -8,6 +8,7 @@ import dataHero from "data-hero";
 import { useAlert } from "react-alert";
 import InputBox from "../../shared/InputBox";
 import { GlobalContext } from "../../stores/GlobalLayer";
+import Button from "../../Anime/Button";
 
 function Register(props) {
   const { currentUser } = props;
@@ -56,16 +57,15 @@ function Register(props) {
       email: Joi.string().email().required().label("Email"),
       city_of_residence: Joi.string().required().label("City"),
       password: Joi.string().required().min(5).label("Password"),
-      re_enter_password: Joi
-        .string()
+      re_enter_password: Joi.string()
         .required()
-        .valid(Joi.ref('password'))
+        .valid(Joi.ref("password"))
         .options({
           language: {
-            any:{
-              allowOnly: '!!Passwords do not match',
-            }
-          }
+            any: {
+              allowOnly: "!!Passwords do not match",
+            },
+          },
         }),
       user_type: Joi.string().required().label("User type"),
     }));
@@ -79,11 +79,14 @@ function Register(props) {
   //alert user on error or success
   useEffect(() => {
     if (error) {
+      // console.log(errMessage)
       alert.error(`${errMessage}`);
+      alert.removeAll();
     }
     if (success && !error) {
-      console.log({ successMessage });
+      // console.log({ successMessage });
       alert.success(`${successMessage}`);
+      alert.removeAll();
     }
     return () => {
       resetActions();
@@ -104,14 +107,8 @@ function Register(props) {
       errors: errors || {},
     }));
     if (errors) return;
-    const {
-      full_name,
-      phone,
-      email,
-      city_of_residence,
-      password,
-      user_type,
-    } = data;
+    const { full_name, phone, email, city_of_residence, password, user_type } =
+      data;
 
     const datas = {
       full_name,
@@ -139,7 +136,7 @@ function Register(props) {
         </div>
 
         <form action="" className="form__inputs" onSubmit={registerSubmit}>
-          <InputBox label="Full Name" name="full_name" type={'text'} />
+          <InputBox label="Full Name" name="full_name" type={"text"} />
 
           <InputBox label="Email" name="email" type="email" />
 
@@ -151,12 +148,12 @@ function Register(props) {
             type="text"
           />
 
-          <InputBox label="Password" name="password" type={'password'} />
+          <InputBox label="Password" name="password" type={"password"} />
 
           <InputBox
             label="Re-enter Password"
             name="re_enter_password"
-            type={'password'}
+            type={"password"}
           />
 
           <select
@@ -174,18 +171,13 @@ function Register(props) {
               Customer
             </option>
             <option value="Professional" className="first__option">
-              Professional{' '}
+              Professional{" "}
             </option>
             ))
           </select>
 
-          <button
-            type="submit"
-            disabled={validate()}
-            className={!validate() ? 'register__submit__btn' : 'not__active'}
-          >
-            {loading ? 'Creating...' : 'Create Account'}
-          </button>
+          <Button progress="Registering..." shown="Create Account" />
+
           <p className="bottom__text">
             Do you have an account ? <Link to="/signin">Log in</Link>
           </p>

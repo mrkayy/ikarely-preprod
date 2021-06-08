@@ -7,7 +7,7 @@ import { useAlert } from "react-alert";
 import InputBox from "../../shared/InputBox";
 import Joi from "joi-browser";
 import { GlobalContext } from "../../stores/GlobalLayer";
-import Loader from "../../shared/Loader";
+import Button from "../../Anime/Button";
 
 
 function SignIn(props) {
@@ -72,10 +72,6 @@ function SignIn(props) {
     };
   }, [authSuccess]);
 
-  // if (currentUser && currentUser) {
-  //   return <Redirect to={"/"} />;
-  // }
-
   const { data, errors } = state;
 
   const loginSubmit = async (e) => {
@@ -111,13 +107,10 @@ function SignIn(props) {
               Keep me signed in
             </div> */}
 
-            <button
-              type="submit"
-              disabled={validate()}
-              className={!validate() ? "register__submit__btn" : "not__active"}
-            >
-              {loading ? <><Loader /> `Loading...`</> : 'Signin'}
-            </button>
+
+            <Button progress="Loading..." shown="Signin"/>
+
+
             <p className="bottom__text">
               New user? <Link to="/register">Sign up</Link> for free
             </p>

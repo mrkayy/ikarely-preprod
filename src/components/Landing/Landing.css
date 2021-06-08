@@ -39,6 +39,7 @@
 
 .main__word {
   font-size: 55px;
+  transition: 0.4s ease-in;
 }
 .mainword__break {
   color: #083c63;
@@ -54,16 +55,74 @@
   border: none;
   background-color: rgba(180, 27, 27, 0.8);
   color: white;
+  transition: 0.4s ease-in;
 }
 
-@media screen and (max-width: 824px){
+
+/* Animation control for the intersection observer   */
+
+.not_observe{
+  opacity: 0;
+  transform: translateY(20px);
+}
+.observe{
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* The end */
+
+@media screen and (max-width: 824px) {
   .contents {
     padding: 0px 20px;
   }
 }
 
-@media screen and (max-width: 786px){
+@media screen and (max-width: 456px) {
+  .contents {
+    padding: 0px 5px;
+  }
+}
+
+@media screen and (max-width: 786px) {
   .main__word {
-    font-size: 40px;
+    font-size: 45px;
+  }
+}
+@media screen and (max-width: 478px) {
+  .main__word {
+    font-size: 38px;
+    text-align: center;
+  }
+  .button {
+    justify-self: center;
+  }
+  .landing {
+    background-position: 60% center;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .main__word {
+    font-size: 35px;
+    text-align: center;
+  }
+  .button {
+    justify-self: center;
+  }
+  .landing {
+    background-position: 70% center;
+  }
+}
+
+@media screen and (max-width: 393px) {
+  .main__word {
+    font-size: 28px;
+  }
+  .contents {
+    padding: 0px 5px;
+  }
+  .landing {
+    background-position: 70% center;
   }
 }

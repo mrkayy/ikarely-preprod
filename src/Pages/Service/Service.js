@@ -1,39 +1,42 @@
-import React, {useState, useContext, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import PageLanding from '../../components/PageLanding/PageLanding';
-import './Service.css';
-import Modal from '@material-ui/core/Modal';
-import ModalForm from '../../components/Modal/ModalForm';
-import ServiceStore from '../../stores/Services';
-import {observer} from 'mobx-react';
-import {useAlert} from 'react-alert';
+import React, {
+  useState,
+  useContext,
+  useLayoutEffect,
+  useRef,
+  useEffect,
+} from "react";
+import { Link } from "react-router-dom";
+import PageLanding from "../../components/PageLanding/PageLanding";
+import "./Service.css";
+import Modal from "@material-ui/core/Modal";
+import ModalForm from "../../components/Modal/ModalForm";
+import ServiceStore from "../../stores/Services";
+import { observer } from "mobx-react";
+import { useAlert } from "react-alert";
 
-function Service({currentUser}) {
+function Service({ currentUser }) {
   const [openModal, setOpenModal] = useState(false);
   const servicecontext = useContext(ServiceStore);
-  const alert = useAlert();  
+  const alert = useAlert();
 
   const services = [
     {
-      icon: 'wound.svg',
-      title: 'Wound Care',
-      params: 'wound_care',
-      word:
-        'Why go through the stress of going to and waiting in the hospital when dealing with wounds is enough stress on its own. We offer wound dressing services for patients with minor burns, pressure ulcer, diabetic foot and any other form of wounds at your utmost convenience.',
+      icon: "wound.svg",
+      title: "Wound Care",
+      params: "wound_care",
+      word: "Why go through the stress of going to and waiting in the hospital when dealing with wounds is enough stress on its own. We offer wound dressing services for patients with minor burns, pressure ulcer, diabetic foot and any other form of wounds at your utmost convenience.",
     },
     {
-      icon: 'injection.svg',
-      title: 'Vaccination',
-      params: 'vaccination',
-      word:
-        "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
+      icon: "injection.svg",
+      title: "Vaccination",
+      params: "vaccination",
+      word: "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
     },
     {
-      icon: 'Catherization.svg',
-      title: 'Geriatric care',
-      params: 'catheterization',
-      word:
-        "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
+      icon: "Catherization.svg",
+      title: "Geriatric care",
+      params: "catheterization",
+      word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
     },
     // {
     //   icon: 'Chemotography.svg',
@@ -43,18 +46,16 @@ function Service({currentUser}) {
     //     'We offer home chemotherapy psychological support for people living with cancer. ',
     // },
     {
-      icon: 'teeth-checkup.svg',
-      title: 'Dental Care',
-      params: 'dental_care',
-      word:
-        "We provide a wide range of dental services etc dental cleanings, Fillings, root canals, and extractions. Imagine the comfort of having a dentist come to your home for your dental care, that's exactly what we are offering you.",
+      icon: "teeth-checkup.svg",
+      title: "Dental Care",
+      params: "dental_care",
+      word: "We provide a wide range of dental services etc dental cleanings, Fillings, root canals, and extractions. Imagine the comfort of having a dentist come to your home for your dental care, that's exactly what we are offering you.",
     },
     {
-      icon: 'healthcare.svg',
-      title: 'General Check-up',
-      params: 'general_checkup',
-      word:
-        'You can request for our professional service for individual and family general check ups like Blood pressure, weight check, glucose check, malaria/HIV test, Body Mass Index (BMI) all at your convenience.',
+      icon: "healthcare.svg",
+      title: "General Check-up",
+      params: "general_checkup",
+      word: "You can request for our professional service for individual and family general check ups like Blood pressure, weight check, glucose check, malaria/HIV test, Body Mass Index (BMI) all at your convenience.",
     },
   ];
   const {
@@ -68,24 +69,30 @@ function Service({currentUser}) {
   useEffect(() => {
     if (reqError) {
       alert.error(`${reqErrMessage}`);
-      console.log({reqErrMessage})
+      console.log({ reqErrMessage });
     }
     if (reqSuccess) {
       alert.success(`${reqSuccessMessage}`);
-      console.log({reqSuccessMessage});      
-      setOpenModal(false)
+      console.log({ reqSuccessMessage });
+      setOpenModal(false);
     }
     return () => {
-    resetActions();
+      resetActions();
     };
   }, [reqErrMessage, reqSuccessMessage]);
+
+
+
+ 
 
   return (
     <div className="services">
       <PageLanding image="health-service.jpg" title="What we offer" />
 
       <div className="each__section">
-        <div className="right__part">
+        <div
+          className='right__part'
+        >
           <h5>services</h5>
           <h1>Get the best medical aid at home</h1>
           <p className="section__word">
@@ -105,7 +112,9 @@ function Service({currentUser}) {
                         read more
                     </button> */}
         </div>
-        <div className="left__part">
+        <div
+          className='left__part'
+        >
           <img src="images/appointment.jpg" alt="" />
         </div>
       </div>
@@ -144,7 +153,7 @@ function Service({currentUser}) {
         </button> */}
 
         <div className="service__lists">
-          {services.map(({icon, title, word}) => {
+          {services.map(({ icon, title, word }) => {
             return (
               <div className="service__list" key={title}>
                 <div className="list__icon">

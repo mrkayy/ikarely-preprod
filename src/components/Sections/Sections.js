@@ -32,7 +32,7 @@ function Sections() {
 
           <button className="eachsection__btn">
                <Link to="/about">Read More</Link>
-            </button>
+          </button>
         </div>
       </div>
 
@@ -46,7 +46,7 @@ function Sections() {
 
           <button className="eachsection__btn">
                <Link to="/service">Read More</Link>
-            </button>
+          </button>
         </div>
 
         <div className="left__part">
@@ -67,7 +67,7 @@ function Sections() {
 
           <button className="eachsection__btn">
                <Link to="/blog">Read More</Link>
-            </button>
+          </button>
         </div>
       </div>
 

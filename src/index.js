@@ -6,21 +6,23 @@ import reportWebVitals from "./reportWebVitals";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import GlobalLayer from "./stores/GlobalLayer";
+import Alert from "./Anime/Alert";
 
 // optional configuration
 const options = {
   // you can also just use 'bottom right'
-  position: positions.BOTTOM_RIGHT,
-  timeout:3000,
-  offset: "30px",
+  position: positions.MIDDLE,
+  timeout: 5000,
+  offset: "50px",
+
   // you can also just use 'scale'
   transition: transitions.SCALE,
 };
 
 ReactDOM.render(
-  <AlertProvider template={AlertTemplate} {...options}>
+  <AlertProvider template={Alert} {...options}>
     <GlobalLayer>
-    <App />
+      <App />
     </GlobalLayer>
   </AlertProvider>,
   document.getElementById("root")

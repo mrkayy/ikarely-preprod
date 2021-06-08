@@ -55,23 +55,22 @@
 }
 .makerequest__btn{
   border: none;
-  padding: 20px 30px;
+  padding: 10px 15px;
   margin-top: 20px;
   margin-bottom: 50px;
   background-color: #083c63;
   text-transform: capitalize;
   color: white;
   letter-spacing: 0.075rem;
-  font-size: 20px;
+  font-size: 16px;
 }
 
-@media screen and (max-width:425px){
+/* @media screen and (max-width:425px){
 .makerequest__btn{
   padding: 12px 17px;
   font-size: 14px;
 }
-
-}
+} */
 .modal {
   background-color: #fff;
   margin: 100px;

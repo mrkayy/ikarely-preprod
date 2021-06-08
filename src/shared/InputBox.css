@@ -42,3 +42,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: rgba(255, 0, 0, 0.616);
   font-size: 12px;
 }
+
+
+@media screen and (min-width: 1025px){
+  div > input[type="text"],
+div > input[type="email"],
+div > input[type="password"],
+div > input[type="date"],
+div > textarea,
+select {
+  height: 50px;
+}
+}

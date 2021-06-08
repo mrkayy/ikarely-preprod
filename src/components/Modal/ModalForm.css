@@ -5,16 +5,12 @@
   padding: 20px 45px;
   position: relative;
 }
-@media screen and (max-width: 425px) {
-  .service__modal {
-    min-width: 300px;
-    padding: 20px;
-  }
-}
+
 
 .loading__service {
-  padding: 50px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .service__request {
@@ -158,4 +154,12 @@
 div > textarea {
   min-height: 120px;
   resize: none;
+}
+
+
+@media screen and (max-width: 425px) {
+  .service__modal {
+    min-width: 300px;
+    padding: 20px;
+  }
 }
