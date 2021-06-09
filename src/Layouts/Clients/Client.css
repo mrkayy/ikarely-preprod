@@ -1,0 +1,16 @@
+.c_layout{
+    display: flex;
+    margin-top: 80px;
+}
+
+.c_sidebar {
+    background-color: bisque;
+    padding: 41px 20px;
+    width: 220px;
+}
+
+.c_infobar{
+    background-color: blue;
+    padding: 41px 20px;
+    width: 220px;
+}
