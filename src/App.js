@@ -60,12 +60,17 @@ function App() {
             />
             <Route
               exact
-              path="/profile"
+              path="/profile/dashboard"
+              render={() => <Profile currentUser={currUser} />}
+            />
+            <Route
+              exact
+              path="/profile/:page"
               render={() => <Profile currentUser={currUser} />}
             />
             <Route exact path="/*" render={() => <Error />} />
           </Switch>
-        </PageContainer> 
+        </PageContainer>
       </Router>
     </div>
   );

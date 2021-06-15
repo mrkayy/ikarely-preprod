@@ -47,7 +47,7 @@ function NavBar({ slide, showMenu, user }) {
           {user && user === true ? (
             <>
               <li className="navbar__menus">
-                <Link to="/profile">Account</Link>
+                <Link to="/profile/dashboard">Account</Link>
               </li>
               <li className="navbar__menus logout__btn"
                   onClick={() => WebStorage.logout()}>

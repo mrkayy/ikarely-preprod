@@ -93,7 +93,7 @@ function Service({ currentUser }) {
         <div
           className='right__part'
         >
-          <h5>services</h5>
+          <h3>services</h3>
           <h1>Get the best medical aid at home</h1>
           <p className="section__word">
             We believe there is no better time to decongest hospitals especially
@@ -121,7 +121,7 @@ function Service({ currentUser }) {
 
       <div className="services__section">
         <div className="service__headers">
-          <h4 className="services__head">Our Services</h4>
+          <h3 className="services__head">Our Services</h3>
           <h1 className="services__mainheader">Health Services we offer</h1>
         </div>
 
