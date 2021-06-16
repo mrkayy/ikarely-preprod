@@ -148,10 +148,6 @@ function Service({ currentUser }) {
           </button>
         )}
 
-        {/* <button className="">
-          <Link to="/about">Read More</Link>
-        </button> */}
-
         <div className="service__lists">
           {services.map(({ icon, title, word }) => {
             return (

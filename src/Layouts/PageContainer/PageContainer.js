@@ -2,9 +2,7 @@ import React, {useState} from 'react';
 import Overlay from '../../components/Overlay/Overlay';
 import NavBar from '../../components/Navbar/NavBar';
 import Footer from '../../components/Footer/Footer';
-import {makeStyles} from '@material-ui/core/styles';
 
-const useStyle = makeStyles({});
 
 // all pages are passed in as children props to the PageContainer component
 const PageContainer = ({children, user}) => {
@@ -16,11 +14,10 @@ const PageContainer = ({children, user}) => {
   };
 
   // using materal styling
-  const classes = useStyle();
 
   return (
     <>
-      <div className={classes.root}>
+      <div>
         <Overlay slide={slide} showMenu={showMenu} setSlide={setSlide} />
         <NavBar slide={slide} user={user} showMenu={showMenu} />
         {children}

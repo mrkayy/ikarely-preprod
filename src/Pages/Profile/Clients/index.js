@@ -1,18 +1,22 @@
 import React, {useState, useEffect} from 'react';
-import './Client.css';
-import {Grid, Paper, Container, Box,Divider} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
 import {useHistory} from 'react-router-dom';
+import {Grid, Paper, Container, Box, Divider} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import '../../../components/Clients/Client.css';
 
-import CSideBar from './Components/ClientSideBar';
-// import CNavBar from './Components/ClientNavbar';
-// import InfoBar from '../Components/ClientInfoBar';
+import CSideBar from '../../../components/Clients/ClientSideBar';
+// import CNavBar from '../../../components/Clients/ClientNavbar';
+// import InfoBar from '../../../components/Clients/ClientInfoBar';
+
+import CMedicalHistory from './MedicalHistory';
+import CMedicalProfile from './MedicalProfile';
+import CAppointments from './Appointments';
+import CDashboard from './Dashboard';
+import CPayments from './Payments';
+import CSettings from './Settings';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // flexGrow: 1,
-    marginLeft: 40,
-    marginRight: 40,
     marginTop: 87,
     marginBottom: 30,
     // background: '#e5e5e5',
@@ -23,16 +27,18 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+
   page: {
     marginTop: 10,
   },
+
   main: {
-    background: '#d4d4d4',
+    // background: '#d4d4d4',
     // padding: '0px 20px 20px 20px',
   },
 }));
 
-const ClientLayout = ({children, user}) => {
+const ClientLayout = ({user}) => {
   const classes = useStyles();
   const history = useHistory();
 
@@ -66,14 +72,13 @@ const ClientLayout = ({children, user}) => {
 
   const switchPage = (pg) => {
     setPage((state) => ({...state, page: pg}));
-    console.log(pg);
     history.push(`/profile${pg}`);
   };
 
   return (
     <>
       <Container fluid className={classes.root}>
-        <Grid container spacing={3} direction="row">
+        <Grid container spacing={2} direction="row">
           <Grid item xs={0} md={2}>
             <CSideBar pageparam={pagepath} switchPage={switchPage} />
           </Grid>
@@ -88,24 +93,12 @@ const ClientLayout = ({children, user}) => {
             <Container fixed className={classes.main}>
               {
                 {
-                  '/profile/dashboard': (
-                    <Box className={{padding: '20px'}}>User Dashboard</Box>
-                  ),
-                  '/profile/medicals': (
-                    <Box className={{padding: '20px'}}>Medical Records</Box>
-                  ),
-                  '/profile/medical-history': (
-                    <Box className={{padding: '20px'}}>Medical History</Box>
-                  ),
-                  '/profile/appointments': (
-                    <Box className={{padding: '20px'}}>Appointments</Box>
-                  ),
-                  '/profile/payments': (
-                    <Box className={{padding: '20px'}}>Payments</Box>
-                  ),
-                  '/profile/settings': (
-                    <Box className={{padding: '20px'}}>Settings</Box>
-                  ),
+                  '/profile/dashboard': <CDashboard username={user.full_name} />,
+                  '/profile/medicals': <CMedicalProfile username={user.full_name} />,
+                  '/profile/medical-history': <CMedicalHistory username={user.full_name} />,
+                  '/profile/appointments': <CAppointments username={user.full_name} />,
+                  '/profile/payments': <CPayments username={user.full_name} />,
+                  '/profile/settings': <CSettings username={user.full_name} />,
                   '/profile/support': (
                     <Box className={{padding: '20px'}}>Support</Box>
                   ),
@@ -126,11 +119,6 @@ const ClientLayout = ({children, user}) => {
                         <p>Notification Menu</p>
                       </div>
                       <Divider />
-                      {/* </Paper>
-                  </Grid>
-
-                  <Grid item className={classes.infoCard}>
-                    <Paper className={classes.paper} elevation={1}> */}
                       <div className="notification__menu">
                         <p>No Notification Here</p>
                       </div>
