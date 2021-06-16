@@ -70,8 +70,6 @@ const MedicalProfile = ({username}) => {
                 <p>
                   Name: <span>{phone}</span>
                 </p>
-                  Name: <span>{username}</span>
-                </p>
               </div>
             </Container>
           </Grid>
