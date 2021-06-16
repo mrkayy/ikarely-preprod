@@ -71,15 +71,20 @@ const ClientLayout = ({user}) => {
   }, [pgHistory]);
 
   const switchPage = (pg) => {
-    setPage((state) => ({...state, page: pg}));
-    history.push(`/profile${pg}`);
+      if(`/profile${pg}`=== pgHistory){
+          return 
+      }else{
+          setPage((state) => ({...state, page: pg}));
+          history.push(`/profile${pg}`);
+        }
+    
   };
 
   return (
     <>
-      <Container fluid className={classes.root}>
+      <Container fixed className={classes.root}>
         <Grid container spacing={2} direction="row">
-          <Grid item xs={0} md={2}>
+          <Grid item md={2}>
             <CSideBar pageparam={pagepath} switchPage={switchPage} />
           </Grid>
           {/* display main contents */}
@@ -93,14 +98,20 @@ const ClientLayout = ({user}) => {
             <Container fixed className={classes.main}>
               {
                 {
-                  '/profile/dashboard': <CDashboard username={user.full_name} />,
+                  '/profile/dashboard': (
+                    <CDashboard username={user.full_name} />
+                  ),
                   '/profile/medicals': <CMedicalProfile username={user} />,
-                  '/profile/medical-history': <CMedicalHistory username={user.full_name} />,
-                  '/profile/appointments': <CAppointments username={user.full_name} />,
+                  '/profile/medical-history': (
+                    <CMedicalHistory username={user.full_name} />
+                  ),
+                  '/profile/appointments': (
+                    <CAppointments username={user.full_name} />
+                  ),
                   '/profile/payments': <CPayments username={user.full_name} />,
                   '/profile/settings': <CSettings username={user.full_name} />,
                   '/profile/support': (
-                    <Box className={{padding: '20px'}}>Support</Box>
+                    <Box >Support</Box>
                   ),
                 }[pagepath.page]
               }

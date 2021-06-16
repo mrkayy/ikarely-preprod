@@ -57,7 +57,7 @@ const MedicalProfile = ({username}) => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={8}>
-            <Container fixed minWidth="lg">
+            <Container fixed>
               <div className="med__profile">
                 <h4>My Profile</h4>
                 <Divider />
@@ -89,13 +89,13 @@ const MedicalProfile = ({username}) => {
                 <Tab label="Appointment History" />
               </Tabs>
               <TabPanel value={value} index={0}>
-                Item One
+                Medical Profile Table
               </TabPanel>
               <TabPanel value={value} index={1}>
-                Item Two
+               Medical History Table
               </TabPanel>
               <TabPanel value={value} index={2}>
-                Item Three
+                Appointments History Table
               </TabPanel>
             </Paper>
           </Grid>
