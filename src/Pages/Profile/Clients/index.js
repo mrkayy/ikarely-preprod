@@ -94,7 +94,7 @@ const ClientLayout = ({user}) => {
               {
                 {
                   '/profile/dashboard': <CDashboard username={user.full_name} />,
-                  '/profile/medicals': <CMedicalProfile username={user.full_name} />,
+                  '/profile/medicals': <CMedicalProfile username={user} />,
                   '/profile/medical-history': <CMedicalHistory username={user.full_name} />,
                   '/profile/appointments': <CAppointments username={user.full_name} />,
                   '/profile/payments': <CPayments username={user.full_name} />,

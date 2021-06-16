@@ -5,4 +5,36 @@
 }
 
 .med__image{
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center;
+}
+
+.med__profile__img{
+    height: 120px;
+    width:120px;
+    border-radius: 60px;
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.med__profile__img > img{
+  object-fit: contain;
+  width: 90px;
+}
+
+.med__profile{
+    margin-top: 10px;
+}
+
+.med__profile > h4 {
+    margin-bottom: 8px;
+}
+
+.med__profile > p {
+    margin: 10px 0px;
 }
