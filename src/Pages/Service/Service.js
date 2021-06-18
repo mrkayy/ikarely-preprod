@@ -153,7 +153,7 @@ function Service({ currentUser }) {
             return (
               <div className="service__list" key={title}>
                 <div className="list__icon">
-                  <img src={`images/icons/${icon}`} alt="" />
+                  <img src={`../images/icons/${icon}`} alt="icon.png" />
                 </div>
                 <h4 className="list__title">{title}</h4>
                 <p className="list__word">{word}</p>

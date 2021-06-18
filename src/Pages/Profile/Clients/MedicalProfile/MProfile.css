@@ -38,3 +38,9 @@
 .med__profile > p {
     margin: 10px 0px;
 }
+
+.tab__caption{
+    font-size: 12px;
+    font-weight: 500;
+    color: gray;
+}

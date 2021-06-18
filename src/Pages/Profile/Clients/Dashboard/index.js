@@ -1,9 +1,11 @@
+
 import React from 'react';
 import './dashboard.css';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+
 
 
 const Dashboard = ({username}) => {
@@ -49,18 +51,18 @@ const Dashboard = ({username}) => {
         </div>
         <div>
           <Divider />
-          <div className="service__lists">
+          <div className="cl__service__lists">
             {services.map(({icon, title, word}) => {
               return (
-                <Paper className="service__list" key={title}>
-                  <div className="list__icon">
-                    <img src={`../images/icons/${icon}`} alt="img" />
+                <Paper className="cl__service__list" key={title}>
+                  <div className="cl__list__icon">
+                    <img src={`../images/icons/${icon}`} alt="img.png" />
                   </div>
-                  <p className="list__title">{title}</p>
-                  <div className="list__word">
+                  <p className="cl__list__title">{title}</p>
+                  <div className="cl__list__word">
                     <p>{word}</p>
                   </div>
-                  <div className="service__btn">
+                  <div className="cl__service__btn">
                     <Button
                       variant="contained"
                       color="inherit"

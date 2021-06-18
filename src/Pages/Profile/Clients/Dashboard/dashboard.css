@@ -4,7 +4,7 @@
     margin-bottom: 5px;
 }
 
-.service__lists {
+.cl__service__lists {
     text-align: left;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -13,13 +13,14 @@
     margin-top: 20px;
     /* min-height: 40vh; */
 }
-.service__list {
+.cl__service__list {
     padding: 18px 25px;
     display: flex;
     flex-direction: column;
+    position: relative;
     justify-content: space-between;
 }
-.list__icon > img {
+.cl__list__icon > img {
   position: absolute;
   right: 20px;
   top: 16px;
@@ -27,22 +28,22 @@
   width: 30px;
 }
 
-.list__title {
+.cl__list__title {
   font-size: 16px;
   font-weight: 500;
-  text-transform: capitalize;
-  /* margin-bottom: 20px; */
+  text-transform: uppercase;
+  margin-bottom: 13px;
 }
 
-.list__word{
+.cl__list__word{
     font-size: 13px;
     text-align: justify;
 }
 
-.list__title, .list__word{
+.cl__list__title, .cl__list__word{
   color: #083C63
 }
 
-.service__btn{
+.cl__service__btn{
     margin: 10px 0px;
 }

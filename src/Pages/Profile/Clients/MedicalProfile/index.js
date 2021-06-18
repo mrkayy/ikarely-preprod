@@ -89,13 +89,13 @@ const MedicalProfile = ({username}) => {
                 <Tab label="Appointment History" />
               </Tabs>
               <TabPanel value={value} index={0}>
-                Medical Profile Table
+                <p className="tab__caption">You have no Medical Profile at the moment</p>
               </TabPanel>
               <TabPanel value={value} index={1}>
-               Medical History Table
+                <p className="tab__caption">You have no Medical History Record at the moment</p>
               </TabPanel>
               <TabPanel value={value} index={2}>
-                Appointments History Table
+                <p className="tab__caption">You have no Appointments Records at the moment </p>
               </TabPanel>
             </Paper>
           </Grid>
