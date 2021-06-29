@@ -15,7 +15,11 @@ const SideBar = ({pageparam, switchPage}) => {
   const classes = useStyles();
   return (
     <>
-      <Box className={classes.root}>
+      <Box
+        component="div"
+        display={{xs: 'none', sm: 'none', md: 'block'}}
+        className={classes.root}
+      >
         <Paper className={classes.sidebar} elevation={1}>
           <ul className="sidebar__list">
             {pageparam.path.map((e, index) => {

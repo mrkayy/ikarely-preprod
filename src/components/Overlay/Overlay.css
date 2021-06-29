@@ -33,16 +33,26 @@ img.overlay__logo {
   font-size: 14px;
 }
 .more__links{
-  margin-top: 50px;
+  margin-top: 10px;
 }
-.login__link__btn,.register__link__btn{
+.login__link__btn{
+  
   width: 100%;
   padding: 10px;
   border: none;
   border-radius: 5px;
   background-color: #083c63;
   border: 1px solid transparent;
-  color: white;
+  color: #083c63;
+  outline: none;
+}.register__link__btn{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #083c63;
+  border: 1px solid transparent;
+  color: #fff;
   outline: none;
 }
 .login__link__btn{

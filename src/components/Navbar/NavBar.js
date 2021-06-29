@@ -23,7 +23,7 @@ function NavBar({ slide, showMenu, user }) {
   return (
     <div className={`navbar__content ${show && "nav__bg"}`}>
       <div className="logo">
-        <img src="images/logo.png" alt="" />
+        <img src="../images/logo.png" alt="" />
       </div>
 
       <div className="navbar__links">
@@ -47,7 +47,7 @@ function NavBar({ slide, showMenu, user }) {
           {user && user === true ? (
             <>
               <li className="navbar__menus">
-                <Link to="/profile/dashboard">Account</Link>
+                <Link to="/profile/dashboard">Dashboard</Link>
               </li>
               <li className="navbar__menus logout__btn"
                   onClick={() => WebStorage.logout()}>

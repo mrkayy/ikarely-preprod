@@ -84,7 +84,7 @@ const ClientLayout = ({user}) => {
     <>
       <Container fixed className={classes.root}>
         <Grid container spacing={2} direction="row">
-          <Grid item md={2}>
+          <Grid item md={2} xs={false}>
             <CSideBar pageparam={pagepath} switchPage={switchPage} />
           </Grid>
           {/* display main contents */}
@@ -110,9 +110,7 @@ const ClientLayout = ({user}) => {
                   ),
                   '/profile/payments': <CPayments username={user.full_name} />,
                   '/profile/settings': <CSettings username={user.full_name} />,
-                  '/profile/support': (
-                    <Box >Support</Box>
-                  ),
+                  '/profile/support': <Box>Support</Box>,
                 }[pagepath.page]
               }
             </Container>
