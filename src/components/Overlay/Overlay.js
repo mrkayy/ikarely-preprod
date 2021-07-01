@@ -37,6 +37,7 @@ function Overlay({slide, showMenu, setSlide}) {
     {value: 'Dashboard', directory: 'dashboard'},
     {value: 'Medical Profile', directory: 'medicals'},
     {value: 'Medical History', directory: 'medical-history'},
+    {value: 'Service Requests', directory: 'service-requests'},
     {value: 'My Appointments', directory: 'appointments'},
     {value: 'Payments', directory: 'payments'},
     {value: 'Settings', directory: 'settings'},

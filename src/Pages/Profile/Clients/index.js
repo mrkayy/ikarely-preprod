@@ -14,6 +14,7 @@ import CAppointments from './Appointments';
 import CDashboard from './Dashboard';
 import CPayments from './Payments';
 import CSettings from './Settings';
+import CServices from  './ServiceRequests'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,6 +56,7 @@ const ClientLayout = ({user}) => {
       {title: 'Dashboard', path: '/dashboard'},
       {title: 'Medical Profile', path: '/medicals'},
       {title: 'Medical History', path: '/medical-history'},
+      {title: 'Service Requests', path: '/service-requests'},
       {title: 'My Appointments', path: '/appointments'},
       {title: 'Payments', path: '/payments'},
       {title: 'Settings', path: '/settings'},
@@ -84,7 +86,7 @@ const ClientLayout = ({user}) => {
     <>
       <Container fixed className={classes.root}>
         <Grid container spacing={2} direction="row">
-          <Grid item md={2} xs={false}>
+          <Grid item md={2} >
             <CSideBar pageparam={pagepath} switchPage={switchPage} />
           </Grid>
           {/* display main contents */}
@@ -99,11 +101,14 @@ const ClientLayout = ({user}) => {
               {
                 {
                   '/profile/dashboard': (
-                    <CDashboard username={user.full_name} />
+                    <CDashboard username={user} />
                   ),
                   '/profile/medicals': <CMedicalProfile username={user} />,
                   '/profile/medical-history': (
                     <CMedicalHistory username={user.full_name} />
+                  ),
+                  '/profile/service-requests': (
+                    <CServices username={user} />
                   ),
                   '/profile/appointments': (
                     <CAppointments username={user.full_name} />
