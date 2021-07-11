@@ -14,6 +14,7 @@ import Profile from "./Pages/Profile/Profile";
 import PageContainer from "./Layouts/PageContainer/PageContainer";
 
 import AuthStore from "./stores/AuthStore";
+import Admin from "./Pages/Admin/Admin";
 
 function App() {
   const authcontext = useContext(AuthStore);
@@ -37,8 +38,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <PageContainer user={user}>
+            {/* <PageContainer user={user} > */}
           <Switch>
+
             <Route exact path="/" render={() => <Home />} />
             <Route
               exact
@@ -68,10 +70,16 @@ function App() {
               path="/profile/:page"
               render={() => <Profile currentUser={currUser} />}
             />
-            <Route exact path="/*" render={() => <Error />} />
+            <Route exact path="/admin" render={() => <Admin /> } />
+            <Route  path="/*" render={() => <Error />} />
           </Switch>
-        </PageContainer>
+        {/* </PageContainer> */}
+  
+
+      
       </Router>
+
+      
     </div>
   );
 }

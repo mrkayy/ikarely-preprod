@@ -1,22 +1,22 @@
-import React, {useContext} from 'react';
-import {Link} from 'react-router-dom';
-import ReactDom from 'react-dom';
-import './Overlay.css';
-import AuthStore from '../../stores/AuthStore';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import ReactDom from "react-dom";
+import "./Overlay.css";
+import AuthStore from "../../stores/AuthStore";
 
-function Overlay({slide, showMenu, setSlide}) {
+function Overlay({ slide, showMenu, setSlide }) {
   const authcontext = useContext(AuthStore);
-  const {logout, currUser} = authcontext;
+  const { logout, currUser } = authcontext;
   // console.log(currUser);
 
   const links = [
     {
-      value: 'Home',
-      directory: '/',
+      value: "Home",
+      directory: "/",
     },
     {
-      value: 'Services',
-      directory: '/service',
+      value: "Services",
+      directory: "/service",
     },
     // {
     //   value: "Blog",
@@ -24,12 +24,12 @@ function Overlay({slide, showMenu, setSlide}) {
     // },
 
     {
-      value: 'About Us',
-      directory: '/about',
+      value: "About Us",
+      directory: "/about",
     },
     {
-      value: 'Contact Us',
-      directory: '/contact',
+      value: "Contact Us",
+      directory: "/contact",
     },
   ];
 
@@ -38,7 +38,7 @@ function Overlay({slide, showMenu, setSlide}) {
     window.scrollTo(0, 0);
   };
   const content = (
-    <div className={`overlay ${slide && 'slide'}`}>
+    <div className={`overlay ${slide && "slide"}`}>
       <div onClick={() => setSlide(false)} className="close__button">
         X
       </div>
@@ -51,14 +51,14 @@ function Overlay({slide, showMenu, setSlide}) {
 
       <div className="hamburger__menus">
         <ul>
-          {links.map(({value, directory}, index) => {
+          {links.map(({ value, directory }, index) => {
             return (
               <li
                 className="navbar__slide"
                 onClick={() => viewLink(slide)}
                 key={index}
               >
-                <Link to={directory}>{value}</Link>{' '}
+                <Link to={directory}>{value}</Link>{" "}
               </li>
             );
           })}
@@ -67,22 +67,24 @@ function Overlay({slide, showMenu, setSlide}) {
           {!currUser && (
             <>
               <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                <button className="login__link__btn">
-                  <Link to={'/signin'}>{'Login'}</Link>{' '}
-                </button>
+                <Link to={"/signin"}>
+                  <button className="login__link__btn">{"Login"} </button>
+                </Link>
               </li>
 
               <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                <button className="register__link__btn">
-                <Link to={'/register'}>{'Register'}</Link>{' '}
-                </button>
+                <Link to={"/register"}>
+                  <button className="register__link__btn">{"Register"}</button>
+                </Link>{" "}
               </li>
             </>
           )}
           {currUser && (
             <>
               <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                <Link to="/profile">Account</Link>
+                <Link to="/profile">
+                  <button className="account__link__btn">Account</button>
+                </Link>
               </li>
               <li className="navbar__slide" onClick={logout}>
                 <button className="register__link__btn">Logout</button>
@@ -94,7 +96,7 @@ function Overlay({slide, showMenu, setSlide}) {
     </div>
   );
 
-  return ReactDom.createPortal(content, document.getElementById('overlay'));
+  return ReactDom.createPortal(content, document.getElementById("overlay"));
 }
 
 export default Overlay;

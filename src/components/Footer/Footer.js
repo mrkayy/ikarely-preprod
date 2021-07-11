@@ -34,7 +34,7 @@ function Footer() {
         <h3 className="subscribe___header">Quicklinks</h3>
         <ul>
           <li>
-            <Link to="/blog">Blog</Link>
+            {/* <Link to="/blog">Blog</Link> */}
           </li>
           <li>
             <Link to="/contact">Contact Us</Link>
@@ -43,10 +43,10 @@ function Footer() {
             <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="#">FAQs</Link>
+            {/* <Link to="#">FAQs</Link> */}
           </li>
           <li>
-            <Link to="#">Partners</Link>
+            {/* <Link to="#">Partners</Link> */}
           </li>
         </ul>
       </div>
@@ -68,13 +68,13 @@ function Footer() {
 
       <div className="footer__right">
         <div className="subscribe__form">
-          <h3 className="subscribe___header">Subscribe to Newsletter</h3>
+          {/* <h3 className="subscribe___header">Subscribe to Newsletter</h3>
           <div className="subscribe__input">
             <input type="text" placeholder="Your Email" />
             <button className="footer__btn">
               <Link to="#">Subscribe</Link> 
             </button>
-          </div>
+          </div> */}
 
           <div className="footer__right">
             <h3 className="subscribe___header">Contact us</h3>

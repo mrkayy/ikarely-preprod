@@ -35,8 +35,9 @@ img.overlay__logo {
 .more__links{
   margin-top: 50px;
 }
-.login__link__btn,.register__link__btn{
+.login__link__btn,.register__link__btn, .account__link__btn{
   width: 100%;
+  /* max-width: 60%; */
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -48,6 +49,7 @@ img.overlay__logo {
 .login__link__btn{
   border: 1px solid #083c63;
   background-color: transparent;
+  color: #083c63;
 }
 .register__link__btn a{
   color: white;

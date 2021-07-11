@@ -1,9 +1,9 @@
 import React from 'react';
 import './dashboard.css';
 import Divider from '@material-ui/core/Divider';
-import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 
 const Dashboard = ({username}) => {
