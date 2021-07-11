@@ -173,7 +173,6 @@ const Dashboard = ({username}) => {
                 <div className="med__data">
                   <h4> Medical Profile</h4>
                 </div>
-                <Divider />
                 <Card variant="outlined" className={classes.biodata}>
                   <CardContent className={classes.biodata_item}>
                     {/* 
