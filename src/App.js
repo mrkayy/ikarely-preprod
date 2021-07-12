@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import {observer} from "mobx-react"
+import { observer } from "mobx-react";
 import "./App.css";
 import Home from "./Pages/Home/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -14,7 +14,7 @@ import Profile from "./Pages/Profile/Profile";
 import PageContainer from "./Layouts/PageContainer/PageContainer";
 
 import AuthStore from "./stores/AuthStore";
-import Admin from "./Pages/Admin/Admin";
+// import Admin from "./Pages/Admin/Admin";
 
 function App() {
   const authcontext = useContext(AuthStore);
@@ -38,9 +38,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-            {/* <PageContainer user={user} > */}
+        <PageContainer user={user}>
           <Switch>
-
             <Route exact path="/" render={() => <Home />} />
             <Route
               exact
@@ -70,16 +69,11 @@ function App() {
               path="/profile/:page"
               render={() => <Profile currentUser={currUser} />}
             />
-            <Route exact path="/admin" render={() => <Admin /> } />
-            <Route  path="/*" render={() => <Error />} />
+            {/* <Route exact path="/admin" render={() => <Admin />} /> */}
+            <Route path="/*" render={() => <Error />} />
           </Switch>
-        {/* </PageContainer> */}
-  
-
-      
+        </PageContainer>
       </Router>
-
-      
     </div>
   );
 }

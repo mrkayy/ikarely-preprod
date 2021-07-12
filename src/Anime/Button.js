@@ -17,13 +17,7 @@ function Button({ progress, shown }) {
   } = authcontext;
 
   const {
-    state,
-    setState,
-    schema,
-    setSchemas,
     validate,
-    handleSubmit,
-    handleChange,
   } = useContext(GlobalContext);
 
   return (

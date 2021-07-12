@@ -26,7 +26,7 @@ function SignIn(props) {
     resetActions,
   } = authcontext;
 
-  const { state, setState, schema, setSchemas, validate } = useContext(
+  const { state, setState, setSchemas, validate } = useContext(
     GlobalContext
   );
 
@@ -74,7 +74,7 @@ function SignIn(props) {
 
   const { data, errors } = state;
 
-  const loginSubmit = async (e) => {
+  const loginSubmit = (e) => {
     e.preventDefault();
     const errors = validate();
     setState((prevState) => ({
