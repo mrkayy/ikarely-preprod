@@ -44,7 +44,7 @@ const MedicalProfile = ({username}) => {
         </div>
         <Divider />
         <Grid container spacing={1} direction="row" className={classes.main}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3}>
             <Paper className={classes.medImg} elevation={0}>
               <div className="med__image">
                 <div className="med__profile__img">
@@ -56,7 +56,7 @@ const MedicalProfile = ({username}) => {
               </div>
             </Paper>
           </Grid>
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12} md={9}>
             <Container fixed>
               <div className="med__profile">
                 <h4>My Profile</h4>
@@ -89,13 +89,13 @@ const MedicalProfile = ({username}) => {
                 <Tab label="Appointment History" />
               </Tabs>
               <TabPanel value={value} index={0}>
-                Medical Profile Table
+                <p className="tab__caption">You have no Medical Profile at the moment</p>
               </TabPanel>
               <TabPanel value={value} index={1}>
-               Medical History Table
+                <p className="tab__caption">You have no Medical History Record at the moment</p>
               </TabPanel>
               <TabPanel value={value} index={2}>
-                Appointments History Table
+                <p className="tab__caption">You have no Appointments Records at the moment </p>
               </TabPanel>
             </Paper>
           </Grid>

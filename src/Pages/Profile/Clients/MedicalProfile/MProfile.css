@@ -29,6 +29,7 @@
 
 .med__profile{
     margin-top: 10px;
+    color: #083c63;
 }
 
 .med__profile > h4 {
@@ -37,4 +38,19 @@
 
 .med__profile > p {
     margin: 10px 0px;
+    color: rgba(8, 60, 99, 0.547);
+    font-size: 13px;
+  font-weight: 600;
+}
+.med__profile > p >span{
+    
+    color: #083c63;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.tab__caption{
+    font-size: 12px;
+    font-weight: 500;
+    color: gray;
 }

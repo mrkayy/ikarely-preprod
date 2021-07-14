@@ -2,11 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Grid, Paper, Container, Box, Divider} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
-import '../../../components/Clients/Client.css';
 
-import CSideBar from '../../../components/Clients/ClientSideBar';
-// import CNavBar from '../../../components/Clients/ClientNavbar';
-// import InfoBar from '../../../components/Clients/ClientInfoBar';
+import Menubar from '../../../components/Clients/Menubar';
+import '../../../components/Clients/style.css';
 
 import CMedicalHistory from './MedicalHistory';
 import CMedicalProfile from './MedicalProfile';
@@ -14,6 +12,7 @@ import CAppointments from './Appointments';
 import CDashboard from './Dashboard';
 import CPayments from './Payments';
 import CSettings from './Settings';
+import CServices from  './ServiceRequests'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,6 +54,7 @@ const ClientLayout = ({user}) => {
       {title: 'Dashboard', path: '/dashboard'},
       {title: 'Medical Profile', path: '/medicals'},
       {title: 'Medical History', path: '/medical-history'},
+      {title: 'Service Requests', path: '/service-requests'},
       {title: 'My Appointments', path: '/appointments'},
       {title: 'Payments', path: '/payments'},
       {title: 'Settings', path: '/settings'},
@@ -84,8 +84,8 @@ const ClientLayout = ({user}) => {
     <>
       <Container fixed className={classes.root}>
         <Grid container spacing={2} direction="row">
-          <Grid item md={2}>
-            <CSideBar pageparam={pagepath} switchPage={switchPage} />
+          <Grid item md={2} >
+            <Menubar pageparam={pagepath} switchPage={switchPage} />
           </Grid>
           {/* display main contents */}
           <Grid item xs={12} md={currPage ? 10 : 7}>
@@ -99,20 +99,21 @@ const ClientLayout = ({user}) => {
               {
                 {
                   '/profile/dashboard': (
-                    <CDashboard username={user.full_name} />
+                    <CDashboard username={user} />
                   ),
                   '/profile/medicals': <CMedicalProfile username={user} />,
                   '/profile/medical-history': (
                     <CMedicalHistory username={user.full_name} />
+                  ),
+                  '/profile/service-requests': (
+                    <CServices username={user} />
                   ),
                   '/profile/appointments': (
                     <CAppointments username={user.full_name} />
                   ),
                   '/profile/payments': <CPayments username={user.full_name} />,
                   '/profile/settings': <CSettings username={user.full_name} />,
-                  '/profile/support': (
-                    <Box >Support</Box>
-                  ),
+                  '/profile/support': <Box>Support</Box>,
                 }[pagepath.page]
               }
             </Container>

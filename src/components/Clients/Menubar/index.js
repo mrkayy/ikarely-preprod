@@ -1,7 +1,9 @@
+
+
 import React from 'react';
 import {Paper, Box} from '@material-ui/core'; 
 import {makeStyles} from '@material-ui/core/styles';
-import './SideBar.css'
+import './sidebar.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +17,11 @@ const SideBar = ({pageparam, switchPage}) => {
   const classes = useStyles();
   return (
     <>
-      <Box className={classes.root}>
+      <Box
+        component="div"
+        display={{xs: 'none', sm: 'none', md: 'block'}}
+        className={classes.root}
+      >
         <Paper className={classes.sidebar} elevation={1}>
           <ul className="sidebar__list">
             {pageparam.path.map((e, index) => {

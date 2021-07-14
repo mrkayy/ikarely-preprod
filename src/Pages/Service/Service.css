@@ -51,7 +51,8 @@
 }
 
 .list__title, .list__word{
-  color: #083C63
+  color: #083C63;
+  text-align: justify;
 }
 .makerequest__btn{
   border: none;
@@ -62,7 +63,7 @@
   text-transform: capitalize;
   color: white;
   letter-spacing: 0.075rem;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* @media screen and (max-width:425px){
