@@ -25,7 +25,7 @@ function Sections() {
         </div>
         <div className="right__part">
           <h3>About Us</h3>
-          <h1>Your health is our utmost priority</h1>
+          <h2>Your health is our utmost priority</h2>
           <p className="section__word">
           ikarely is a healthtech Company, specializing in delivery of optimal and  quality healthcare services to client at their own comfort and utmost convenience. We are a digital health care company in Africa that is service oriented and works by connecting licensed nurses to patients that need basic health care services like, wound care, vaccination, chemotherapy, Intravenous fluid infusion, catheterization to mention a few. 
           </p>

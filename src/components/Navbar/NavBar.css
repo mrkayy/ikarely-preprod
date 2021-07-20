@@ -36,11 +36,12 @@
   /* margin: 10px 0px; */
 }
 .logo > img {
-  width: 10vw;
+  width: 8vw;
 }
 div ul {
   list-style-type: none;
 }
+
 .navbar__links ul {
   display: flex;
   /* flex: 0.7; */
@@ -51,18 +52,22 @@ div ul {
 }
 .navbar__links ul > li {
   margin-right: 30px;
+  font-family: 'Poppins';
   font-size: 1.0em;
 }
 .navbar__links ul > li:last-child {
   margin-right: 0px;
 }
 .navbar__links ul > li a {
+  font-size: 1.055em;
+  font-weight: 600;
   text-decoration: none;
   color: inherit;
 }
 .navbar__links a:hover, .logout__btn {
   color: #ac0b0b;
 }
+
 .hamburger__menu > .line {
   width: 25px;
   height: 2px;

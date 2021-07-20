@@ -11,11 +11,10 @@ const About = () => {
 
       <div className="each__section">
         <div className="left__part">
-          <img src="images/health-service.jpg" alt="" />
+          <img src="images/health-service.jpg" alt="health.png" />
         </div>
         <div className="right__part">
-          <h5></h5>
-          <h1>Your Health Is Our utmost Priority</h1>
+          <h2>Your Health Is Our utmost Priority</h2>
           <p className="section__word">
             ikarely is a healthtech Company, specializing in delivery of optimal
             and quality healthcare services to client at their own comfort and
@@ -29,7 +28,6 @@ const About = () => {
             reduce the work load of healthcare workers and increase access to
             quality care.
           </p>
-          <br />
           <p className="section__word">
             Healthcare delivery in a developing country like Nigeria can prove
             to be very challenging. Lack of infrastructure is one of the major
