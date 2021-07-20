@@ -11,14 +11,19 @@ import "./Service.css";
 import Modal from "@material-ui/core/Modal";
 import ModalForm from "../../components/Modal/ModalForm";
 import ServiceStore from "../../stores/Services";
+import AuthStore from '../../stores/AuthStore'
 import { observer } from "mobx-react";
 import { useAlert } from "react-alert";
 
-function Service({ currentUser }) {
+function Service() {
   const [openModal, setOpenModal] = useState(false);
   const servicecontext = useContext(ServiceStore);
-  const alert = useAlert();
+  const authContext = useContext(AuthStore)
+  
+  const {currUser} = authContext;
 
+
+  const alert = useAlert();
   const services = [
     {
       icon: "wound.svg",
@@ -90,9 +95,7 @@ function Service({ currentUser }) {
       <PageLanding image="health-service.jpg" title="What we offer" />
 
       <div className="each__section">
-        <div
-          className='right__part'
-        >
+        <div className="right__part">
           <h3>services</h3>
           <h1>Get the best medical aid at home</h1>
           <p className="section__word">
@@ -112,9 +115,7 @@ function Service({ currentUser }) {
                         read more
                     </button> */}
         </div>
-        <div
-          className='left__part'
-        >
+        <div className="left__part">
           <img src="images/appointment.jpg" alt="" />
         </div>
       </div>
@@ -135,7 +136,7 @@ function Service({ currentUser }) {
           <ModalForm services={services} setOpenModal={setOpenModal} />
         </Modal>
 
-        {!currentUser ? (
+        {!currUser ? (
           <Link to="/signin">
             <button className="makerequest__btn">Get Started</button>
           </Link>

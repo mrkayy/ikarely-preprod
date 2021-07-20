@@ -32,7 +32,6 @@ render(){
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/signin" component={SignIn} />
-            <ProtectedRoute exact path="/profile/dashboard" component={Profile} />
             <ProtectedRoute exact path="/profile/:page" component={Profile} />
             <Route path="/*" component={Error} />
           </Switch>

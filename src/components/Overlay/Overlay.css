@@ -21,7 +21,7 @@
 
 .close__button {
   position: absolute;
-  top: 15px;
+  top: 35px;
   right: 25px;
   opacity: 100%;
   cursor: pointer;
@@ -34,8 +34,12 @@ img.overlay__logo {
   max-width: 250px;
   object-fit: contain;
 }
+
 .hamburger__menus {
   height: 100vh;
+  cursor: pointer;
+  color: #083c63;
+  font-weight: 600;
   /* display: flex; */
   /* justify-content: center; */
 }
@@ -44,10 +48,15 @@ img.overlay__logo {
 }
 .hamburger__menus > ul > li a {
   text-decoration: none;
+  font-weight: 600;
   font-size: 14px;
 }
-.more__links{
+.more__links
+{
+  cursor: pointer;
   margin-top: 10px;
+  font-weight: 600;
+  color: #083c63;
 }
 /* .login__link__btn,.register__link__btn, .account__link__btn{ */
 .login__link__btn{
@@ -78,7 +87,7 @@ img.overlay__logo {
   background-color: transparent;
   color: #083c63;
 }
-.register__link__btn a{
+.register__link__btn a {
   color: white;
 }
 

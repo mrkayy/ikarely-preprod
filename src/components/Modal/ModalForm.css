@@ -1,11 +1,21 @@
 .service__modal {
-  min-width: 500px;
+  min-width: 600px;
   background-color: #fff;
   margin: 50px;
-  padding: 20px 45px;
+  padding: 20px 40px;
   position: relative;
+  border-radius: 10px;
 }
 
+.service__modal > .close__icon > svg {
+  position: absolute;
+  top: 10px;
+  right: -560px;
+  height: 24px;
+  width: 24px;
+  margin: 0px;
+  color: #ac0b0b;
+}
 
 .loading__service {
   display: flex;
@@ -15,16 +25,15 @@
 
 .service__request {
   text-align: center;
+  /* position: relative; */
 }
 .request__headers {
   color: #083c63;
   text-transform: uppercase;
+  font-weight: 600;
   margin-top: 20px;
-}
-.close__icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  width: auto;
+  position: relative;
 }
 .request__mainheader {
   font-size: 18px;
@@ -65,8 +74,8 @@
 .stage__circle {
   text-align: center;
   font-size: 14px;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,6 +88,10 @@
 .not {
   color: #fff;
   background-color: #083c63;
+}
+
+.stage__circle > span {
+  font-size: 11px;
 }
 
 .sub__topic {
@@ -143,23 +156,66 @@
   align-items: center;
 }
 .btn {
-  padding: 5px 10px;
+  padding: 8px 10px;
   border: none;
   background-color: #083c63;
   color: #fff;
+  width: 100px;
+  border-radius: 5px;
+  font-family: "Poppins";
 }
 .notactive {
-  background-color: rgba(146, 146, 146, 0.5);
+  background-color: #9dbbd2;
 }
 div > textarea {
   min-height: 120px;
   resize: none;
 }
 
-
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 760px) {
   .service__modal {
     min-width: 300px;
     padding: 20px;
+  }
+
+  .service__modal > .close__icon > svg {
+    position: absolute;
+    top: 10px;
+    right: -350px;
+    height: 24px;
+    width: 24px;
+    margin: 0px;
+    color: #ac0b0b;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .service__modal {
+    min-width: 400px;
+    padding: 20px;
+  }
+
+  .service__modal > .close__icon > svg {
+    position: absolute;
+    top: 10px;
+    right: -370px;
+    height: 24px;
+    width: 24px;
+    margin: 0px;
+    color: #ac0b0b;
+  }
+
+  .btn {
+    padding: 12px 10px;
+    border: none;
+    background-color: #083c63;
+    color: #fff;
+    width: 100px;
+    border-radius: 5px;
+    font-family: "Poppins";
+  }
+
+  .notactive {
+    background-color: #9dbbd2;
   }
 }

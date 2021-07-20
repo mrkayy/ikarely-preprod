@@ -154,7 +154,8 @@ function ModalForm({ services, setOpenModal }) {
                 <div className="request__detail">
                   Service:{" "}
                   <span className="detail__value">{`${
-                    services.find((element) => element.params > data.service).title
+                    services.find((element) => element.params > data.service)
+                      .title
                   }`}</span>
                 </div>
               </div>
@@ -224,11 +225,23 @@ function ModalForm({ services, setOpenModal }) {
 
   return (
     <div className="service__modal">
+      <div className="close__icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          onClick={() => setOpenModal(false)}
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </div>
       <div className="service__request">
         <div className="request__headers">
-          <p className="close__icon" onClick={() => setOpenModal(false)}>
-            x
-          </p>
           <h3 className="request__mainheader">BOOK A SERVICE</h3>
           <p className="request__word">
             Kindly provide your details so we can reach you
@@ -247,19 +260,19 @@ function ModalForm({ services, setOpenModal }) {
               className={`stage__circle ${stage >= 0 && "not"}`}
               onClick={() => circleStage(0)}
             >
-              Service
+              <span>Service</span>
             </div>
             <div
               className={`stage__circle ${stage >= 1 && "not"}`}
               onClick={() => circleStage(1)}
             >
-              Location
+              <span>Location</span>
             </div>
             <div
               className={`stage__circle ${stage > 1 && "not"}`}
               onClick={() => circleStage(2)}
             >
-              Confirm
+              <span>Confirm</span>
             </div>
           </div>
         </div>

@@ -43,11 +43,16 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
     { value: "Settings", directory: "profile/settings" },
   ];
 
+  // pushes the new route to the DOM history
+  // const handleLink = (e) => {
+  //   return history.push(e);
+  // };
+
   const viewLink = (slide) => {
     showMenu(slide);
     window.scrollTo(0, 0);
   };
-  
+
   const content = (
     <div className={`overlay ${slide && "slide"}`}>
       <div className="overlay__body">
@@ -57,7 +62,7 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
 
         <img
           src="../images/ikarely_logo_overlay.png"
-          alt="logo.pngs"
+          alt="logo.png"
           className="overlay__logo"
         />
 
@@ -70,15 +75,15 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
                   onClick={() => viewLink(slide)}
                   key={index}
                 >
-                  <Link to={directory}>{value}</Link>{" "}
+                  <Link activeClassName="selected" to={directory}>{value}</Link>
                 </li>
               );
             })}
           </ul>
-          <hr />
           <ul className="more__links">
             {currUser && currUser ? (
               <>
+                <hr />
                 {profileLinks.map(({ value, directory }, index) => {
                   return (
                     <li
@@ -97,15 +102,21 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
             ) : (
               <>
                 <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                  <Link to={"/signin"}>
-                    <button className="login__link__btn">Login</button>
-                  </Link>
+                  <button
+                    // onClick={handleLink("/signin")}
+                    className="login__link__btn"
+                  >
+                    Login
+                  </button>
                 </li>
 
                 <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                  <Link to={"/register"}>
-                    <button className="register__link__btn">Register</button>
-                  </Link>{" "}
+                  <button
+                    // onClick={handleLink("/register")}
+                    className="register__link__btn"
+                  >
+                    Register
+                  </button>
                 </li>
               </>
             )}
@@ -116,6 +127,6 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
   );
 
   return ReactDom.createPortal(content, document.getElementById("overlay"));
-}
+};
 
 export default observer(Overlay);

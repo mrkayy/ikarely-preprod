@@ -53,8 +53,9 @@ function Footer() {
                 />
               </svg>
               <h6>
-                <span>(+234) </span>
-                <a href="tel:+2348000000000">08000000000</a>
+                <a href="tel:+2348000000000">
+                  <span>(+234) </span>08000000000
+                </a>
               </h6>
             </div>
             <div>
@@ -134,11 +135,9 @@ function Footer() {
           <div className="footer__link__content">
             <h5>Services</h5>
             <div>
-                <h6>
-              <Link to="/service">
-                  General Check-Up
-              </Link>
-                  </h6>
+              <h6>
+                <Link to="/service">General Check-Up</Link>
+              </h6>
             </div>
             <div>
               <h6>
