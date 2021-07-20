@@ -4,23 +4,22 @@ import Joi from "joi-browser";
 import "./Register.css";
 import { observer } from "mobx-react";
 import AuthStore from "../../stores/AuthStore";
-import dataHero from "data-hero";
+// import dataHero from "data-hero";
 import { useAlert } from "react-alert";
 import InputBox from "../../shared/InputBox";
 import { GlobalContext } from "../../stores/GlobalLayer";
 import Button from "../../Anime/Button";
 
 function Register(props) {
-  const { currentUser } = props;
   const alert = useAlert();
   const history = useHistory();
   const authcontext = useContext(AuthStore);
   const {
     error,
-    loading,
     success,
-    authSuccess,
+    currUser,
     errMessage,
+    // authSuccess,
     successMessage,
     register,
     resetActions,
@@ -29,10 +28,10 @@ function Register(props) {
   const {
     state,
     setState,
-    schema,
     setSchemas,
     validate,
-    handleSubmit,
+    // schema,
+    // handleSubmit,
     handleChange,
   } = useContext(GlobalContext);
 
@@ -93,10 +92,6 @@ function Register(props) {
     };
   }, [errMessage, successMessage]);
 
-  if (currentUser && currentUser) {
-    return <Redirect to={"/"} />;
-  }
-
   const { data, errors } = state;
 
   const registerSubmit = async (e) => {
@@ -122,9 +117,16 @@ function Register(props) {
     console.log(data, "Register submitted");
   };
 
-  // console.log(validate());
-
-  return (
+  return currUser && props.location.pathname === "/register" ? (
+    <Redirect
+      to={{
+        pathname: "/",
+        state: {
+          from: props.location,
+        },
+      }}
+    />
+  ) : (
     <div className="register">
       <h2 className="header__description">
         Get qualilty healthcare at your convenience
@@ -173,7 +175,6 @@ function Register(props) {
             <option value="Professional" className="first__option">
               Professional{" "}
             </option>
-            ))
           </select>
 
           <Button progress="Registering..." shown="Create Account" />

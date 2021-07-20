@@ -6,7 +6,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Article from "../../components/Article/Article";
 import PageLanding from "../../components/PageLanding/PageLanding";
 
-function Blog() {
+const Blog = () => {
   const blogposts = [
     {
       title: "Health News",

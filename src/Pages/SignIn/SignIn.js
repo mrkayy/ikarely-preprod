@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useContext} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState, useContext } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import "./SignIn.css";
 import { observer } from "mobx-react";
@@ -9,33 +10,30 @@ import Joi from "joi-browser";
 import { GlobalContext } from "../../stores/GlobalLayer";
 import Button from "../../Anime/Button";
 
-
-function SignIn(props) {
-  const { currentUser } = props;
+const SignIn = (props) => {
   const alert = useAlert();
   const history = useHistory();
+
   const authcontext = useContext(AuthStore);
   const {
     error,
-    loading,
     success,
     authSuccess,
     errMessage,
     successMessage,
     login,
+    currUser,
     resetActions,
   } = authcontext;
 
-  const { state, setState, setSchemas, validate } = useContext(
-    GlobalContext
-  );
+  const { state, setState, setSchemas, validate } = useContext(GlobalContext);
 
   useEffect(() => {
     setState((prevState) => ({
       ...prevState,
-      data: { 
-        email: "", 
-        password: "" 
+      data: {
+        email: "",
+        password: "",
       },
     }));
 
@@ -46,9 +44,9 @@ function SignIn(props) {
     }));
 
     return () => {
-      setState({data: {}, errors: {}})
-      setSchemas({})
-    }
+      setState({ data: {}, errors: {} });
+      setSchemas({});
+    };
   }, []);
 
   useEffect(() => {
@@ -65,9 +63,9 @@ function SignIn(props) {
 
   useEffect(() => {
     if (authSuccess === "pass") {
-      history.push('/service'); //redirect to service page
-      // history.push('/');
-    } return () => {
+      props.history.push("/profile/dashboard");
+    }
+    return () => {
       resetActions();
     };
   }, [authSuccess]);
@@ -78,28 +76,35 @@ function SignIn(props) {
     e.preventDefault();
     const errors = validate();
     setState((prevState) => ({
-      ...prevState, errors: errors || {} 
+      ...prevState,
+      errors: errors || {},
     }));
     if (errors) return;
     login(data);
-    // console.log("Details submitted!!!");
   };
 
-  // console.log(validate());
+  return currUser && props.location.pathname === "/signin" ? (
+    <Redirect
+      to={{
+        pathname: "/",
+        state: {
+          from: props.location,
+        },
+      }}
+    />
+  ) : (
+    <div className="signin">
+      <div className="signin__form">
+        <div className="signin__headers">
+          <h3 className="signin__header">Users Sign in</h3>
+          <p className="little__text">Welcome to iKarely</p>
+        </div>
 
-  return (
-      <div className="signin">
-        <div className="signin__form">
-          <div className="signin__headers">
-            <h3 className="signin__header">Users Sign in</h3>
-            <p className="little__text">Welcome to iKarely</p>
-          </div>
+        <form action="submit" onSubmit={loginSubmit} className="form__inputs">
+          <InputBox label="Email or Phone Number" name="email" type="email" />
+          <InputBox label="Password" name="password" type="password" />
 
-          <form action="submit" onSubmit={loginSubmit} className="form__inputs">
-            <InputBox label="Email or Phone Number" name="email" type="email" />
-            <InputBox label="Password" name="password" type="password" />
-
-            {/* <div className="keep__signed">
+          {/* <div className="keep__signed">
               <input
                 type="checkbox"
                 // onChange={handleCheckBox}
@@ -107,17 +112,15 @@ function SignIn(props) {
               Keep me signed in
             </div> */}
 
+          <Button progress="Loading..." shown="Signin" />
 
-            <Button progress="Loading..." shown="Signin"/>
-
-
-            <p className="bottom__text">
-              New user? <Link to="/register">Sign up</Link> for free
-            </p>
-          </form>
-        </div>
+          <p className="bottom__text">
+            New user? <Link to="/register">Sign up</Link> for free
+          </p>
+        </form>
       </div>
+    </div>
   );
-}
+};
 
 export default observer(SignIn);

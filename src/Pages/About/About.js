@@ -4,7 +4,7 @@ import Teams from "../../components/Teams/Teams";
 import WhyUs from "../../components/WhyChooseUs/WhyUs";
 import "./About.css";
 
-function About() {
+const About = () => {
   return (
     <div className="about">
       <PageLanding image="easy-access.jpg" title="About us" />

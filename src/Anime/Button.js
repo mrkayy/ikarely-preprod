@@ -6,14 +6,7 @@ import { GlobalContext } from "../stores/GlobalLayer";
 function Button({ progress, shown }) {
   const authcontext = useContext(AuthStore);
   const {
-    error,
     loading,
-    success,
-    authSuccess,
-    errMessage,
-    successMessage,
-    register,
-    resetActions,
   } = authcontext;
 
   const {
@@ -24,7 +17,7 @@ function Button({ progress, shown }) {
     <div>
         {loading ?
         <div className="loading__show" >
-        <div class="loader" title="2">
+        <div className="loader" title="2">
           {" "}
         </div>
         {progress}

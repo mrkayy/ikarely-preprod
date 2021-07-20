@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 // import Overlay from "../Overlay/Overlay";
-import WebStorage from "../../shared/LocalStorage";
+import { observer } from "mobx-react";
+import AuthContext from '../../stores/AuthStore'
 
-function NavBar({ slide, showMenu, user }) {
+
+function NavBar({ slide, showMenu }) {
+  const {logout,currUser} = useContext(AuthContext)
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 35) {
         setShow(true);
       } else {
         setShow(false);
@@ -23,13 +26,13 @@ function NavBar({ slide, showMenu, user }) {
   return (
     <div className={`navbar__content ${show && "nav__bg"}`}>
       <div className="logo">
-        <img src="../images/logo.png" alt="" />
+        <img src="../images/logo.png" alt="logo.png" />
       </div>
 
       <div className="navbar__links">
         <ul>
           <li className="navbar__menus">
-            <Link to="/">Home</Link>{" "}
+            <Link to="/">Home</Link>
           </li>
           <li className="navbar__menus">
             <Link to="/service">Services</Link>{" "}
@@ -44,14 +47,16 @@ function NavBar({ slide, showMenu, user }) {
           <li className="navbar__menus">
             <Link to="/contact">Contact us</Link>
           </li>
-          {user && user === true ? (
+          {currUser && currUser ? (
             <>
               <li className="navbar__menus">
                 <Link to="/profile/dashboard">Dashboard</Link>
               </li>
-              <li className="navbar__menus logout__btn"
-                  onClick={() => WebStorage.logout()}>
-                  Log out
+              <li
+                className="navbar__menus logout__btn"
+                onClick={() => logout()}
+              >
+                Log out
               </li>
             </>
           ) : (
@@ -75,4 +80,4 @@ function NavBar({ slide, showMenu, user }) {
   );
 }
 
-export default NavBar;
+export default observer(NavBar);

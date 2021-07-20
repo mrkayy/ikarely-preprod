@@ -3,8 +3,11 @@ import {useHistory} from 'react-router-dom';
 import {Grid, Paper, Container, Box, Divider} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
-import Menubar from '../../../components/Clients/Menubar';
-import '../../../components/Clients/style.css';
+import jwt_decode from "jwt-decode";
+import WebStorage from "../../shared/LocalStorage";
+
+import Menubar from '../../components/Clients/Menubar';
+import '../../components/Clients/style.css';
 
 import CMedicalHistory from './MedicalHistory';
 import CMedicalProfile from './MedicalProfile';
@@ -37,9 +40,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ClientLayout = ({user}) => {
+const ClientProfile = () => {
   const classes = useStyles();
   const history = useHistory();
+  
+  const token = WebStorage.get("user_token");
+  const user = jwt_decode(token);
 
   const pgHistory = history.location.pathname;
   // allows app to display full dashboard
@@ -146,4 +152,4 @@ const ClientLayout = ({user}) => {
   );
 };
 
-export default ClientLayout;
+export default ClientProfile;

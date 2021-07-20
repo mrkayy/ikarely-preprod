@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useHistory, Redirect } from "react-router-dom";
+// import { Link, useHistory, Redirect } from "react-router-dom";
 
 import "./Contact.css";
 import PageLanding from "../../components/PageLanding/PageLanding";
@@ -7,15 +7,17 @@ import InputBox from "../../shared/InputBox";
 import Joi from "joi-browser";
 import { observer } from "mobx-react";
 import AuthStore from "../../stores/AuthStore";
-import dataHero from "data-hero";
+// import dataHero from "data-hero";
 import { useAlert } from "react-alert";
 import { GlobalContext } from "../../stores/GlobalLayer";
 import Button from "../../Anime/Button";
 
-function Contact(props) {
-  const { currentUser } = props;
+const Contact = (props) => {
+
+  console.log({props});
+
   const alert = useAlert();
-  const history = useHistory();
+  // const history = useHistory();
   const authcontext = useContext(AuthStore);
   const {
     error,
@@ -73,9 +75,9 @@ function Contact(props) {
     };
   }, [errMessage, successMessage]);
 
-  if (currentUser && currentUser) {
-    return <Redirect to={"/"} />;
-  }
+  // if (currentUser && currentUser) {
+  //   return <Redirect to={"/"} />;
+  // }
 
   const { data, errors } = state;
 
@@ -140,4 +142,4 @@ function Contact(props) {
   );
 }
 
-export default Contact;
+export default observer(Contact);

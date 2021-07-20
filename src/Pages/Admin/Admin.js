@@ -7,7 +7,7 @@ import AppsIcon from "@material-ui/icons/Apps";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-function Admin() {
+const Admin = () => {
   return (
     <div className="admin__container">
       <div className="admin__sidenav">

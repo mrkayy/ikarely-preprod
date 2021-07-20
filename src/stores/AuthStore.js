@@ -1,7 +1,8 @@
 import { createContext } from "react";
-import { makeObservable, observable, action } from "mobx";
+import { makeObservable, observable, action,autorun } from "mobx";
 import api from "../Config";
 import WebStorage from "../shared/LocalStorage";
+import { findAllByDisplayValue } from "@testing-library/react";
 
 class AuthStore {
   loading = false;
@@ -32,6 +33,7 @@ class AuthStore {
       getCurrUser: action,
       resetActions: action,
     });
+    autorun(()=> this.getCurrUser())
   }
 
   rememberMe = () => {
@@ -123,7 +125,7 @@ class AuthStore {
   };
 
   getCurrUser = () => {
-    this.currUser = WebStorage.get("user_token") ? true : false;
+    this.currUser = WebStorage.get("user_token")? true : false;
     // console.log(WebStorage.get("user_token"));
   };
 

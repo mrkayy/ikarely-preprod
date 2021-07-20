@@ -4,7 +4,7 @@ import Section from "../../components/Sections/Sections";
 import WhyUs from "../../components/WhyChooseUs/WhyUs";
 import './Home.css'
 
-function Home() {
+const Home = () => {
 
   return (
     <div className='home'>

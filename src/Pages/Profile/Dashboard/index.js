@@ -4,14 +4,11 @@ import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-<<<<<<< HEAD
-=======
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
->>>>>>> dev
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
@@ -117,7 +114,7 @@ const Dashboard = ({username}) => {
         </div>
         <Divider />
         <Box component="div">
-          <Grid container spacing={2} direction={{sm: 'column', md: 'row'}}>
+          <Grid spacing={2} direction={{sm: 'column', md: 'row'}}>
             <Grid item md={6} xs={12}>
               <Box component="div" className={classes.root}>
                 <Box
@@ -297,7 +294,7 @@ const Dashboard = ({username}) => {
             </Grid>
           </Grid>
         </Box>
-        <Grid container>
+        <Grid spacing={2}>
           <div className="client__title">
             <h4>Services Requests</h4>
           </div>

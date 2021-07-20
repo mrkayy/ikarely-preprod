@@ -4,12 +4,28 @@
   display: grid;
   justify-content: center;
   align-items: center;
+  color: #2d2d2d;
 }
 .error__content{
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.error__message {
+  font-size: 5rem;
+}
+
+.error__body {
+  font-size: 13px;
+  margin: 1.25rem 0px;
+}
+
 .go__backhome{
-  
+  margin: 10px 20px;
+  width: 80%;
+  padding: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
 }

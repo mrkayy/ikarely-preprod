@@ -4,8 +4,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: rgba(8, 60, 99, 0.247);
-  color: #083c63;
+  background-color: #083c63;
+  color: #ffffff;
   text-align: left;
 }
 
