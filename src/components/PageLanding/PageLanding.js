@@ -1,6 +1,7 @@
 import React from 'react';
 import './PageLanding.css';
 
+// component header and page title. 
 function PageLanding({image, title}) {
   return (
     <>
