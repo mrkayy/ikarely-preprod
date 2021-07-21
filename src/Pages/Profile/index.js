@@ -47,13 +47,19 @@ const ClientProfile = () => {
   const token = WebStorage.get("user_token");
   const user = jwt_decode(token);
 
+  useEffect(() => {
+    autoScroll();
+  }, []);
+
+  const autoScroll = () => {
+    console.log("auto scroll");
+    return window.scrollTo(0, 0);
+  };
+
   const pgHistory = history.location.pathname;
   // allows app to display full dashboard
   const currPage =
-    history.location.pathname === "/profile" ||
-    history.location.pathname === "/profile/dashboard"
-      ? true
-      : false;
+    history.location.pathname === "/profile/dashboard" ? true : false;
 
   const [pagepath, setPage] = useState({
     path: [
@@ -103,18 +109,18 @@ const ClientProfile = () => {
             <Container fixed className={classes.main}>
               {
                 {
-                  "/profile/dashboard": <CDashboard username={user} />,
-                  "/profile/medicals": <CMedicalProfile username={user} />,
-                  "/profile/medical-history": (
+                  "/dashboard": <CDashboard username={user} />,
+                  "/medicals": <CMedicalProfile username={user} />,
+                  "/medical-history": (
                     <CMedicalHistory username={user.full_name} />
                   ),
-                  "/profile/service-requests": <CServices username={user} />,
-                  "/profile/appointments": (
+                  "/service-requests": <CServices username={user} />,
+                  "/appointments": (
                     <CAppointments username={user.full_name} />
                   ),
-                  "/profile/payments": <CPayments username={user.full_name} />,
-                  "/profile/settings": <CSettings username={user.full_name} />,
-                  "/profile/support": <Box>Support</Box>,
+                  "/payments": <CPayments username={user.full_name} />,
+                  "/settings": <CSettings username={user.full_name} />,
+                  "/support": <Box>Support</Box>,
                 }[pagepath.page]
               }
             </Container>

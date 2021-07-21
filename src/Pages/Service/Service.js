@@ -1,8 +1,8 @@
 import React, {
   useState,
   useContext,
-  useLayoutEffect,
-  useRef,
+  // useLayoutEffect,
+  // useRef,
   useEffect,
 } from "react";
 import { Link } from "react-router-dom";
@@ -21,6 +21,15 @@ function Service() {
   const authContext = useContext(AuthStore)
   
   const {currUser} = authContext;
+  
+  useEffect(() => {
+    autoScroll();
+  }, []);
+
+  const autoScroll = () => {
+    console.log("auto scroll");
+    return window.scrollTo(0, 0);
+  };
 
 
   const alert = useAlert();

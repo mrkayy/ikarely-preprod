@@ -25,6 +25,16 @@ function Register(props) {
     resetActions,
   } = authcontext;
 
+  
+  useEffect(() => {
+    autoScroll();
+  }, []);
+
+  const autoScroll = () => {
+    console.log("auto scroll");
+    return window.scrollTo(0, 0);
+  };
+
   const {
     state,
     setState,

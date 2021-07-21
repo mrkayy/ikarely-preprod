@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import BlogPost from "../../components/BlogPost/BlogPost";
 import "./Blog.css";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
@@ -7,6 +7,16 @@ import Article from "../../components/Article/Article";
 import PageLanding from "../../components/PageLanding/PageLanding";
 
 const Blog = () => {
+
+  
+  useEffect(() => {
+    autoScroll();
+  }, []);
+
+  const autoScroll = () => {
+    console.log("auto scroll");
+    return window.scrollTo(0, 0);
+  };
   const blogposts = [
     {
       title: "Health News",

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Landing.css";
+import { Link } from "react-router-dom";
 
 function Landing() {
   return (
@@ -19,9 +20,11 @@ function Landing() {
           </h1>
         </div>
 
-        <div className="button">
-          <button className="getstarted__btn">Get Started</button>
-        </div>
+        <Link to="/service">
+          <div className="button">
+            <button className="getstarted__btn">Get Started</button>
+          </div>
+        </Link>
       </div>
     </div>
   );

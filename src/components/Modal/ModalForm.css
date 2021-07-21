@@ -120,7 +120,7 @@
 }
 
 .booking__summary {
-  max-width: 302px;
+  max-width: auto;
   text-transform: uppercase;
   margin-bottom: 20px;
 }

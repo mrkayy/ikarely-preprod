@@ -12,34 +12,49 @@ import Register from "./Pages/Register/Register";
 import SignIn from "./Pages/SignIn/SignIn";
 import Profile from "./Pages/Profile";
 import PageContainer from "./Layouts/PageContainer/PageContainer";
-import ProtectedRoute from "./Layouts/ProtectedRoute"
+import ProtectedRoute from "./Layouts/ProtectedRoute";
 
 // import AuthStore from "./stores/AuthStore";
 // import Admin from "./Pages/Admin/Admin";
 
 class App extends Component {
-
-render(){
-  return (
-    <div className="App">
-      <Router>
-        <PageContainer>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/service" component={Service} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/blog" component={Blog} />
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/signin" component={SignIn} />
-            <ProtectedRoute exact path="/profile/:page" component={Profile} />
-            <Route path="/*" component={Error} />
-          </Switch>
-        </PageContainer>
-      </Router>
-    </div>
-  );}
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <PageContainer>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/service" component={Service} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/blog" component={Blog} />
+              <Route exact path="/contact" component={Contact} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/signin" component={SignIn} />
+              {/* profile routing temporary fix */}
+              <ProtectedRoute exact path="/dashboard" component={Profile} />
+              <ProtectedRoute exact path="/medicals" component={Profile} />
+              <ProtectedRoute
+                exact
+                path="/medical-history"
+                component={Profile}
+              />
+              <ProtectedRoute
+                exact
+                path="/service-requests"
+                component={Profile}
+              />
+              <ProtectedRoute exact path="/appointments" component={Profile} />
+              <ProtectedRoute exact path="/payments" component={Profile} />
+              <ProtectedRoute exact path="/settings" component={Profile} />
+              <ProtectedRoute exact path="/support" component={Profile} />
+              <Route path="/*" component={Error} />
+            </Switch>
+          </PageContainer>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
-

@@ -15,6 +15,15 @@ import Button from "../../Anime/Button";
 const Contact = (props) => {
 
   console.log({props});
+  
+  useEffect(() => {
+    autoScroll();
+  }, []);
+
+  const autoScroll = () => {
+    console.log("auto scroll");
+    return window.scrollTo(0, 0);
+  };
 
   const alert = useAlert();
   // const history = useHistory();

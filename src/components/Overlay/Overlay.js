@@ -34,13 +34,13 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
   ];
 
   const profileLinks = [
-    { value: "Dashboard", directory: "profile/dashboard" },
-    { value: "Medical Profile", directory: "profile/medicals" },
-    { value: "Medical History", directory: "profile/medical-history" },
-    { value: "Service Requests", directory: "profile/service-requests" },
-    { value: "My Appointments", directory: "profile/appointments" },
-    { value: "Payments", directory: "profile/payments" },
-    { value: "Settings", directory: "profile/settings" },
+    { value: "Dashboard", directory: "/dashboard" },
+    { value: "Medical Profile", directory: "/medicals" },
+    { value: "Medical History", directory: "/medical-history" },
+    { value: "Service Requests", directory: "/service-requests" },
+    { value: "My Appointments", directory: "/appointments" },
+    { value: "Payments", directory: "/payments" },
+    { value: "Settings", directory: "/settings" },
   ];
 
   // pushes the new route to the DOM history
@@ -54,12 +54,12 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
   };
 
   const content = (
-    <div className={`overlay ${slide && "slide"}`}>
-      <div className="overlay__body">
+    // <div className={`overlay ${slide && "slide"}`}>
+      <div className={`overlay__body ${slide && "slide"}`}>
+
         <div onClick={() => setSlide(false)} className="close__button">
           X
         </div>
-
         <img
           src="../images/ikarely_logo_overlay.png"
           alt="logo.png"
@@ -123,7 +123,7 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
           </ul>
         </div>
       </div>
-    </div>
+    // </div>
   );
 
   return ReactDom.createPortal(content, document.getElementById("overlay"));

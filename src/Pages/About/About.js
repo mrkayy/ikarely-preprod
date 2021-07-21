@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageLanding from "../../components/PageLanding/PageLanding";
 import Teams from "../../components/Teams/Teams";
 import WhyUs from "../../components/WhyChooseUs/WhyUs";
 import "./About.css";
 
 const About = () => {
+  useEffect(() => {
+    autoScroll()
+  }, []);
+  
+  const autoScroll = ()=>{
+    console.log('auto scroll')
+    return window.scrollTo(0, 0);
+  }
+
   return (
     <div className="about">
       <PageLanding image="easy-access.jpg" title="About us" />
@@ -45,6 +54,6 @@ const About = () => {
       <Teams />
     </div>
   );
-}
+};
 
 export default About;

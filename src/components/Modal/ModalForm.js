@@ -129,6 +129,7 @@ function ModalForm({ services, setOpenModal }) {
         ) : (
           <>
             <div className="booking__summary">
+              
               <h2 className="confirm__summary">Request Summary</h2>
 
               <div className="request__info">

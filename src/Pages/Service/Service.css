@@ -53,6 +53,7 @@
 .list__title, .list__word{
   color: #083C63;
   text-align: justify;
+  font-family: 'Poppins';
 }
 .makerequest__btn{
   border: none;
