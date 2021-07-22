@@ -1,13 +1,12 @@
 import React, { useEffect, useState,useContext } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
-// import Overlay from "../Overlay/Overlay";
 import { observer } from "mobx-react";
 import AuthContext from '../../stores/AuthStore'
 
-
 function NavBar({ slide, showMenu }) {
-  const {logout,currUser} = useContext(AuthContext)
+
+  const {logout,currUser} = useContext(AuthContext);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -23,6 +22,7 @@ function NavBar({ slide, showMenu }) {
     };
   }, []);
 
+
   return (
     <div className={`navbar__content ${show && "nav__bg"}`}>
       <div className="logo">
@@ -35,10 +35,9 @@ function NavBar({ slide, showMenu }) {
             <Link to="/">Home</Link>
           </li>
           <li className="navbar__menus">
-            <Link to="/service">Services</Link>{" "}
+            <Link to="/service">Services</Link>
           </li>
           {/* <li className="navbar__menus">
-            {" "}
             <Link to="/blog">Blog</Link>
           </li> */}
           <li className="navbar__menus">
@@ -66,7 +65,7 @@ function NavBar({ slide, showMenu }) {
               </li>
               <li className="navbar__menus">
                 <Link to="/signin">Sign In</Link>
-              </li>{" "}
+              </li>
             </>
           )}
           <li className="hamburger__menu" onClick={() => showMenu(slide)}>

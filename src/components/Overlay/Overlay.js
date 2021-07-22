@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import ReactDom from "react-dom";
-import "./Overlay.css";
 import AuthStore from "../../stores/AuthStore";
+import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
+import "./Overlay.css";
 
 const Overlay = ({ slide, showMenu, setSlide }) => {
   const authcontext = useContext(AuthStore);
@@ -54,9 +55,8 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
   };
 
   const content = (
-    // <div className={`overlay ${slide && "slide"}`}>
-      <div className={`overlay__body ${slide && "slide"}`}>
-
+    <div className={`overlay ${slide && "slide"}`}>
+      <div className="overlay__body">
         <div onClick={() => setSlide(false)} className="close__button">
           X
         </div>
@@ -75,7 +75,9 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
                   onClick={() => viewLink(slide)}
                   key={index}
                 >
-                  <Link activeClassName="selected" to={directory}>{value}</Link>
+                  <Link className="selected" to={directory}>
+                    {value}
+                  </Link>
                 </li>
               );
             })}
@@ -102,31 +104,30 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
             ) : (
               <>
                 <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                  <button
-                    // onClick={handleLink("/signin")}
-                    className="login__link__btn"
-                  >
-                    Login
-                  </button>
+                  <Link to="/signin">
+                    <button className="login__link__btn">Login</button>
+                  </Link>
                 </li>
 
                 <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                  <button
-                    // onClick={handleLink("/register")}
-                    className="register__link__btn"
-                  >
-                    Register
-                  </button>
+                  <Link to="/register">
+                    <button className="register__link__btn">Register</button>
+                  </Link>
                 </li>
               </>
             )}
           </ul>
         </div>
       </div>
-    // </div>
+    </div>
   );
 
   return ReactDom.createPortal(content, document.getElementById("overlay"));
+};
+
+Overlay.propTypes = {
+  slide: PropTypes.bool.isRequired,
+  showMenu: PropTypes.func.isRequired,
 };
 
 export default observer(Overlay);

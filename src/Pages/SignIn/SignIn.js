@@ -20,7 +20,6 @@ const SignIn = (props) => {
   }, []);
 
   const autoScroll = () => {
-    console.log("auto scroll");
     return window.scrollTo(0, 0);
   };
 
