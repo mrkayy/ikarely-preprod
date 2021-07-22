@@ -12,7 +12,7 @@ import WebStorage from "../../shared/LocalStorage";
 function ModalForm({ services, setOpenModal }) {
   const token = WebStorage.get("user_token");
   const [stage, setStage] = useState(0);
-  const alert = useAlert();
+  // const alert = useAlert();
 
   const servicecontext = useContext(ServiceStore);
 
@@ -22,10 +22,10 @@ function ModalForm({ services, setOpenModal }) {
 
   const {
     loadingReq,
-    reqError,
-    reqSuccess,
-    reqErrMessage,
-    reqSuccessMessage,
+    // reqError,
+    // reqSuccess,
+    // reqErrMessage,
+    // reqSuccessMessage,
     sendRequest,
   } = servicecontext;
 
