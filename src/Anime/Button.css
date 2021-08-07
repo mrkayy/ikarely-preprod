@@ -18,25 +18,27 @@
     appearance: none;
     color: white;
     width: 100%;
+    border-radius: 5px;
     margin-bottom: 20px;
     text-align: center;
     height: 40px;
     background-color: rgb(8, 60, 99);
   }
   
-   /* When there is an error with validation */
+  /* When there is an error with validation */
   .not__active{
-      background-color: rgb(8, 60, 99);
-      opacity: .8;
+    background-color: #aeaeae;
+    opacity: .8;
   }
 
-
-
+  
+  
   /* The Loading div that is animated */
-
+  
   .loader {
     width: 15px;
     height: 15px;
+    border-radius: 5px;
     border-radius: 100%;
     padding: 10px;
     background-color: transparent;

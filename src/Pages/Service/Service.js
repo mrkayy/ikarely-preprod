@@ -34,37 +34,43 @@ function Service() {
   const alert = useAlert();
   const services = [
     {
+      id: 1,
       icon: "wound.svg",
       title: "Wound Care",
       params: "wound_care",
       word: "Why go through the stress of going to and waiting in the hospital when dealing with wounds is enough stress on its own. We offer wound dressing services for patients with minor burns, pressure ulcer, diabetic foot and any other form of wounds at your utmost convenience.",
     },
     {
+      id: 1,
       icon: "injection.svg",
       title: "Vaccination",
       params: "vaccination",
       word: "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
     },
     {
+      id: 1,
       icon: "Catherization.svg",
       title: "Geriatric care",
       params: "catheterization",
       word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
     },
     // {
-    //   icon: 'Chemotography.svg',
+    // id: 1, 
+    // icon: 'Chemotography.svg',
     //   title: 'Chemotography',
     // params: 'chemotherapy',
     //   word:
     //     'We offer home chemotherapy psychological support for people living with cancer. ',
     // },
     {
+      id: 1,
       icon: "teeth-checkup.svg",
       title: "Dental Care",
       params: "dental_care",
       word: "We provide a wide range of dental services etc dental cleanings, Fillings, root canals, and extractions. Imagine the comfort of having a dentist come to your home for your dental care, that's exactly what we are offering you.",
     },
     {
+      id: 1,
       icon: "healthcare.svg",
       title: "General Check-up",
       params: "general_checkup",
@@ -93,10 +99,6 @@ function Service() {
       resetActions();
     };
   }, [reqErrMessage, reqSuccessMessage]);
-
-
-
- 
 
   return (
     <div className="services">

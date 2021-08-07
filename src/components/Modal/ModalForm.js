@@ -29,7 +29,7 @@ function ModalForm({ services, setOpenModal }) {
     sendRequest,
   } = servicecontext;
 
-  const { state, setState, schema, setSchemas, handleChange, validate } =
+  const { state, setState, setSchemas, handleChange, validate } =
     useContext(GlobalContext);
 
   const year = new Date().getFullYear();
@@ -43,21 +43,23 @@ function ModalForm({ services, setOpenModal }) {
     setStage((prevState) => ({
       ...prevState,
       data: {
+        service_id: 1,
         service: "",
         more_details: "",
         address: "",
         bus_stop: "",
-        date: todayDate,
+        date: "",
       },
     }));
 
     setSchemas((prevState) => ({
       ...prevState,
       service: Joi.string().required().label("Service"),
-      more_details: Joi.string().allow("").optional().label("More details"),
       address: Joi.string().required().label("Address"),
       bus_stop: Joi.string().required().label("Bus Stop"),
       date: Joi.string().required().label("Date"),
+      more_details: Joi.string().allow("").optional().label("More details"),
+      service_id: Joi.number(),
     }));
 
     return () => {
@@ -68,7 +70,7 @@ function ModalForm({ services, setOpenModal }) {
 
   const { data, errors } = state;
 
-  // console.log(data)
+  console.log(services);
 
   const stagesRender = (stage) => {
     // eslint-disable-next-line default-case
@@ -87,8 +89,8 @@ function ModalForm({ services, setOpenModal }) {
                 <option value="" className="first__option">
                   choose a service
                 </option>
-                {services.map(({ title, params }) => (
-                  <option value={params} key={title}>
+                {services.map(({ title, id }) => (
+                  <option value={title} key={title}>
                     {title}
                   </option>
                 ))}
@@ -129,7 +131,6 @@ function ModalForm({ services, setOpenModal }) {
         ) : (
           <>
             <div className="booking__summary">
-              
               <h2 className="confirm__summary">Request Summary</h2>
 
               <div className="request__info">
@@ -153,11 +154,7 @@ function ModalForm({ services, setOpenModal }) {
                   <span className="detail__value">{`${data.date}`}</span>
                 </div>
                 <div className="request__detail">
-                  Service:{" "}
-                  <span className="detail__value">{`${
-                    services.find((element) => element.params > data.service)
-                      .title
-                  }`}</span>
+                  Service: <span className="detail__value">{data.service}</span>
                 </div>
               </div>
 
@@ -204,14 +201,17 @@ function ModalForm({ services, setOpenModal }) {
     }));
 
     if (errors) return;
-    const { service, more_details, address, bus_stop, date } = data;
 
+    console.log(data);
+    const { more_details, address, bus_stop, date } = data;
     const req_data = {
       additional_note: more_details,
-      service,
-      location: `${address + bus_stop}`,
+      service_id: 1,
+      location: `${address},near ${bus_stop}`,
       preferred_date_of_appointment: date,
     };
+
+    console.log(req_data);
     sendRequest(req_data);
   };
 

@@ -51,10 +51,13 @@ function Register(props) {
         full_name: "",
         phone: "",
         email: "",
-        city_of_residence: "",
+        city_of_residence: "nill",
         password: "",
+        landmark: "nill",
+        address: "nill",
         re_enter_password: "",
-        user_type: "",
+        user_type: "customer",
+        date_of_birth:"nill",
       },
     }));
 
@@ -63,19 +66,22 @@ function Register(props) {
       full_name: Joi.string().required().label("Full Name"),
       phone: Joi.number().min(9).required().label("Phone"),
       email: Joi.string().email().required().label("Email"),
-      city_of_residence: Joi.string().required().label("City"),
       password: Joi.string().required().min(5).label("Password"),
       re_enter_password: Joi.string()
-        .required()
-        .valid(Joi.ref("password"))
-        .options({
-          language: {
-            any: {
-              allowOnly: "!!Passwords do not match",
-            },
+      .required()
+      .valid(Joi.ref("password"))
+      .options({
+        language: {
+          any: {
+            allowOnly: "!!Passwords do not match",
           },
-        }),
-      user_type: Joi.string().required().label("User type"),
+        },
+      }),
+      landmark: Joi.string(),
+      date_of_birth: Joi.string(),
+      address: Joi.string(),
+      city_of_residence: Joi.string(),
+      user_type: Joi.string(),
     }));
 
     return () => {
@@ -111,15 +117,27 @@ function Register(props) {
       errors: errors || {},
     }));
     if (errors) return;
-    const { full_name, phone, email, city_of_residence, password, user_type } =
-      data;
-
+    const {
+      full_name,
+      phone,
+      email,
+      password,
+      landmark,
+      city_of_residence,
+      user_type,
+      address,
+      date_of_birth,
+    } = data;
+    
     const datas = {
       full_name,
       phone,
       email,
-      city_of_residence,
+      address,
       password,
+      landmark,
+      city_of_residence,
+      date_of_birth,
       user_type,
     };
     register(datas);
@@ -153,11 +171,6 @@ function Register(props) {
 
           <InputBox label="Phone" name="phone" type="text" />
 
-          <InputBox
-            label="City of residence"
-            name="city_of_residence"
-            type="text"
-          />
 
           <InputBox label="Password" name="password" type={"password"} />
 
@@ -165,9 +178,14 @@ function Register(props) {
             label="Re-enter Password"
             name="re_enter_password"
             type={"password"}
-          />
+            />
+            {/* <InputBox
+              label="City of residence"
+              name="city_of_residence"
+              type="text"
+            /> */}
 
-          <select
+          {/* <select
             name="service"
             onChange={handleChange}
             value={state.data.user_type}
@@ -184,7 +202,7 @@ function Register(props) {
             <option value="Professional" className="first__option">
               Professional{" "}
             </option>
-          </select>
+          </select> */}
 
           <Button progress="Registering..." shown="Create Account" />
 
