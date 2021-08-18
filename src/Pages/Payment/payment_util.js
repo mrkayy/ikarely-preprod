@@ -1,13 +1,13 @@
 // Customer payment using PaystackConsumer option
 import { PaystackConsumer } from "react-paystack";
 
-const amount = 1000;
+const amount = 10000;
 
 const config = {
   reference: new Date().getTime().toString(),
-  email: "samplemail@mail.com",
-  amount: amount * 1000,
-  publicKey: "pk_test_dsdfghuytfd2345678gvxxxxxxxxxx",
+  email: "t.olukayode@ikarey.com",
+  amount: amount * 100,
+  publicKey: "pk_test_e502dd910aa80240b02684e8065edb04511d35bd",
 };
 
 //handleSuccess  method is called when payment has been completed successfully on the Paystack checkout
@@ -30,18 +30,27 @@ const verifyPayment = (reference) => {
 function PaymentApp() {
   const componentProps = {
     ...config,
-    text: "Paystack Button Implementation",
+    text: "Paystack Implementation",
     onSuccess: (reference) => handleSuccess(reference),
     onClose: handleClose,
   };
 
   return (
-    <PaystackConsumer {...componentProps}>
-      {({ initializePayment }) => (
-        <button onClick={() => initializePayment(handleSuccess, handleClose)}>
-          Paystack
-        </button>
-      )}
-    </PaystackConsumer>
+    <div>
+      <PaystackConsumer {...componentProps}>
+        {({ initializePayment }) => (
+          <button
+            onClick={() => {
+              console.log("clicking");
+              initializePayment(handleSuccess, handleClose);
+            }}
+          >
+            Paystack
+          </button>
+        )}
+      </PaystackConsumer>
+    </div>
   );
 }
+
+export default PaymentApp;

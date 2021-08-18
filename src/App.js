@@ -11,6 +11,7 @@ import Error from "./Pages/Error";
 import Register from "./Pages/Register/Register";
 import SignIn from "./Pages/SignIn/SignIn";
 import Profile from "./Pages/Profile";
+import Payments from "./Pages/Payment";
 import PageContainer from "./Layouts/PageContainer/PageContainer";
 import ProtectedRoute from "./Layouts/ProtectedRoute";
 
@@ -48,6 +49,7 @@ class App extends Component {
               <ProtectedRoute exact path="/payments" component={Profile} />
               <ProtectedRoute exact path="/settings" component={Profile} />
               <ProtectedRoute exact path="/support" component={Profile} />
+              <ProtectedRoute exact path="/payment" component={Payments} />
               <Route path="/*" component={Error} />
             </Switch>
           </PageContainer>

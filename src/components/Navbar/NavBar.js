@@ -1,12 +1,11 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
-import AuthContext from '../../stores/AuthStore'
+import AuthContext from "../../stores/AuthStore";
 
 function NavBar({ slide, showMenu }) {
-
-  const {logout,currUser} = useContext(AuthContext);
+  const { logout, currUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -21,7 +20,6 @@ function NavBar({ slide, showMenu }) {
       window.removeEventListener("scroll");
     };
   }, []);
-
 
   return (
     <div className={`navbar__content ${show && "nav__bg"}`}>
@@ -49,7 +47,7 @@ function NavBar({ slide, showMenu }) {
           {currUser && currUser ? (
             <>
               <li className="navbar__menus">
-                <Link to="/profile/dashboard">Dashboard</Link>
+                <Link to="/dashboard">Dashboard</Link>
               </li>
               <li
                 className="navbar__menus logout__btn"
