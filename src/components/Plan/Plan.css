@@ -1,0 +1,52 @@
+.each__plan {
+  width: 316px;
+  /* height: 746px; */
+  background-color: #e6ebef;
+  padding: 32px 20px;
+  border-radius: 16px;
+}
+.plan__header > h3 {
+  font-size: 32px;
+  margin-left: 24px;
+}
+.plan__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.plan__details > ul{
+    padding: 20px 0px;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+}
+.plandetails__list {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 22px;
+}
+.plandetails__list > img{
+    object-fit: contain;
+    
+  }
+.planlist__icon {
+  /* list-style-image: url("images/markicon.png"); */
+  margin-right: 16px;
+}
+.plan__price{
+    text-align: center;
+    margin: 20px 0px;
+    font-size: 30px;
+    font-weight: 600;
+    /* color: #094074; */
+}
+button.choose__plan{
+    border: none;
+    border-radius: 4px;
+    color: #094074;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    background-color: #fff;
+}

@@ -47,20 +47,35 @@ div ul {
   /* flex: 0.7; */
   text-align: center;
   justify-content: space-between;
-
-  /* align-items: center; */
+  align-items: center;
 }
 .navbar__links ul > li {
   margin-right: 30px;
   font-family: 'Poppins';
   font-size: 1.0em;
 }
+button.signinbtn{
+  font-size: 1em;
+  font-weight: 600;
+  background-color: transparent;
+  border: 1px solid #083c63;
+  color: #083c63;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+button.signinbtn:hover{
+  background-color: #083c63;
+  /* border: 1px solid #083c63; */
+  color: #fff;
+}
+
+
 .navbar__links ul > li:last-child {
   margin-right: 0px;
 }
 .navbar__links ul > li a {
-  font-size: 1.055em;
-  font-weight: 600;
+  /* font-size: 1.055em; */
+  /* font-weight: 600; */
   text-decoration: none;
   color: inherit;
 }

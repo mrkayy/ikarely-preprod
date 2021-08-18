@@ -9,8 +9,8 @@ const Home = () => {
   return (
     <div className='home'>
       <Landing />
+      {/* <WhyUs /> */}
       <Section />
-      <WhyUs />
     </div>
   );
 }
