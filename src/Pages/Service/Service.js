@@ -11,17 +11,17 @@ import "./Service.css";
 import Modal from "@material-ui/core/Modal";
 import ModalForm from "../../components/Modal/ModalForm";
 import ServiceStore from "../../stores/Services";
-import AuthStore from '../../stores/AuthStore'
+import AuthStore from "../../stores/AuthStore";
 import { observer } from "mobx-react";
 import { useAlert } from "react-alert";
 
 function Service() {
   const [openModal, setOpenModal] = useState(false);
   const servicecontext = useContext(ServiceStore);
-  const authContext = useContext(AuthStore)
-  
-  const {currUser} = authContext;
-  
+  const authContext = useContext(AuthStore);
+
+  const { currUser } = authContext;
+
   useEffect(() => {
     autoScroll();
   }, []);
@@ -29,7 +29,6 @@ function Service() {
   const autoScroll = () => {
     return window.scrollTo(0, 0);
   };
-
 
   const alert = useAlert();
   const services = [
@@ -55,7 +54,7 @@ function Service() {
       word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
     },
     // {
-    // id: 1, 
+    // id: 1,
     // icon: 'Chemotography.svg',
     //   title: 'Chemotography',
     // params: 'chemotherapy',
