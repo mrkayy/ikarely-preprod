@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import ReactDom from "react-dom";
-import "./Overlay.css";
 import AuthStore from "../../stores/AuthStore";
+import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
+import "./Overlay.css";
 
 const Overlay = ({ slide, showMenu, setSlide }) => {
   const authcontext = useContext(AuthStore);
@@ -34,13 +35,13 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
   ];
 
   const profileLinks = [
-    { value: "Dashboard", directory: "profile/dashboard" },
-    { value: "Medical Profile", directory: "profile/medicals" },
-    { value: "Medical History", directory: "profile/medical-history" },
-    { value: "Service Requests", directory: "profile/service-requests" },
-    { value: "My Appointments", directory: "profile/appointments" },
-    { value: "Payments", directory: "profile/payments" },
-    { value: "Settings", directory: "profile/settings" },
+    { value: "Dashboard", directory: "/dashboard" },
+    { value: "Medical Profile", directory: "/medicals" },
+    { value: "Medical History", directory: "/medical-history" },
+    { value: "Service Requests", directory: "/service-requests" },
+    { value: "My Appointments", directory: "/appointments" },
+    { value: "Payments", directory: "/payments" },
+    { value: "Settings", directory: "/settings" },
   ];
 
   // pushes the new route to the DOM history
@@ -59,7 +60,6 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
         <div onClick={() => setSlide(false)} className="close__button">
           X
         </div>
-
         <img
           src="../images/ikarely_logo_overlay.png"
           alt="logo.png"
@@ -75,7 +75,9 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
                   onClick={() => viewLink(slide)}
                   key={index}
                 >
-                  <Link activeClassName="selected" to={directory}>{value}</Link>
+                  <Link className="selected" to={directory}>
+                    {value}
+                  </Link>
                 </li>
               );
             })}
@@ -111,12 +113,9 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
                 </li>
 
                 <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                  <button
-                    // onClick={handleLink("/register")}
-                    className="register__link__btn"
-                  >
-                    Register
-                  </button>
+                  <Link to="/register">
+                    <button className="register__link__btn">Register</button>
+                  </Link>
                 </li>
               </>
             )}
@@ -127,6 +126,11 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
   );
 
   return ReactDom.createPortal(content, document.getElementById("overlay"));
+};
+
+Overlay.propTypes = {
+  slide: PropTypes.bool.isRequired,
+  showMenu: PropTypes.func.isRequired,
 };
 
 export default observer(Overlay);

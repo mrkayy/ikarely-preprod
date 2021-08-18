@@ -1,8 +1,8 @@
 import React, {
   useState,
   useContext,
-  useLayoutEffect,
-  useRef,
+  // useLayoutEffect,
+  // useRef,
   useEffect,
 } from "react";
 import { Link } from "react-router-dom";
@@ -18,9 +18,19 @@ import { useAlert } from "react-alert";
 function Service() {
   const [openModal, setOpenModal] = useState(false);
   const servicecontext = useContext(ServiceStore);
-  const authContext = useContext(AuthStore);
+  const authContext = useContext(AuthStore)
+  
+  const {currUser} = authContext;
+  
+  useEffect(() => {
+    autoScroll();
+  }, []);
 
-  const { currUser } = authContext;
+  const autoScroll = () => {
+    return window.scrollTo(0, 0);
+  };
+
+  // const { currUser } = authContext;
 
   const alert = useAlert();
   const services = [

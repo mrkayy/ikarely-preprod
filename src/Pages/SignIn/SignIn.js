@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./SignIn.css";
 import { observer } from "mobx-react";
 import AuthStore from "../../stores/AuthStore";
@@ -12,7 +12,16 @@ import Button from "../../Anime/Button";
 
 const SignIn = (props) => {
   const alert = useAlert();
-  const history = useHistory();
+  // const history = useHistory();
+
+  
+  useEffect(() => {
+    autoScroll();
+  }, []);
+
+  const autoScroll = () => {
+    return window.scrollTo(0, 0);
+  };
 
   const authcontext = useContext(AuthStore);
   const {
@@ -63,7 +72,7 @@ const SignIn = (props) => {
 
   useEffect(() => {
     if (authSuccess === "pass") {
-      props.history.push("/profile/dashboard");
+      props.history.push("/service");
     }
     return () => {
       resetActions();
