@@ -6,9 +6,12 @@ import "./Subscription.css";
 
 function Subscription({match: {url}}) {
 
-  const title = url.slice(14)
+  const startPos = url.lastIndexOf('/')+1
 
-  console.log(title)
+  // console.log(startPos)
+  const title = url.slice(startPos)
+
+  
 
 
 

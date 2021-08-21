@@ -18,10 +18,10 @@ import { useAlert } from "react-alert";
 function Service() {
   const [openModal, setOpenModal] = useState(false);
   const servicecontext = useContext(ServiceStore);
-  const authContext = useContext(AuthStore)
-  
-  const {currUser} = authContext;
-  
+  const authContext = useContext(AuthStore);
+
+  const { currUser } = authContext;
+
   useEffect(() => {
     autoScroll();
   }, []);
@@ -123,7 +123,7 @@ function Service() {
       <div className="each__section">
         <div className="right__part">
           <h3>services</h3>
-          <h1>Get the best medical aid at home</h1>
+          <h2>Get the best medical aid at home</h2>
           <p className="section__word">
             We believe there is no better time to decongest hospitals especially
             in Africa where there is the disproportionate patient-to-doctor
@@ -166,35 +166,56 @@ function Service() {
           <Link to="/signin">
             <button className="getstarted__btn">Get Started</button>
           </Link>
-           ) : (
+        ) : (
           <button
             className="makerequest__btn"
             onClick={() => setOpenModal(!openModal)}
           >
             Make Request
-          </button> 
-           )}
+          </button>
+        )}
 
         <div className="service__lists">
-          {services.map(({ icon, title, word, params }) => {
-            return (
-              <div className="service__list" key={title}>
-                <div className="list__icon">
-                  <img src={`../images/icons/${icon}`} alt="icon.png" />
-                  <h4 className="list__title">{title}</h4>
-                </div>
-                <p className="list__word">{word}</p>
+          {services
+            .filter((service) => !service.params)
+            .map(({ icon, title, word, params }) => {
+              return (
+                <div className="service__list" key={title}>
+                  <div className="list__icon">
+                    <img src={`../images/icons/${icon}`} alt="icon.png" />
+                    <h4 className="list__title">{title}</h4>
+                  </div>
+                  <p className="list__word">{word}</p>
 
-                {params ? (
-                  <Link to={`/subscription/${params}`}>
-                    <button className="makerequest__btn">Make Request</button>
-                  </Link>
-                ) : (
-                  btnSwitch
-                )}
-              </div>
-            );
-          })}
+                  { btnSwitch }
+                </div>
+              );
+            })}
+        </div>
+
+        <div className="service__headers">
+          <h3 className="services__head">Our Services</h3>
+          <h1 className="services__mainheader">Health Services we offer</h1>
+        </div>
+
+        <div className="service__lists">
+          {services
+            .filter((service) => service.params)
+            .map(({ icon, title, word, params }) => {
+              return (
+                <div className="service__list" key={title}>
+                  <div className="list__icon">
+                    <img src={`../images/icons/${icon}`} alt="icon.png" />
+                    <h4 className="list__title">{title}</h4>
+                  </div>
+                  <p className="list__word">{word}</p>
+                    <Link to={`/subscription/${params}`}>
+                      <button className="makerequest__btn">Make Request</button>
+                    </Link>
+                  
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>

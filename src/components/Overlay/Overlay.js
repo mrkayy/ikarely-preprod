@@ -104,12 +104,9 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
             ) : (
               <>
                 <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                  <button
-                    // onClick={handleLink("/signin")}
-                    className="login__link__btn"
-                  >
-                    Login 
-                  </button>
+                  <Link to="/signin">
+                    <button className="login__link__btn">Login</button>
+                  </Link>
                 </li>
 
                 <li className="navbar__slide" onClick={() => viewLink(slide)}>

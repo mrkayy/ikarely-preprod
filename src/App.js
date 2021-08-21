@@ -14,6 +14,7 @@ import Profile from "./Pages/Profile";
 import PageContainer from "./Layouts/PageContainer/PageContainer";
 import ProtectedRoute from "./Layouts/ProtectedRoute"
 import Subscription from "./Pages/Subscription/Subscription";
+import Checkout from "./Pages/Checkout/Checkout";
 
 // import AuthStore from "./stores/AuthStore";
 // import Admin from "./Pages/Admin/Admin";
@@ -37,6 +38,7 @@ render(){
             <Route exact path={`/subscription/general_checkup`} component={Subscription} />
             <Route exact path={`/subscription/pregnacare`} component={Subscription} />
             <Route exact path={`/subscription/diabetes`} component={Subscription} />
+            <Route exact path="/checkout" component={Checkout}/>
             <ProtectedRoute exact path="/profile/:page" component={Profile} />
             <Route path="/*" component={Error} />
           </Switch>

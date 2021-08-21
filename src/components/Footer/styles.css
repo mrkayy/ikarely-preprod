@@ -9,7 +9,8 @@
   padding: 3% 4% 2%;
   color: #FFFFFF;
   background-color: #094074;
-  /* font-size: 18px; */
+  /* Changed the font size from 18 */
+  font-size: 14px;  
 
 }
 .footer__contacts{
