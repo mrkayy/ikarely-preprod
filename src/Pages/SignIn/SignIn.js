@@ -9,12 +9,11 @@ import InputBox from "../../shared/InputBox";
 import Joi from "joi-browser";
 import { GlobalContext } from "../../stores/GlobalLayer";
 import Button from "../../Anime/Button";
+import InputPasswordBox from "../../shared/InputPasswordBox";
 
 const SignIn = (props) => {
   const alert = useAlert();
-  // const history = useHistory();
 
-  
   useEffect(() => {
     autoScroll();
   }, []);
@@ -109,9 +108,13 @@ const SignIn = (props) => {
           <p className="little__text">Welcome to iKarely</p>
         </div>
 
+
+
         <form action="submit" onSubmit={loginSubmit} className="form__inputs">
+
+
           <InputBox label="Email or Phone Number" name="email" type="email" />
-          <InputBox label="Password" name="password" type="password" />
+          <InputPasswordBox label="Password" name="password"/>
 
           {/* <div className="keep__signed">
               <input

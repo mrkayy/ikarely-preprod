@@ -11,10 +11,6 @@ function Subscription({match: {url}}) {
   // console.log(startPos)
   const title = url.slice(startPos)
 
-  
-
-
-
   const check = "injection";
 
   const subscriptions = [

@@ -1,11 +1,13 @@
 import React from "react";
 import "./Plan.css";
+import planIcon from '../../assets/images/planicon.png'
+import markIcon from '../../assets/images/markicon.png'
 
 function Plan({type, price, offers}) {
   return (
     <div className="each__plan">
       <div className="plan__header">
-        <img src="images/planicon.png" alt="" />
+        <img src={planIcon} alt="" />
         <h3 className="plan__type">{type} Plan</h3>
       </div>
       <div className="plan__details">
@@ -13,7 +15,7 @@ function Plan({type, price, offers}) {
           {offers.map(offer => {
             return(
               <li className="plandetails__list">
-                <img src="images/markicon.png" alt="" className="planlist__icon" />
+                <img src={markIcon} alt="" className="planlist__icon" />
                 {offer}
               </li>
             )

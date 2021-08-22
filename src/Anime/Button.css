@@ -57,7 +57,8 @@
 @media screen and (min-width: 1025px) {
   .register__submit__btn,
   .not__active,
-  .send__message__btn {
+  .send__message__btn,
+  .loading__show {
     height: 50px;
   }
 }
