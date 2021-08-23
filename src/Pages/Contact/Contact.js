@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 // import { Link, useHistory, Redirect } from "react-router-dom";
 
 import "./Contact.css";
-import PageLanding from "../../components/PageLanding/PageLanding";
+import PageLanding from "../../Components/PageLanding/PageLanding";
 import InputBox from "../../shared/InputBox";
 import Joi from "joi-browser";
 import { observer } from "mobx-react";

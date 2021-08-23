@@ -12,8 +12,9 @@ import Register from "./Pages/Register/Register";
 import SignIn from "./Pages/SignIn/SignIn";
 import Profile from "./Pages/Profile";
 import Payments from "./Pages/Payment";
-import PageContainer from "./Layouts/PageContainer/PageContainer";
-import ProtectedRoute from "./Layouts/ProtectedRoute";
+import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import Subscription from "./Pages/Subscription/Subscription";
 
 // import AuthStore from "./stores/AuthStore";
 // import Admin from "./Pages/Admin/Admin";
@@ -23,7 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <PageContainer>
+          <GeneralLayout>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/service" component={Service} />
@@ -32,6 +33,29 @@ class App extends Component {
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/signin" component={SignIn} />
+
+              <Route
+                exact
+                path={`/subscription/geriatic_care`}
+                component={Subscription}
+              />
+              <Route
+                exact
+                path={`/subscription/general_checkup`}
+                component={Subscription}
+              />
+              <Route
+                exact
+                path={`/subscription/pregnacare`}
+                component={Subscription}
+              />
+              <Route
+                exact
+                path={`/subscription/diabetes`}
+                component={Subscription}
+              />
+              {/* TODO: add layout component */}
+              <ProtectedRoute exact path="/profile/:page" component={Profile} />
               {/* profile routing temporary fix */}
               <ProtectedRoute exact path="/dashboard" component={Profile} />
               <ProtectedRoute exact path="/medicals" component={Profile} />
@@ -52,7 +76,7 @@ class App extends Component {
               <ProtectedRoute exact path="/payment" component={Payments} />
               <Route path="/*" component={Error} />
             </Switch>
-          </PageContainer>
+          </GeneralLayout>
         </Router>
       </div>
     );

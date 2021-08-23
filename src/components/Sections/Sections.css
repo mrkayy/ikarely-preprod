@@ -60,8 +60,8 @@
   color: #083c63;
 }
 p.section__word {
-  margin-bottom: 15px;
-  font-size: 13px;
+  /* margin-bottom: 15px; */
+  font-size: 16px;
   color: #2d2d2d;
   font-family: 'Poppins';
   text-align: justify;

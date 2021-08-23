@@ -6,10 +6,10 @@ import React, {
   useEffect,
 } from "react";
 import { Link } from "react-router-dom";
-import PageLanding from "../../components/PageLanding/PageLanding";
+import PageLanding from "../../Components/PageLanding/PageLanding";
 import "./Service.css";
 import Modal from "@material-ui/core/Modal";
-import ModalForm from "../../components/Modal/ModalForm";
+import ModalForm from "../../Components/Modal/ModalForm";
 import ServiceStore from "../../stores/Services";
 import AuthStore from "../../stores/AuthStore";
 import { observer } from "mobx-react";
@@ -35,23 +35,23 @@ function Service() {
     {
       id: 1,
       icon: "wound.svg",
-      title: "Wound Care",
-      params: "wound_care",
+      title: "Dr Consultation",
       word: "Why go through the stress of going to and waiting in the hospital when dealing with wounds is enough stress on its own. We offer wound dressing services for patients with minor burns, pressure ulcer, diabetic foot and any other form of wounds at your utmost convenience.",
+      type: "by_request",
     },
     {
       id: 1,
       icon: "injection.svg",
-      title: "Vaccination",
-      params: "vaccination",
+      title: "Wound Care",
       word: "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
+      type: "by_request",
     },
     {
       id: 1,
       icon: "Catherization.svg",
-      title: "Geriatric care",
-      params: "catheterization",
+      title: "Vaccination",
       word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
+      type: "",
     },
     // {
     // id: 1,
@@ -67,13 +67,30 @@ function Service() {
       title: "Dental Care",
       params: "dental_care",
       word: "We provide a wide range of dental services etc dental cleanings, Fillings, root canals, and extractions. Imagine the comfort of having a dentist come to your home for your dental care, that's exactly what we are offering you.",
+      type: "",
     },
+
     {
       id: 1,
       icon: "healthcare.svg",
       title: "General Check-up",
       params: "general_checkup",
-      word: "You can request for our professional service for individual and family general check ups like Blood pressure, weight check, glucose check, malaria/HIV test, Body Mass Index (BMI) all at your convenience.",
+      word: "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
+      type: "",
+    },
+    {
+      icon: "Catherization.svg",
+      title: "Pregnacare",
+      params: "pregnacare",
+      word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
+      type: "",
+    },
+    {
+      icon: "healthcare.svg",
+      title: "Diabetes Care",
+      params: "diabetes",
+      word: "We provide a wide range of dental services etc dental cleanings, Fillings, root canals, and extractions. Imagine the comfort of having a dentist come to your home for your dental care, that's exactly what we are offering you.",
+      type: "",
     },
   ];
   const {
@@ -83,6 +100,19 @@ function Service() {
     reqSuccessMessage,
     resetActions,
   } = servicecontext;
+
+  const btnSwitch = !currUser ? (
+    <Link to="/signin">
+      <button className="makerequest__btn">Get Started</button>
+    </Link>
+  ) : (
+    <button
+      className="makerequest__btn"
+      onClick={() => setOpenModal(!openModal)}
+    >
+      Make Request
+    </button>
+  );
 
   useEffect(() => {
     if (reqError) {
@@ -147,7 +177,7 @@ function Service() {
 
         {!currUser ? (
           <Link to="/signin">
-            <button className="makerequest__btn">Get Started</button>
+            <button className="getstarted__btn">Get Started</button>
           </Link>
         ) : (
           <button
@@ -159,14 +189,22 @@ function Service() {
         )}
 
         <div className="service__lists">
-          {services.map(({ icon, title, word }) => {
+          {services.map(({ icon, title, word, params }) => {
             return (
               <div className="service__list" key={title}>
                 <div className="list__icon">
                   <img src={`../images/icons/${icon}`} alt="icon.png" />
+                  <h4 className="list__title">{title}</h4>
                 </div>
-                <h4 className="list__title">{title}</h4>
                 <p className="list__word">{word}</p>
+
+                {params ? (
+                  <Link to={`/subscription/${params}`}>
+                    <button className="makerequest__btn">Make Request</button>
+                  </Link>
+                ) : (
+                  btnSwitch
+                )}
               </div>
             );
           })}

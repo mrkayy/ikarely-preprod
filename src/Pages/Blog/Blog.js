@@ -1,10 +1,10 @@
 import React,{useEffect} from "react";
-import BlogPost from "../../components/BlogPost/BlogPost";
+import BlogPost from "../../Components/BlogPost/BlogPost";
 import "./Blog.css";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import Article from "../../components/Article/Article";
-import PageLanding from "../../components/PageLanding/PageLanding";
+import Article from "../../Components/Article/Article";
+import PageLanding from "../../Components/PageLanding/PageLanding";
 
 const Blog = () => {
 

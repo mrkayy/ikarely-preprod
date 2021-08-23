@@ -1,0 +1,12 @@
+
+
+.subscription__page{
+    padding: 56px;
+    text-align: center;
+}
+
+.subscription__plans{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

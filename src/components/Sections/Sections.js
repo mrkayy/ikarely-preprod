@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import WhyUs from "./WhyChooseUs/WhyUs";
 import "./Sections.css";
 
 function Sections() {
@@ -18,6 +19,8 @@ function Sections() {
           </button>
         </div>
       </div>
+
+      <WhyUs />
 
       <div className="each__section">
         <div className="left__part">

@@ -1,7 +1,7 @@
 import React from "react";
-import Landing from "../../components/Landing/Landing";
-import Section from "../../components/Sections/Sections";
-import WhyUs from "../../components/WhyChooseUs/WhyUs";
+import Landing from "../../Components/Landing/Landing";
+import Section from "../../Components/Sections/Sections";
+import WhyUs from "../../Components/Sections/WhyChooseUs/WhyUs";
 import './Home.css'
 
 const Home = () => {
@@ -17,8 +17,8 @@ const Home = () => {
   return (
     <div className='home'>
       <Landing />
+      {/* <WhyUs /> */}
       <Section />
-      <WhyUs />
     </div>
   );
 }

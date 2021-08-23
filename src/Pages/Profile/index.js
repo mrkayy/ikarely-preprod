@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import WebStorage from "../../shared/LocalStorage";
 
-import "../../components/Clients/style.css";
+import "../../Components/Clients/style.css";
 
 
 const ClientProfile = () => {

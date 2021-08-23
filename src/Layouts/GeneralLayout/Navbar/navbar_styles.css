@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  /* max-width: 96%; */
+  height: 80px;
+  text-align: center;
+  color: #32326f;
+  font-weight: 700;
+
+  position: fixed;
+  top: 0px;
+  padding: 35px 40px;
+  font-weight: 600;
+  transition: all 0.5s ease-in;
+  z-index: 10;
+}
+
+.nav__bg {
+  background-color: #ffffff;
+  color: #083c63;
+  box-shadow: 0px 4px 23px -9px rgb(192, 192, 192);
+}
+
+.logo {
+  flex: 0.3;
+  display: flex;
+  align-items: center;
+  margin-right: 90px;
+  object-fit: contain;
+  /* margin: 10px 0px; */
+}
+
+.logo > img {
+  width: 8vw;
+}
+
+div ul {
+  list-style-type: none;
+}
+
+.navbar__links ul {
+  display: flex;
+  /* flex: 0.7; */
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__links ul > li {
+  margin-right: 30px;
+  font-family: 'Poppins';
+  font-size: 1.0em;
+}
+button.signinbtn{
+  font-size: 1em;
+  font-weight: 600;
+  background-color: transparent;
+  border: 1px solid #083c63;
+  color: #083c63;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+button.signinbtn:hover{
+  background-color: #083c63;
+  /* border: 1px solid #083c63; */
+  color: #fff;
+}
+
+
+.navbar__links ul > li:last-child {
+  margin-right: 0px;
+}
+
+.navbar__links ul > li a {
+  /* font-size: 1.055em; */
+  /* font-weight: 600; */
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar__links a:hover, .logout__btn {
+  color: #ac0b0b;
+}
+
+.hamburger__menu > .line {
+  width: 25px;
+  height: 2px;
+  background-color: rgb(8, 60, 99);
+  margin-bottom: 5px;
+  display: none;
+}
+
+@media (max-width: 670px) {
+.navbar__content{
+  height: 50px;
+}
+  .navbar__menus,
+  .searchicon {
+    display: none;
+  }
+  .hamburger__menu > .line {
+    display: block;
+  }
+  .logo > img {
+    width: 15vw;
+  }
+}
+
+@media screen and (max-width: 894px) {
+  .navbar__links ul > li {
+    margin-right: 25px;
+    font-size: 14px;
+  }
+  .navbar__links ul > li:last-child {
+    margin-right: 0px;
+  }
+  .navbar__content {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 868px) {
+  .navbar__links ul > li {
+    margin-right: 15px;
+    font-size: 13px;
+  }
+  .navbar__links ul > li:last-child {
+    margin-right: 0px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .logo > img {
+    width: 25vw;
+  }
+}
+
+@media screen and (max-width: 356px) {
+  .logo > img {
+    width: 25vw;
+  }
+}
