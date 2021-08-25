@@ -2759,7 +2759,7 @@ axe-core@^4.0.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.1.3.tgz#64a4c85509e0991f5168340edc4bedd1ceea6966"
   integrity sha512-vwPpH4Aj4122EW38mxO/fxhGKtwWTMLDIJfZ1He0Edbtjcfna/R3YB67yVhezUMzqc3Jr3+Ii50KRntlENL4xQ==
 
-axios@^0.21.1:
+axios@^0.21.0, axios@^0.21.1:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
@@ -5355,6 +5355,13 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
+
+flutterwave-react-v3@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/flutterwave-react-v3/-/flutterwave-react-v3-1.0.10.tgz#923210ba3456c18c2fae1fb53bb3155ec5863460"
+  integrity sha512-SRQWnAR9cWbDcEM1Xgisrow+Hs064oEy8yFd4pOUekMX+ygxEv6dScIttZd+o7GPcDR/Hq2MieRdknKDi52FrA==
+  dependencies:
+    axios "^0.21.0"
 
 follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.13.3"
@@ -9549,11 +9556,6 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
-
-react-paystack@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/react-paystack/-/react-paystack-3.0.4.tgz#c4ddb0b4ef257af7f9f18438489aeeea98dba8b6"
-  integrity sha512-4M2s2Vxcf09WIsrK/Tlf7Ah47UG0lECL7I+bD5i2Qb3pZNOhLXgas25lCLY25FpZz6GPiVtbY0+4QcKPQdsd6g==
 
 react-refresh@^0.8.3:
   version "0.8.3"

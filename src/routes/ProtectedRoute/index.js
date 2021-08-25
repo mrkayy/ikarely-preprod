@@ -1,22 +1,25 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import AuthStore from "../../stores/AuthStore";
+import ClientLayout from "../../Layouts/ClientLayout/LayoutWrapper";
 import { observer } from "mobx-react";
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = (props) => {
+  const { component: Component, ...rest } = props;
   const { currUser } = useContext(AuthStore);
 
   // TODO: add error boundary implementation
   return (
     <Route
       {...rest}
-      render={(props) => {
+      render={(matchProps) => {
         //   renders the component passed to the Route based on the authentication state
         return currUser ? (
-          // TODO: add protected route layout
-          <Component {...props} />
+          <ClientLayout {...matchProps}>
+            <Component {...props} />
+          </ClientLayout>
         ) : (
-         <Redirect
+          <Redirect
             to={{
               pathname: "/",
               state: {

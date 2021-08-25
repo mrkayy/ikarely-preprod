@@ -10,6 +10,7 @@
 .why__us > .main__header {
   color: rgb(8, 60, 99);
 }
+
 .whyus__options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -17,9 +18,10 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 30px;
+  margin-bottom: 50px;
 }
 .whyus__option {
-  margin-bottom: 20px;
+  height: 200px;
 }
 .whyus__icon > img {
   width: 50px;
@@ -29,10 +31,12 @@
   font-size: 20px;
   font-weight: 500;
   color: rgb(8, 60, 99);
+  margin-bottom: 20px;
 }
 .whyus__word {
   color: #747474;
   line-height: 1.5em;
+  text-align: justify;
 }
 
 @media screen and (max-width: 824px) {

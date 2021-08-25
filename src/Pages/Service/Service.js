@@ -136,7 +136,7 @@ function Service() {
       <div className="each__section">
         <div className="right__part">
           <h3>services</h3>
-          <h1>Get the best medical aid at home</h1>
+          <h2>Get the best medical aid at home</h2>
           <p className="section__word">
             We believe there is no better time to decongest hospitals especially
             in Africa where there is the disproportionate patient-to-doctor
@@ -189,25 +189,23 @@ function Service() {
         )}
 
         <div className="service__lists">
-          {services.map(({ icon, title, word, params }) => {
-            return (
-              <div className="service__list" key={title}>
-                <div className="list__icon">
-                  <img src={`../images/icons/${icon}`} alt="icon.png" />
-                  <h4 className="list__title">{title}</h4>
+          {services
+            .filter((service) => service.params)
+            .map(({ icon, title, word, params }) => {
+              return (
+                <div className="service__list" key={title}>
+                  <div className="list__icon">
+                    <img src={`../images/icons/${icon}`} alt="icon.png" />
+                    <h4 className="list__title">{title}</h4>
+                  </div>
+                  <p className="list__word">{word}</p>
+                    <Link to={`/subscription/${params}`}>
+                      <button className="makerequest__btn">Make Request</button>
+                    </Link>
+                  
                 </div>
-                <p className="list__word">{word}</p>
-
-                {params ? (
-                  <Link to={`/subscription/${params}`}>
-                    <button className="makerequest__btn">Make Request</button>
-                  </Link>
-                ) : (
-                  btnSwitch
-                )}
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
     </div>

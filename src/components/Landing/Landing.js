@@ -11,19 +11,15 @@ function Landing() {
       }}
     >
       <div className="contents">
-        <div className="word">
-          <h1 className="main__word">
-            Bringing Quality health <br />{" "}
-            <span className="mainword__break">
-              Services at your <br /> Doorstep
-            </span>
-          </h1>
-        </div>
+        <h1 className="main__word">
+          Bringing Quality health <br />{" "}
+          <span className="mainword__break">
+            Services at your <br /> Doorstep
+          </span>
+        </h1>
 
         <Link to="/service">
-          <div className="button">
-            <button className="getstarted__btn">Get Started</button>
-          </div>
+          <button className="homegetstarted__btn">Get Started</button>
         </Link>
       </div>
     </div>

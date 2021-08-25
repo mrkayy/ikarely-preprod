@@ -1,66 +1,64 @@
-
-.loading__show{
-    color: white;
-    width: 100%;
-    height: 50px;
-    background-color: rgb(8, 60, 99);
-    margin-bottom: 20px;
-    text-align: center;
-    opacity: .8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.loading__show {
+  color: white;
+  width: 100%;
+  height: 40px;
+  background-color: rgb(8, 60, 99);
+  margin-bottom: 20px;
+  text-align: center;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
 }
 
+.register__submit__btn,
+.not__active {
+  font-size: 14px;
+  border: none;
+  appearance: none;
+  color: white;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+  height: 40px;
+  background-color: rgb(8, 60, 99);
+}
 
-.register__submit__btn,.not__active {
-    border: none;
-    appearance: none;
-    color: white;
-    width: 100%;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    text-align: center;
-    height: 40px;
-    background-color: rgb(8, 60, 99);
-  }
-  
-  /* When there is an error with validation */
-  .not__active{
-    background-color: #aeaeae;
-    opacity: .8;
-  }
+/* When there is an error with validation */
+.not__active {
+  background-color: rgb(8, 60, 99);
+  opacity: 0.8;
+}
 
-  
-  
-  /* The Loading div that is animated */
-  
-  .loader {
-    width: 15px;
-    height: 15px;
-    border-radius: 5px;
-    border-radius: 100%;
-    padding: 10px;
-    background-color: transparent;
-    border-color:white transparent transparent transparent;
-    border-width: 2px;
-    border-style: solid;
-    margin-right: 15px;
-    animation: loader .5s linear infinite;
-  }
-  @keyframes loader {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+/* The Loading div that is animated */
 
-
-
-  @media screen and (min-width: 1025px){
-    .register__submit__btn, .not__active, .send__message__btn{
-      height: 50px;
-    }
+.loader {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  padding: 10px;
+  background-color: transparent;
+  border-color: white transparent transparent transparent;
+  border-width: 2px;
+  border-style: solid;
+  margin-right: 15px;
+  animation: loader 0.5s linear infinite;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
   }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .register__submit__btn,
+  .not__active,
+  .send__message__btn,
+  .loading__show {
+    height: 50px;
+  }
+}

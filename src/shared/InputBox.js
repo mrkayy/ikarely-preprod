@@ -1,3 +1,4 @@
+import { ContactSupportOutlined } from "@material-ui/icons";
 import React, {useState, useContext} from "react";
 import { GlobalContext } from "../stores/GlobalLayer";
 import './InputBox.css'
@@ -5,7 +6,6 @@ import './InputBox.css'
 
 function  InputBox({label, name, type })  {
   const {state: {data, errors}, handleChange} = useContext(GlobalContext)
-  // console.log(data,"Input box re rendering")
   
   return (
     <div className="input__box">

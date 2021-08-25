@@ -33,6 +33,7 @@ function Plan({ type, price, offers }) {
         </ul>
 
         <div className="plan__price">{showCurrency(price, "NGN")}</div>
+        {/* TODO: implement flutterwave payment component */}
         <PaymentComponent
           email={"t.olukayode@ikarely.com"}
           amount={price}

@@ -9,6 +9,7 @@ import { useAlert } from "react-alert";
 import InputBox from "../../shared/InputBox";
 import { GlobalContext } from "../../stores/GlobalLayer";
 import Button from "../../Anime/Button";
+import InputPasswordBox from "../../shared/InputPasswordBox";
 
 function Register(props) {
   const alert = useAlert();
@@ -25,7 +26,6 @@ function Register(props) {
     resetActions,
   } = authcontext;
 
-  
   useEffect(() => {
     autoScroll();
   }, []);

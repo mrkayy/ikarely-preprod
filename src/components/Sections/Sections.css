@@ -63,11 +63,10 @@ p.section__word {
   /* margin-bottom: 15px; */
   font-size: 16px;
   color: #2d2d2d;
-  font-family: 'Poppins';
+  font-family: Poppins;
   text-align: justify;
-
 }
-.eachsection__btn {
+button.eachsection__btn {
   border: none;
   padding: 10px 15px;
   background-color: #083c63;
@@ -105,8 +104,8 @@ p.section__word {
 }
 
 
-@media screen and (max-width: 1060px){
+/* @media screen and (max-width: 1060px){
   .right__part > h1 {
     font-size: 32px;
   }
-}
+} */

@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
@@ -28,8 +28,8 @@
 
 .service__lists {
   text-align: left;
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   /* display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -44,13 +44,11 @@
   background: rgba(8, 60, 99, 0.1);
   box-shadow: 0px 4px 10px 1px rgba(8, 60, 99, 0.04);
   border-radius: 4px;
-  /* height: 512px; */
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: space-between;
-  /* max-width: 580px; */
 }
 
 .list__icon {
@@ -61,9 +59,6 @@
   margin-bottom: 40px;
 }
 .list__icon > img {
-  /* position: absolute; */
-  /* left: 20px; */
-  /* top: 20px; */
   margin-right: 16px;
   object-fit: cover;
   width: 54px;
@@ -73,14 +68,13 @@
   font-size: 1.5em;
   font-weight: 500;
   text-transform: capitalize;
-  /* margin-bottom: 20px; */
 }
 
 .list__title,
 .list__word {
   color: #083c63;
   text-align: justify;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 .getstarted__btn,
@@ -95,25 +89,18 @@
   font-size: 14px;
 }
 .getstarted__btn {
-  /* margin-top: 20px; */
   margin-bottom: 50px;
 }
 .makerequest__btn {
   height: 50px;
   border-radius: 4px;
-  font-size: 18px;
+  /* font-size: 18px; */
   margin-top: 32px;
   justify-self: flex-end;
   color: #fff;
   width: 100%;
 }
 
-/* @media screen and (max-width:425px){
-.makerequest__btn{
-  padding: 12px 17px;
-  font-size: 14px;
-}
-} */
 .modal {
   background-color: #fff;
   margin: 100px;
