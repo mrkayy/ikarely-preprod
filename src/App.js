@@ -14,12 +14,16 @@ import Register from "./Pages/Register/Register";
 import SignIn from "./Pages/SignIn/SignIn";
 import Profile from "./Pages/Profile";
 import Payments from "./Pages/Payment";
-import ProtectedRoute from "./routes/ProtectedRoute";
 import Checkout from "./Pages/Checkout/Checkout";
+import Subscription from "./Pages/Subscription/Subscription";
 
 //  application Routes
 import GeneralRoute from "./routes/GeneralRoute";
-import Subscription from "./Pages/Subscription/Subscription";
+import ProtectedRoute from "./routes/ProtectedRoute";
+
+// application layouts
+import ClientLayout from "./Layouts/ClientLayout/LayoutWrapper";
+import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
 
 class App extends Component {
   render() {
@@ -35,39 +39,85 @@ class App extends Component {
             <GeneralRoute exact path="/register" component={Register} />
             <GeneralRoute exact path="/signin" component={SignIn} />
 
-            <GeneralRoute
+            {/* TODO: refactor client routes & subscription routes */}
+            <ProtectedRoute
               exact
               path={`/subscription/geriatic_care`}
               component={Subscription}
+              layout={GeneralLayout}
             />
-            <GeneralRoute
+            <ProtectedRoute
               exact
               path={`/subscription/general_checkup`}
               component={Subscription}
+              layout={GeneralLayout}
             />
-            <GeneralRoute
+            <ProtectedRoute
               exact
               path={`/subscription/pregnacare`}
               component={Subscription}
+              layout={GeneralLayout}
             />
-            <Route
+            <ProtectedRoute
               exact
               path={`/subscription/diabetes`}
               component={Subscription}
+              layout={GeneralLayout}
             />
-            <ProtectedRoute exact path="/dashboard" component={Profile} />
-            <ProtectedRoute exact path="/medicals" component={Profile} />
-            <ProtectedRoute exact path="/medical-history" component={Profile} />
+            <ProtectedRoute
+              exact
+              path="/dashboard"
+              component={Profile}
+              layout={ClientLayout}
+            />
+            <ProtectedRoute
+              exact
+              path="/medicals"
+              component={Profile}
+              layout={ClientLayout}
+            />
+            <ProtectedRoute
+              exact
+              path="/medical-history"
+              component={Profile}
+              layout={ClientLayout}
+            />
             <ProtectedRoute
               exact
               path="/service-requests"
               component={Profile}
+              layout={ClientLayout}
             />
-            <ProtectedRoute exact path="/appointments" component={Profile} />
-            <ProtectedRoute exact path="/payments" component={Profile} />
-            <ProtectedRoute exact path="/settings" component={Profile} />
-            <ProtectedRoute exact path="/support" component={Profile} />
-            <ProtectedRoute exact path="/payment" component={Payments} />
+            <ProtectedRoute
+              exact
+              path="/appointments"
+              component={Profile}
+              layout={ClientLayout}
+            />
+            <ProtectedRoute
+              exact
+              path="/payments"
+              component={Profile}
+              layout={ClientLayout}
+            />
+            <ProtectedRoute
+              exact
+              path="/settings"
+              component={Profile}
+              layout={ClientLayout}
+            />
+            <ProtectedRoute
+              exact
+              path="/support"
+              component={Profile}
+              layout={ClientLayout}
+            />
+            <ProtectedRoute
+              exact
+              path="/payment"
+              component={Payments}
+              layout={ClientLayout}
+            />
 
             <GeneralRoute path="/*" component={Error} />
           </Switch>

@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "currency-formatter": "^1.5.6",
     "data-hero": "^1.2.9",
+    "env-cmd": "^10.1.0",
     "flutterwave-react-v3": "^1.0.10",
     "joi-browser": "^13.4.0",
     "jwt-decode": "^3.1.2",
@@ -30,7 +31,8 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:staging": "env-cmd -e development react-scripts start",
+    "start:prod": "env-cmd -e production react-script start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
