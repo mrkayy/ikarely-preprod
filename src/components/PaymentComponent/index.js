@@ -1,5 +1,6 @@
 // // Customer payment using Flutter options
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import Payments from "../../shared/payment_util";
 
 function PaymentComponent(props) {
   const { email, amount, type } = props;
@@ -26,6 +27,7 @@ function PaymentComponent(props) {
       <p>{email}</p>
       <p>{amount}</p>
       <p>{type}</p>
+      <Payments />
     </div>
   );
 }

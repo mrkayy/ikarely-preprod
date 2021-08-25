@@ -42,6 +42,12 @@ class App extends Component {
             {/* TODO: refactor client routes & subscription routes */}
             <ProtectedRoute
               exact
+              path={`/checkout`}
+              component={Checkout}
+              layout={GeneralLayout}
+            />
+            <ProtectedRoute
+              exact
               path={`/subscription/geriatic_care`}
               component={Subscription}
               layout={GeneralLayout}
@@ -97,8 +103,8 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/payments"
-              component={Profile}
-              layout={ClientLayout}
+              component={Payments}
+              layout={GeneralLayout}
             />
             <ProtectedRoute
               exact

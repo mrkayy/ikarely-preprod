@@ -9,13 +9,13 @@ function PaymentApp() {
         ? process.env.REACT_APP_PAYMENT_DEV
         : process.env.REACT_APP_PAYMENT,
     tx_ref: Date.now(), //(new Date()).getTime().toString(),
-    amount: 100,
+    amount: 10000,
     currency: "NGN",
     payment_options: "card,ussd",
     customer: {
       email: "user@gmail.com",
       phonenumber: "07064586146",
-      name: "joel ugwumadu",
+      name: "john doe",
     },
     customizations: {
       title: "my Payment Title",

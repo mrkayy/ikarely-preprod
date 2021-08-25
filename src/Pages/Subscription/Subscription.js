@@ -4,7 +4,7 @@ import PageLanding from "../../Components/PageLanding/PageLanding";
 import Plan from "../../Components/Plan/Plan";
 import "./Subscription.css";
 
-function Subscription({ match: { url } }) {
+function Subscription({ props }) {
   useEffect(() => {
     autoScroll();
   }, []);
@@ -13,8 +13,8 @@ function Subscription({ match: { url } }) {
     return window.scrollTo(0, 0);
   };
 
-  const title = url.slice(14);
-  // console.log(title);
+  // const title = url.slice(14);
+  console.log(props);
 
   const subscriptions = [
     {
@@ -133,7 +133,7 @@ function Subscription({ match: { url } }) {
 
   return (
     <div className="subscription">
-      <PageLanding image="health-service.jpg" title={title} />
+      <PageLanding image="health-service.jpg" title={"geriatic_care"} />
 
       <div className="subscription__page">
         <p className="subscription__mainword">
@@ -150,7 +150,7 @@ function Subscription({ match: { url } }) {
 
         <div className="subscription__plans">
           {subscriptions
-            .filter((subscription) => subscription.pathname === title)
+            .filter((subscription) => subscription.pathname === "geriatic_care")
             .map(({ plans }) =>
               plans.map(({ type, price, offers }) => {
                 console.log({ offers });
