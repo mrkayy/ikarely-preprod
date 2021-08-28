@@ -1,6 +1,6 @@
 import React,{useEffect} from "react";
-import BlogPost from "../../Components/BlogPost/BlogPost";
 import "./Blog.css";
+import BlogPost from "../../Components/BlogPost/BlogPost";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Article from "../../Components/Article/Article";
