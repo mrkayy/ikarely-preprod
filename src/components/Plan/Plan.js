@@ -3,6 +3,8 @@ import currencyFormatter from "currency-formatter";
 import "./Plan.css";
 import PaymentComponent from "../PaymentComponent";
 
+
+
 function Plan({ type, price, offers }) {
   const showCurrency = (value, code) => {
     return currencyFormatter.format(value, { code });

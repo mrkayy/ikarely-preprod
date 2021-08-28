@@ -9,6 +9,7 @@ function Subscription({ props }) {
     autoScroll();
   }, []);
 
+  
   const autoScroll = () => {
     return window.scrollTo(0, 0);
   };
