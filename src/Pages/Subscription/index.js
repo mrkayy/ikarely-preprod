@@ -1,24 +1,29 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import PageLanding from "../../Components/PageLanding/PageLanding";
 import Plan from "../../Components/Plan/Plan";
 import "./Subscription.css";
 
-function Subscription({ props }) {
+function Subscription(props) {
+  console.log({ props });
+  console.log(props.location);
+  console.log(props.location.pathname);
+
   useEffect(() => {
     autoScroll();
   }, []);
+
+  useEffect(() => {
+    console.log({ path: props.location.pathname });
+  }, [props.location.pathname]);
 
   const autoScroll = () => {
     return window.scrollTo(0, 0);
   };
 
-  // const title = url.slice(14);
-  console.log(props);
-
   const subscriptions = [
     {
-      plan: "geriatic_care",
+      plan: "geriatic care",
       pathname: "geriatic_care",
       plans: [
         {

@@ -15,7 +15,7 @@ import SignIn from "./Pages/SignIn/SignIn";
 import Profile from "./Pages/Profile";
 import Payments from "./Pages/Payment";
 import Checkout from "./Pages/Checkout/Checkout";
-import Subscription from "./Pages/Subscription/Subscription";
+import Subscription from "./Pages/Subscription";
 
 //  application Routes
 import GeneralRoute from "./routes/GeneralRoute";
@@ -27,6 +27,7 @@ import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
 
 class App extends Component {
   render() {
+    console.log(`===>USING: ${process.env.NODE_ENV}<===`);
     return (
       <div className="App">
         <Router>
@@ -38,21 +39,25 @@ class App extends Component {
             <GeneralRoute exact path="/contact" component={Contact} />
             <GeneralRoute exact path="/register" component={Register} />
             <GeneralRoute exact path="/signin" component={SignIn} />
-
             {/* TODO: refactor client routes & subscription routes */}
+            <GeneralRoute
+              exact
+              path={`/subscription/:id`}
+              component={Subscription}
+            />
+            <ProtectedRoute
+              exact
+              path="/payments"
+              component={Payments}
+              layout={GeneralLayout}
+            />
             <ProtectedRoute
               exact
               path={`/checkout`}
               component={Checkout}
               layout={GeneralLayout}
             />
-            <ProtectedRoute
-              exact
-              path={`/subscription/geriatic_care`}
-              component={Subscription}
-              layout={GeneralLayout}
-            />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path={`/subscription/general_checkup`}
               component={Subscription}
@@ -69,7 +74,7 @@ class App extends Component {
               path={`/subscription/diabetes`}
               component={Subscription}
               layout={GeneralLayout}
-            />
+            /> */}
             <ProtectedRoute
               exact
               path="/dashboard"
@@ -102,12 +107,6 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/payments"
-              component={Payments}
-              layout={GeneralLayout}
-            />
-            <ProtectedRoute
-              exact
               path="/settings"
               component={Profile}
               layout={ClientLayout}
@@ -118,14 +117,8 @@ class App extends Component {
               component={Profile}
               layout={ClientLayout}
             />
-            <ProtectedRoute
-              exact
-              path="/payment"
-              component={Payments}
-              layout={ClientLayout}
-            />
-
             <GeneralRoute path="/*" component={Error} />
+            {/* <GeneralRoute path="/*" component={Error} /> */}
           </Switch>
         </Router>
       </div>
