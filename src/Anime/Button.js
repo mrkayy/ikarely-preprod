@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AuthStore from "../stores/AuthStore";
+import AuthStore from "../stores/ContactUs";
 import "./Button.css";
 import { GlobalContext } from "../stores/GlobalLayer";
 

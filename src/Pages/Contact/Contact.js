@@ -6,7 +6,7 @@ import PageLanding from "../../components/PageLanding/PageLanding";
 import InputBox from "../../shared/InputBox";
 import Joi from "joi-browser";
 import { observer } from "mobx-react";
-import AuthStore from "../../stores/AuthStore";
+import AuthStore from "../../stores/ContactUs";
 // import dataHero from "data-hero";
 import { useAlert } from "react-alert";
 import { GlobalContext } from "../../stores/GlobalLayer";
@@ -26,14 +26,14 @@ const Contact = (props) => {
   const alert = useAlert();
   // const history = useHistory();
   const authcontext = useContext(AuthStore);
+
   const {
     error,
     loading,
     success,
-    authSuccess,
+    sendmessage,
     errMessage,
     successMessage,
-    contactUs,
     resetActions,
   } = authcontext;
 
@@ -71,11 +71,11 @@ const Contact = (props) => {
   //alert user on error or success
   useEffect(() => {
     if (error) {
-      alert.error(`${errMessage}`);
+      alert.error(errMessage);
     }
     if (success && !error) {
       console.log({ successMessage });
-      alert.success(`${successMessage}`);
+      alert.success(successMessage);
     }
     return () => {
       resetActions();
@@ -88,7 +88,7 @@ const Contact = (props) => {
 
   const { data, errors } = state;
 
-  const sendMessage = async (e) => {
+  const sendMsg = async (e) => {
     e.preventDefault();
     const errors = validate();
     setState((prevState) => ({
@@ -97,16 +97,17 @@ const Contact = (props) => {
     }));
     if (errors) return;
     const { email, message } = data;
-    
+
     const datas = {
       medium: "email",
       name: "contact_us",
+      sender: "josepholukayode05@gmail.com",
       recipient: [email],
-      subject: message,
-      data: {"user_name":"", "current_year": 2021}
+      subject: "THANK YOU FOR REACHING OUT",
+      data: { user_name: message, current_year: 2021 },
     };
-    contactUs(datas);
-    console.log(datas, "Register submitted");
+    sendmessage(datas);
+    console.log(datas, "Register submitted"); 
   };
 
   return (
@@ -122,15 +123,15 @@ const Contact = (props) => {
             <h3 className="contactus__header">Leave a Message</h3>
           </div>
 
-          <form action="" className="contactus__inputs" onSubmit={sendMessage}>
+          <form action="" className="contactus__inputs" onSubmit={sendMsg}>
             <InputBox label="Email or Phone" name="email" type="email" />
 
             <div className="input__box">
-              <label htmlFor="password">your message</label>
-              <textarea
+              {/* <label htmlFor="password">Your Name</label> */}
+              <InputBox
                 onChange={handleChange}
                 value={state.data.message}
-                label="Your Message"
+                label="please enter your name"
                 name="message"
                 type="text"
               />

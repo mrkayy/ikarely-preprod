@@ -229,7 +229,7 @@ function ModalForm({ services, setOpenModal }) {
       <div className="close__icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
+          className="h-5 w-5"
           viewBox="0 0 20 20"
           fill="currentColor"
           onClick={() => setOpenModal(false)}

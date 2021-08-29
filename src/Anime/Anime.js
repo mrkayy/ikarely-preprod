@@ -2,7 +2,6 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import "./Anime.css";
 
-
 const Anime = () => {
   return (
     <div className="svgs">
@@ -12,7 +11,7 @@ const Anime = () => {
         viewBox="0 0 130.2 130.2"
       >
         <circle
-          class="path circle"
+          className="path circle"
           fill="none"
           stroke="#73AF55"
           strokeWidth="6"
@@ -22,7 +21,7 @@ const Anime = () => {
           r="62.1"
         />
         <polyline
-          class="path check"
+          className="path check"
           fill="none"
           stroke="#73AF55"
           strokeWidth="6"
@@ -43,7 +42,7 @@ export const FailAnime = () => {
       viewBox="0 0 130.2 130.2"
     >
       <circle
-        class="path circle"
+        className="path circle"
         fill="none"
         stroke="#D06079"
         strokeWidth="6"
@@ -53,7 +52,7 @@ export const FailAnime = () => {
         r="62.1"
       />
       <line
-        class="path line"
+        className="path line"
         fill="none"
         stroke="#D06079"
         strokeWidth="6"
@@ -65,7 +64,7 @@ export const FailAnime = () => {
         y2="92.3"
       />
       <line
-        class="path line"
+        className="path line"
         fill="none"
         stroke="#D06079"
         strokeWidth="6"

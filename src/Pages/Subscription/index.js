@@ -153,7 +153,14 @@ function Subscription(props) {
             .map(({ plans }) =>
               plans.map(({ type, price, offers }) => {
                 // console.log({ offers });
-                return <Plan type={type} price={price} offers={offers} />;
+                return (
+                  <Plan
+                    type={type}
+                    price={price}
+                    title={title}
+                    offers={offers}
+                  />
+                );
               })
             )}
         </div>

@@ -35,8 +35,7 @@ class App extends Component {
             <GeneralRoute exact path="/" component={Home} />
             <GeneralRoute exact path="/service" component={Service} />
             <GeneralRoute exact path="/about" component={About} />
-            <GeneralRoute exact path="/blog" component={Blog} />
-            <GeneralRoute exact path="/contact" component={Contact} />
+            <GeneralRoute exact path="/blog" component={Home} />
             <GeneralRoute exact path="/register" component={Register} />
             <GeneralRoute exact path="/signin" component={SignIn} />
             {/* TODO: refactor client routes & subscription routes */}
@@ -47,16 +46,22 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
+              path="/contact"
+              component={Contact}
+              layout={GeneralLayout}
+            />
+            {/* <ProtectedRoute
+              exact
               path="/payments"
               component={Payments}
               layout={GeneralLayout}
-            />
-            <ProtectedRoute
+            /> */}
+            {/* <ProtectedRoute
               exact
               path={`/checkout`}
               component={Checkout}
               layout={GeneralLayout}
-            />
+            /> */}
             {/* <ProtectedRoute
               exact
               path={`/subscription/general_checkup`}
@@ -74,7 +79,7 @@ class App extends Component {
               path={`/subscription/diabetes`}
               component={Subscription}
               layout={GeneralLayout}
-            /> */}
+            /> 
             <ProtectedRoute
               exact
               path="/dashboard"
@@ -117,6 +122,7 @@ class App extends Component {
               component={Profile}
               layout={ClientLayout}
             />
+          */}
             <GeneralRoute path="*" component={Error} />
             {/* <GeneralRoute path="/*" component={Error} /> */}
           </Switch>

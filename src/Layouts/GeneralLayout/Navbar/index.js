@@ -47,9 +47,9 @@ function NavBar({ slide, showMenu }) {
 
           {currUser && currUser ? (
             <>
-              <li className="navbar__menus">
+              {/* <li className="navbar__menus">
                 <Link to="/dashboard">Dashboard</Link>
-              </li>
+              </li> */}
               <li
                 className="navbar__menus logout__btn"
                 onClick={() => logout()}
