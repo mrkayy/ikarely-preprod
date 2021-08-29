@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { makeObservable, observable, action,autorun } from "mobx";
+import { makeObservable, observable, action, autorun } from "mobx";
 import api from "../Config";
 import WebStorage from "../shared/LocalStorage";
 import { findAllByDisplayValue } from "@testing-library/react";
@@ -33,7 +33,7 @@ class AuthStore {
       getCurrUser: action,
       resetActions: action,
     });
-    autorun(()=> this.getCurrUser())
+    autorun(() => this.getCurrUser());
   }
 
   rememberMe = () => {
@@ -66,14 +66,14 @@ class AuthStore {
   register = (data) => {
     this.loading = true;
     api
-      .post("/notifications", data)
+      .post("auth/users", data)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
           this.success = true;
           this.successMessage = res.data.message;
           // console.log(this.successMessage);
-          // window.location.href = "/signin";
+          window.location.href = "/signin";
         }
       })
       .catch((err) => {
@@ -146,7 +146,7 @@ class AuthStore {
   };
 
   getCurrUser = () => {
-    this.currUser = WebStorage.get("user_token")? true : false;
+    this.currUser = WebStorage.get("user_token") ? true : false;
     // console.log(WebStorage.get("user_token"));
   };
 

@@ -20,7 +20,7 @@ function Register(props) {
     success,
     currUser,
     errMessage,
-    // authSuccess,
+    loading,
     successMessage,
     register,
     resetActions,
@@ -57,7 +57,7 @@ function Register(props) {
         address: "nill",
         re_enter_password: "",
         user_type: "customer",
-        date_of_birth:"nill",
+        date_of_birth: "nill",
       },
     }));
 
@@ -68,15 +68,15 @@ function Register(props) {
       email: Joi.string().email().required().label("Email"),
       password: Joi.string().required().min(5).label("Password"),
       re_enter_password: Joi.string()
-      .required()
-      .valid(Joi.ref("password"))
-      .options({
-        language: {
-          any: {
-            allowOnly: "!!Passwords do not match",
+        .required()
+        .valid(Joi.ref("password"))
+        .options({
+          language: {
+            any: {
+              allowOnly: "!!Passwords do not match",
+            },
           },
-        },
-      }),
+        }),
       landmark: Joi.string(),
       date_of_birth: Joi.string(),
       address: Joi.string(),
@@ -128,7 +128,7 @@ function Register(props) {
       address,
       date_of_birth,
     } = data;
-    
+
     const datas = {
       full_name,
       phone,
@@ -171,15 +171,18 @@ function Register(props) {
 
           <InputBox label="Phone" name="phone" type="text" />
 
+          <InputPasswordBox
+            label="Password"
+            name="password"
+            type={"password"}
+          />
 
-          <InputBox label="Password" name="password" type={"password"} />
-
-          <InputBox
+          <InputPasswordBox
             label="Re-enter Password"
             name="re_enter_password"
             type={"password"}
-            />
-            {/* <InputBox
+          />
+          {/* <InputBox
               label="City of residence"
               name="city_of_residence"
               type="text"
@@ -204,7 +207,11 @@ function Register(props) {
             </option>
           </select> */}
 
-          <Button progress="Registering..." shown="Create Account" />
+          <Button
+            loader={loading}
+            progress="Registering..."
+            shown="Create Account"
+          />
 
           <p className="bottom__text">
             Do you have an account ? <Link to="/signin">Log in</Link>

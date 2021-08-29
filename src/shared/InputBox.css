@@ -51,7 +51,8 @@ input[type="password"] {
 .has__error {
   color: rgba(255, 0, 0, 0.616)  !important;
   /* color: #7c7c7c; */
-  font-size: 11px;
+  font-size: 11px  !important;
+  font-weight: 700  !important;
 }
 
 @media screen and (min-width: 1025px) {
