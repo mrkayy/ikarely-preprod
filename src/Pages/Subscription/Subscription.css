@@ -1,6 +1,9 @@
 
 
 .subscription__page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 56px;
     text-align: center;
 }
@@ -13,6 +16,7 @@
 
 .subscription__mainword{
     font-size: 22px;
+    /* text-align: left; */
 }
 .subscription__subheader{
     font-size: 20px;
@@ -20,4 +24,15 @@
 .subscription__header{
     font-size: 30px;
     font-weight: bold;
+}
+
+
+@media (max-width: 820px){
+    .subscription__mainword{
+        font-size: 18px;
+        text-align: center;
+    }
+    .subscription__header{
+        font-size: 25px;
+    }   
 }

@@ -22,118 +22,140 @@ function Subscription(props) {
       plans: [
         {
           type: "Bronze",
-          price: 50000,
+          price: 30500,
           offers: [
             "Dr home visit × 1",
             "Nurses visit × 2",
             "Physiotherapy × 1",
-            "Free virtual consult with Dr ,nurses ,dietician, Dentist",
+            "Free virtual consult with Dr,nurses ,dietician, Dentist",
             "Free health insurance",
           ],
         },
         {
           type: "Silver",
-          price: 35500,
+          price: 50500,
           offers: [
-            "Dr home visit × 1",
-            "Nurses visit × 2",
+            "Dr home visit × 2",
+            "Nurses visit × 4",
             "Physiotherapy × 1",
-            "Nurses visit × 2",
+            "Free virtual consult with Dr,nurses ,dietician, Dentist",
             "Free health insurance",
           ],
         },
         {
           type: "Gold",
-          price: 35000,
+          price: 100000,
           offers: [
-            "Dr home visit × 1",
-            "Nurses visit × 2",
-            "Physiotherapy × 1",
-            "Nurses visit × 2",
+            "Dr home visit × 4",
+            "Nurses visit × 8",
+            "Physiotherapy × 2",
+            "Free virtual consult with Dr,nurses ,dietician, Dentist",
             "Free health insurance",
           ],
         },
       ],
+      content:
+        "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home.We provide care for the Elderly, from general checkup to catheterization and lots more.",
     },
     {
       plan: "general checkup",
       pathname: "general_checkup",
       plans: [
         {
-          type: "Silver",
-          price: 35500,
+          type: "Bronze",
+          price: 25500,
           offers: [
-            "Dr home visit × 1",
-            "Nurses visit × 2",
-            "Physiotherapy × 1",
-            "Nurses visit × 2",
-            "Free health insurance",
+            "Dr home visit",
+            "Nurses visit (BP,BMI,Glucose check)",
+            "Malaria,typhoid, hepatitis and Hiv test",
+            "+ Free virtual consult with Dr,nurses, dietician, Dentist",
+            "+Free health insurance",
           ],
         },
         {
-          type: "Gold",
-          price: 50000,
+          type: "Silver",
+          price: 50500,
           offers: [
-            "Dr home visit × 1",
-            "Nurses visit × 2",
-            "Physiotherapy × 1",
-            "Nurses visit × 2",
-            "Free health insurance",
+            "Dr home visit",
+            "Nurses visit (BP,BMI,Glucose check)",
+            "Malaria,typhoid, hepatitis and Hiv test",
+            "+ Free virtual consult with Dr,nurses, dietician, Dentist",
+            "+Free health insurance",
           ],
         },
       ],
+      content:
+        "You can request for our professional service for individual and family general checkups like Blood pressure,weight check,glucose check,malaria/HIVtest, Body Mass Index(BMI)all at your convenience.",
     },
     {
-      plan: "pregnacare",
+      plan: "pregna care",
       pathname: "pregnacare",
       plans: [
         {
-          type: "Gold",
-          price: 50000,
+          type: "Basic",
+          price: 10000,
           offers: [
-            "Dr home visit × 1",
-            "Nurses visit × 2",
-            "Physiotherapy × 1",
-            "Nurses visit × 2",
-            "Free health insurance",
+            "Midwife visit (BP,BMI,Glucose check)",
+            "Malaria,typhoid, hepatitis and Hiv test, urinalysis",
+            "Obstetrician virtual visit ",
+            "+ Free virtual consult",
+          ],
+        },
+        {
+          type: "Smart",
+          price: 10000,
+          offers: [
+            "Midwife visit (BP,BMI,Glucose check)",
+            "Malaria,typhoid, hepatitis and Hiv test, urinalysis",
+            "Obstetrician virtual visit ",
+            "+ Free virtual consult",
+            "+ Free health insurance",
           ],
         },
       ],
+      content: "",
     },
     {
-      plan: "diabetes",
+      plan: "diabetes care",
       pathname: "diabetes",
       plans: [
         {
-          type: "Silver",
-          price: 35500,
+          type: "Basic",
+          price: 10000,
           offers: [
-            "Dr home visit × 1",
-            "Nurses visit × 2",
-            "Physiotherapy × 1",
-            "Nurses visit × 2",
-            "Free health insurance",
+            "Dr Visit + prescription ",
+            "Strip refill ",
+            "Drug refill ",
+            "+ Free virtual consult",
           ],
         },
         {
-          type: "Gold",
-          price: 50000,
+          type: "Smart",
+          price: 30500,
           offers: [
-            "Dr home visit × 1",
-            "Nurses visit × 2",
-            "Physiotherapy × 1",
-            "Nurses visit × 2",
-            "Free health insurance",
+            "Dr Visit + prescription x 2",
+            "Strip refill ",
+            "Drug refill ",
+            "+ Free virtual consult",
+            "+ Free health insurance",
           ],
         },
       ],
+      content:
+        "You can request for our professional service for individual and family general check ups like Blood pressure, weight check, glucose check, malaria/HIV test, Body Mass Index (BMI) all at your convenience.",
     },
   ];
-
-  console.log({ id });
   const title = subscriptions.filter(
     (subscription) => subscription.pathname === id
-  )[0]["pathname"];
+  )[0]["plan"];
+  const content = subscriptions.filter(
+    (subscription) => subscription.pathname === id
+  )[0]["content"];
+
+  // console.log({ id });
+  // const title = subscriptions.filter(
+  //   (subscription) => subscription.pathname === id
+  // )[0]["pathname"];
 
   return (
     <div className="subscription">
@@ -141,11 +163,7 @@ function Subscription(props) {
 
       <div className="subscription__page">
         <h4 className="subscription__header">{title.toUpperCase()}</h4>
-        <p className="subscription__mainword">
-          Elderly people don't always have to be hospitalized for minor health
-          concerns that can be delivered to them at home. We provide care for
-          the Elderly, from general checkup to catheterization and lots more.
-        </p>
+        <p className="subscription__mainword">{content}</p>
 
         <div className="subscription__plans">
           {subscriptions

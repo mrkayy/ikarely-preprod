@@ -12,7 +12,7 @@ function PageLanding({ image, title }) {
         }}
       >
         <div className="pageland__overlay">
-          <h1 className="page__title">{title}</h1>
+          <h2 className="page__title">{title}</h2>
         </div>
       </div>
     </>
