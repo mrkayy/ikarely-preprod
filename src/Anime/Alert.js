@@ -7,7 +7,7 @@ function Alert({ style, options, close, message }) {
   const authcontext = useContext(AuthStore);
   const { error, loading, success } = authcontext;
 
-  console.log(error, loading)
+  // console.log(error, loading)
   return (
     <div className="alert__box">
       {/* <p className="close__icon" onClick={close}>X</p> */}

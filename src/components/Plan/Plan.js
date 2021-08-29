@@ -19,9 +19,12 @@ function Plan({ type, price, offers }) {
   const planColor = (color) => {
     switch(color){
       case 'gold':
+      case 'smart':
         return "gold"
       case "silver":
+      case 'basic':
         return 'silver'
+      
     }
   }
 
@@ -40,7 +43,7 @@ function Plan({ type, price, offers }) {
             return (
               <li className="plandetails__list">
                 <img
-                  src={type.toLowerCase() == "gold" ? markicon2 : markicon}   
+                  src={type.toLowerCase() == "gold" || type.toLowerCase() == "smart" ? markicon2 : markicon}   
                   alt=""
                   className="planlist__icon"
                 />

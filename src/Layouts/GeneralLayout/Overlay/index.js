@@ -34,15 +34,15 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
     },
   ];
 
-  const profileLinks = [
-    { value: "Dashboard", directory: "/dashboard" },
-    { value: "Medical Profile", directory: "/medicals" },
-    { value: "Medical History", directory: "/medical-history" },
-    { value: "Service Requests", directory: "/service-requests" },
-    { value: "My Appointments", directory: "/appointments" },
-    { value: "Payments", directory: "/payments" },
-    { value: "Settings", directory: "/settings" },
-  ];
+  // const profileLinks = [
+  //   { value: "Dashboard", directory: "/dashboard" },
+  //   { value: "Medical Profile", directory: "/medicals" },
+  //   { value: "Medical History", directory: "/medical-history" },
+  //   { value: "Service Requests", directory: "/service-requests" },
+  //   { value: "My Appointments", directory: "/appointments" },
+  //   { value: "Payments", directory: "/payments" },
+  //   { value: "Settings", directory: "/settings" },
+  // ];
 
   // pushes the new route to the DOM history
   // const handleLink = (e) => {
@@ -85,8 +85,8 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
           <ul className="more__links">
             {currUser && currUser ? (
               <>
-                <hr />
-                {profileLinks.map(({ value, directory }, index) => {
+                {/* <hr /> */}
+                {/* {profileLinks.map(({ value, directory }, index) => {
                   return (
                     <li
                       key={index}
@@ -96,7 +96,7 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
                       <Link to={directory}>{value}</Link>
                     </li>
                   );
-                })}
+                })} */}
                 <li className="navbar__slide" onClick={logout}>
                   <button className="register__link__btn">Logout</button>
                 </li>
