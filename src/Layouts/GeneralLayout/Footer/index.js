@@ -15,10 +15,8 @@ function Footer() {
     <>
       <div className="footer">
         <div className="footer__contacts">
-          <img src={`images/${"ikareLogo.png"}`} alt="" />
-          <p className="logo__tag">
-          Live Healthier, Live Better.
-          </p>
+          <img src={footerImage} alt="logo.png"/>
+          <p className="logo__tag">Live Healthier, Live Better.</p>
 
           <div className="iconandinfo">
             <img src={`images/${"Vector3.png"}`} alt="" />{" "}
@@ -51,24 +49,16 @@ function Footer() {
           <h3 className="footer__linkhead">quick links</h3>
           <ul className="footer__links">
             <li>
-              <Link to="/">
-              Home
-              </Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/service">
-              Services
-              </Link>
+              <Link to="/service">Services</Link>
             </li>
             <li>
-              <Link to="about">
-              About Us
-              </Link>
+              <Link to="about">About Us</Link>
             </li>
             <li>
-              <Link to="contact">
-              Contact Us
-              </Link>
+              <Link to="contact">Contact Us</Link>
             </li>
           </ul>
         </div>

@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
-import AuthStore from "../stores/ContactUs";
+// import AuthStore from "../stores/ContactUs";
 import "./Button.css";
 import { GlobalContext } from "../stores/GlobalLayer";
 
-function Button({ progress, shown }) {
-  const authcontext = useContext(AuthStore);
-  const { loading } = authcontext;
+function Button({ progress, shown, loader }) {
+  // const authcontext = useContext(AuthStore);
+  // const { loading } = authcontext;
 
   const { validate } = useContext(GlobalContext);
 
   return (
     <div>
-      {loading ? (
+      {loader ? (
         <div className="loading__show">
           <div className="loader" title="2">
             {" "}

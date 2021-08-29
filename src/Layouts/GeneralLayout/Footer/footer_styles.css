@@ -18,7 +18,7 @@
 }
 .footer__contacts > img{
   object-fit: contain;
-  width: 200px;
+  width:75px;
   /* height: 72px; */
 }
 .logo__tag{

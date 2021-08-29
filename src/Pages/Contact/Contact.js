@@ -107,7 +107,7 @@ const Contact = (props) => {
       data: { user_name: message, current_year: 2021 },
     };
     sendmessage(datas);
-    console.log(datas, "Register submitted"); 
+    console.log(datas, "Register submitted");
   };
 
   return (
@@ -137,7 +137,11 @@ const Contact = (props) => {
               />
             </div>
 
-            <Button progress="Sending..." shown="Send Message" />
+            <Button
+              loader={loading}
+              progress="Sending..."
+              shown="Send Message"
+            />
           </form>
         </div>
         <h2 className="contactus__description__bottom">

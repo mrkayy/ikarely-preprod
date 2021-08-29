@@ -25,6 +25,7 @@ const SignIn = (props) => {
   const authcontext = useContext(AuthStore);
   const {
     error,
+    loading,
     success,
     authSuccess,
     errMessage,
@@ -124,7 +125,7 @@ const SignIn = (props) => {
               Keep me signed in
             </div> */}
 
-          <Button progress="Loading..." shown="Signin" />
+          <Button loader={loading} progress="Loading..." shown="Signin" />
 
           <p className="bottom__text">
             New user? <Link to="/register">Sign up</Link> for free
