@@ -1,11 +1,10 @@
 import React from "react";
-import Landing from "../../Components/Landing/Landing";
-import Section from "../../Components/Sections/Sections";
-import WhyUs from "../../Components/Sections/WhyChooseUs/WhyUs";
-import './Home.css'
+import Landing from "../../components/Landing/Landing";
+import Section from "../../components/Sections/Sections";
+import WhyUs from "../../components/Sections/WhyChooseUs/WhyUs";
+import "./Home.css";
 
 const Home = () => {
-  
   React.useEffect(() => {
     autoScroll();
   }, []);
@@ -15,12 +14,12 @@ const Home = () => {
   };
 
   return (
-    <div className='home'>
+    <div className="home">
       <Landing />
       {/* <WhyUs /> */}
       <Section />
     </div>
   );
-}
+};
 
 export default Home;

@@ -6,10 +6,10 @@ import React, {
   useEffect,
 } from "react";
 import { Link } from "react-router-dom";
-import PageLanding from "../../Components/PageLanding/PageLanding";
+import PageLanding from "../../components/PageLanding/PageLanding";
 import "./Service.css";
 import Modal from "@material-ui/core/Modal";
-import ModalForm from "../../Components/Modal/ModalForm";
+import ModalForm from "../../components/Modal/ModalForm";
 import ServiceStore from "../../stores/Services";
 import AuthStore from "../../stores/AuthStore";
 import { observer } from "mobx-react";
@@ -199,10 +199,9 @@ function Service() {
                     <h4 className="list__title">{title}</h4>
                   </div>
                   <p className="list__word">{word}</p>
-                    <Link to={`/subscription/${params}`}>
-                      <button className="makerequest__btn">Make Request</button>
-                    </Link>
-                  
+                  <Link to={`/subscription/${params}`}>
+                    <button className="makerequest__btn">Make Request</button>
+                  </Link>
                 </div>
               );
             })}

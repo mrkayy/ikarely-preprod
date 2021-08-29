@@ -117,7 +117,7 @@ class App extends Component {
               component={Profile}
               layout={ClientLayout}
             />
-            <GeneralRoute path="/*" component={Error} />
+            <GeneralRoute path="*" component={Error} />
             {/* <GeneralRoute path="/*" component={Error} /> */}
           </Switch>
         </Router>

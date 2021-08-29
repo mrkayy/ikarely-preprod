@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 // import { Link, useHistory, Redirect } from "react-router-dom";
 
 import "./Contact.css";
-import PageLanding from "../../Components/PageLanding/PageLanding";
+import PageLanding from "../../components/PageLanding/PageLanding";
 import InputBox from "../../shared/InputBox";
 import Joi from "joi-browser";
 import { observer } from "mobx-react";
@@ -13,9 +13,8 @@ import { GlobalContext } from "../../stores/GlobalLayer";
 import Button from "../../Anime/Button";
 
 const Contact = (props) => {
+  console.log({ props });
 
-  console.log({props});
-  
   useEffect(() => {
     autoScroll();
   }, []);
@@ -106,7 +105,6 @@ const Contact = (props) => {
     console.log(data, "Register submitted");
   };
 
-
   return (
     <div className="contactus">
       <PageLanding image="health-service.jpg" title="Contact us" />
@@ -134,10 +132,7 @@ const Contact = (props) => {
               />
             </div>
 
-
-            <Button progress="Sending..."  shown="Send Message"/>
-
-
+            <Button progress="Sending..." shown="Send Message" />
           </form>
         </div>
         <h2 className="contactus__description__bottom">
@@ -148,6 +143,6 @@ const Contact = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default observer(Contact);

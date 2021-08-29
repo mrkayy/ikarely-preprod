@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 // import { useParams } from "react-router-dom";
-import PageLanding from "../../Components/PageLanding/PageLanding";
-import Plan from "../../Components/Plan/Plan";
+import PageLanding from "../../components/PageLanding/PageLanding";
+import Plan from "../../components/Plan/Plan";
 import "./Subscription.css";
 
 function Subscription(props) {
