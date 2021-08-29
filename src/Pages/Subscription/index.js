@@ -130,9 +130,10 @@ function Subscription(props) {
     },
   ];
 
+  console.log({ id });
   const title = subscriptions.filter(
     (subscription) => subscription.pathname === id
-  )[0]["plan"];
+  )[0]["pathname"];
 
   return (
     <div className="subscription">
