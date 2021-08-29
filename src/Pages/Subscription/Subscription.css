@@ -10,3 +10,14 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+.subscription__mainword{
+    font-size: 22px;
+}
+.subscription__subheader{
+    font-size: 20px;
+}
+.subscription__header{
+    font-size: 30px;
+    font-weight: bold;
+}

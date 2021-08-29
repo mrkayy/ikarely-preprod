@@ -3,13 +3,26 @@ import currencyFormatter from "currency-formatter";
 import "./Plan.css";
 import PaymentComponent from "../PaymentComponent";
 
+
+
 function Plan({ type, price, offers }) {
   const showCurrency = (value, code) => {
     return currencyFormatter.format(value, { code });
   };
 
+
+  const planColor = (color) => {
+    switch(color){
+      case 'gold':
+        return "gold"
+      case "silver":
+        return 'silver'
+    }
+  }
+
+
   return (
-    <div className="each__plan">
+    <div className={`each__plan ${planColor(type.toLowerCase())}`} >
       <div className="plan__header">
         <img src="images/planicon.png" alt="" />
         <div className="plan__type">
@@ -34,11 +47,7 @@ function Plan({ type, price, offers }) {
 
         <div className="plan__price">{showCurrency(price, "NGN")}</div>
         {/* TODO: implement flutterwave payment component */}
-        <PaymentComponent
-          email={"t.olukayode@ikarely.com"}
-          amount={price}
-          type={type}
-        />
+        <button className="choose__plan">Choose</button>
       </div>
     </div>
   );

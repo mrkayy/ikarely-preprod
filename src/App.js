@@ -27,7 +27,7 @@ import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
 
 class App extends Component {
   render() {
-    console.log(`===>USING: ${process.env.NODE_ENV}<===`);
+    // console.log(`===>USING: ${process.env.NODE_ENV}<===`);
     return (
       <div className="App">
         <Router>

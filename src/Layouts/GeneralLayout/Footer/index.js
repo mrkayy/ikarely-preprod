@@ -4,6 +4,7 @@ import "./footer_styles.css";
 // import TwitterIcon from "@material-ui/icons/Twitter";
 // import InstagramIcon from "@material-ui/icons/Instagram";
 // import FacebookIcon from "@material-ui/icons/Facebook";
+import footerImage from "../../../assets/images/iKarelyX.png";
 
 function Footer() {
   const handleFormSubmit = (e) => {
@@ -16,7 +17,7 @@ function Footer() {
         <div className="footer__contacts">
           <img src={`images/${"ikareLogo.png"}`} alt="" />
           <p className="logo__tag">
-            Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem.
+          Live Healthier, Live Better.
           </p>
 
           <div className="iconandinfo">
@@ -49,10 +50,26 @@ function Footer() {
         <div className="quick__links">
           <h3 className="footer__linkhead">quick links</h3>
           <ul className="footer__links">
-            <li>Home</li>
-            <li>Services</li>
-            <li>About Us</li>
-            <li>Contact Us</li>
+            <li>
+              <Link to="/">
+              Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/service">
+              Services
+              </Link>
+            </li>
+            <li>
+              <Link to="about">
+              About Us
+              </Link>
+            </li>
+            <li>
+              <Link to="contact">
+              Contact Us
+              </Link>
+            </li>
           </ul>
         </div>
 

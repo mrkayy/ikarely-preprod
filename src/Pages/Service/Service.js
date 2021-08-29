@@ -40,14 +40,21 @@ function Service() {
       type: "by_request",
     },
     {
-      id: 1,
+      id: 2,
       icon: "injection.svg",
       title: "Wound Care",
       word: "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
       type: "by_request",
     },
     {
-      id: 1,
+      id: 3,
+      icon: "Catherization.svg",
+      title: "Vaccination",
+      word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
+      type: "",
+    },
+    {
+      id: 4,
       icon: "Catherization.svg",
       title: "Vaccination",
       word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
@@ -62,7 +69,7 @@ function Service() {
     //     'We offer home chemotherapy psychological support for people living with cancer. ',
     // },
     {
-      id: 1,
+      id: 5,
       icon: "teeth-checkup.svg",
       title: "Dental Care",
       params: "dental_care",
@@ -71,7 +78,7 @@ function Service() {
     },
 
     {
-      id: 1,
+      id: 6,
       icon: "healthcare.svg",
       title: "General Check-up",
       params: "general_checkup",
@@ -79,6 +86,7 @@ function Service() {
       type: "",
     },
     {
+      id: 7,
       icon: "Catherization.svg",
       title: "Pregnacare",
       params: "pregnacare",
@@ -86,6 +94,7 @@ function Service() {
       type: "",
     },
     {
+      id: 8,
       icon: "healthcare.svg",
       title: "Diabetes Care",
       params: "diabetes",
@@ -181,12 +190,36 @@ function Service() {
           </Link>
         ) : (
           <button
-            className="makerequest__btn"
+            className="makerequest__btn inheader"
             onClick={() => setOpenModal(!openModal)}
           >
             Make Request
           </button>
         )}
+
+       
+
+        <div className="service__lists regular">
+          {services
+            .filter((service) => !service.params)
+            .map(({ icon, title, word, params }) => {
+              return (
+                <div className="service__list" key={title}>
+                  <div className="list__icon">
+                    <img src={`../images/icons/${icon}`} alt="icon.png" />
+                    <h4 className="list__title">{title}</h4>
+                  </div>
+                  <p className="list__word">{word}</p>
+                  {btnSwitch}
+                </div>
+              );
+            })}
+        </div>
+
+        <div className="service__premiumheaders">
+          <h3 className="services__head">Our Services</h3>
+          <h1 className="services__mainheader">Premium Health Services we offer</h1>
+        </div>
 
         <div className="service__lists">
           {services

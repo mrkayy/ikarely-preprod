@@ -1,14 +1,12 @@
 import React,{useEffect} from "react";
 import BlogPost from "../../components/BlogPost/BlogPost";
-import "./Blog.css";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Article from "../../components/Article/Article";
 import PageLanding from "../../components/PageLanding/PageLanding";
+import "./Blog.css";
 
 const Blog = () => {
-
-  
   useEffect(() => {
     autoScroll();
   }, []);
@@ -137,6 +135,6 @@ const Blog = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Blog;

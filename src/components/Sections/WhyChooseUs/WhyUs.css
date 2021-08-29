@@ -21,7 +21,7 @@
   margin-bottom: 50px;
 }
 .whyus__option {
-  height: 200px;
+  min-height: 200px;
 }
 .whyus__icon > img {
   width: 50px;
