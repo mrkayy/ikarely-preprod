@@ -30,12 +30,13 @@
   text-align: left;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  /* display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 380px; */
   justify-content: space-evenly;
   grid-gap: 20px;
+}
+.service__premiumheaders{
+  margin-top: 80px;
+  margin-bottom: 30px;
+
 }
 .service__list {
   padding: 32px 16px;
@@ -99,6 +100,9 @@
   justify-self: flex-end;
   color: #fff;
   width: 100%;
+}
+.makerequest__btn.inheader{
+  width: auto;
 }
 
 .modal {

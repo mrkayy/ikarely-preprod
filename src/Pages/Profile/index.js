@@ -6,8 +6,7 @@ import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import WebStorage from "../../shared/LocalStorage";
 
-import "../../Components/Clients/style.css";
-
+import "../../components/Clients/style.css";
 
 const ClientProfile = () => {
   const history = useHistory();
@@ -27,7 +26,7 @@ const ClientProfile = () => {
 
   return (
     <>
-    <h1>Hello every one!</h1>
+      <h1>Hello every one!</h1>
     </>
   );
 };

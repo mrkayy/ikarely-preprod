@@ -1,7 +1,7 @@
 import React from "react";
-import Landing from "../../Components/Landing/Landing";
-import Section from "../../Components/Sections/Sections";
-import WhyUs from "../../Components/Sections/WhyChooseUs/WhyUs";
+import Landing from "../../components/Landing/Landing";
+import Section from "../../components/Sections/Sections";
+import WhyUs from "../../components/Sections/WhyChooseUs/WhyUs";
 import './Home.css'
 
 const Home = () => {

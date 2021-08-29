@@ -1,20 +1,24 @@
 import React, { useEffect } from "react";
-// import { useParams } from "react-router-dom";
-import PageLanding from "../../Components/PageLanding/PageLanding";
-import Plan from "../../Components/Plan/Plan";
+import { useParams } from "react-router-dom";
+import PageLanding from "../../components/PageLanding/PageLanding";
+import Plan from "../../components/Plan/Plan";
 import "./Subscription.css";
 
 function Subscription(props) {
-  console.log({ props });
-  console.log(props.location);
-  console.log(props.location.pathname);
+  // console.log({ props });
+  // console.log(props.location);
+  // console.log(props.location.pathname);
+
+  const {id} = useParams()
+
+  console.log(id)
 
   useEffect(() => {
     autoScroll();
   }, []);
 
   useEffect(() => {
-    console.log({ path: props.location.pathname });
+    // console.log({ path: props.location.pathname });
   }, [props.location.pathname]);
 
   const autoScroll = () => {
@@ -27,13 +31,13 @@ function Subscription(props) {
       pathname: "geriatic_care",
       plans: [
         {
-          type: "Gold",
+          type: "Bronze",
           price: 50000,
           offers: [
             "Dr home visit × 1",
             "Nurses visit × 2",
             "Physiotherapy × 1",
-            "Nurses visit × 2",
+            "Free virtual consult with Dr ,nurses ,dietician, Dentist",
             "Free health insurance",
           ],
         },
@@ -49,7 +53,7 @@ function Subscription(props) {
           ],
         },
         {
-          type: "Bronze",
+          type: "Gold",
           price: 35000,
           offers: [
             "Dr home visit × 1",
@@ -66,17 +70,6 @@ function Subscription(props) {
       pathname: "general_checkup",
       plans: [
         {
-          type: "Gold",
-          price: 50000,
-          offers: [
-            "Dr home visit × 1",
-            "Nurses visit × 2",
-            "Physiotherapy × 1",
-            "Nurses visit × 2",
-            "Free health insurance",
-          ],
-        },
-        {
           type: "Silver",
           price: 35500,
           offers: [
@@ -87,6 +80,18 @@ function Subscription(props) {
             "Free health insurance",
           ],
         },
+        {
+          type: "Gold",
+          price: 50000,
+          offers: [
+            "Dr home visit × 1",
+            "Nurses visit × 2",
+            "Physiotherapy × 1",
+            "Nurses visit × 2",
+            "Free health insurance",
+          ],
+        },
+        
       ],
     },
     {
@@ -111,17 +116,6 @@ function Subscription(props) {
       pathname: "diabetes",
       plans: [
         {
-          type: "Gold",
-          price: 50000,
-          offers: [
-            "Dr home visit × 1",
-            "Nurses visit × 2",
-            "Physiotherapy × 1",
-            "Nurses visit × 2",
-            "Free health insurance",
-          ],
-        },
-        {
           type: "Silver",
           price: 35500,
           offers: [
@@ -132,33 +126,43 @@ function Subscription(props) {
             "Free health insurance",
           ],
         },
+        {
+          type: "Gold",
+          price: 50000,
+          offers: [
+            "Dr home visit × 1",
+            "Nurses visit × 2",
+            "Physiotherapy × 1",
+            "Nurses visit × 2",
+            "Free health insurance",
+          ],
+        },
+        
       ],
     },
   ];
 
+  const title = subscriptions.filter(subscription => subscription.pathname == id)[0]["plan"]
+  console.log()
+
   return (
     <div className="subscription">
-      <PageLanding image="health-service.jpg" title={"geriatic_care"} />
+      <PageLanding image="health-service.jpg" title={"Subscription plans"} />
 
       <div className="subscription__page">
+        <h4 className="subscription__header">{title.toUpperCase()}</h4>
         <p className="subscription__mainword">
           Elderly people don't always have to be hospitalized for minor health
           concerns that can be delivered to them at home. We provide care for
           the Elderly, from general checkup to catheterization and lots more.
         </p>
 
-        <h4 className="subscription__header">Subscription Plans</h4>
-        <p className="subscription__subheader">
-          Please choose the best plan for you.All plans have flexible payment
-          methods for everyone…
-        </p>
-
         <div className="subscription__plans">
           {subscriptions
-            .filter((subscription) => subscription.pathname === "geriatic_care")
+            .filter((subscription) => subscription.pathname === id)
             .map(({ plans }) =>
               plans.map(({ type, price, offers }) => {
-                console.log({ offers });
+                // console.log({ offers });
                 return <Plan type={type} price={price} offers={offers} />;
               })
             )}

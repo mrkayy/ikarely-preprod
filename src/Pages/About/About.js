@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
-import PageLanding from "../../Components/PageLanding/PageLanding";
-import Teams from "../../Components/Sections/Teams/Teams";
-import WhyUs from "../../Components/Sections/WhyChooseUs/WhyUs";
+import PageLanding from "../../components/PageLanding/PageLanding";
+import Teams from "../../components/Sections/Teams/Teams";
+import WhyUs from "../../components/Sections/WhyChooseUs/WhyUs";
 import "./About.css";
 
 const About = () => {
   useEffect(() => {
-    autoScroll()
+    autoScroll();
   }, []);
-  
-  const autoScroll = ()=>{
+
+  const autoScroll = () => {
     return window.scrollTo(0, 0);
-  }
+  };
 
   return (
     <div className="about">

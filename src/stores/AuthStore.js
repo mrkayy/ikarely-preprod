@@ -66,14 +66,14 @@ class AuthStore {
   register = (data) => {
     this.loading = true;
     api
-      .post("auth/users", data)
+      .post("/notifications", data)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
           this.success = true;
           this.successMessage = res.data.message;
           // console.log(this.successMessage);
-          window.location.href = "/signin";
+          // window.location.href = "/signin";
         }
       })
       .catch((err) => {
@@ -116,6 +116,27 @@ class AuthStore {
       })
       .finally(() => {
         this.getCurrUser();
+      });
+  };
+
+  contactUs = (data) => {
+    this.loading = true;
+    api
+      .post("auth/users", data)
+      .then((res) => {
+        this.loading = false;
+        if (res.data.status) {
+          this.success = true;
+          this.successMessage = res.data.message;
+          // console.log(this.successMessage);
+          window.location.href = "/signin";
+        }
+      })
+      .catch((err) => {
+        this.loading = false;
+        this.error = true;
+        this.errMessage =
+          err.response === undefined ? err.message : err.response.data.message;
       });
   };
 
