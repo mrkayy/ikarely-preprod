@@ -14,7 +14,7 @@ function Landing() {
         <h1 className="main__word">
           Bringing Quality health <br />{" "}
           <span className="mainword__break">
-            Services at your <br /> Doorstep
+            Services to your <br /> Doorstep
           </span>
         </h1>
 
