@@ -71,8 +71,8 @@ function Service() {
     {
       id: 5,
       icon: "teeth-checkup.svg",
-      title: "Dental Care",
-      params: "dental_care",
+      title: "Geriatic Care",
+      params: "geriatic_care",
       word: "We provide a wide range of dental services etc dental cleanings, Fillings, root canals, and extractions. Imagine the comfort of having a dentist come to your home for your dental care, that's exactly what we are offering you.",
       type: "",
     },

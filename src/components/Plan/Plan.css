@@ -45,6 +45,7 @@
   .planlist__icon {
   /* list-style-image: url("images/markicon.png"); */
   margin-right: 16px;
+  color: #E6EBEF;
 }
 .plan__price{
     text-align: center;

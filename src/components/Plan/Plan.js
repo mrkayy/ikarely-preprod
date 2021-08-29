@@ -1,7 +1,12 @@
 import React from "react";
 import currencyFormatter from "currency-formatter";
-import "./Plan.css";
 import PaymentComponent from "../PaymentComponent";
+
+import markicon from "../../assets/images/markicon.png"
+import markicon2 from "../../assets/images/markicon2.png"
+import planicon from "../../assets/images/planicon.png"
+
+import "./Plan.css";
 
 
 
@@ -24,7 +29,7 @@ function Plan({ type, price, offers }) {
   return (
     <div className={`each__plan ${planColor(type.toLowerCase())}`} >
       <div className="plan__header">
-        <img src="images/planicon.png" alt="" />
+        <img src={planicon} alt="" />
         <div className="plan__type">
           <h3 className="">{type} Plan</h3>
         </div>
@@ -35,7 +40,7 @@ function Plan({ type, price, offers }) {
             return (
               <li className="plandetails__list">
                 <img
-                  src="images/markicon.png"
+                  src={type.toLowerCase() == "gold" ? markicon2 : markicon}   
                   alt=""
                   className="planlist__icon"
                 />
