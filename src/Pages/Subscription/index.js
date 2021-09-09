@@ -173,9 +173,9 @@ const content = subscriptions.filter(subscription => subscription.pathname == id
         <div className="subscription__plans">
           {subscriptions
             .filter((subscription) => subscription.pathname === id)
-            .map(({ plans }) =>
+            .map(({ plans }, index) =>
               plans.map(({ type, price, offers }) => {
-                return <Plan type={type} price={price} offers={offers} />;
+                return <Plan type={type} price={price} offers={offers} key={index}/>;
               })
             )}
         </div>

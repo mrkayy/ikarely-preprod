@@ -7,18 +7,13 @@ function Alert({ style, options, close, message }) {
   const authcontext = useContext(AuthStore);
   const { error, loading, success } = authcontext;
 
-  // console.log(error, loading)
+  console.log(error, loading, success, message);
   return (
     <div className="alert__box">
-      {/* <p className="close__icon" onClick={close}>X</p> */}
-        <div className="feedback__body">
-            {!error ?
-                <FailAnime />
-                :
-                <Anime />
-            }
-            
-        <h3 className="feedback__status">{!error ? 'Error' : 'Successful'}</h3>
+      <div className="feedback__body">
+        {!error ? <FailAnime /> : <Anime />}
+
+        <h3 className="feedback__status">{!error ? "Error" : "Successful"}</h3>
         <p className="feedback__message">{message}</p>
       </div>
     </div>

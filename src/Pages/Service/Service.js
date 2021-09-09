@@ -34,21 +34,21 @@ function Service() {
   const services = [
     {
       id: 1,
-      icon: "wound.svg",
+      icon: "injection.svg",
       title: "Dr Consultation",
       word: "Why go through the stress of going to and waiting in the hospital when dealing with wounds is enough stress on its own. We offer wound dressing services for patients with minor burns, pressure ulcer, diabetic foot and any other form of wounds at your utmost convenience.",
       type: "by_request",
     },
     {
       id: 2,
-      icon: "injection.svg",
+      icon: "wound.svg",
       title: "Wound Care",
       word: "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
       type: "by_request",
     },
     {
       id: 3,
-      icon: "Catherization.svg",
+      icon: "injection.svg",
       title: "Vaccination",
       word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
       type: "",
@@ -56,7 +56,7 @@ function Service() {
     {
       id: 4,
       icon: "Catherization.svg",
-      title: "Vaccination",
+      title: "Covid19 Screening",
       word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
       type: "",
     },
@@ -80,7 +80,7 @@ function Service() {
     {
       id: 6,
       icon: "healthcare.svg",
-      title: "General Check-up",
+      title: "General Checkup",
       params: "general_checkup",
       word: "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
       type: "",
@@ -184,7 +184,7 @@ function Service() {
           <ModalForm services={services} setOpenModal={setOpenModal} />
         </Modal>
 
-        {!currUser ? (
+        {/* {!currUser ? (
           <Link to="/signin">
             <button className="getstarted__btn">Get Started</button>
           </Link>
@@ -195,7 +195,7 @@ function Service() {
           >
             Make Request
           </button>
-        )}
+        )} */}
 
        
 
