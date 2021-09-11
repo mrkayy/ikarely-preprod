@@ -18,12 +18,10 @@
 }
 .footer__contacts > img{
   object-fit: contain;
-  width: 200px;
-  /* height: 72px; */
+  width: 100px;
 }
 .logo__tag{
   margin: 1em 0px;
-   /* margin-top: 24px; */
  margin-bottom: 2em; 
 }
 .iconandinfo{

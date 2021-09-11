@@ -15,7 +15,7 @@ function Footer() {
     <>
       <div className="footer">
         <div className="footer__contacts">
-          <img src={`images/${"ikareLogo.png"}`} alt="" />
+          <img src={footerImage} alt="" />
           <p className="logo__tag">
           Live Healthier, Live Better.
           </p>
