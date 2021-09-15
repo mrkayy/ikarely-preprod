@@ -29,11 +29,11 @@ const Contact = (props) => {
 
   const {
     error,
-    loading,
     success,
     sendmessage,
     errMessage,
     successMessage,
+    // loading,
     resetActions,
   } = authcontext;
 
@@ -78,7 +78,7 @@ const Contact = (props) => {
       alert.success(successMessage);
     }
     return () => {
-      resetActions();
+      // resetActions();
     };
   }, [errMessage, successMessage]);
 
@@ -107,7 +107,7 @@ const Contact = (props) => {
       data: { user_name: message, current_year: 2021 },
     };
     sendmessage(datas);
-    console.log(datas, "Register submitted"); 
+    console.log(datas, "Register submitted");
   };
 
   return (

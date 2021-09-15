@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import AuthStore from "../stores/ContactUs";
+import PropTypes from "prop-types"
+// import AuthStore from "../stores/ContactUs";
 import "./Button.css";
 import { GlobalContext } from "../stores/GlobalLayer";
 
-function Button({ progress, shown }) {
-  const authcontext = useContext(AuthStore);
-  const { loading } = authcontext;
+function Button({ progress, shown, loading }) {
+  
+  // const authcontext = useContext(AuthStore);
+  // const { loading } = authcontext;
 
   const { validate } = useContext(GlobalContext);
 

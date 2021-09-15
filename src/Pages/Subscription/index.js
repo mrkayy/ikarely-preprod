@@ -54,7 +54,8 @@ function Subscription(props) {
           ],
         },
       ],
-      content: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home.We provide care for the Elderly, from general checkup to catheterization and lots more."
+      content:
+        "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home.We provide care for the Elderly, from general checkup to catheterization and lots more.",
     },
     {
       plan: "general checkup",
@@ -83,7 +84,8 @@ function Subscription(props) {
           ],
         },
       ],
-      content: "You can request for our professional service for individual and family general checkups like Blood pressure,weight check,glucose check,malaria/HIVtest, Body Mass Index(BMI)all at your convenience."
+      content:
+        "You can request for our professional service for individual and family general checkups like Blood pressure,weight check,glucose check,malaria/HIVtest, Body Mass Index(BMI)all at your convenience.",
     },
     {
       plan: "pregna care",
@@ -107,11 +109,11 @@ function Subscription(props) {
             "Malaria,typhoid, hepatitis and Hiv test, urinalysis",
             "Obstetrician virtual visit ",
             "+ Free virtual consult",
-            "+ Free health insurance"
+            "+ Free health insurance",
           ],
         },
       ],
-      content: ""
+      content: "",
     },
     {
       plan: "diabetes care",
@@ -135,54 +137,39 @@ function Subscription(props) {
             "Strip refill ",
             "Drug refill ",
             "+ Free virtual consult",
-            "+ Free health insurance"
+            "+ Free health insurance",
           ],
         },
       ],
-      content: "You can request for our professional service for individual and family general check ups like Blood pressure, weight check, glucose check, malaria/HIV test, Body Mass Index (BMI) all at your convenience."
+      content:
+        "You can request for our professional service for individual and family general check ups like Blood pressure, weight check, glucose check, malaria/HIV test, Body Mass Index (BMI) all at your convenience.",
     },
   ];
-const title = subscriptions.filter(subscription => subscription.pathname == id)[0]["plan"]
-const content = subscriptions.filter(subscription => subscription.pathname == id)[0]["content"]
-
-<<<<<<< HEAD
-  console.log({ id });
   const title = subscriptions.filter(
-    (subscription) => subscription.pathname === id
-  )[0]["pathname"];
-=======
+    (subscription) => subscription.pathname == id
+  )[0]["plan"];
+  const content = subscriptions.filter(
+    (subscription) => subscription.pathname == id
+  )[0]["content"];
+
   // console.log()/
->>>>>>> 806411a21d5e4c3413541fa88de4e99f1c9fa85a
 
   return (
     <div className="subscription">
       <PageLanding image="health-service.jpg" title={"Subscription plans"} />
 
       <div className="subscription__page">
-
         <h4 className="subscription__header">{title.toUpperCase()}</h4>
-        <p className="subscription__mainword">
-          {content}
-        </p>
+        <p className="subscription__mainword">{content}</p>
 
         <div className="subscription__plans">
           {subscriptions
             .filter((subscription) => subscription.pathname === id)
             .map(({ plans }, index) =>
               plans.map(({ type, price, offers }) => {
-<<<<<<< HEAD
-                // console.log({ offers });
                 return (
-                  <Plan
-                    type={type}
-                    price={price}
-                    title={title}
-                    offers={offers}
-                  />
+                  <Plan type={type} price={price} offers={offers} key={index} />
                 );
-=======
-                return <Plan type={type} price={price} offers={offers} key={index}/>;
->>>>>>> 806411a21d5e4c3413541fa88de4e99f1c9fa85a
               })
             )}
         </div>

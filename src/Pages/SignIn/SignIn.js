@@ -30,9 +30,14 @@ const SignIn = (props) => {
     errMessage,
     successMessage,
     login,
+    loading,
     currUser,
     resetActions,
   } = authcontext;
+
+  const options = {
+    error,
+  };
 
   const { state, setState, setSchemas, validate } = useContext(GlobalContext);
 
@@ -59,24 +64,24 @@ const SignIn = (props) => {
 
   useEffect(() => {
     if (error) {
-      alert.error(`${errMessage}`);
+      alert.error(errMessage, options);
     }
     if (success && !error) {
-      alert.success(`${successMessage}`);
+      alert.success(successMessage, options);
     }
     return () => {
       resetActions();
     };
   }, [errMessage, successMessage]);
 
-  useEffect(() => {
-    if (authSuccess === "pass") {
-      props.history.push("/service");
-    }
-    return () => {
-      resetActions();
-    };
-  }, [authSuccess]);
+  // useEffect(() => {
+  //   if (authSuccess === "pass") {
+  //     props.history.push("/service");
+  //   }
+  //   return () => {
+  //     resetActions();
+  //   };
+  // }, [authSuccess]);
 
   const { data, errors } = state;
 
@@ -108,13 +113,9 @@ const SignIn = (props) => {
           <p className="little__text">Welcome to iKarely</p>
         </div>
 
-
-
         <form action="submit" onSubmit={loginSubmit} className="form__inputs">
-
-
           <InputBox label="Email or Phone Number" name="email" type="email" />
-          <InputPasswordBox label="Password" name="password"/>
+          <InputPasswordBox label="Password" name="password" />
 
           {/* <div className="keep__signed">
               <input
@@ -124,7 +125,7 @@ const SignIn = (props) => {
               Keep me signed in
             </div> */}
 
-          <Button progress="Loading..." shown="Signin" />
+          <Button loading={loading} progress="Loading..." shown="Signin" />
 
           <p className="bottom__text">
             New user? <Link to="/register">Sign up</Link> for free

@@ -1,31 +1,24 @@
 import React, { useContext } from "react";
 import currencyFormatter from "currency-formatter";
 import PaymentComponent from "../PaymentComponent";
-import WebStorage from "../../shared/LocalStorage";
-import jwt_decode from "jwt-decode";
+// import WebStorage from "../../shared/LocalStorage";
+// import jwt_decode from "jwt-decode";
+
+import AuthStore from "../../stores/AuthStore";
 
 import markicon from "../../assets/images/markicon.png";
 import markicon2 from "../../assets/images/markicon2.png";
 import planicon from "../../assets/images/planicon.png";
-<<<<<<< HEAD
-
-// import AuthStore from "../../stores/AuthStore";
-
-import "./Plan.css";
-
-function Plan({ type, price, offers, title }) {
-  const token = WebStorage.get("user_token");
-  const user_details = jwt_decode(token);
-
-  // const authcontext = useContext(AuthStore);
-  const { full_name, phone, email } = user_details;
-
-=======
 
 import "./Plan.css";
 
 function Plan({ type, price, offers }) {
->>>>>>> 806411a21d5e4c3413541fa88de4e99f1c9fa85a
+  const authcontext = useContext(AuthStore);
+
+  const { user } = authcontext;
+
+  console.log({ user });
+
   const showCurrency = (value, code) => {
     return currencyFormatter.format(value, { code });
   };
@@ -33,21 +26,15 @@ function Plan({ type, price, offers }) {
   const planColor = (color) => {
     switch (color) {
       case "gold":
-<<<<<<< HEAD
-        return "gold";
-      case "silver":
-        return "silver";
-=======
       case "smart":
         return "blue";
       case "silver":
       case "basic":
         return "grey";
-      case 'bronze':
+      case "bronze":
         return "white";
       default:
-        return "white"
->>>>>>> 806411a21d5e4c3413541fa88de4e99f1c9fa85a
+        return "white";
     }
   };
 
@@ -65,16 +52,12 @@ function Plan({ type, price, offers }) {
             return (
               <li className="plandetails__list" key={index}>
                 <img
-<<<<<<< HEAD
-                  src={type.toLowerCase() == "gold" ? markicon2 : markicon}
-=======
                   src={
-                    type.toLowerCase() == "gold" ||
-                    type.toLowerCase() == "smart"
+                    type.toLowerCase() === "gold" ||
+                    type.toLowerCase() === "smart"
                       ? markicon2
                       : markicon
                   }
->>>>>>> 806411a21d5e4c3413541fa88de4e99f1c9fa85a
                   alt=""
                   className="planlist__icon"
                 />
@@ -85,20 +68,14 @@ function Plan({ type, price, offers }) {
         </ul>
 
         <div className="plan__price">{showCurrency(price, "NGN")}</div>
-<<<<<<< HEAD
         <PaymentComponent
-          email={email}
+          email={user?.email ?? ""}
           amount={price}
-          type={title}
-          customer={full_name}
-          phoneNum={phone}
+          type={`${type} plan`}
+          customer={user?.phone ?? ""}
+          phoneNum={user?.full_name ?? ""}
           subscription={offers}
         />
-        {/* <button className="choose__plan">Choose</button> */}
-=======
-        {/* TODO: implement flutterwave payment component */}
-        <button className={`choose__plan ${planColor(type.toLowerCase())}`}>Choose</button>
->>>>>>> 806411a21d5e4c3413541fa88de4e99f1c9fa85a
       </div>
     </div>
   );
