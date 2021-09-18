@@ -85,8 +85,8 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
           <ul className="more__links">
             {currUser && currUser ? (
               <>
-                <hr />
-                {/* profileLinks.map(({ value, directory }, index) => {
+                {/* <hr /> */}
+                {/* {profileLinks.map(({ value, directory }, index) => {
                   return (
                     <li
                       key={index}
@@ -96,7 +96,7 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
                       <Link to={directory}>{value}</Link>
                     </li>
                   );
-                }) */}
+                })} */}
                 <li className="navbar__slide" onClick={logout}>
                   <button className="register__link__btn">Logout</button>
                 </li>

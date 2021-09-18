@@ -29,11 +29,11 @@ const Contact = (props) => {
 
   const {
     error,
-    loading,
     success,
     sendmessage,
     errMessage,
     successMessage,
+    loading,
     resetActions,
   } = authcontext;
 
@@ -78,7 +78,7 @@ const Contact = (props) => {
       alert.success(successMessage);
     }
     return () => {
-      resetActions();
+      // resetActions();
     };
   }, [errMessage, successMessage]);
 

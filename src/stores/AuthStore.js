@@ -2,7 +2,6 @@ import { createContext } from "react";
 import { makeObservable, observable, action, autorun } from "mobx";
 import api from "../Config";
 import WebStorage from "../shared/LocalStorage";
-import { findAllByDisplayValue } from "@testing-library/react";
 
 class AuthStore {
   loading = false;
@@ -59,9 +58,6 @@ class AuthStore {
       });
   };
 
-  sendMessage = () => {
-    // Recieve data and post with firebase
-  };
 
   register = (data) => {
     this.loading = true;
@@ -91,15 +87,17 @@ class AuthStore {
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
-          if (data?.remember) {
-            WebStorage.save("remember_me", data.remember);
-            WebStorage.save("use_email", data.value.email);
-            WebStorage.save("use_password", data.value.password);
-          }
+          // if (data?.remember) {
+          //   WebStorage.save("remember_me", data.remember);
+          //   WebStorage.save("use_email", data.value.email);
+          //   WebStorage.save("use_password", data.value.password);
+          // }
+
           this.success = true;
           this.user = res.data.data;
           this.authSuccess = "pass";
           WebStorage.save("user_token", res.data.data.token);
+          this.successMessage = res.data.message;
           this.getCurrUser();
           console.log({ user: this.user });
           console.log("logging in...");
@@ -119,26 +117,26 @@ class AuthStore {
       });
   };
 
-  contactUs = (data) => {
-    this.loading = true;
-    api
-      .post("auth/users", data)
-      .then((res) => {
-        this.loading = false;
-        if (res.data.status) {
-          this.success = true;
-          this.successMessage = res.data.message;
-          // console.log(this.successMessage);
-          window.location.href = "/signin";
-        }
-      })
-      .catch((err) => {
-        this.loading = false;
-        this.error = true;
-        this.errMessage =
-          err.response === undefined ? err.message : err.response.data.message;
-      });
-  };
+  // contactUs = (data) => {
+  //   this.loading = true;
+  //   api
+  //     .post("auth/users", data)
+  //     .then((res) => {
+  //       this.loading = false;
+  //       if (res.data.status) {
+  //         this.success = true;
+  //         this.successMessage = res.data.message;
+  //         // console.log(this.successMessage);
+  //         window.location.href = "/signin";
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       this.loading = false;
+  //       this.error = true;
+  //       this.errMessage =
+  //         err.response === undefined ? err.message : err.response.data.message;
+  //     });
+  // };
 
   logout = () => {
     WebStorage.logout();

@@ -6,14 +6,15 @@ function PaymentComponent(props) {
   const { email, amount, type, customer, phoneNum, subscription } = props;
 
   const config = {
-    public_key: "FLWPUBK_TEST-6d3b748b021e100bb5ed30b38bf8b82e-X",
-    // process.env.NODE_ENV === "development"
-    //   ? process.env.REACT_APP_PAYMENT_DEV
-    //   : process.env.REACT_APP_PAYMENT,
+    public_key: 
+    // "FLWPUBK_TEST-6d3b748b021e100bb5ed30b38bf8b82e-X",
+    process.env.NODE_ENV === "development"
+      ? process.env.REACT_APP_PAYMENT_DEV
+      : process.env.REACT_APP_PAYMENT,
     tx_ref: Date.now(), //(new Date()).getTime().toString(),
     amount,
     currency: "NGN",
-    payment_options: "card,ussd",
+    payment_options: "card",
     customer: {
       email: email,
       phonenumber: phoneNum,

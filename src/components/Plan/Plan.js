@@ -1,23 +1,23 @@
 import React, { useContext } from "react";
 import currencyFormatter from "currency-formatter";
 import PaymentComponent from "../PaymentComponent";
-import WebStorage from "../../shared/LocalStorage";
-import jwt_decode from "jwt-decode";
+// import WebStorage from "../../shared/LocalStorage";
+// import jwt_decode from "jwt-decode";
+
+import AuthStore from "../../stores/AuthStore";
 
 import markicon from "../../assets/images/markicon.png";
 import markicon2 from "../../assets/images/markicon2.png";
 import planicon from "../../assets/images/planicon.png";
 
-// import AuthStore from "../../stores/AuthStore";
-
 import "./Plan.css";
 
-function Plan({ type, price, offers, title }) {
-  const token = WebStorage.get("user_token");
-  const user_details = jwt_decode(token);
+function Plan({ type, price, offers }) {
+  const authcontext = useContext(AuthStore);
 
-  // const authcontext = useContext(AuthStore);
-  const { full_name, phone, email } = user_details;
+  const { user } = authcontext;
+
+  console.log({ user });
 
   const showCurrency = (value, code) => {
     return currencyFormatter.format(value, { code });
@@ -26,9 +26,15 @@ function Plan({ type, price, offers, title }) {
   const planColor = (color) => {
     switch (color) {
       case "gold":
-        return "gold";
+      case "smart":
+        return "blue";
       case "silver":
-        return "silver";
+      case "basic":
+        return "grey";
+      case "bronze":
+        return "white";
+      default:
+        return "white";
     }
   };
 
@@ -42,11 +48,16 @@ function Plan({ type, price, offers, title }) {
       </div>
       <div className="plan__details">
         <ul>
-          {offers.map((offer) => {
+          {offers.map((offer, index) => {
             return (
-              <li className="plandetails__list">
+              <li className="plandetails__list" key={index}>
                 <img
-                  src={type.toLowerCase() == "gold" ? markicon2 : markicon}
+                  src={
+                    type.toLowerCase() === "gold" ||
+                    type.toLowerCase() === "smart"
+                      ? markicon2
+                      : markicon
+                  }
                   alt=""
                   className="planlist__icon"
                 />
@@ -58,14 +69,13 @@ function Plan({ type, price, offers, title }) {
 
         <div className="plan__price">{showCurrency(price, "NGN")}</div>
         <PaymentComponent
-          email={email}
+          email={user?.email ?? ""}
           amount={price}
-          type={title}
-          customer={full_name}
-          phoneNum={phone}
+          type={`${type} plan`}
+          customer={user?.phone ?? ""}
+          phoneNum={user?.full_name ?? ""}
           subscription={offers}
         />
-        {/* <button className="choose__plan">Choose</button> */}
       </div>
     </div>
   );

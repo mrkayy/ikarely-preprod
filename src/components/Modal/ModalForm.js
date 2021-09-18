@@ -70,7 +70,6 @@ function ModalForm({ services, setOpenModal }) {
 
   const { data, errors } = state;
 
-  console.log(services);
 
   const stagesRender = (stage) => {
     // eslint-disable-next-line default-case
@@ -89,7 +88,7 @@ function ModalForm({ services, setOpenModal }) {
                 <option value="" className="first__option">
                   choose a service
                 </option>
-                {services.map(({ title, id }) => (
+                {services.filter(service => !service.params).map(({ title, id }) => (
                   <option value={title} key={title}>
                     {title}
                   </option>

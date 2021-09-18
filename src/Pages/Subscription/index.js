@@ -146,16 +146,13 @@ function Subscription(props) {
     },
   ];
   const title = subscriptions.filter(
-    (subscription) => subscription.pathname === id
+    (subscription) => subscription.pathname == id
   )[0]["plan"];
   const content = subscriptions.filter(
-    (subscription) => subscription.pathname === id
+    (subscription) => subscription.pathname == id
   )[0]["content"];
 
-  // console.log({ id });
-  // const title = subscriptions.filter(
-  //   (subscription) => subscription.pathname === id
-  // )[0]["pathname"];
+  // console.log()/
 
   return (
     <div className="subscription">
@@ -168,16 +165,10 @@ function Subscription(props) {
         <div className="subscription__plans">
           {subscriptions
             .filter((subscription) => subscription.pathname === id)
-            .map(({ plans }) =>
+            .map(({ plans }, index) =>
               plans.map(({ type, price, offers }) => {
-                // console.log({ offers });
                 return (
-                  <Plan
-                    type={type}
-                    price={price}
-                    title={title}
-                    offers={offers}
-                  />
+                  <Plan type={type} price={price} offers={offers} key={index} />
                 );
               })
             )}

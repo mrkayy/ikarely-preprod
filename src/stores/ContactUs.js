@@ -29,16 +29,16 @@ class ContactUs {
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
-          this.reqSuccess = true;
-          this.reqSuccessMessage = res.data.message;
+          this.success = true;
+          this.successMessage = res.data.message;
           // console.log(this.reqSuccessMessage);
           window.location.href = "/";
         }
       })
       .catch((err) => {
         this.loading = false;
-        this.reqError = true;
-        this.reqErrMessage =
+        this.error = true;
+        this.errMessage =
           err.response === undefined ? err.message : err.response.data.message;
       });
   };

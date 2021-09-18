@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types"
 // import AuthStore from "../stores/ContactUs";
 import "./Button.css";
 import { GlobalContext } from "../stores/GlobalLayer";
 
-function Button({ progress, shown, loader }) {
+function Button({ progress, shown, loading }) {
+  
   // const authcontext = useContext(AuthStore);
   // const { loading } = authcontext;
 
@@ -11,7 +13,7 @@ function Button({ progress, shown, loader }) {
 
   return (
     <div>
-      {loader ? (
+      {loading ? (
         <div className="loading__show">
           <div className="loader" title="2">
             {" "}
