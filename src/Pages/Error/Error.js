@@ -3,9 +3,8 @@ import "./Error.css";
 import { Link } from "react-router-dom";
 
 const Error = (props) => {
+  //console.log({props});
 
-  console.log({props});
-   
   return (
     <div className="error">
       <div className="error__content">
@@ -17,6 +16,6 @@ const Error = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default Error;

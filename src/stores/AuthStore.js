@@ -59,17 +59,16 @@ class AuthStore {
       });
   };
 
-
   register = (data) => {
     this.loading = true;
     api
-      .post("/notifications", data)
+      .post("/signup", data)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
           this.success = true;
           this.successMessage = res.data.message;
-          // console.log(this.successMessage);
+          // //console.log(this.successMessage);
           // window.location.href = "/signin";
         }
       })
@@ -100,23 +99,26 @@ class AuthStore {
           WebStorage.save("user_token", res.data.data.token);
           this.successMessage = res.data.message;
           this.getCurrUser();
-          console.log({ user: this.user });
-          console.log("logging in...");
+          //console.log({ user: this.user });
+          //console.log("logging in...");
         }
       })
       .catch((err) => {
-        // console.log(err);
+        // //console.log(err);
         this.loading = false;
         this.error = true;
         this.getCurrUser();
         this.errMessage =
           err.response === undefined ? err.message : err.response.data.message;
-        // console.log(err.response.data);
+        // //console.log(err.response.data);
       })
       .finally(() => {
         this.getCurrUser();
       });
   };
+
+  // TODO: implement forgot_password
+  forgotPassword = (data) => {};
 
   // contactUs = (data) => {
   //   this.loading = true;
@@ -127,7 +129,7 @@ class AuthStore {
   //       if (res.data.status) {
   //         this.success = true;
   //         this.successMessage = res.data.message;
-  //         // console.log(this.successMessage);
+  //         // //console.log(this.successMessage);
   //         window.location.href = "/signin";
   //       }
   //     })
@@ -146,7 +148,7 @@ class AuthStore {
 
   getCurrUser = () => {
     this.currUser = WebStorage.get("user_token") ? true : false;
-    // console.log(WebStorage.get("user_token"));
+    // //console.log(WebStorage.get("user_token"));
   };
 
   resetActions = () => {

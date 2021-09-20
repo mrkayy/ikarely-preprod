@@ -1,15 +1,8 @@
-import React, { useContext } from "react";
-import AuthStore from "../stores/AuthStore";
+import React from 'react'
 import "./Alert.css";
 import Anime, { FailAnime } from "./Anime";
 
 function Alert({ style, options, close, message }) {
-  const authcontext = useContext(AuthStore);
-
-  // const { error, loading, success } = authcontext;
-
-  // console.log(error, loading, success);
-
   return (
     <div className="alert__box">
       <div className="feedback__body">

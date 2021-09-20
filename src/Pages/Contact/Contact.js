@@ -13,7 +13,7 @@ import { GlobalContext } from "../../stores/GlobalLayer";
 import Button from "../../Anime/Button";
 
 const Contact = (props) => {
-  console.log({ props });
+  //console.log({ props });
 
   useEffect(() => {
     autoScroll();
@@ -74,7 +74,7 @@ const Contact = (props) => {
       alert.error(errMessage);
     }
     if (success && !error) {
-      console.log({ successMessage });
+      //console.log({ successMessage });
       alert.success(successMessage);
     }
     return () => {
@@ -107,7 +107,7 @@ const Contact = (props) => {
       data: { user_name: message, current_year: 2021 },
     };
     sendmessage(datas);
-    console.log(datas, "Register submitted");
+    //console.log(datas, "Register submitted");
   };
 
   return (

@@ -31,7 +31,7 @@ class ContactUs {
         if (res.data.status) {
           this.success = true;
           this.successMessage = res.data.message;
-          // console.log(this.reqSuccessMessage);
+          // //console.log(this.reqSuccessMessage);
           window.location.href = "/";
         }
       })

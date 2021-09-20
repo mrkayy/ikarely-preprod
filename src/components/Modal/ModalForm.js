@@ -1,24 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../stores/GlobalLayer";
-import jwt_decode from "jwt-decode";
 import "./ModalForm.css";
 import Joi from "joi-browser";
 import { observer } from "mobx-react";
-// import { useAlert } from "react-alert";
 import ServiceStore from "../../stores/Services";
 import InputBox from "../../shared/InputBox";
-import WebStorage from "../../shared/LocalStorage";
+import AuthStore from "../../stores/AuthStore";
+// import { useAlert } from "react-alert";
 
 function ModalForm({ services, setOpenModal }) {
-  const token = WebStorage.get("user_token");
   const [stage, setStage] = useState(0);
   // const alert = useAlert();
+  const authcontext = useContext(AuthStore);
+
+  const { user } = authcontext;
 
   const servicecontext = useContext(ServiceStore);
 
-  const user_details = jwt_decode(token);
-  // console.table(user_details);
-  const { full_name, phone, email } = user_details;
+  const { full_name, phone, email } = user;
 
   const {
     loadingReq,
@@ -70,7 +69,6 @@ function ModalForm({ services, setOpenModal }) {
 
   const { data, errors } = state;
 
-
   const stagesRender = (stage) => {
     // eslint-disable-next-line default-case
     switch (stage) {
@@ -88,11 +86,13 @@ function ModalForm({ services, setOpenModal }) {
                 <option value="" className="first__option">
                   choose a service
                 </option>
-                {services.filter(service => !service.params).map(({ title, id }) => (
-                  <option value={title} key={title}>
-                    {title}
-                  </option>
-                ))}
+                {services
+                  .filter((service) => !service.params)
+                  .map(({ title, id }) => (
+                    <option value={title} key={title}>
+                      {title}
+                    </option>
+                  ))}
               </select>
             </div>
 
@@ -201,7 +201,7 @@ function ModalForm({ services, setOpenModal }) {
 
     if (errors) return;
 
-    console.log(data);
+    //console.log(data);
     const { more_details, address, bus_stop, date } = data;
     const req_data = {
       additional_note: more_details,
@@ -210,7 +210,7 @@ function ModalForm({ services, setOpenModal }) {
       preferred_date_of_appointment: date,
     };
 
-    console.log(req_data);
+    //console.log(req_data);
     sendRequest(req_data);
   };
 

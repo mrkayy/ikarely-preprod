@@ -57,7 +57,7 @@ function Register(props) {
         address: "nill",
         re_enter_password: "",
         user_type: "customer",
-        date_of_birth:"nill",
+        date_of_birth: "nill",
       },
     }));
 
@@ -68,15 +68,15 @@ function Register(props) {
       email: Joi.string().email().required().label("Email"),
       password: Joi.string().required().min(5).label("Password"),
       re_enter_password: Joi.string()
-      .required()
-      .valid(Joi.ref("password"))
-      .options({
-        language: {
-          any: {
-            allowOnly: "!!Passwords do not match",
+        .required()
+        .valid(Joi.ref("password"))
+        .options({
+          language: {
+            any: {
+              allowOnly: "!!Passwords do not match",
+            },
           },
-        },
-      }),
+        }),
       landmark: Joi.string(),
       date_of_birth: Joi.string(),
       address: Joi.string(),
@@ -93,12 +93,12 @@ function Register(props) {
   //alert user on error or success
   useEffect(() => {
     if (error) {
-      // console.log(errMessage)
+      // //console.log(errMessage)
       alert.error(`${errMessage}`);
       alert.removeAll();
     }
     if (success && !error) {
-      // console.log({ successMessage });
+      // //console.log({ successMessage });
       alert.success(`${successMessage}`);
       alert.removeAll();
     }
@@ -128,7 +128,7 @@ function Register(props) {
       address,
       date_of_birth,
     } = data;
-    
+
     const datas = {
       full_name,
       phone,
@@ -141,7 +141,7 @@ function Register(props) {
       user_type,
     };
     register(datas);
-    console.log(data, "Register submitted");
+    //console.log(data, "Register submitted");
   };
 
   return currUser && props.location.pathname === "/register" ? (
@@ -171,15 +171,14 @@ function Register(props) {
 
           <InputBox label="Phone" name="phone" type="text" />
 
-
           <InputBox label="Password" name="password" type={"password"} />
 
           <InputBox
             label="Re-enter Password"
             name="re_enter_password"
             type={"password"}
-            />
-            {/* <InputBox
+          />
+          {/* <InputBox
               label="City of residence"
               name="city_of_residence"
               type="text"
