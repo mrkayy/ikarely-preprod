@@ -3,19 +3,19 @@ import WebStorage from "./shared/LocalStorage";
 
 const user_token = WebStorage.get("user_token");
 const serverUrl =
-  process.env.NODE_ENV === "local"
-    ? process.env.REACT_APP_API_LOCAL
-    : process.env.REACT_APP_API_DEV;
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_API
+    : process.env.REACT_APP_API_LOCAL;
 
 const api = axios.create({
-  baseURL: "http://localhost:5500/api/v1/auth",
+  baseURL: serverUrl,
   responseType: "json",
   headers: {
     common: {
       Authorization: `Bearer ${user_token}`,
     },
     "X-Requested-With": "XMLHttpRequest",
-    "Content-Type": "application/json",
+    "Content-Type": "application/json", 
   },
 });
 
