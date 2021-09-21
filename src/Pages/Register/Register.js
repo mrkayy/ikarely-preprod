@@ -19,12 +19,17 @@ function Register(props) {
     error,
     success,
     currUser,
+    loading,
     errMessage,
     // authSuccess,
     successMessage,
     register,
     resetActions,
   } = authcontext;
+
+  const options = {
+    error,
+  };
 
   useEffect(() => {
     autoScroll();
@@ -48,22 +53,21 @@ function Register(props) {
     setState((prevState) => ({
       ...prevState,
       data: {
-        full_name: "",
+        first_name: "",
+        last_name: "",
         phone: "",
         email: "",
-        city_of_residence: "nill",
+
         password: "",
-        landmark: "nill",
-        address: "nill",
         re_enter_password: "",
         user_type: "customer",
-        date_of_birth: "nill",
       },
     }));
 
     setSchemas((prevState) => ({
       ...prevState,
-      full_name: Joi.string().required().label("Full Name"),
+      first_name: Joi.string().required().label("First Name"),
+      last_name: Joi.string().required().label("Last Name"),
       phone: Joi.number().min(9).required().label("Phone"),
       email: Joi.string().email().required().label("Email"),
       password: Joi.string().required().min(5).label("Password"),
@@ -77,10 +81,6 @@ function Register(props) {
             },
           },
         }),
-      landmark: Joi.string(),
-      date_of_birth: Joi.string(),
-      address: Joi.string(),
-      city_of_residence: Joi.string(),
       user_type: Joi.string(),
     }));
 
@@ -93,13 +93,12 @@ function Register(props) {
   //alert user on error or success
   useEffect(() => {
     if (error) {
-      // //console.log(errMessage)
-      alert.error(`${errMessage}`);
+      alert.error(errMessage, options);
       alert.removeAll();
     }
     if (success && !error) {
       // //console.log({ successMessage });
-      alert.success(`${successMessage}`);
+      alert.success(successMessage, options);
       alert.removeAll();
     }
     return () => {
@@ -117,27 +116,14 @@ function Register(props) {
       errors: errors || {},
     }));
     if (errors) return;
-    const {
-      full_name,
-      phone,
-      email,
-      password,
-      landmark,
-      city_of_residence,
-      user_type,
-      address,
-      date_of_birth,
-    } = data;
+    const { first_name, last_name, phone, email, password, user_type } = data;
 
     const datas = {
-      full_name,
+      first_name,
+      last_name,
       phone,
       email,
-      address,
       password,
-      landmark,
-      city_of_residence,
-      date_of_birth,
       user_type,
     };
     register(datas);
@@ -165,7 +151,8 @@ function Register(props) {
         </div>
 
         <form action="" className="form__inputs" onSubmit={registerSubmit}>
-          <InputBox label="Full Name" name="full_name" type={"text"} />
+          <InputBox label="First Name" name="first_name" type={"text"} />
+          <InputBox label="Last Name" name="last_name" type={"text"} />
 
           <InputBox label="Email" name="email" type="email" />
 
@@ -178,32 +165,12 @@ function Register(props) {
             name="re_enter_password"
             type={"password"}
           />
-          {/* <InputBox
-              label="City of residence"
-              name="city_of_residence"
-              type="text"
-            /> */}
 
-          {/* <select
-            name="service"
-            onChange={handleChange}
-            value={state.data.user_type}
-            label="User Type"
-            name="user_type"
-            type="text"
-          >
-            <option value="" className="first__option">
-              --select account type--
-            </option>
-            <option value="Customer" className="first__option">
-              Customer
-            </option>
-            <option value="Professional" className="first__option">
-              Professional{" "}
-            </option>
-          </select> */}
-
-          <Button progress="Registering..." shown="Create Account" />
+          <Button
+            loading={loading}
+            progress="Registering..."
+            shown="Create Account"
+          />
 
           <p className="bottom__text">
             Do you have an account ? <Link to="/signin">Log in</Link>

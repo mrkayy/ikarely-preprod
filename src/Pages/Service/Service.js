@@ -17,7 +17,9 @@ import { useAlert } from "react-alert";
 
 function Service() {
   const [openModal, setOpenModal] = useState(false);
+
   const servicecontext = useContext(ServiceStore);
+
   const authContext = useContext(AuthStore);
 
   const { currUser } = authContext;
@@ -110,6 +112,10 @@ function Service() {
     resetActions,
   } = servicecontext;
 
+  const options = {
+    reqError,
+  };
+
   const btnSwitch = !currUser ? (
     <Link to="/signin">
       <button className="makerequest__btn">Get Started</button>
@@ -133,11 +139,11 @@ function Service() {
 
   useEffect(() => {
     if (reqError) {
-      alert.error(`${reqErrMessage}`);
+      alert.error(reqErrMessage, options);
       //console.log({ reqErrMessage });
     }
     if (reqSuccess) {
-      alert.success(`${reqSuccessMessage}`);
+      alert.success(reqSuccessMessage, options);
       //console.log({ reqSuccessMessage });
       setOpenModal(false);
     }

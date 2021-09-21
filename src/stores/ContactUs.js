@@ -25,7 +25,7 @@ class ContactUs {
   sendmessage = (data) => {
     this.loading = true;
     api
-      .post("/notifications", data)
+      .post("/send-email", data)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {

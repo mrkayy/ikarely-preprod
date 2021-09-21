@@ -8,7 +8,7 @@ const serverUrl =
     : process.env.REACT_APP_API_DEV;
 
 const api = axios.create({
-  baseURL: serverUrl,
+  baseURL: "http://localhost:5500/api/v1/auth",
   responseType: "json",
   headers: {
     common: {

@@ -19,11 +19,11 @@ import Subscription from "./Pages/Subscription";
 
 //  application Routes
 import GeneralRoute from "./routes/GeneralRoute";
-import ProtectedRoute from "./routes/ProtectedRoute";
+// import ProtectedRoute from "./routes/ProtectedRoute";
 
 // application layouts
-import ClientLayout from "./Layouts/ClientLayout/LayoutWrapper";
-import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
+// import ClientLayout from "./Layouts/ClientLayout/LayoutWrapper";
+// import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
 
 class App extends Component {
   render() {
@@ -38,18 +38,14 @@ class App extends Component {
             <GeneralRoute exact path="/blog" component={Home} />
             <GeneralRoute exact path="/register" component={Register} />
             <GeneralRoute exact path="/signin" component={SignIn} />
+            <GeneralRoute exact path="/contact" component={Contact} />
             {/* TODO: refactor client routes & subscription routes */}
             <GeneralRoute
               exact
               path={`/subscription/:id`}
               component={Subscription}
             />
-            <ProtectedRoute
-              exact
-              path="/contact"
-              component={Contact}
-              layout={GeneralLayout}
-            />
+
             {/* <ProtectedRoute
               exact
               path="/payments"

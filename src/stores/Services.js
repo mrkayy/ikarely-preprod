@@ -29,7 +29,7 @@ class ServiceStore {
   sendRequest = (data) => {
     this.loadingReq = true;
     api
-      .post("/health/service-request", data)
+      .post("/health/request", data)
       .then((res) => {
         //I want to see the response returned
         // //console.log(res.data.data);

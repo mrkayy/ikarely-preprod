@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { makeObservable, observable, action, autorun } from "mobx";
 import api from "../Config";
 import WebStorage from "../shared/LocalStorage";
+import jwt_decode from "jwt-decode";
 
 class AuthStore {
   loading = false;
@@ -31,9 +32,12 @@ class AuthStore {
       rememberMe: action,
       getCurrUser: action,
       resetActions: action,
+      getLoggedInUser: action,
+      refreshUser: action,
     });
 
     autorun(() => this.getCurrUser());
+    autorun(() => this.refreshUser());
   }
 
   rememberMe = () => {
@@ -68,11 +72,11 @@ class AuthStore {
         if (res.data.status) {
           this.success = true;
           this.successMessage = res.data.message;
-          // //console.log(this.successMessage);
-          // window.location.href = "/signin";
+          window.location.href = "/signin";
         }
       })
       .catch((err) => {
+        console.log({ err });
         this.loading = false;
         this.error = true;
         this.errMessage =
@@ -83,7 +87,7 @@ class AuthStore {
   login = (data) => {
     this.loading = true;
     api
-      .post("auth/login", data)
+      .post("/login", data)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
@@ -94,7 +98,6 @@ class AuthStore {
           // }
 
           this.success = true;
-          this.user = res.data.data;
           this.authSuccess = "pass";
           WebStorage.save("user_token", res.data.data.token);
           this.successMessage = res.data.message;
@@ -114,7 +117,31 @@ class AuthStore {
       })
       .finally(() => {
         this.getCurrUser();
+        try {
+          const token = WebStorage.get("user_token");
+          var decoded = jwt_decode(token);
+        } catch (err) {
+          console.log(err);
+        }
+        this.getLoggedInUser(decoded.id);
       });
+  };
+
+  getLoggedInUser = (id) => {
+    api.get(`/users/${id}`).then((res) => {
+      console.log(res.data);
+      this.user = res.data.data;
+    });
+  };
+
+  refreshUser = () => {
+    try {
+      const token = WebStorage.get("user_token");
+      var decoded = jwt_decode(token);
+    } catch (err) {
+      console.log(err);
+    }
+    this.getLoggedInUser(decoded.id);
   };
 
   // TODO: implement forgot_password

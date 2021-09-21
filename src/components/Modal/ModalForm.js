@@ -17,16 +17,9 @@ function ModalForm({ services, setOpenModal }) {
 
   const servicecontext = useContext(ServiceStore);
 
-  const { full_name, phone, email } = user;
+  const { first_name, last_name, phone, email, id } = user;
 
-  const {
-    loadingReq,
-    // reqError,
-    // reqSuccess,
-    // reqErrMessage,
-    // reqSuccessMessage,
-    sendRequest,
-  } = servicecontext;
+  const { loadingReq, sendRequest } = servicecontext;
 
   const { state, setState, setSchemas, handleChange, validate } =
     useContext(GlobalContext);
@@ -134,7 +127,10 @@ function ModalForm({ services, setOpenModal }) {
 
               <div className="request__info">
                 <div className="request__detail">
-                  Name: <span className="detail__value">{full_name}</span>{" "}
+                  Name:{" "}
+                  <span className="detail__value">
+                    {first_name} {last_name}
+                  </span>
                 </div>
                 <div className="request__detail">
                   Phone: <span className="detail__value">{phone}</span>
@@ -204,6 +200,7 @@ function ModalForm({ services, setOpenModal }) {
     //console.log(data);
     const { more_details, address, bus_stop, date } = data;
     const req_data = {
+      user_id: id,
       additional_note: more_details,
       service_id: 1,
       location: `${address},near ${bus_stop}`,
