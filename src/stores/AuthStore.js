@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { makeObservable, observable, action, autorun } from "mobx";
 import api from "../Config";
 import WebStorage from "../shared/LocalStorage";
+import jwt_decode from "jwt-decode";
 
 class AuthStore {
   loading = false;
@@ -31,8 +32,11 @@ class AuthStore {
       rememberMe: action,
       getCurrUser: action,
       resetActions: action,
+      getLoggedInUser: action,
+      refreshUser: action,
     });
     autorun(() => this.getCurrUser());
+    autorun(() => this.refreshUser());
   }
 
   rememberMe = () => {
@@ -58,21 +62,20 @@ class AuthStore {
       });
   };
 
-
   register = (data) => {
     this.loading = true;
     api
-      .post("auth/users", data)
+      .post("/signup", data)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
           this.success = true;
           this.successMessage = res.data.message;
-          // console.log(this.successMessage);
           window.location.href = "/signin";
         }
       })
       .catch((err) => {
+        //console.log({ err });
         this.loading = false;
         this.error = true;
         this.errMessage =
@@ -83,7 +86,7 @@ class AuthStore {
   login = (data) => {
     this.loading = true;
     api
-      .post("auth/login", data)
+      .post("/login", data)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
@@ -94,28 +97,54 @@ class AuthStore {
           // }
 
           this.success = true;
-          this.user = res.data.data;
           this.authSuccess = "pass";
           WebStorage.save("user_token", res.data.data.token);
           this.successMessage = res.data.message;
           this.getCurrUser();
-          console.log({ user: this.user });
-          console.log("logging in...");
+          ////console.log({ user: this.user });
+          ////console.log("logging in...");
         }
       })
       .catch((err) => {
-        // console.log(err);
+        // ////console.log(err);
         this.loading = false;
         this.error = true;
         this.getCurrUser();
         this.errMessage =
           err.response === undefined ? err.message : err.response.data.message;
-        // console.log(err.response.data);
+        // ////console.log(err.response.data);
       })
       .finally(() => {
         this.getCurrUser();
+        try {
+          const token = WebStorage.get("user_token");
+          var decoded = jwt_decode(token);
+        } catch (err) {
+          //console.log(err);
+        }
+        this.getLoggedInUser(decoded.id);
       });
   };
+
+  getLoggedInUser = (id) => {
+    api.get(`/users/${id}`).then((res) => {
+      //console.log(res.data);
+      this.user = res.data.data;
+    });
+  };
+
+  refreshUser = () => {
+    try {
+      const token = WebStorage.get("user_token");
+      var decoded = jwt_decode(token);
+    } catch (err) {
+      //console.log(err);
+    }
+    this.getLoggedInUser(decoded.id);
+  };
+
+  // TODO: implement forgot_password
+  forgotPassword = (data) => {};
 
   // contactUs = (data) => {
   //   this.loading = true;
@@ -126,7 +155,7 @@ class AuthStore {
   //       if (res.data.status) {
   //         this.success = true;
   //         this.successMessage = res.data.message;
-  //         // console.log(this.successMessage);
+  //         // ////console.log(this.successMessage);
   //         window.location.href = "/signin";
   //       }
   //     })
@@ -145,7 +174,7 @@ class AuthStore {
 
   getCurrUser = () => {
     this.currUser = WebStorage.get("user_token") ? true : false;
-    // console.log(WebStorage.get("user_token"));
+    // ////console.log(WebStorage.get("user_token"));
   };
 
   resetActions = () => {

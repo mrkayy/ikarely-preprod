@@ -6,15 +6,13 @@ import PageLanding from "../../components/PageLanding/PageLanding";
 import InputBox from "../../shared/InputBox";
 import Joi from "joi-browser";
 import { observer } from "mobx-react";
-import AuthStore from "../../stores/ContactUs";
+import messagingStore from "../../stores/ContactUs";
 // import dataHero from "data-hero";
 import { useAlert } from "react-alert";
 import { GlobalContext } from "../../stores/GlobalLayer";
 import Button from "../../Anime/Button";
 
 const Contact = (props) => {
-  console.log({ props });
-
   useEffect(() => {
     autoScroll();
   }, []);
@@ -25,7 +23,7 @@ const Contact = (props) => {
 
   const alert = useAlert();
   // const history = useHistory();
-  const authcontext = useContext(AuthStore);
+  const authcontext = useContext(messagingStore);
 
   const {
     error,
@@ -68,17 +66,21 @@ const Contact = (props) => {
     };
   }, []);
 
+  const options = {
+    error,
+  };
+
   //alert user on error or success
   useEffect(() => {
     if (error) {
-      alert.error(errMessage);
+      alert.error(errMessage, options);
     }
     if (success && !error) {
-      console.log({ successMessage });
-      alert.success(successMessage);
+      ////console.log({ successMessage });
+      alert.success(successMessage, options);
     }
     return () => {
-      // resetActions();
+      resetActions();
     };
   }, [errMessage, successMessage]);
 
@@ -101,13 +103,12 @@ const Contact = (props) => {
     const datas = {
       medium: "email",
       name: "contact_us",
-      sender: "josepholukayode05@gmail.com",
-      recipient: [email],
+      recipient: [email, "support@ikarely.com"],
       subject: "THANK YOU FOR REACHING OUT",
       data: { user_name: message, current_year: 2021 },
     };
     sendmessage(datas);
-    console.log(datas, "Register submitted");
+    ////console.log(datas, "Register submitted");
   };
 
   return (
@@ -138,7 +139,7 @@ const Contact = (props) => {
             </div>
 
             <Button
-              loader={loading}
+              loading={loading}
               progress="Sending..."
               shown="Send Message"
             />

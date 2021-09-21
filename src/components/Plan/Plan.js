@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import currencyFormatter from "currency-formatter";
 import PaymentComponent from "../PaymentComponent";
-// import WebStorage from "../../shared/LocalStorage";
-// import jwt_decode from "jwt-decode";
 
 import AuthStore from "../../stores/AuthStore";
 
@@ -11,13 +9,11 @@ import markicon2 from "../../assets/images/markicon2.png";
 import planicon from "../../assets/images/planicon.png";
 
 import "./Plan.css";
+import { observer } from "mobx-react-lite";
 
 function Plan({ type, price, offers }) {
   const authcontext = useContext(AuthStore);
-
   const { user } = authcontext;
-
-  console.log({ user });
 
   const showCurrency = (value, code) => {
     return currencyFormatter.format(value, { code });
@@ -69,11 +65,11 @@ function Plan({ type, price, offers }) {
 
         <div className="plan__price">{showCurrency(price, "NGN")}</div>
         <PaymentComponent
-          email={user?.email ?? ""}
+          email={user.email}
           amount={price}
           type={`${type} plan`}
-          customer={user?.phone ?? ""}
-          phoneNum={user?.full_name ?? ""}
+          customer={user.phone}
+          phoneNum={user.full_name}
           subscription={offers}
         />
       </div>
@@ -81,4 +77,4 @@ function Plan({ type, price, offers }) {
   );
 }
 
-export default Plan;
+export default observer(Plan);

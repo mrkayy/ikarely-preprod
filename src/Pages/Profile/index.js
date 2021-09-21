@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 // import { Grid, Paper, Container, Box, Divider } from "@material-ui/core";
 // import { makeStyles } from "@material-ui/core/styles";
-
-import jwt_decode from "jwt-decode";
-import WebStorage from "../../shared/LocalStorage";
+// import WebStorage from "../../shared/LocalStorage";
 
 import "../../components/Clients/style.css";
 
 const ClientProfile = () => {
-  const history = useHistory();
-
-  const token = WebStorage.get("user_token");
-  const user = jwt_decode(token);
+  // const history = useHistory();
+  // const token = WebStorage.get("user_token");
 
   useEffect(() => {
     autoScroll();

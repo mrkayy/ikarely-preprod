@@ -17,7 +17,9 @@ import { useAlert } from "react-alert";
 
 function Service() {
   const [openModal, setOpenModal] = useState(false);
+
   const servicecontext = useContext(ServiceStore);
+
   const authContext = useContext(AuthStore);
 
   const { currUser } = authContext;
@@ -36,28 +38,28 @@ function Service() {
       id: 1,
       icon: "injection.svg",
       title: "Dr Consultation",
-      word: "Why go through the stress of going to and waiting in the hospital when dealing with wounds is enough stress on its own. We offer wound dressing services for patients with minor burns, pressure ulcer, diabetic foot and any other form of wounds at your utmost convenience.",
+      word: "With ikarely you don't have to go through the stress of going to and wait for hours in the hospital to get timely consultation, treatment and Drug prescription for your health needs",
       type: "by_request",
     },
     {
       id: 2,
       icon: "wound.svg",
       title: "Wound Care",
-      word: "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
+      word: "Why go through the stress of going to and waiting in the hospital when dealing with wounds is enough stress on its own. We offer wound dressing services for patients with minor burns, pressure ulcer, diabetic foot and any other form of wounds at your utmost convenience.",
       type: "by_request",
     },
-    {
-      id: 3,
-      icon: "injection.svg",
-      title: "Vaccination",
-      word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
-      type: "by_subscription",
-    },
+    // {
+    //   id: 3,
+    //   icon: "injection.svg",
+    //   title: "Vaccination",
+    //   word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
+    //   type: "by_subscription",
+    // },
     {
       id: 4,
       icon: "Catherization.svg",
       title: "Covid19 Screening",
-      word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
+      word: "Get you Covid 19 test done without leaving the comfort of your home. We provide home sample collection and immediate result within 24hrs",
       type: "by_subscription",
     },
     // {
@@ -70,10 +72,10 @@ function Service() {
     // },
     {
       id: 5,
-      icon: "teeth-checkup.svg",
+      icon: "healthcare.svg",
       title: "Geriatic Care",
       params: "geriatic_care",
-      word: "We provide a wide range of dental services etc dental cleanings, Fillings, root canals, and extractions. Imagine the comfort of having a dentist come to your home for your dental care, that's exactly what we are offering you.",
+      word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
       type: "by_subscription",
     },
 
@@ -82,23 +84,23 @@ function Service() {
       icon: "healthcare.svg",
       title: "General Checkup",
       params: "general_checkup",
-      word: "At ikarely, we believe you don't have to stay on a long queue in the hospital to receive vaccination. We simply help reduce the stress by providing vaccination from deadly diseases like, hepatitis, typhoid, polio etc at the comfort of your home. ",
+      word: "You can request for our professional service forindividual and family general checkups like Bloodpressure, weightcheck, glucosecheck, malaria/HIVtest, BodyMassInde(BMI) all at your convenience",
       type: "by_subscription",
     },
-    {
-      id: 7,
-      icon: "Catherization.svg",
-      title: "Pregnacare",
-      params: "pregnacare",
-      word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
-      type: "by_subscription",
-    },
+    // {
+    //   id: 7,
+    //   icon: "Catherization.svg",
+    //   title: "Pregnacare",
+    //   params: "pregnacare",
+    //   word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
+    //   type: "by_subscription",
+    // },
     {
       id: 8,
       icon: "healthcare.svg",
       title: "Diabetes Care",
       params: "diabetes",
-      word: "We provide a wide range of dental services etc dental cleanings, Fillings, root canals, and extractions. Imagine the comfort of having a dentist come to your home for your dental care, that's exactly what we are offering you.",
+      word: "Managing Diabetes is easier with ikarely, we provide in home Doctor management, Glucose check, Drug refil, strip refil to help you avoid unnecessary queues at clinics and pharmacies.",
       type: "by_subscription",
     },
   ];
@@ -109,6 +111,10 @@ function Service() {
     reqSuccessMessage,
     resetActions,
   } = servicecontext;
+
+  const options = {
+    reqError,
+  };
 
   const btnSwitch = !currUser ? (
     <Link to="/signin">
@@ -133,12 +139,12 @@ function Service() {
 
   useEffect(() => {
     if (reqError) {
-      alert.error(`${reqErrMessage}`);
-      console.log({ reqErrMessage });
+      alert.error(reqErrMessage, options);
+      ////console.log({ reqErrMessage });
     }
     if (reqSuccess) {
-      alert.success(`${reqSuccessMessage}`);
-      console.log({ reqSuccessMessage });
+      alert.success(reqSuccessMessage, options);
+      ////console.log({ reqSuccessMessage });
       setOpenModal(false);
     }
     return () => {
@@ -211,11 +217,13 @@ function Service() {
             .map(({ icon, title, word, params }) => {
               return (
                 <div className="service__list" key={title}>
-                  <div className="list__icon">
-                    <img src={`../images/icons/${icon}`} alt="icon.png" />
-                    <h4 className="list__title">{title}</h4>
+                  <div>
+                    <div className="list__icon">
+                      <img src={`../images/icons/${icon}`} alt="icon.png" />
+                      <h4 className="list__title">{title}</h4>
+                    </div>
+                    <p className="list__word">{word}</p>
                   </div>
-                  <p className="list__word">{word}</p>
                   {btnSwitch}
                 </div>
               );
@@ -235,11 +243,13 @@ function Service() {
             .map(({ icon, title, word, params }) => {
               return (
                 <div className="service__list" key={title}>
-                  <div className="list__icon">
-                    <img src={`../images/icons/${icon}`} alt="icon.png" />
-                    <h4 className="list__title">{title}</h4>
+                  <div>
+                    <div className="list__icon">
+                      <img src={`../images/icons/${icon}`} alt="icon.png" />
+                      <h4 className="list__title">{title}</h4>
+                    </div>
+                    <p className="list__word">{word}</p>
                   </div>
-                  <p className="list__word">{word}</p>
                   <Link to={`/subscription/${params}`}>{subBtnSwitch}</Link>
                 </div>
               );

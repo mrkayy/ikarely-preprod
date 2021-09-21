@@ -152,7 +152,7 @@ function Subscription(props) {
     (subscription) => subscription.pathname == id
   )[0]["content"];
 
-  // console.log()/
+  // ////console.log()/
 
   return (
     <div className="subscription">

@@ -1,13 +1,13 @@
-import {createContext} from 'react';
-import {makeObservable, observable, action} from 'mobx';
-import api from '../Config';
+import { createContext } from "react";
+import { makeObservable, observable, action } from "mobx";
+import api from "../Config";
 
 class ServiceStore {
   loadingReq = false;
   reqError = false;
   reqSuccess = false;
-  reqErrMessage = '';
-  reqSuccessMessage = '';
+  reqErrMessage = "";
+  reqSuccessMessage = "";
 
   response = [];
 
@@ -25,19 +25,19 @@ class ServiceStore {
       resetActions: action,
     });
   }
-    
+
   sendRequest = (data) => {
     this.loadingReq = true;
     api
-      .post('/health/service-request', data)
+      .post("/health/request", data)
       .then((res) => {
         //I want to see the response returned
-        // console.log(res.data.data);
+        // ////console.log(res.data.data);
         this.loadingReq = false;
         if (res.data.status) {
           this.reqSuccess = true;
           this.reqSuccessMessage = res.data.message;
-          console.log(this.reqSuccessMessage);
+          ////console.log(this.reqSuccessMessage);
           // window.location.href = "/";
         }
       })
@@ -49,7 +49,6 @@ class ServiceStore {
       });
   };
 
-  
   resetActions = () => {
     this.reqError = false;
     this.loadingReq = false;
@@ -57,7 +56,6 @@ class ServiceStore {
     this.reqErrMessage = "";
     this.reqSuccessMessage = "";
   };
-
 }
 
 export default createContext(new ServiceStore());

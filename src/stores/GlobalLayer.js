@@ -36,7 +36,7 @@ const GlobalLayer = ({ children }) => {
 
     const data = { ...state.data };
     data[name] = value;
-    // console.log(data[name])
+    // ////console.log(data[name])
     setState((state) => ({
       ...state,
       data,

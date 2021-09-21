@@ -25,13 +25,13 @@ class ContactUs {
   sendmessage = (data) => {
     this.loading = true;
     api
-      .post("/notifications", data)
+      .post("/send-email", data)
       .then((res) => {
         this.loading = false;
         if (res.data.status) {
           this.success = true;
           this.successMessage = res.data.message;
-          // console.log(this.reqSuccessMessage);
+          // ////console.log(this.reqSuccessMessage);
           window.location.href = "/";
         }
       })

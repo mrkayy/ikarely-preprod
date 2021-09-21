@@ -15,10 +15,8 @@
 
 //       doSubmit = () => {
 //          //Call the server
-//          console.log('Submitted to the server')
+//          ////console.log('Submitted to the server')
 //       }
-
-
 
 //     render() {
 //         return (
@@ -29,20 +27,20 @@
 //                     <h3 className="signin__header">Users Sign in</h3>
 //                     <p className="little__text">Welcome to iKarely</p>
 //                   </div>
-        
+
 //                   <form action="submit" onSubmit={handleSubmit} className="form__inputs">
 //                     <InputBox
 //                       label="Email or Phone Number"
 //                       name="email"
 //                       type="email"
 //                     />
-        
+
 //                     <InputBox
 //                       label="Password"
 //                       name="password"
 //                       type="password"
 //                     />
-        
+
 //                     <div className="keep__signed">
 //                       <input
 //                         type="checkbox"
@@ -50,7 +48,7 @@
 //                       />
 //                       Keep me signed in
 //                     </div>
-        
+
 //                     <button
 //                       type="submit"
 //                       disabled={validate()}
