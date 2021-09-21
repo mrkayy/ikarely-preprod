@@ -12,10 +12,10 @@ const api = axios.create({
   responseType: "json",
   headers: {
     common: {
-      Authorization: `Bearer ${user_token}`,
+      Authorization: user_token,
     },
     "X-Requested-With": "XMLHttpRequest",
-    "Content-Type": "application/json", 
+    "Content-Type": "application/json",
   },
 });
 
