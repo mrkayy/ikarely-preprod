@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./footer_styles.css";
+// import "./footer_styles.css";
 // import TwitterIcon from "@material-ui/icons/Twitter";
 // import InstagramIcon from "@material-ui/icons/Instagram";
 // import FacebookIcon from "@material-ui/icons/Facebook";
-import footerImage from "../../../assets/images/iKarelyX.png";
+// import footerImage from "../../../assets/images/iKarelyX.png";
+// import Line from "../../../components/svg/Line";
 
 function Footer() {
   const handleFormSubmit = (e) => {
@@ -13,67 +14,127 @@ function Footer() {
 
   return (
     <>
-      <div className="footer">
-        <div className="footer__contacts">
-          <img src={footerImage} alt="logo.png"/>
-          <p className="logo__tag">Live Healthier, Live Better.</p>
+      <div className="bg-primary-main w-full pt-8 pr-8 pl-8 sm:pt-14 sm:pl-14 sm:pr-14 text-white">
+        <div className="sm:flex sm:justify-between mb-16">
+          <div className="flex-col justify-center mb-7">
+            <div className="flex items-center mb-8">
+              <img
+                src="../images/health-care-logo.png"
+                alt="logo.png"
+                className="w-10 sm:w-14"
+              />
+              <div>
+                <p class="text-lg sm:text-xl font-semibold ml-3 tracking-tight">
+                  Ikarely Health Limited
+                </p>
 
-          <div className="iconandinfo">
-            <img src={`images/${"Vector3.png"}`} alt="" />{" "}
-            <span>Location@Ikarely, Nigeria</span>
+                <p className="px-3 text-xs sm:text-sm">
+                  Live Healthier, Live Better.
+                </p>
+              </div>
+            </div>
+
+            <div className="">
+              <div className="flex items-center justify-start mb-3">
+                <img
+                  src={`images/${"Vector3.png"}`}
+                  alt="location.jpg"
+                  className="w-4 sm:w-6 mr-3"
+                />
+                <span>Location@Ikarely, Nigeria</span>
+              </div>
+              <div className="flex items-center justify-start mb-3">
+                <img
+                  src={`images/${"Vector.png"}`}
+                  alt=""
+                  className="w-4 sm:w-6 mr-3"
+                />
+                <span>info@ikarely.com</span>
+              </div>
+              <div className="flex items-center justify-start mb-3">
+                <img
+                  src={`images/${"Vector2.png"}`}
+                  alt=""
+                  className="w-4 sm:w-6 mr-3"
+                />
+                <span>+23490115130</span>
+              </div>
+            </div>
           </div>
-          <div className="iconandinfo">
-            <img src={`images/${"Vector.png"}`} alt="" />{" "}
-            <span>info@ikarely.com</span>
+
+          <div className="text-left">
+            <h3 className="font-bold text-center mb-4 text-lg sm:text-xl">
+              Our services
+            </h3>
+            <div className="text-md no-underline grid grid-cols-1 gap-y-3">
+              <Link to="/sevice" className="text-white text-sm sm:text-md">
+                <p>Wound Care</p>
+              </Link>
+              <Link to="/sevice" className="text-white text-sm sm:text-md">
+                <p>Vaccination</p>
+              </Link>
+              <Link to="/sevice" className="text-white text-sm sm:text-md">
+                <p>Geriatic Care</p>
+              </Link>
+              <Link to="/sevice" className="text-white text-sm sm:text-md">
+                <p>Dental Care</p>
+              </Link>
+              <Link to="/sevice" className="text-white text-sm sm:text-md">
+                <p>General Checkup</p>
+              </Link>
+              <Link to="/sevice" className="text-white text-sm sm:text-md">
+                <p>Catherization</p>
+              </Link>
+              <Link to="/sevice" className="text-white text-sm sm:text-md">
+                <p>Chemotherapy</p>
+              </Link>
+              <Link to="/sevice" className="text-white text-sm sm:text-md">
+                <p>Dental Care</p>
+              </Link>
+            </div>
           </div>
-          <div className="iconandinfo">
-            <img src={`images/${"Vector2.png"}`} alt="" />{" "}
-            <span>+23490115130</span>
+
+          <div className="text-left">
+            <h3 className="font-bold text-center mb-4 text-white text-lg sm:text-xl">
+              Quick Links
+            </h3>
+            <div className="grid grid-cols-1 gap-y-3">
+              <Link to="/" className="text-white text-sm sm:text-md">
+                <p>Home</p>
+              </Link>
+              <Link to="/service" className="text-white text-sm sm:text-md">
+                <p>Services</p>
+              </Link>
+              <Link to="/about" className="text-white text-sm sm:text-md">
+                <p>About Us</p>
+              </Link>
+              <Link to="/contact" className="text-white text-sm sm:text-md">
+                <p>Contact Us</p>
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-8 sm:mt-0">
+            <h3 className="font-bold mb-4 text-center sm:text-left text-white text-lg sm:text-xl">
+              Newsletter
+            </h3>
+            <p className="sm:tracking-wide mb-2 sm:mb-4">
+              Subscribe to our newsletter to get updates.
+            </p>
+            <div className="">
+              {/* <input type="text" className="relative h-10 text-base p-6 " />
+              <button className="text-white p-2 bg-primary-main border-1 hover:bg-white hover:text-primary-main hover:border-primary-main absolute right-4 -top-2">
+                Subscribe
+              </button> */}
+            </div>
           </div>
         </div>
 
-        <div className="our__services">
-          <h3 className="footer__linkhead">Our services</h3>
-          <ul className="footer__links">
-            <li>Wound Care</li>
-            <li>Vaccination</li>
-            <li>Geriatic Care</li>
-            <li>Dental Care</li>
-            <li>General Checkup</li>
-            <li>Catherization</li>
-            <li>Chemotherapy</li>
-            <li>Dental Care</li>
-          </ul>
-        </div>
-        <div className="quick__links">
-          <h3 className="footer__linkhead">quick links</h3>
-          <ul className="footer__links">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/service">Services</Link>
-            </li>
-            <li>
-              <Link to="about">About Us</Link>
-            </li>
-            <li>
-              <Link to="contact">Contact Us</Link>
-            </li>
-          </ul>
-        </div>
+        <div className="h-1 bg-gradient-to-r from-primary-main via-white to-primary-main "></div>
 
-        {/* <div className="newsletter">
-        <h3 className="footer__linkhead">newsletter</h3>
-          <p className="newletter__word">
-          Subscribe to our newsletter to get updates.
-          </p>
-          <input type="text" className="newsletter" />
-        </div> */}
-      </div>
-
-      <div className="copyrights__section">
-        <h6>&copy;Ikarely - All Reserved Rights 2021</h6>
+        <div className="text-center text-xs sm:text-base text-white pt-8 pb-10">
+          <h6>&copy;Ikarely Health Limited - All Reserved Rights 2021</h6>
+        </div>
       </div>
     </>
   );

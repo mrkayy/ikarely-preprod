@@ -15,9 +15,9 @@ const LayoutWrapper = ({ children }) => {
 
   return (
     <>
-      <div className="pages">
+      <div className="realtive">
         <Overlay slide={slide} showMenu={showMenu} setSlide={setSlide} />
-        <NavBar slide={slide} showMenu={showMenu} />
+        <NavBar showMenu={showMenu} />
         {children}
         <Footer />
       </div>

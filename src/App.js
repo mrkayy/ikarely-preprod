@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { observer } from "mobx-react";
-import "./App.css";
+// import "./App";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // application pages
@@ -17,6 +17,8 @@ import Payments from "./Pages/Payment";
 import Checkout from "./Pages/Checkout/Checkout";
 import Subscription from "./Pages/Subscription";
 
+import ReactGA from "react-ga4";
+
 //  application Routes
 import GeneralRoute from "./routes/GeneralRoute";
 // import ProtectedRoute from "./routes/ProtectedRoute";
@@ -26,8 +28,8 @@ import GeneralRoute from "./routes/GeneralRoute";
 // import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
 
 class App extends Component {
+  componentDidMount() {}
   render() {
-    ////console.log(`===>USING: ${process.env.NODE_ENV}<===`);
     return (
       <div className="App">
         <Router>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Landing() {
   return (
     <div
-      className="landing"
+      className="landing z-0"
       style={{
         backgroundImage: `url(../images/home-bg.jpg)`,
       }}
