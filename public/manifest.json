@@ -1,6 +1,6 @@
 {
   "short_name": "Ikarely",
-  "name": "IKarely  Health Service Limited",
+  "name": "IKarely Health Service Limited",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,7 +18,7 @@
       "sizes": "310x310"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://ikarely.com",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

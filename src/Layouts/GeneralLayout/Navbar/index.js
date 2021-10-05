@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 import AuthContext from "../../../stores/AuthStore";
+import LayoutMargin from "../component/LayoutMargin";
 
 function NavBar({ showMenu }) {
   const { logout, currUser } = useContext(AuthContext);
@@ -20,112 +21,102 @@ function NavBar({ showMenu }) {
     };
   }, []);
 
+  const navigationMenu = [
+    { title: "Home", path: "/" },
+    { title: "Services", path: "/service" },
+    { title: "About Us", path: "/about" },
+    { title: "Contact Us", path: "/contact" },
+    // {title: '',path:''},
+    // {title: '',path:''},
+  ];
   return (
-    <div
-      className={`w-full h-16 sm:h-24 md:h-28 lg:36 px-3 py-7 sm:py-3 font-semibold fixed flex items-center justify-between ${
+    <header
+      className={`fixed aboslute xl:font-semibold w-screen ${
         show
           ? "bg-white shadow-2xl transition ease-out duration-300"
-          : "bg-transparent transition ease-in duration-300"
+          : "bg-white transition ease-in duration-300"
       }`}
     >
-      {/* hambuger menu for mobile screens */}
-      <div className="mr-4 sm:hidden">
-        <div
-          className=" sm:hidden relative h-8 w-12 rounded hover:bg-primary-accent hover:text-white"
-          onClick={showMenu}
-        >
-          <span className=" absolute -top-9 left-3 mr-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 "
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+      <LayoutMargin>
+        <div className="py-4 sm:py-3 flex items-center justify-between">
+          {/* mobile menu */}
+          <div className="sm:hidden">
+            <div
+              className=" sm:hidden relative h-8 w-12 bg-primary-accent text-white hover:border-2 border-primary-accent rounded hover:bg-white hover:text-primary-accent"
+              onClick={showMenu}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </span>
-        </div>
-      </div>
-      <div className="w-full sm:w-1/12 grid place-items-center">
-        <img
-          src="../images/logo.png"
-          alt="logo.png"
-          className="w-20 tablet:w-36 md:w-36 lg:w-28 l-2 sm:ml-4"
-        />
-      </div>
-
-      <div className="hidden sm:block sm:w-6/10 tablet:w-3/6 md:w-5/12">
-        <ul className="text-default sm:flex sm:items-center sm:justify-around sm:text-sm lg:text-lg">
-          <li className="">
-            <Link
-              className="rounded hover:bg-primary-accent py-2 px-4 tablet:px-3 md:px-3 hover:text-white"
-              to="/"
-            >
-              Home
-            </Link>
-          </li>
-          <li className="">
-            <Link
-              className="rounded hover:bg-primary-accent py-2 px-4 tablet:px-3 md:px-3 hover:text-white"
-              to="/service"
-            >
-              Services
-            </Link>
-          </li>
-          {/* <li className="navbar__menus">
-            <Link to="/blog">Blog</Link>
-          </li> */}
-          <li className="">
-            <Link
-              className="rounded hover:bg-primary-accent py-2 px-4 tablet:px-3 md:px-3 hover:text-white"
-              to="/about"
-            >
-              About us
-            </Link>
-          </li>
-          <li className="">
-            <Link
-              className="rounded hover:bg-primary-accent py-2 px-4 tablet:px-3 md:px-3 hover:text-white"
-              to="/contact"
-            >
-              Contact us
-            </Link>
-          </li>
-        </ul>
-      </div>
-
-      <div className="mr-4">
-        <div className="flex sm:text-sm md:text-base sm:items-center lg:text-lg">
-          {currUser && currUser ? (
-            <>
-              <div
-                className="rounded hover:bg-primary-accent py-2 px-4 tablet:px-3 md:px-3 hover:text-white"
-                onClick={() => logout()}
-              >
-                <button> Log out</button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="">
-                <Link
-                  className="rounded hover:bg-primary-accent mr-7 sm:m-0 py-2 px-4 tablet:px-3 md:px-3 hover:text-white"
-                  to="/signin"
+              <span className="absolute -top-9 left-3 mr-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 "
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  <button className="font-semibold">Sign In</button>
-                </Link>
-              </div>
-            </>
-          )}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          {/* brand logo */}
+          <div className="w-full sm:w-24 grid place-items-center">
+            <img
+              src="../images/logo.png"
+              alt="logo.png"
+              className="w-24 md:w-36 lg:w-28 sm:ml-4"
+            />
+          </div>
+
+          <div className="hidden sm:block md:w-6/10">
+            <ul className="text-default sm:flex sm:items-center sm:justify-center sm:text-xs lg:text-base">
+              {navigationMenu.map(({ title, path }, index) => (
+                <>
+                  <li className="" key={`${index}${title}`}>
+                    <Link
+                      className="rounded hover:bg-primary-accent py-2 px-4 md:px-3 hover:text-white"
+                      to={path}
+                    >
+                      {title}
+                    </Link>
+                  </li>
+                </>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mr-5 sm:mr-0">
+            <div className="flex sm:text-sm md:text-base sm:items-center lg:text-lg">
+              {currUser && currUser ? (
+                <>
+                  <div
+                    className="rounded text-white px-4 py-2 bg-primary-accent text-xs sm:text-sm lg:text-base w-16 sm:w-24 lg:w-32 xl:w-40 hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent"
+                    onClick={() => logout()}
+                  >
+                    <button className="lg:font-semibold"> Log out</button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="">
+                    <Link
+                      className="rounded text-white px-4 py-2 bg-primary-accent text-xs sm:text-sm lg:text-base w-16 sm:w-24 lg:w-32 xl:w-40 hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent"
+                      to="/signin"
+                    >
+                      <button className="lg:font-semibold">Sign In</button>
+                    </Link>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </LayoutMargin>
+    </header>
   );
 }
 

@@ -15,10 +15,10 @@ const LayoutWrapper = ({ children }) => {
 
   return (
     <>
-      <div className="realtive">
+      <div className="">
         <Overlay slide={slide} showMenu={showMenu} setSlide={setSlide} />
         <NavBar showMenu={showMenu} />
-        {children}
+        <div className="mx-auto">{children}</div>
         <Footer />
       </div>
     </>

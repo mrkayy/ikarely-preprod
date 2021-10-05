@@ -61,7 +61,7 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
         slide && "slide"
       }`}
     >
-      <div className="w-10/12 h-auto bg-primary-100 absolute index-0 shadow-2xl">
+      <div className="w-10/12 h-auto bg-primary-100 absolute index-0 drop-shadow-2xl shadow-2xl">
         <div onClick={() => setSlide(false)} className="h-18">
           <span className="w-10">
             <svg

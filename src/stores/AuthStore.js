@@ -122,15 +122,18 @@ class AuthStore {
         } catch (err) {
           //console.log(err);
         }
-        this.getLoggedInUser(decoded.id);
+        this.getLoggedInUser(decoded?.id ?? "");
       });
   };
 
   getLoggedInUser = (id) => {
-    api.get(`/users/${id}`).then((res) => {
-      //console.log(res.data);
-      this.user = res.data.data;
-    });
+    api
+      .get(`/users/${id}`)
+      .then((res) => {
+        //console.log(res.data);
+        this.user = res.data.data;
+      })
+      .catch((err) => {});
   };
 
   refreshUser = () => {

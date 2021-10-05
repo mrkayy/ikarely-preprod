@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, Component } from "react";
 // import { observer } from "mobx-react";
 // import "./App";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -16,51 +16,57 @@ import Profile from "./Pages/Profile";
 import Payments from "./Pages/Payment";
 import Checkout from "./Pages/Checkout/Checkout";
 import Subscription from "./Pages/Subscription";
+//  application Routes
+import GeneralRoute from "./routes/GeneralRoute";
 
 import ReactGA from "react-ga4";
 
-//  application Routes
-import GeneralRoute from "./routes/GeneralRoute";
+ReactGA.initialize("G-HY5HEHC52K", { testMode: false });
+
 // import ProtectedRoute from "./routes/ProtectedRoute";
 
 // application layouts
 // import ClientLayout from "./Layouts/ClientLayout/LayoutWrapper";
 // import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
 
-class App extends Component {
-  componentDidMount() {}
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <Switch>
-            <GeneralRoute exact path="/" component={Home} />
-            <GeneralRoute exact path="/service" component={Service} />
-            <GeneralRoute exact path="/about" component={About} />
-            <GeneralRoute exact path="/blog" component={Home} />
-            <GeneralRoute exact path="/register" component={Register} />
-            <GeneralRoute exact path="/signin" component={SignIn} />
-            <GeneralRoute exact path="/contact" component={Contact} />
-            {/* TODO: refactor client routes & subscription routes */}
-            <GeneralRoute
-              exact
-              path={`/subscription/:id`}
-              component={Subscription}
-            />
+function App() {
+  // useEffect(() => {
+  //   ReactGA.send(window.location.pathname + window.location.search);
+  // }, []);
 
-            {/* <ProtectedRoute
+  console.log(process.env);
+
+  return (
+    <div className="App">
+      <Router>
+        <Switch>
+          <GeneralRoute exact path="/" component={Home} />
+          <GeneralRoute exact path="/service" component={Service} />
+          <GeneralRoute exact path="/about" component={About} />
+          <GeneralRoute exact path="/blog" component={Home} />
+          <GeneralRoute exact path="/register" component={Register} />
+          <GeneralRoute exact path="/signin" component={SignIn} />
+          <GeneralRoute exact path="/contact" component={Contact} />
+          {/* TODO: refactor client routes & subscription routes */}
+          <GeneralRoute
+            exact
+            path={`/subscription/:id`}
+            component={Subscription}
+          />
+
+          {/* <ProtectedRoute
               exact
               path="/payments"
               component={Payments}
               layout={GeneralLayout}
             /> */}
-            {/* <ProtectedRoute
+          {/* <ProtectedRoute
               exact
               path={`/checkout`}
               component={Checkout}
               layout={GeneralLayout}
             /> */}
-            {/* <ProtectedRoute
+          {/* <ProtectedRoute
               exact
               path={`/subscription/general_checkup`}
               component={Subscription}
@@ -121,13 +127,12 @@ class App extends Component {
               layout={ClientLayout}
             />
           */}
-            <GeneralRoute path="*" component={Error} />
-            {/* <GeneralRoute path="/*" component={Error} /> */}
-          </Switch>
-        </Router>
-      </div>
-    );
-  }
+          <GeneralRoute path="*" component={Error} />
+          {/* <GeneralRoute path="/*" component={Error} /> */}
+        </Switch>
+      </Router>
+    </div>
+  );
 }
 
 export default App;
