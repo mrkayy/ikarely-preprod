@@ -26,7 +26,7 @@ function Footer() {
                   className="w-10 sm:w-14"
                 />
                 <div>
-                  <p class="text-lg md:text-base lg:text-xl font-semibold ml-3 tracking-tight">
+                  <p className="text-lg md:text-base lg:text-xl font-semibold ml-3 tracking-tight">
                     Ikarely Health Limited
                   </p>
 

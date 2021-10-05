@@ -86,11 +86,10 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
             <ul>
               {links.map(({ value, directory }, index) => {
                 return (
-                  <Link className="" to={directory}>
+                  <Link className="" to={directory} key={index}>
                     <li
                       className=" hover:bg-white font-semibold my-4 text-center text-red py-4 rounded-md"
                       onClick={viewLink}
-                      key={index}
                     >
                       {value}
                     </li>

@@ -14,10 +14,10 @@ import ServiceStore from "../../stores/Services";
 import AuthStore from "../../stores/AuthStore";
 import { observer } from "mobx-react";
 import { useAlert } from "react-alert";
-import ReactGA from "react-ga4";
-import {raiseEvent,sendPageView } from "../../shared/GaEvent"
+// import ReactGA from "react-ga4";
+// import { raiseEvent, sendPageView } from "../../shared/GaWrapper";
 
-function Service() {
+const Service = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const servicecontext = useContext(ServiceStore);
@@ -260,6 +260,6 @@ function Service() {
       </div>
     </div>
   );
-}
+};
 
 export default observer(Service);

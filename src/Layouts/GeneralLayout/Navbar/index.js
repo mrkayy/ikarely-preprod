@@ -75,16 +75,14 @@ function NavBar({ showMenu }) {
           <div className="hidden sm:block md:w-6/10">
             <ul className="text-default sm:flex sm:items-center sm:justify-center sm:text-xs lg:text-base">
               {navigationMenu.map(({ title, path }, index) => (
-                <>
-                  <li className="" key={`${index}${title}`}>
-                    <Link
-                      className="rounded hover:bg-primary-accent py-2 px-4 md:px-3 hover:text-white"
-                      to={path}
-                    >
-                      {title}
-                    </Link>
-                  </li>
-                </>
+                <li className="" key={index}>
+                  <Link
+                    className="rounded hover:bg-primary-accent py-2 px-4 md:px-3 hover:text-white"
+                    to={path}
+                  >
+                    {title}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
