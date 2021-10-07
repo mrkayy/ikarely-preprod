@@ -21,7 +21,18 @@ import ReactGA from "react-ga4";
 //  application Routes
 import GeneralRoute from "./routes/GeneralRoute";
 
-ReactGA.initialize("G-HY5HEHC52K", { testMode: false });
+const measurmentID1 = {
+  trackingId: "G-HY5HEHC52K",
+  gaOptions: {}, // optional
+  gtagOptions: {}, // optional
+};
+const measurmentID2 = {
+  trackingId: "G-JR3G6DJB3M",
+  gaOptions: {}, // optional
+  gtagOptions: {}, // optional
+};
+
+ReactGA.initialize([measurmentID1, measurmentID2]);
 
 // application layouts
 // import ClientLayout from "./Layouts/ClientLayout/LayoutWrapper";

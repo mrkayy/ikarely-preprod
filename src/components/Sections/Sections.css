@@ -1,5 +1,4 @@
-.sections{
-  /* width: 80%; */
+/* .sections{
   display: grid;
   justify-content: center;
 }
@@ -7,7 +6,6 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  /* max-width: 80vw; */
   padding: 5%;
   text-align: center;
   color: #616161;
@@ -41,7 +39,6 @@
 .right__part {
   min-width: 400px;
   text-align: left;
-  /* justify-self: end; */
 }
 .right__part:nth-child(even) {
   justify-self: end;
@@ -60,7 +57,6 @@
   color: #083c63;
 }
 p.section__word {
-  /* margin-bottom: 15px; */
   font-size: 16px;
   color: #2d2d2d;
   font-family: Poppins;
@@ -100,12 +96,5 @@ button.eachsection__btn {
 @media screen and (max-width: 604px) {
   .welcome__word {
     max-width: 100%;
-  }
-}
-
-
-/* @media screen and (max-width: 1060px){
-  .right__part > h1 {
-    font-size: 32px;
   }
 } */

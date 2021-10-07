@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 // import footerImage from "../../../assets/images/iKarelyX.png";
 // import Line from "../../../components/svg/Line";
 
-import LayoutMargin from "../component/LayoutMargin";
+import LayoutMargin from "../../../components/LayoutWrapper/LayoutMargin";
 function Footer() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -139,7 +139,7 @@ function Footer() {
             </div>
           </div>
 
-          <div className="h-1 bg-gradient-to-r from-primary-main via-white to-primary-main "></div>
+          <div className="h-0.5 bg-gradient-to-r from-primary-main via-white to-primary-main "></div>
           <div className="text-center text-xs lg:text-sm text-white pt-8 pb-10">
             <h6>&copy;Ikarely Health Limited - All Reserved Rights 2021</h6>
           </div>

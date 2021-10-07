@@ -15,7 +15,7 @@ const About = () => {
 
   return (
     <div className="about">
-      {/* <PageLanding image="easy-access.jpg" title="About us" /> */}
+      <PageLanding image="easy-access.jpg" title="About us" />
 
       <div className="each__section">
         <div className="left__part">

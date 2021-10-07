@@ -147,8 +147,8 @@ const Contact = (props) => {
         </div>
         <h2 className="contactus__description__bottom">
           Would you rather phone in? <br />{" "}
-          <a href="tel:+2348035418437">08035418437,</a>{" "}
-          <a href="tel:+2349063870220"> 09063870220</a>
+          <a href={"tel:+2348035418437"}>08035418437,</a>{" "}
+          <a href={"tel:+2349063870220"}> 09063870220</a>
         </h2>
       </div>
     </div>

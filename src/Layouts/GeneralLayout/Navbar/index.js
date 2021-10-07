@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 import AuthContext from "../../../stores/AuthStore";
-import LayoutMargin from "../component/LayoutMargin";
+import LayoutMargin from "../../../components/LayoutWrapper/LayoutMargin";
 
 function NavBar({ showMenu }) {
   const { logout, currUser } = useContext(AuthContext);
@@ -31,7 +31,7 @@ function NavBar({ showMenu }) {
   ];
   return (
     <header
-      className={`fixed aboslute xl:font-semibold w-screen ${
+      className={`fixed aboslute xl:font-semibold w-screen z-40 ${
         show
           ? "bg-white shadow-2xl transition ease-out duration-300"
           : "bg-white transition ease-in duration-300"

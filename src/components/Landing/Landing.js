@@ -1,70 +1,82 @@
 import React from "react";
 import "./Landing.css";
 import { Link } from "react-router-dom";
+import LayoutWrapper from "../LayoutWrapper/LayoutMargin";
 
 function Landing() {
   return (
     <>
-      <div className="h-screen bg-gradient-to-r from-white via-primary-100 to-primary-200">
-        <div>
-          {/* <div></div>
-          <div className="w-full h-96 sm:h-300 md:h-400 lg:h-800 bg-doctor1 bg-no-repeat bg-right bg-contain"></div> */}
-        </div>
-        <div className={"h-screen lg:pt-32 lg:px-8 xl:pt-48 xl:pb-36 xl:px-20"}>
-          <div
-            className={`
-          z-10
-          sm:w-96 
-          md:w-96
-          
-          lg:w-80
-          xl:w-96
+      <div className="h-5/6 bg-gradient-to-r from-white via-primary-100 to-primary-200">
+        <div className="w-full h-6/12">
+          <div className="bg-doctor0 bg-no-repeat bg-center sm:bg-right-bottom bg-cover sm:bg-contain bg-gradient-to-r from-primary-200 via-primary-100 to-primary-transparent">
+            <div className="w-screen bg-opacity-50 bg-appGray sm:bg-transparent">
+              <LayoutWrapper>
+                <div
+                  className={
+                    " grid place-items-center sm:block h-screen sm:h-5/6 sm:pt-28 lg:pt-32 xl:pt-48 xl:pb-36"
+                  }
+                >
+                  <div className="">
+                    <div className="p-3 text-center rounded-full sm:w-72 md:w-80 lg:w-80 xl:w-96 bg-transparent sm:bg-primary-100 mb-6">
+                      <p className="text-secondary font-bold text-base sm:text-sm lg:text-sm xl:text-base">
+                        #1 Best Care For Your Good Health
+                      </p>
+                    </div>
+                    <div
+                      className={`
+              xl:leading-tight
+              lg:leading-8
 
-          sm:bg-primary-100 
-          md:bg-primary-100 
-          lg:bg-primary-100
+              sm:w-8/12
+              md:w-7/12
+              lg:w-6/12
+              xl:w-3/5
 
-          mb-8 
-          p-3
-          text-center 
-          rounded-full
-          `}
-          >
-            <p className="text-secondary font-bold lg:text-sm">
-              #1 Best Care For Your Good Health
-            </p>
-          </div>
-          <div
-            className={`leading-loose
-            lg:leading-tight 
-            lg:w-5/12 
-            xl:w-6/12
-            text-primary-accent 
-            text-left font-bold 
-            text-lg 
-            sm:text-lg
-            md:text-xl
-            lg:text-5xl
+              lg:leading-tight
+            text-typography-main
+            text-center
+
+            sm:text-left
+            font-extrabold
+            
+            text-4xl
+            sm:text-lx
+            md:text-3xl
+            lg:text-4xl
+            xl:text-6xl
+            
+            px-8
+            sm:px-0
+            mb-6
+            sm:mb-3
             `}
-          >
-            <p className="mb-1 md:mb-2 lg:mb-6 break-normal tracking-tight leading-3/12">
-              Bringing Quality health Services to your Doorstep
-            </p>
-          </div>
-          <div>
-            <p className="text-xl md:text-sm lg:text-base md:text-justify leading-8 sm: md:w-8/12 lg:w-5/12">
-              We are Uniquely designed for high-acuity patients in a home
-              setting. We’ve designed and made significant investments in a
-              scalable model that is enabled by technology and a threefold
-              business/clinical/tech leadership team.
-            </p>
-          </div>
-          <div>
-            <Link to="/service">
-              <button className="lg:mt-10 lg:px-6 lg:py-3 lg:bg-primary-accent lg:w-48 lg:text-white lg:rounded lg:text-5">
-                Get Started
-              </button>
-            </Link>
+                    >
+                      <p className="capitalize font-extrabold mb-1 sm:mb-2 lg:mb-6 break-normal tracking-tight leading-3/12">
+                        Bringing Quality health Services to your Doorstep
+                      </p>
+                    </div>
+                    <div className="mb-3">
+                      <div className="md:leading-8 sm:w-6/12 md:w-7/12 lg:w-6/12 xl:w-5/12">
+                        <p className="px-8 sm:px-0 text-sm sm:text-sm lg:text-base text-justify font-extrabold sm:font-medium tracking-tight">
+                          We are Uniquely designed for high-acuity patients in a
+                          home setting. We’ve designed and made significant
+                          investments in a scalable model that is enabled by
+                          technology and a threefold business/clinical/tech
+                          leadership team.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex justify-center sm:block mt-12 sm:mt-6 sm:mb-16">
+                      <Link to="/service">
+                        <button className="text-sm px-6 py-3 bg-primary-accent lg:w-48 text-white rounded sm:text-sm ">
+                          Get Started
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </LayoutWrapper>
+            </div>
           </div>
         </div>
       </div>

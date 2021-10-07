@@ -122,7 +122,7 @@ class AuthStore {
         } catch (err) {
           //console.log(err);
         }
-        this.getLoggedInUser(decoded?.id ?? "");
+        this.getLoggedInUser(decoded?.id ?? "00");
       });
   };
 

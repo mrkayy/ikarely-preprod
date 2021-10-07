@@ -6,7 +6,7 @@ import propTypes from "prop-types";
 function PageViewWrapper(props) {
   const { pageDesc, page } = props;
   React.useEffect(() => {
-    ReactGA.send({ hitType: pageDesc, page });
+    ReactGA.send(page);
   }, []);
   return <div>{props.children}</div>;
 }

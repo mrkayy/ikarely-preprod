@@ -19,9 +19,8 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
+    <div className="">
       <Landing />
-      <WhyUs />
       <Section />
     </div>
   );

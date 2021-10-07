@@ -5,7 +5,7 @@ const user_token = WebStorage.get("user_token");
 
 const serverUrl =
   process.env.NODE_ENV === "development"
-    ? process.env.REACT_APP_API_DEV
+    ? process.env.REACT_APP_API
     : process.env.REACT_APP_API_LOCAL;
 
 const api = axios.create({
