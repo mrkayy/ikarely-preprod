@@ -115,14 +115,15 @@ class AuthStore {
         // ////console.log(err.response.data);
       })
       .finally(() => {
+        // sets logged in user state to true
         this.getCurrUser();
-        try {
-          const token = WebStorage.get("user_token");
-          var decoded = jwt_decode(token);
-        } catch (err) {
-          //console.log(err);
-        }
-        this.getLoggedInUser(decoded?.id ?? "00");
+        // try {
+        //   const token = WebStorage.get("user_token");
+        //   var decoded = jwt_decode(token);
+        // } catch (err) {
+        //   //console.log(err);
+        // }
+        // this.getLoggedInUser(decoded?.id);
       });
   };
 
