@@ -13,7 +13,9 @@ const Error = (props) => {
           We couldn’t find the page you are looking for.
         </p>
         <Link to="/">
-          <button className="go__backhome">Take me Home</button>
+          <button type="button" className="go__backhome">
+            Take me Home
+          </button>
         </Link>
       </div>
     </div>

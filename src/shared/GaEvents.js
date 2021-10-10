@@ -1,5 +1,5 @@
 import ReactGA from "react-ga4";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const raiseEvent = ({
   category,
@@ -20,12 +20,12 @@ const raiseEvent = ({
 };
 
 raiseEvent.propTypes = {
-  category: propTypes,
-action: propTypes,
-label: propTypes,
-value: propTypes,
-nonInteraction: propTypes,
-transport: propTypes,
+  category: PropTypes,
+action: PropTypes,
+label: PropTypes,
+value: PropTypes,
+nonInteraction: PropTypes,
+transport: PropTypes,
 };
 
 export default raiseEvent;

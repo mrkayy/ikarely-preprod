@@ -115,14 +115,19 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
                     );
                   })} */}
                   <li className="" onClick={logout}>
-                    <button className="">Logout</button>
+                    <button type="button" className="">
+                      Logout
+                    </button>
                   </li>
                 </>
               ) : (
                 <>
                   <li className="navbar__slide" onClick={() => viewLink(slide)}>
                     <Link to="signin">
-                      <button className="my-3 bg-white rounded-md hover:bg-primary-accent hover:text-white text-primary-accent w-full p-3 translate duration-500 ease-in">
+                      <button
+                        type="button"
+                        className="my-3 bg-white rounded-md hover:bg-primary-accent hover:text-white text-primary-accent w-full p-3 translate duration-500 ease-in"
+                      >
                         Login
                       </button>
                     </Link>
@@ -130,7 +135,10 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
 
                   <li className="navbar__slide" onClick={() => viewLink(slide)}>
                     <Link to="/register">
-                      <button className="my-3 bg-primary-accent rounded-md hover:bg-white hover:text-primary-accent text-white w-full p-3 translate duration-500 ease-in">
+                      <button
+                        type="button"
+                        className="my-3 bg-primary-accent rounded-md hover:bg-white hover:text-primary-accent text-white w-full p-3 translate duration-500 ease-in"
+                      >
                         Register
                       </button>
                     </Link>

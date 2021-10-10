@@ -11,7 +11,9 @@ const Error = (props) => {
         <h4 className="error__message">Oops!</h4>
         <p className="error__body">Something Went wrong!</p>
         <Link to="/profile/dashboard">
-          <button className="go__backhome">back</button>
+          <button type="button" className="go__backhome">
+            back
+          </button>
         </Link>
       </div>
     </div>

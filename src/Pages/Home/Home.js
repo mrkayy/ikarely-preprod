@@ -1,9 +1,8 @@
 import React from "react";
-import Landing from "../../components/Landing/Landing";
 
+import Landing from "../../components/Sections/Landing/Landing";
 import Section from "../../components/Sections/Sections";
-import WhyUs from "../../components/Sections/WhyChooseUs/WhyUs";
-import "./Home.css";
+// import "./Home.css";
 import ReactGA from "react-ga4";
 
 const Home = () => {

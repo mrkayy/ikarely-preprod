@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import LayoutWrapper from "../../../components/LayoutWrapper/LayoutMargin";
+import SectionDescCard from "../SectionDescCard";
 
 const BlogSection = () => {
   return (
@@ -17,31 +18,14 @@ const BlogSection = () => {
             /> */}
             </div>
           </div>
-
-          <div className="mt-6 md:w-full lg:w-2/5 xl:w-2/5">
-            <h3 className="text-2xl font-bold text-typography-emphasis my-3 px-6 py-3 sm:px-0 sm:py-0">
-              Blogs
-            </h3>
-            <h2 className="xl:text-3xl font-bold tracking-tight px-6 sm:px-0">
-              Clinical And Health Related Articles
-            </h2>
-            <p className="text-justify xl:text-base text-typography-light my-6 leading-6 tracking-tight sm:leading-8 px-6 sm:px-0">
-              At Ikarely, We provide real and practical advice to help you
+          <SectionDescCard
+            heading={"Blogs"}
+            title={"Clinical And Health Related Articles"}
+            desc={`At Ikarely, We provide real and practical advice to help you
               prevent illness and cure ailments and stay healthy by providing
               advice on a full range of medical conditions and preventions
-              through an abundance of articles on our blog.
-            </p>
-
-            <div className="px-6 sm:px-0">
-              {/* TODO: link button to blog page when avaliable */}
-
-              <Link to="/">
-                <button className="w-3/6 sm:w-40 lg:w-5/12text-sm rounded text-white bg-button-primary hover:shadow-md hover:bg-white hover:text-typography-main p-3">
-                  Read More
-                </button>
-              </Link>
-            </div>
-          </div>
+              through an abundance of articles on our blog.`}
+          />
         </div>
       </LayoutWrapper>
     </div>

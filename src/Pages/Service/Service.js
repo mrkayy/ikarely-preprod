@@ -120,7 +120,9 @@ const Service = () => {
 
   const btnSwitch = !currUser ? (
     <Link to="/signin">
-      <button className="makerequest__btn">Get Started</button>
+      <button type="button" className="makerequest__btn">
+        Get Started
+      </button>
     </Link>
   ) : (
     <button
@@ -133,10 +135,14 @@ const Service = () => {
 
   const subBtnSwitch = !currUser ? (
     <Link to="/signin">
-      <button className="makerequest__btn">Get Started</button>
+      <button type="button" className="makerequest__btn">
+        Get Started
+      </button>
     </Link>
   ) : (
-    <button className="makerequest__btn">Subscribe to Service</button>
+    <button type="button" className="makerequest__btn">
+      Subscribe to Service
+    </button>
   );
 
   useEffect(() => {
@@ -175,7 +181,7 @@ const Service = () => {
             your finger tip.
           </p>
 
-          {/* <button className="eachsection__btn">
+          {/* <button type="button" className="eachsection__btn">
                         read more
                     </button> */}
         </div>
@@ -202,7 +208,7 @@ const Service = () => {
 
         {/* {!currUser ? (
           <Link to="/signin">
-            <button className="getstarted__btn">Get Started</button>
+            <button type="button" className="getstarted__btn">Get Started</button>
           </Link>
         ) : (
           <button

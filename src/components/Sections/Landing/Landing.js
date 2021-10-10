@@ -1,19 +1,18 @@
 import React from "react";
-import "./Landing.css";
 import { Link } from "react-router-dom";
-import LayoutWrapper from "../LayoutWrapper/LayoutMargin";
+import LayoutWrapper from "../../LayoutWrapper/LayoutMargin";
 
 function Landing() {
   return (
     <>
-      <div className="h-5/6 bg-gradient-to-r from-white via-primary-100 to-primary-200">
+      <div className="h-100 bg-gradient-to-r from-white via-primary-100 to-primary-200">
         <div className="w-full h-6/12">
-          <div className="bg-doctor0 bg-no-repeat bg-center sm:bg-right-bottom bg-cover sm:bg-contain bg-gradient-to-r from-primary-200 via-primary-100 to-primary-transparent">
-            <div className="w-screen bg-opacity-50 bg-appGray sm:bg-transparent">
+          <div className="bg-doctor7 bg-no-repeat bg-cover bg-center sm:bg-top sm:bg-scroll xl:bg-fit">
+            <div className="w-screen bg-opacity-80 sm:bg-opacity-50 bg-white">
               <LayoutWrapper>
                 <div
                   className={
-                    " grid place-items-center sm:block h-screen sm:h-5/6 sm:pt-28 lg:pt-32 xl:pt-48 xl:pb-36"
+                    " grid place-items-center sm:block h-screen sm:h-5/6 sm:pt-28 md:pb-9 lg:pt-32 xl:pt-48 xl:pb-36"
                   }
                 >
                   <div className="">
@@ -57,7 +56,7 @@ function Landing() {
                     </div>
                     <div className="mb-3">
                       <div className="md:leading-8 sm:w-6/12 md:w-7/12 lg:w-6/12 xl:w-5/12">
-                        <p className="px-8 sm:px-0 text-sm sm:text-sm lg:text-base text-justify font-extrabold sm:font-medium tracking-tight">
+                        <p className="text-default px-8 sm:px-0 text-sm sm:text-sm lg:text-base text-justify font-extrabold sm:font-medium tracking-tight">
                           We are Uniquely designed for high-acuity patients in a
                           home setting. We’ve designed and made significant
                           investments in a scalable model that is enabled by
@@ -68,7 +67,10 @@ function Landing() {
                     </div>
                     <div className="flex justify-center sm:block mt-12 sm:mt-6 sm:mb-16">
                       <Link to="/service">
-                        <button className="text-sm px-6 py-3 bg-primary-accent lg:w-48 text-white rounded sm:text-sm ">
+                        <button
+                          type="button"
+                          className="text-xs sm:text-sm px-6 py-3 bg-primary-accent lg:w-48 text-white rounded sm:text-sm "
+                        >
                           Get Started
                         </button>
                       </Link>

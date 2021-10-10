@@ -1,6 +1,6 @@
 import ReactGA from "react-ga4";
 import React from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 // analytics page wrapper
 function PageViewWrapper(props) {
@@ -12,8 +12,8 @@ function PageViewWrapper(props) {
 }
 
 PageViewWrapper.propTypes = {
-  pageDesc: propTypes.string.isRequired,
-  page: propTypes.string.isRequired,
+  pageDesc: PropTypes.string.isRequired,
+  page: PropTypes.string.isRequired,
 };
 
 export default PageViewWrapper;

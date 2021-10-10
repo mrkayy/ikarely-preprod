@@ -33,8 +33,8 @@ function NavBar({ showMenu }) {
     <header
       className={`fixed aboslute xl:font-semibold w-screen z-40 ${
         show
-          ? "bg-white shadow-2xl transition ease-out duration-300"
-          : "bg-white transition ease-in duration-300"
+          ? "bg-white shadow-2xl transition ease-out duration-200"
+          : "bg-transparent transition ease-in duration-300"
       }`}
     >
       <LayoutMargin>
@@ -73,7 +73,7 @@ function NavBar({ showMenu }) {
           </div>
 
           <div className="hidden sm:block md:w-6/10">
-            <ul className="text-default sm:flex sm:items-center sm:justify-center sm:text-xs lg:text-base">
+            <ul className="text-default sm:flex sm:items-center sm:justify-center sm:text-sm lg:text-base">
               {navigationMenu.map(({ title, path }, index) => (
                 <li className="" key={index}>
                   <Link
@@ -87,25 +87,30 @@ function NavBar({ showMenu }) {
             </ul>
           </div>
 
-          <div className="mr-5 sm:mr-0">
+          <div className="">
             <div className="flex sm:text-sm md:text-base sm:items-center lg:text-lg">
               {currUser && currUser ? (
                 <>
                   <div
-                    className="rounded text-white px-4 py-2 bg-primary-accent text-xs sm:text-sm lg:text-base w-16 sm:w-24 lg:w-32 xl:w-40 hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent"
+                    className="rounded text-white px-4 py-2 bg-primary-accent text-xs sm:text-sm w-20 hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent"
                     onClick={() => logout()}
                   >
-                    <button className="lg:font-semibold"> Log out</button>
+                    <button type="button" className="lg:font-semibold">
+                      {" "}
+                      Sign Out
+                    </button>
                   </div>
                 </>
               ) : (
                 <>
-                  <div className="">
+                  <div className="mr-3 sm:mr-0">
                     <Link
-                      className="rounded text-white px-4 py-2 bg-primary-accent text-xs sm:text-sm lg:text-base w-16 sm:w-24 lg:w-32 xl:w-40 hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent"
+                      className="rounded text-white px-4 py-2 bg-primary-accent text-xs sm:text-sm w-16 sm:w-24 lg:w-32 xl:w-40 hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent"
                       to="/signin"
                     >
-                      <button className="lg:font-semibold">Sign In</button>
+                      <button type="button" className="lg:font-semibold">
+                        Sign In
+                      </button>
                     </Link>
                   </div>
                 </>

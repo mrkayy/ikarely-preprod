@@ -31,7 +31,7 @@ module.exports = {
         },
         button: {
           primary: "#083C63",
-          disabled: "#AFAFAF",
+          disabled: "#E6EBEF",
           secondary: "#9D0305",
         },
         section: {
@@ -41,7 +41,6 @@ module.exports = {
         typography: {
           extralight: "#828282",
           light: "#585858",
-          modrate: "#083C63",
           heavy: "#2B2B2B",
           extraheavy: "#000000",
           emphasis: "#9D0305",
@@ -59,6 +58,11 @@ module.exports = {
         doctor4: "url('./assets/images/doctor4.png')",
         doctor5: "url('./assets/images/doctor5.png')",
         doctor6: "url('./assets/images/doctor6.png')",
+        doctor7: "url('./assets/images/doctor7.jpg')",
+        homecare: "url('./assets/images/homecare.jpg')",
+        homecare2: "url('./assets/images/homecare2.png')",
+        contact: "url('./assets/images/contact.jpg')",
+        homecare2: "url('./assets/images/homecare2.png')",
         group1: "url('./assets/images/Group-1.png')",
         group2: "url('./assets/images/Group-2.png')",
         group3: "url('./assets/images/Group-3.png')",
@@ -68,6 +72,8 @@ module.exports = {
         logo2: "url('./assets/images/iKarelyX.png')",
         logo3: "url('./assets/images/logo-sm.png')",
         logo4: "url('./assets/images/logo-md.png')",
+        appointment: "url('./assets/images/appointment.jpg')",
+        rectanglegradient: "url('./assets/images/Rectangle-gradient.png')",
       },
       // backgroundSize: {
       // },

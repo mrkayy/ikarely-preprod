@@ -39,6 +39,12 @@ const SignIn = (props) => {
     error,
   };
 
+  const [passwordType, setpasswordType] = useState(true);
+
+  const togglePassword = () => {
+    setpasswordType(!passwordType);
+  };
+
   const { state, setState, setSchemas, validate } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -96,6 +102,18 @@ const SignIn = (props) => {
     login(data);
   };
 
+  const hidden = () => (
+    <>
+      <div className="bg-closeEye bg-contain h-6 w-6"></div>
+    </>
+  );
+
+  const visible = () => (
+    <>
+      <div className="bg-eye bg-contain h-6 w-6"></div>
+    </>
+  );
+
   return currUser && props.location.pathname === "/signin" ? (
     <Redirect
       to={{
@@ -106,33 +124,77 @@ const SignIn = (props) => {
       }}
     />
   ) : (
-    <div className="signin">
-      <div className="signin__form">
-        <div className="signin__headers">
-          <h3 className="signin__header">Users Sign in</h3>
-          <p className="little__text">Welcome to iKarely</p>
+    // px-8 md:p-12 xl:p-16 2xl:p-28
+    // px-4 md:px-28 lg:px-8 xl:px-0
+    <>
+      <section className="w-screen bg-doctor3 bg-no-repeat bg-center bg-cover">
+        <div className="bg-opacity-50 py-10 sm:py-0 bg-white h-screen w-screen lg:flex lg:justify-between">
+          <div className="w-full h-screen hidden lg:block"></div>
+          <div className="w-full h-screen flex items-center justify-center">
+            <div className="md:w-8/12 lg:w-11/12 xl:w-8/12">
+              <div className="w-full h-full md:h-3/5 md:bg-white md:shadow-lg px-12 py-12  rounded-2xl">
+                <h1 className="text-lg text-typography-main md:text-2xl font-bold leading-tight text-center">
+                  Welcome! {"{first_name}"}
+                </h1>
+
+                <form className="mt-6 lg:px-4" onSubmit={loginSubmit}>
+                  <InputBox
+                    type={"email"}
+                    label={"Email Address"}
+                    name={"email"}
+                    labelColor={"text-typography-main"}
+                    placeholder={"Enter Email Address"}
+                    autoFocus={true}
+                    autoComplete={true}
+                    required={true}
+                  />
+                  <InputBox
+                    type={passwordType ? "password" : "text"}
+                    label={"Password"}
+                    name={"password"}
+                    labelColor={"text-typography-main"}
+                    placeholder={"Enter Password"}
+                    minLength="6"
+                    required={true}
+                    hasOption={true}
+                    options={passwordType ? hidden : visible}
+                    showOption={passwordType}
+                    optionFunciton={togglePassword}
+                  />
+                  <div className="text-right mt-2">
+                    <Link to="/signin">
+                      <span className="text-xs sm:text-sm text-typography-emphasis hover:text-typography-main focus:text-blue-700 font-semibold">
+                        Forgot Password?
+                      </span>
+                    </Link>
+                  </div>
+
+                  <div className="w-full grid place-items-center">
+                    <div className="w-full md:w-9/12">
+                      <Button
+                        loading={loading}
+                        progress="Authenticating..."
+                        shown="Sign In"
+                      />
+                    </div>
+                  </div>
+                </form>
+                <hr className="my-6 border-primary-100 w-full" />
+
+                <p className="mt-8 text-xs sm:text-sm text-center text-typography-main">
+                  Need an account?{" "}
+                  <Link to="/register">
+                    <span className="text-typography-emphasis hover:text-typography-main font-semibold text-xs sm:text-sm">
+                      Create an account
+                    </span>
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <form action="submit" onSubmit={loginSubmit} className="form__inputs">
-          <InputBox label="Email or Phone Number" name="email" type="email" />
-          <InputPasswordBox label="Password" name="password" />
-
-          {/* <div className="keep__signed">
-              <input
-                type="checkbox"
-                // onChange={handleCheckBox}
-              />
-              Keep me signed in
-            </div> */}
-
-          <Button loading={loading} progress="Loading..." shown="Signin" />
-
-          <p className="bottom__text">
-            New user? <Link to="/register">Sign up</Link> for free
-          </p>
-        </form>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 

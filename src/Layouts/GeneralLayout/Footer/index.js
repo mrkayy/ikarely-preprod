@@ -1,18 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import "./footer_styles.css";
-// import TwitterIcon from "@material-ui/icons/Twitter";
-// import InstagramIcon from "@material-ui/icons/Instagram";
-// import FacebookIcon from "@material-ui/icons/Facebook";
-// import footerImage from "../../../assets/images/iKarelyX.png";
-// import Line from "../../../components/svg/Line";
+import Button from "../../../Anime/Button";
 
 import LayoutMargin from "../../../components/LayoutWrapper/LayoutMargin";
+import InputBox from "../../../shared/InputBox";
 function Footer() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    console.log(e.value);
   };
 
+  let loading = false;
+
+  const subsButton = () => (
+    <Button progress={"Subscribing..."} shown={"Submit"} loading={loading} />
+  );
   return (
     <>
       <div className="bg-primary-main w-full pt-8 sm:pt-14 text-white">
@@ -135,7 +137,19 @@ function Footer() {
                 Subscribe to our newsletter to get updates.
               </p>
               {/* add input text-box to collect subscribers */}
-              <div className=""></div>
+              {/* <div className="">
+                <InputBox
+                  label={""}
+                  name={""}
+                  type={"email"}
+                  required={true}
+                  placeholder={"Enter your email"}
+                  labelColor={"text-white"}
+                  hasOption={true}
+                  options={subsButton}
+                  optionFunciton={handleFormSubmit}
+                />
+              </div> */}
             </div>
           </div>
 
