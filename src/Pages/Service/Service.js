@@ -7,13 +7,15 @@ import React, {
 } from "react";
 import { Link } from "react-router-dom";
 import PageLanding from "../../components/PageLanding/PageLanding";
-import "./Service.css";
+// import "./Service.css";
 import Modal from "@material-ui/core/Modal";
 import ModalForm from "../../components/Modal/ModalForm";
 import ServiceStore from "../../stores/Services";
 import AuthStore from "../../stores/AuthStore";
 import { observer } from "mobx-react";
 import { useAlert } from "react-alert";
+import ArticleSection from "../../components/Sections/ArticleSection/ArticleSection";
+import LayoutMargin from "../../components/LayoutWrapper/LayoutMargin";
 // import ReactGA from "react-ga4";
 // import { raiseEvent, sendPageView } from "../../shared/GaWrapper";
 
@@ -161,14 +163,15 @@ const Service = () => {
   }, [reqErrMessage, reqSuccessMessage]);
 
   return (
-    <div className="services">
-      <PageLanding image="health-service.jpg" title="What we offer" />
-
-      <div className="each__section">
-        <div className="right__part">
-          <h3>services</h3>
-          <h2>Get the best medical aid at home</h2>
-          <p className="section__word">
+    <div className="">
+      <PageLanding image={"bg-doctor3"} title="OUR SERVICES" />
+      <LayoutMargin>
+        <div className="md:flex md:justify-between md:items-center">
+          <div className="md:w-full lg:w-2/5 xl:w-6/12 ">
+            <ArticleSection
+              heading="What we offer"
+              title="Get the best medical aid at home"
+              desc={`
             We believe there is no better time to decongest hospitals especially
             in Africa where there is the disproportionate patient-to-doctor
             ratio with facilities that are either unavailable or dysfunctional.
@@ -178,35 +181,30 @@ const Service = () => {
             best prevention and treatment options at a fraction of the cost
             without necessarily leaving the comfort of your room. With iKarely
             you’re getting the best and quality health care services just at
-            your finger tip.
-          </p>
-
-          {/* <button type="button" className="eachsection__btn">
-                        read more
-                    </button> */}
+            your finger tip.Ï`}
+            />
+          </div>
+          <div className="hidden mb:block sm:hidden lg:block sm:bg-section-2 lg:w-6/12 xl:w-2/5 h-3/4 sm:shadow-md">
+            <div className="bg-homecare2 bg-section-1 shadow-md sm:bg-transparent sm:shadow-none h-96 bg-cover bg-no-repeat bg-center"></div>
+          </div>
         </div>
-        <div className="left__part">
-          <img src="images/appointment.jpg" alt="" />
-        </div>
-      </div>
+        <div className="services__section">
+          <div className="service__headers">
+            <h3 className="services__head">Our Services</h3>
+            <h1 className="services__mainheader">Health Services we offer</h1>
+          </div>
 
-      <div className="services__section">
-        <div className="service__headers">
-          <h3 className="services__head">Our Services</h3>
-          <h1 className="services__mainheader">Health Services we offer</h1>
-        </div>
+          {/* service request modal */}
+          <Modal
+            disablePortal
+            open={openModal}
+            onBackdropClick={() => setOpenModal(false)}
+            className="main__modal"
+          >
+            <ModalForm services={services} setOpenModal={setOpenModal} />
+          </Modal>
 
-        {/* service request modal */}
-        <Modal
-          disablePortal
-          open={openModal}
-          onBackdropClick={() => setOpenModal(false)}
-          className="main__modal"
-        >
-          <ModalForm services={services} setOpenModal={setOpenModal} />
-        </Modal>
-
-        {/* {!currUser ? (
+          {/* {!currUser ? (
           <Link to="/signin">
             <button type="button" className="getstarted__btn">Get Started</button>
           </Link>
@@ -219,51 +217,52 @@ const Service = () => {
           </button>
         )} */}
 
-        <div className="service__lists regular">
-          {services
-            .filter((service) => !service.params)
-            .map(({ icon, title, word, params }) => {
-              return (
-                <div className="service__list" key={title}>
-                  <div>
-                    <div className="list__icon">
-                      <img src={`../images/icons/${icon}`} alt="icon.png" />
-                      <h4 className="list__title">{title}</h4>
+          <div className="service__lists regular">
+            {services
+              .filter((service) => !service.params)
+              .map(({ icon, title, word, params }) => {
+                return (
+                  <div className="service__list" key={title}>
+                    <div>
+                      <div className="list__icon">
+                        <img src={`../images/icons/${icon}`} alt="icon.png" />
+                        <h4 className="list__title">{title}</h4>
+                      </div>
+                      <p className="list__word">{word}</p>
                     </div>
-                    <p className="list__word">{word}</p>
+                    {btnSwitch}
                   </div>
-                  {btnSwitch}
-                </div>
-              );
-            })}
-        </div>
+                );
+              })}
+          </div>
 
-        <div className="service__premiumheaders">
-          <h3 className="services__head">Our Services</h3>
-          <h1 className="services__mainheader">
-            Premium Health Services we offer
-          </h1>
-        </div>
+          <div className="service__premiumheaders">
+            <h3 className="services__head">Our Services</h3>
+            <h1 className="services__mainheader">
+              Premium Health Services we offer
+            </h1>
+          </div>
 
-        <div className="service__lists">
-          {services
-            .filter((service) => service.params)
-            .map(({ icon, title, word, params }) => {
-              return (
-                <div className="service__list" key={title}>
-                  <div>
-                    <div className="list__icon">
-                      <img src={`../images/icons/${icon}`} alt="icon.png" />
-                      <h4 className="list__title">{title}</h4>
+          <div className="service__lists">
+            {services
+              .filter((service) => service.params)
+              .map(({ icon, title, word, params }) => {
+                return (
+                  <div className="service__list" key={title}>
+                    <div>
+                      <div className="list__icon">
+                        <img src={`../images/icons/${icon}`} alt="icon.png" />
+                        <h4 className="list__title">{title}</h4>
+                      </div>
+                      <p className="list__word">{word}</p>
                     </div>
-                    <p className="list__word">{word}</p>
+                    <Link to={`/subscription/${params}`}>{subBtnSwitch}</Link>
                   </div>
-                  <Link to={`/subscription/${params}`}>{subBtnSwitch}</Link>
-                </div>
-              );
-            })}
+                );
+              })}
+          </div>
         </div>
-      </div>
+      </LayoutMargin>
     </div>
   );
 };

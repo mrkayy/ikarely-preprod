@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function WhyUsCard({ icon, title, word }) {
+function ServicesCard({ icon, title, word }) {
   return (
     <div className="bg-white w-10/12 sm:w-11/12 xl:w-10/12  shadow-2xl rounded-3xl p-8 sm:-7 xl:p-8">
       <div className="max-w-full h-60 sm:h-64  md:h-80 xl:h-96 flex-column items-stretch">
@@ -9,9 +9,7 @@ function WhyUsCard({ icon, title, word }) {
           <div className="">
             <div className="bg-primary-100 h-16 w-16 rounded-md transform -rotate-12">
               <div className="bg-primary-100 h-16 w-16 rounded-md transform rotate-12 grid place-items-center">
-                <div
-                  className={`text-xs sm:text-sm h-9 w-9 bg-contain bg-center bg-no-repeat ${icon}`}
-                ></div>
+                <p className="text-xs sm:text-sm">{icon}</p>
                 {/* <img src={`images/icons/${icon}`} alt={icon} /> */}
               </div>
             </div>
@@ -35,10 +33,10 @@ function WhyUsCard({ icon, title, word }) {
   );
 }
 
-WhyUsCard.propTypes = {
+ServicesCard.propTypes = {
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   word: PropTypes.string.isRequired,
 };
 
-export default WhyUsCard;
+export default ServicesCard;

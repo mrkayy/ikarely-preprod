@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 // import { Link, useHistory, Redirect } from "react-router-dom";
-
-import "./Contact.css";
 import PageLanding from "../../components/PageLanding/PageLanding";
 import InputBox from "../../shared/InputBox";
 import Joi from "joi-browser";
@@ -11,6 +9,7 @@ import messagingStore from "../../stores/ContactUs";
 import { useAlert } from "react-alert";
 import { GlobalContext } from "../../stores/GlobalLayer";
 import Button from "../../Anime/Button";
+import LayoutMargin from "../../components/LayoutWrapper/LayoutMargin";
 
 const Contact = (props) => {
   useEffect(() => {
@@ -113,44 +112,52 @@ const Contact = (props) => {
 
   return (
     <div className="contactus">
-      <PageLanding image="health-service.jpg" title="Contact us" />
-
-      <div className="contact">
-        <h2 className="contactus__description__top">
-          We will like to hear from you!
-        </h2>
-        <div className="contactus__form">
-          <div className="contactus__headers">
-            <h3 className="contactus__header">Leave a Message</h3>
-          </div>
-
-          <form action="" className="contactus__inputs" onSubmit={sendMsg}>
-            <InputBox label="Email or Phone" name="email" type="email" />
-
-            <div className="input__box">
-              {/* <label htmlFor="password">Your Name</label> */}
-              <InputBox
-                onChange={handleChange}
-                value={state.data.message}
-                label="please enter your name"
-                name="message"
-                type="text"
-              />
+      <PageLanding image="bg-contact" title="Contact us" />
+      <LayoutMargin>
+        <div className="h-6/12 py-16 sm:py-20 xl:py-8 w-9/12 sm:w-6/12 mx-auto lg:">
+          <h2 className="text-center text-typography-emphasis font-semibold mb-5 text-lg sm:text-2xl xl:text-4xl">
+            We will like to hear from you!
+          </h2>
+          <div className="py-4">
+            <div className="">
+              <h3 className="text-typography-main font-semibold text-center text-lg sm:text-xl xl:text-2xl">
+                Leave us a message.
+              </h3>
             </div>
 
-            <Button
-              loading={loading}
-              progress="Sending..."
-              shown="Send Message"
-            />
-          </form>
+            <form action="" className="contactus__inputs" onSubmit={sendMsg}>
+              <InputBox label="Email or Phone" name="email" type="email" />
+
+              <div className="">
+                {/* <label htmlFor="password">Your Name</label> */}
+                <InputBox
+                  onChange={handleChange}
+                  value={state.data.message}
+                  label="please enter your name"
+                  name="message"
+                  type="text"
+                />
+              </div>
+
+              <Button
+                loading={loading}
+                progress="Sending..."
+                shown="Send Message"
+              />
+            </form>
+          </div>
+          <h2 className="text-center text-typography-light">
+            Would you rather phone in? <br />{" "}
+            <a href={"tel:+2348035418437"} className="text-typography-emphasis">
+              08035418437,
+            </a>{" "}
+            <a href={"tel:+2349063870220"} className="text-typography-emphasis">
+              {" "}
+              09063870220
+            </a>
+          </h2>
         </div>
-        <h2 className="contactus__description__bottom">
-          Would you rather phone in? <br />{" "}
-          <a href={"tel:+2348035418437"}>08035418437,</a>{" "}
-          <a href={"tel:+2349063870220"}> 09063870220</a>
-        </h2>
-      </div>
+      </LayoutMargin>
     </div>
   );
 };
