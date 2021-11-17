@@ -1,0 +1,18 @@
+figure.article {
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    padding-bottom: 25px;
+    border-radius: 5px;
+    /* max-width: 280px; */
+    text-align: center;
+}
+figure.article > img{
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 2px solid grey;
+}
+
+.article__title{
+    font-weight: 500;
+    color: turquoise;
+}

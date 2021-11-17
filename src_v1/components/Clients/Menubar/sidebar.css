@@ -1,0 +1,19 @@
+.sidebar__list {}
+
+.sidebar__list > li {
+    /* padding: 8px; */
+    /* margin-bottom: 8px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 41px;
+    cursor: pointer;
+}
+
+.sidebar__menu {
+    font-size: 14px;
+    font-weight:700;
+    color: #083c63;
+    text-transform: capitalize;
+}
+

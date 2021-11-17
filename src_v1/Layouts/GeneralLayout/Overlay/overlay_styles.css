@@ -1,0 +1,9 @@
+.overlay {
+  transform: translateX(-100vw);
+}
+
+@media screen and (max-width: 670px) {
+  .slide {
+    transform: translateX(0);
+  }
+}

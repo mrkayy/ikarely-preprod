@@ -1,0 +1,22 @@
+.c_layout{
+    display: flex;
+    margin-top: 80px;
+}
+
+.c_sidebar {
+    padding: 41px 20px;
+    width: 220px;
+}
+
+.notification__title{
+    padding: 8px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #083c63;
+    font-size: 14px;
+}
+.notification__menu{
+    text-align: left;
+    padding: 8px 20px;
+    font-size: 12px;
+}

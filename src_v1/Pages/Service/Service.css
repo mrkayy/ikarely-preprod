@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.services__section {
+  padding: 50px;
+  width: 100vw;
+  min-height: 40vh;
+  background-color: #fff;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  align-items: center;
+  text-align: center;
+}
+.service__headers {
+  color: #083c63;
+  margin-bottom: 20px;
+}
+.service__premiumheaders{
+  color: #083c63;
+}
+.services__head {
+  font-size: smaller;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Service Lists */
+
+.service__lists {
+  text-align: left;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  justify-content: space-evenly;
+  grid-gap: 20px;
+}
+.service__premiumheaders{
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.service__list {
+  padding: 32px 16px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  background: rgba(8, 60, 99, 0.1);
+  box-shadow: 0px 4px 10px 1px rgba(8, 60, 99, 0.04);
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+.list__icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.list__icon > img {
+  margin-right: 16px;
+  object-fit: cover;
+  width: 54px;
+}
+
+.list__title {
+  font-size: 1.5em;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.list__title,
+.list__word {
+  color: #083c63;
+  text-align: justify;
+  font-family: "Poppins";
+}
+
+.getstarted__btn,
+.makerequest__btn {
+  border: none;
+  padding: 10px 15px;
+  margin-bottom: 35px;
+  background-color: #083c63;
+  text-transform: capitalize;
+  color: white;
+  letter-spacing: 0.075rem;
+  font-size: 14px;
+}
+.getstarted__btn {
+  margin-bottom: 50px;
+}
+.makerequest__btn {
+  height: 50px;
+  border-radius: 4px;
+  /* font-size: 18px; */
+  margin-top: 32px;
+  justify-self: flex-end;
+  color: #fff;
+  width: 100%;
+}
+.makerequest__btn.inheader{
+  width: auto;
+}
+
+.modal {
+  background-color: #fff;
+  margin: 100px;
+  padding: 20px;
+}
+
+.main__modal {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 824px) {
+  .services__section {
+    padding: 20px;
+  }
+}

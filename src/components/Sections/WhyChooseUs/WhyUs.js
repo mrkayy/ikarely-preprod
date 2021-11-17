@@ -51,7 +51,7 @@ function WhyUs() {
         </div>
 
         <div className="mb-20 sm:mb-32">
-          <div className="max-w-full grid grid-cols-1 justify-items-center justify-self-start sm:grid-cols-2 lg:grid-cols-3 justify-start gap-y-12 mt-4">
+          <div className="max-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 justify-items-center mt-4">
             {whyus__options.map(({ icon, title, word }, index) => {
               return (
                 <WhyUsCard key={index} title={title} word={word} icon={icon} />
