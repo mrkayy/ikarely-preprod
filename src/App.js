@@ -2,24 +2,25 @@ import React, { useEffect, Component } from "react";
 // import { observer } from "mobx-react";
 // import "./App";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
+import AuthenticationController from "./controllers/authentication/authentication";
 
 // application pages
-import Home from "./view/home";
-import About from "./view/aboutus";
-import Service from "./view/service";
-// import Blog from "./Pages/Blog/Blog";
-import Contact from "./Pages/Contact/Contact";
-import Error from "./Pages/Error";
-import Register from "./Pages/Register/Register";
-import SignIn from "./Pages/SignIn/SignIn";
-import Profile from "./Pages/Profile";
-import Payments from "./Pages/Payment";
-import Checkout from "./Pages/Checkout/Checkout";
-import Subscription from "./Pages/Subscription";
+import Home from "./views/templates/home";
+import About from "./views/templates/aboutus";
+import Service from "./views/templates/service";
+// import Blog from "./views/Pages/Blog/Blog";
+import Contact from "./views/Pages/Contact/Contact";
+import Error from "./views/Pages/Error";
+import Register from "./views/Pages/Register/Register";
+import SignIn from "./views/Pages/SignIn/SignIn";
+import Profile from "./views/Pages/Profile";
+import Payments from "./views/Pages/Payment";
+import Checkout from "./views/Pages/Checkout/Checkout";
+import Subscription from "./views/Pages/Subscription";
 import ReactGA from "react-ga4";
 
 //  application Routes
-import GeneralRoute from "./routes/GeneralRoute";
+import GeneralRoute from "./interfaces/routes/GeneralRoute";
 
 const measurmentID1 = {
   trackingId: "G-HY5HEHC52K",
@@ -39,8 +40,13 @@ ReactGA.initialize([measurmentID1, measurmentID2]);
 // import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
 
 class App extends Component {
+  conn = new AuthenticationController();
+
   render() {
+    console.log("Environment:" + process.env.NODE_ENV);
     console.log(process.env);
+    console.log(this.conn.signin("developer@ikarely.com", "developer1000"));
+
     return (
       <div className="App">
         <Router>

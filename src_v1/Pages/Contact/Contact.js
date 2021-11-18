@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 // import { Link, useHistory, Redirect } from "react-router-dom";
 import PageLanding from "../../components/PageLanding/PageLanding";
-import InputBox from "../../shared/InputBox";
+import InputBox from "../../../utils/InputBox";
 import Joi from "joi-browser";
 import { observer } from "mobx-react";
-import messagingStore from "../../stores/ContactUs";
+import messagingStore from "./../../controllers/stores_v1/ContactUs";
 // import dataHero from "data-hero";
 import { useAlert } from "react-alert";
-import { GlobalContext } from "../../stores/GlobalLayer";
-import Button from "../../Anime/Button";
+import { GlobalContext } from "./../../controllers/stores_v1/GlobalLayer";
+import Button from "../../components/shared/Anime/Button";
 import LayoutMargin from "../../components/LayoutWrapper/LayoutMargin";
 
 const Contact = (props) => {

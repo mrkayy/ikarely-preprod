@@ -12,7 +12,7 @@ const BlogSection = () => {
           <div className="sm:bg-section-2 lg:w-6/12 xl:w-2/5 h-3/4 sm:shadow-md">
             <div className="bg-doctor5 bg-section-1 shadow-md sm:bg-transparent sm:shadow-none h-96 bg-contain bg-no-repeat bg-right-bottom md:bg-center xl:bg-center">
               {/* <img
-              src="../assets/images/doctor4.png"
+              src="../utils/assets/images/doctor4.png"
               alt="doctor.jpg"
               className="h-96"
             /> */}

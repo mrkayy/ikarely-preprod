@@ -16,6 +16,7 @@
     "currency-formatter": "^1.5.6",
     "data-hero": "^1.2.9",
     "env-cmd": "^10.1.0",
+    "firebase": "^9.4.1",
     "flutterwave-react-v3": "^1.0.10",
     "joi-browser": "^13.4.0",
     "jwt-decode": "^3.1.2",

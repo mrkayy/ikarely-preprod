@@ -3,12 +3,12 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
 // import "./SignIn.css";
 import { observer } from "mobx-react";
-import AuthStore from "../../stores/AuthStore";
+import AuthStore from "./../../controllers/stores_v1/AuthStore";
 import { useAlert } from "react-alert";
-import InputBox from "../../shared/InputBox";
+import InputBox from "../../../utils/InputBox";
 import Joi from "joi-browser";
-import { GlobalContext } from "../../stores/GlobalLayer";
-import Button from "../../Anime/Button";
+import { GlobalContext } from "./../../controllers/stores_v1/GlobalLayer";
+import Button from "../../components/shared/Anime/Button";
 // import InputPasswordBox from "../../shared/InputPasswordBox";
 
 const SignIn = (props) => {

@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 // import AlertTemplate from "react-alert-template-basic";
-import GlobalLayer from "./stores/GlobalLayer";
-import Alert from "./Anime/Alert";
+import GlobalLayer from "./controllers/stores_v1/GlobalLayer";
+import Alert from "./views/components/shared/Anime/Alert";
 
 // optional configuration
 const options = {

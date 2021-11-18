@@ -2,11 +2,11 @@ import React, { useContext, useEffect } from "react";
 import currencyFormatter from "currency-formatter";
 import PaymentComponent from "../PaymentComponent";
 
-import AuthStore from "../../stores/AuthStore";
+import AuthStore from "./../../controllers/stores_v1/AuthStore";
 
-import markicon from "../../assets/images/markicon.png";
-import markicon2 from "../../assets/images/markicon2.png";
-import planicon from "../../assets/images/planicon.png";
+import markicon from "../../utils/assets/images/markicon.png";
+import markicon2 from "../../utils/assets/images/markicon2.png";
+import planicon from "../../utils/assets/images/planicon.png";
 
 import "./Plan.css";
 import { observer } from "mobx-react-lite";

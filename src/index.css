@@ -8,11 +8,11 @@ html {
 
 @font-face {
   font-family: Poppins;
-  src: url("./assets/Poppins-Regular.ttf") format("truetype");
+  src: url("./utils/assets/Poppins-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: Montserrat;
-  src: url("./assets/Montserrat-Regular.ttf") format("truetype");
+  src: url("./utils/assets/Montserrat-Regular.ttf") format("truetype");
 }
 body {
   font-family: Poppins;

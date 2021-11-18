@@ -2,11 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link, useHistory, Redirect } from "react-router-dom";
 import Joi from "joi-browser";
 import { observer } from "mobx-react";
-import AuthStore from "../../stores/AuthStore";
+import AuthStore from "./../../controllers/stores_v1/AuthStore";
 import { useAlert } from "react-alert";
-import InputBox from "../../shared/InputBox";
-import { GlobalContext } from "../../stores/GlobalLayer";
-import Button from "../../Anime/Button";
+import InputBox from "../../../utils/InputBox";
+import { GlobalContext } from "./../../controllers/stores_v1/GlobalLayer";
+import Button from "../../components/shared/Anime/Button";
 
 function Register(props) {
   const alert = useAlert();
