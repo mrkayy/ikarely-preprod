@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../../Anime/Button";
+import Button from "../../../components/shared/Anime/Button";
 
 import LayoutMargin from "../../../components/LayoutWrapper/LayoutMargin";
-import InputBox from "../../../shared/InputBox";
+// import InputBox from "../../../../utils/InputBox";
 function Footer() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +13,12 @@ function Footer() {
   let loading = false;
 
   const subsButton = () => (
-    <Button type={"button"} progress={"Subscribing..."} shown={"Submit"} loading={loading} />
+    <Button
+      type={"button"}
+      progress={"Subscribing..."}
+      shown={"Submit"}
+      loading={loading}
+    />
   );
   return (
     <>

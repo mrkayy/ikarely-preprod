@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { observer } from "mobx-react";
-import AuthContext from ".././../../controllers/stores_v1/AuthStore";
+import { observer } from "mobx-react-lite";
+// import AuthContext from ".././../../controllers/stores_v1/AuthStore";
 import LayoutMargin from "../../../components/LayoutWrapper/LayoutMargin";
 
 function NavBar({ showMenu }) {
-  const { logout, currUser } = useContext(AuthContext);
+  // const { logout, currUser } = useContext(AuthContext);
   const [show, setShow] = useState(false);
+
+  const currUser = {};
+  const logout = () => {};
 
   useEffect(() => {
     window.addEventListener("scroll", () => {

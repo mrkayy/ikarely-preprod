@@ -1,6 +1,6 @@
 import React from "react";
 import PageViewWrapper from "../../utils/GaWrapper";
-import AboutUs from "../Pages/About/About";
+import AboutUs from "../pages/About/About";
 
 function AboutUsPageView(props) {
   console.log(props.location.pathname);

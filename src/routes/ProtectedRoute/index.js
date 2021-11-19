@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import AuthStore from "./../../controllers/stores_v1/AuthStore";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 
 const ProtectedRoute = (props) => {
   const { layout: Layout, component: Component, ...rest } = props;

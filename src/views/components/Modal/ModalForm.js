@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "./../../controllers/stores_v1/GlobalLayer";
 import "./ModalForm.css";
 import Joi from "joi-browser";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import ServiceStore from "./../../controllers/stores_v1/Services";
 import InputBox from "../../../utils/InputBox";
 import AuthStore from "./../../controllers/stores_v1/AuthStore";

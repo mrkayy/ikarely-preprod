@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import ReactDom from "react-dom";
 
 import PropTypes from "prop-types";
-import AuthStore from ".././../../controllers/stores_v1/AuthStore";
+// import AuthStore from ".././../../controllers/stores_v1/AuthStore";
 import { Link } from "react-router-dom";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import "./overlay_styles.css";
 
 const Overlay = ({ slide, showMenu, setSlide }) => {
-  const authcontext = useContext(AuthStore);
-  const { logout, currUser } = authcontext;
+  // const authcontext = useContext(AuthStore);
+  const { logout, currUser } = {};
 
   const links = [
     {

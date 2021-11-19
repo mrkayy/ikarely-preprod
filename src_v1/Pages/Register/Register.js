@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useHistory, Redirect } from "react-router-dom";
 import Joi from "joi-browser";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import AuthStore from "./../../controllers/stores_v1/AuthStore";
 import { useAlert } from "react-alert";
 import InputBox from "../../../utils/InputBox";

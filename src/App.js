@@ -1,26 +1,26 @@
 import React, { useEffect, Component } from "react";
-// import { observer } from "mobx-react";
+// import { observer } from "mobx-react-lite";
 // import "./App";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import AuthenticationController from "./controllers/authentication/authentication";
+// import AuthenticationController from "./repository/authentication";
 
 // application pages
-import Home from "./views/templates/home";
-import About from "./views/templates/aboutus";
-import Service from "./views/templates/service";
+import Home from "./views/pageview/home";
+import About from "./views/pageview/aboutus";
+import Service from "./views/pageview/service";
 // import Blog from "./views/Pages/Blog/Blog";
-import Contact from "./views/Pages/Contact/Contact";
-import Error from "./views/Pages/Error";
-import Register from "./views/Pages/Register/Register";
-import SignIn from "./views/Pages/SignIn/SignIn";
-import Profile from "./views/Pages/Profile";
-import Payments from "./views/Pages/Payment";
-import Checkout from "./views/Pages/Checkout/Checkout";
-import Subscription from "./views/Pages/Subscription";
+import Contact from "./views/pages/Contact/Contact";
+import Error from "./views/pages/Error";
+import Register from "./views/pages/Register/Register";
+import SignIn from "./views/pages/SignIn/SignIn";
+import Profile from "./views/pages/Profile";
+import Payments from "./views/pages/Payment";
+import Checkout from "./views/pages/Checkout/Checkout";
+import Subscription from "./views/pages/Subscription";
 import ReactGA from "react-ga4";
 
 //  application Routes
-import GeneralRoute from "./interfaces/routes/GeneralRoute";
+import GeneralRoute from "./routes/GeneralRoute";
 
 const measurmentID1 = {
   trackingId: "G-HY5HEHC52K",
@@ -40,12 +40,10 @@ ReactGA.initialize([measurmentID1, measurmentID2]);
 // import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
 
 class App extends Component {
-  conn = new AuthenticationController();
 
   render() {
     console.log("Environment:" + process.env.NODE_ENV);
     console.log(process.env);
-    console.log(this.conn.signin("developer@ikarely.com", "developer1000"));
 
     return (
       <div className="App">

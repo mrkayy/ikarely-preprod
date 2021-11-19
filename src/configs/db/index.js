@@ -1,9 +1,10 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import firebase from "firebase/compat/app";
+// import getAnalytics from "ffirebase/compat/getAnalytics";
+import "firebase/compat/auth";
 
 class FirebaseConfig {
   // Initialize Firebase
-  config = initializeApp({
+  init = firebase.initializeApp({
     apiKey: process.env.REACT_APP_API_KEY,
     appId: process.env.REACT_APP_APP_ID,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -14,9 +15,23 @@ class FirebaseConfig {
   });
 
   constructor() {
-    this.app = this.config;
-    this.analytics = getAnalytics(this.app);
-    // this.
+    // getAnalytics(this.init);
+    this.auth = this.init.auth();
+    this.app = this.init;
+  }
+
+  set auth(e) {
+    return (this._auth = e);
+  }
+  set app(e) {
+    return (this._app = e);
+  }
+
+  get auth() {
+    return this._auth;
+  }
+  get app() {
+    return this._app;
   }
 }
 

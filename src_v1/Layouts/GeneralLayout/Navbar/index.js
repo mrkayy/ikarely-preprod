@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import AuthContext from ".././../../controllers/stores_v1/AuthStore";
 import LayoutMargin from "../../../components/LayoutWrapper/LayoutMargin";
 

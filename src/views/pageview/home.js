@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageViewWrapper from "../../utils/GaWrapper";
-import Home from "../Pages/Home/Home";
-
+import Home from "../pages/Home/Home";
 function HomePageView(props) {
   console.log(props.location.pathname);
   const path = props.location.pathname;

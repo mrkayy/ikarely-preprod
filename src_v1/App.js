@@ -1,5 +1,5 @@
 import React, { useEffect, Component } from "react";
-// import { observer } from "mobx-react";
+// import { observer } from "mobx-react-lite";
 // import "./App";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 

@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PageLanding from "../../components/PageLanding/PageLanding";
 import InputBox from "../../../utils/InputBox";
 import Joi from "joi-browser";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import messagingStore from "./../../controllers/stores_v1/ContactUs";
 // import dataHero from "data-hero";
 import { useAlert } from "react-alert";

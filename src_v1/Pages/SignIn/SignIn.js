@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
 // import "./SignIn.css";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import AuthStore from "./../../controllers/stores_v1/AuthStore";
 import { useAlert } from "react-alert";
 import InputBox from "../../../utils/InputBox";

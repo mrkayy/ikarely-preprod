@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PageLanding from "../../components/PageLanding/PageLanding";
 import ServiceStore from "../../../controllers/stores_v1/Services";
 import AuthStore from "../../../controllers/stores_v1/AuthStore";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import { useAlert } from "react-alert";
 import ArticleSection from "../../components/Article/Article";
 

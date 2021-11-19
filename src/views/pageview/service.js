@@ -1,7 +1,7 @@
 import React from "react";
 import PageViewWrapper from "../../utils/GaWrapper";
 import AutoPageScrollWrapper from "../../utils/AutoPageScrollWrapper";
-import Services from "../Pages/Service/Service";
+import Services from "../pages/Service/Service";
 
 function ServicesPageView(props) {
   console.log(props.location.pathname);
