@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
-// import { Link, useHistory, Redirect } from "react-router-dom";
-import PageLanding from "../../components/PageLanding/PageLanding";
-import InputBox from "../../../utils/InputBox";
+import React, { useContext, useEffect } from "react";
+
+import PageLanding from "../../../../components/pageLanding";
+import InputBox from "../../../../utils/InputBox";
 import Joi from "joi-browser";
 import { observer } from "mobx-react-lite";
-import messagingStore from "../../../controllers/stores_v1/ContactUs";
+// import messagingStore from "../../../controllers/stores_v1/ContactUs";
 // import dataHero from "data-hero";
 import { useAlert } from "react-alert";
-import { GlobalContext } from "../../../controllers/stores_v1/GlobalLayer";
-import Button from "../../components/shared/Anime/Button";
-import LayoutMargin from "../../components/LayoutWrapper";
+import { GlobalContext } from "../../../../controllers/globalValidationLayer";
+import Button from "../../../../components/shared/buttons/button";
+import LayoutMargin from "../../../../components/layoutWrapper";
 
 const Contact = (props) => {
   useEffect(() => {
@@ -22,7 +22,7 @@ const Contact = (props) => {
 
   const alert = useAlert();
   // const history = useHistory();
-  const authcontext = useContext(messagingStore);
+  const authcontext = {};
 
   const {
     error,

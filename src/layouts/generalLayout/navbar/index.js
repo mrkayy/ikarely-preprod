@@ -1,15 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-// import AuthContext from ".././../../controllers/stores_v1/AuthStore";
-import LayoutMargin from "../../../components/LayoutWrapper";
+import Authentication from "../../../controllers/authentication_store";
+import LayoutMargin from "../../../components/layoutWrapper";
+import { useAlert } from "react-alert";
 
 function NavBar({ showMenu }) {
-  // const { logout, currUser } = useContext(AuthContext);
-  const [show, setShow] = useState(false);
+  const alert = useAlert();
+  const { signout, user } = Authentication;
 
-  const currUser = {};
-  const logout = () => {};
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -24,13 +24,19 @@ function NavBar({ showMenu }) {
     };
   }, []);
 
+  const logout = () => {
+    signout();
+    console.log("LOGGING_OUT_OF_APPLICATION");
+    alert.success("Thank you for visiting Ikarely!", { error: false });
+  };
+
   const navigationMenu = [
     { title: "Home", path: "/" },
     { title: "Services", path: "/service" },
     { title: "About Us", path: "/about" },
     { title: "Contact Us", path: "/contact" },
     // { title: "Blogs", path: "/blogs" },
-    // {title: '',path:''},
+    { title: "Account", path: "/account" },
   ];
   return (
     <header
@@ -93,14 +99,13 @@ function NavBar({ showMenu }) {
 
           {/* Navigation Authentication Button */}
           <div className="">
-            <div className="flex sm:text-sm md:text-base sm:items-center lg:text-lg">
-              {currUser && currUser ? (
+            <div className="flex sm:items-center lg:text-lg">
+              {user ? (
                 <>
-                  <ButtonWrapper onClick={() => logout()} label="Sign Out" />
+                  <ButtonWrapper logout={logout} label="Sign Out" />
                 </>
               ) : (
                 <>
-                  {/* w-16 sm:w-24 lg:w-32 xl:w-40 */}
                   <div className="mr-3 sm:mr-0">
                     <Link to="/signin">
                       <ButtonWrapper label="Sign In" />
@@ -117,10 +122,10 @@ function NavBar({ showMenu }) {
 }
 
 // refactor component to a seperate widget
-const ButtonWrapper = ({ label }) => {
+const ButtonWrapper = ({ label, logout }) => {
   return (
-    <div className="rounded text-center text-white px-4 py-2 bg-primary-accent text-xs hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent hover:shadow-lg">
-      <button type="button" className="lg:font-semibold">
+    <div className="rounded text-center text-white px-4 py-2 bg-primary-accent sm:text-sm lg:text-md hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent hover:shadow-lg">
+      <button onClick={logout} type="button" className="lg:font-semibold">
         {label}
       </button>
     </div>

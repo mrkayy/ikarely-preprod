@@ -2,6 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import GeneralLayout from "../../layouts/generalLayout/layoutWrapper";
 
+
 function GeneralRoute(props) {
   const { component: Component, ...rest } = props;
   return (

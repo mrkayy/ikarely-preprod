@@ -1,6 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
-import styled from "styled-components";
-import "./Anime.css";
+import "./animated_svg.css";
 
 const Anime = () => {
   return (

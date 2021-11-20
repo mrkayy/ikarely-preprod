@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 // import { Link, useHistory, Redirect } from "react-router-dom";
-import PageLanding from "../../components/PageLanding/PageLanding";
+import PageLanding from "../../components/pageLanding";
 import InputBox from "../../../utils/InputBox";
 import Joi from "joi-browser";
 import { observer } from "mobx-react-lite";

@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../Sidebar";
+import Sidebar from "../sidebar";
 import { Switch, Route } from "react-router-dom";
 
 function LayoutWrapper(props) {

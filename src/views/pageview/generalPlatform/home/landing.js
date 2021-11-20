@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LayoutWrapper from "../../LayoutWrapper";
+import LayoutWrapper from "../../../../components/layoutWrapper";
 
 function Landing() {
   return (

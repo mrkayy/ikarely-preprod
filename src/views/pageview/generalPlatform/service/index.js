@@ -1,5 +1,5 @@
 import React from "react";
-import PageViewWrapper from "../../utils/GaWrapper";
+import PageViewWrapper from "../../../../utils/GaWrapper";
 import AutoPageScrollWrapper from "../../../../utils/AutoPageScrollWrapper";
 import Services from "./view";
 

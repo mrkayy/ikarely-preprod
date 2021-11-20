@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import "./Button.css";
-import { GlobalContext } from "../../../../controllers/stores_v1/GlobalLayer";
+import "./button.css";
+import { GlobalContext } from "../../../controllers/globalValidationLayer";
 
 function Button({ progress, shown, loading, type }) {
   const { validate } = useContext(GlobalContext);

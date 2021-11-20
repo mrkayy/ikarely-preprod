@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import PageLanding from "../../components/PageLanding/PageLanding";
+import PageLanding from "../../components/pageLanding";
 import Teams from "../../components/Sections/Teams/Teams";
 import WhyUs from "../../components/Sections/WhyChooseUs/WhyUs";
 // import "./About.css";

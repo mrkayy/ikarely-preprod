@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import LayoutWrapper from "../../../../components/LayoutWrapper";
+import LayoutWrapper from "../../../../components/layoutWrapper";
 import SectionDescCard from "../../../otherSections/sectionDescCard";
 
 const SercvicesSection = () => {

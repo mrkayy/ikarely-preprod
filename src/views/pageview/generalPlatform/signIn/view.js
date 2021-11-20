@@ -1,18 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from "react";
-import { Link, Redirect } from "react-router-dom";
-// import "./SignIn.css";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import AuthStore from "../../../controllers/stores_v1/AuthStore";
 import { useAlert } from "react-alert";
-import InputBox from "../../../utils/InputBox";
+import InputBox from "../../../../utils/InputBox";
 import Joi from "joi-browser";
-import { GlobalContext } from "../../../controllers/stores_v1/GlobalLayer";
-import Button from "../../components/shared/Anime/Button";
-// import InputPasswordBox from "../../shared/InputPasswordBox";
+import { GlobalContext } from "../../../../controllers/globalValidationLayer";
+import Authentication from "../../../../controllers/authentication_store";
+import Button from "../../../../components/shared/buttons/button";
 
 const SignIn = (props) => {
   const alert = useAlert();
+  const history = useHistory();
+
+  const {
+    user,
+    unsubscribe,
+    authenticateUserAccount,
+    error,
+    loading,
+    success,
+    errMessage,
+    succMessage,
+    resetActions,
+  } = Authentication;
 
   useEffect(() => {
     autoScroll();
@@ -23,19 +34,6 @@ const SignIn = (props) => {
   };
 
   let userName = "";
-
-  const authcontext = useContext(AuthStore);
-  const {
-    error,
-    loading,
-    success,
-    authSuccess,
-    errMessage,
-    successMessage,
-    login,
-    currUser,
-    resetActions,
-  } = authcontext;
 
   const options = {
     error,
@@ -75,12 +73,12 @@ const SignIn = (props) => {
       alert.error(errMessage, options);
     }
     if (success && !error) {
-      alert.success(successMessage, options);
+      alert.success(succMessage, options);
     }
     return () => {
       resetActions();
     };
-  }, [errMessage, successMessage]);
+  }, [errMessage, succMessage]);
 
   // useEffect(() => {
   //   if (authSuccess === "pass") {
@@ -101,7 +99,7 @@ const SignIn = (props) => {
       errors: errors || {},
     }));
     if (errors) return;
-    login(data);
+    authenticateUserAccount(data);
   };
 
   const hidden = () => (
@@ -116,12 +114,12 @@ const SignIn = (props) => {
     </>
   );
 
-  return currUser && props.location.pathname === "/signin" ? (
+  return user && history.location.pathname === "/signin" ? (
     <Redirect
       to={{
         pathname: "/",
         state: {
-          from: props.location,
+          from: history.location,
         },
       }}
     />
@@ -149,6 +147,7 @@ const SignIn = (props) => {
                     autoFocus={true}
                     autoComplete={true}
                     required={true}
+                    disable={loading}
                   />
                   <InputBox
                     type={passwordType ? "password" : "text"}
@@ -162,6 +161,7 @@ const SignIn = (props) => {
                     options={passwordType ? hidden : visible}
                     showOption={passwordType}
                     optionFunciton={togglePassword}
+                    disable={loading}
                   />
                   <div className="text-right mt-2">
                     <Link to="/signin">

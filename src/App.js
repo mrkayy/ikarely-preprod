@@ -1,29 +1,22 @@
-import React, { useEffect, Component } from "react";
-// import { observer } from "mobx-react-lite";
-// import "./App";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-// import AuthenticationController from "./repository/authentication";
-
-// application pages
-import Home from "./views/pageview/home";
-import About from "./views/pageview/aboutus";
-import Service from "./views/pageview/service";
-// import Blog from "./views/Pages/Blog/Blog";
-import Contact from "./views/pages/Contact/Contact";
-import Error from "./views/pages/Error";
-import Register from "./views/pages/Register/Register";
-import SignIn from "./views/pages/SignIn/SignIn";
-import Profile from "./views/pages/Profile";
-import Payments from "./views/pages/Payment";
-import Checkout from "./views/pages/Checkout/Checkout";
-import Subscription from "./views/pages/Subscription";
 import ReactGA from "react-ga4";
 
-//  application Routes
-import GeneralRoute from "./routes/GeneralRoute";
-import ProtectedRoute from "./routes/ProtectedRoute";
+// application pages
+import Home from "./views/pageview/generalPlatform/home";
+import About from "./views/pageview/generalPlatform/about";
+import Service from "./views/pageview/generalPlatform/service";
+import Contact from "./views/pageview/generalPlatform/contact";
+import Error from "./views/pageview/generalPlatform/error";
+import Register from "./views/pageview/generalPlatform/register";
+import SignIn from "./views/pageview/generalPlatform/signIn";
+import Subscription from "./views/pageview/generalPlatform/subscription";
 
-import ClientLayout from "./Layouts/clientLayout/layoutWrapper";
+//  application Routes
+import GeneralRoute from "./routes/generalRoute";
+import ProtectedRoute from "./routes/protectedRoute";
+
+// import ClientLayout from "./layouts/clientLayout/";
 import GeneralLayout from "./layouts/generalLayout/layoutWrapper";
 
 const measurmentID1 = {
@@ -63,7 +56,7 @@ class App extends Component {
               path={`/subscription/:id`}
               component={Subscription}
             />
-            <GeneralRoute exact path="/*/**" component={Error} />
+            <GeneralRoute exact path="**/*" component={Error} />
           </Switch>
           <Switch>
             {/* <ProtectedRoute
@@ -71,8 +64,8 @@ class App extends Component {
               path="/payments"
               component={Payments}
               layout={GeneralLayout}
-            /> */}
-            {/* <ProtectedRoute
+            /> 
+            <ProtectedRoute
               exact
               path={`/checkout`}
               component={Checkout}
@@ -96,7 +89,7 @@ class App extends Component {
               component={Subscription}
               layout={GeneralLayout}
             />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path="/dashboard"
               component={Profile}
@@ -137,9 +130,9 @@ class App extends Component {
               path="/support"
               component={Profile}
               layout={ClientLayout}
-            />
+            /> */}
 
-            <ProtectedRoute exact path="/*" component={Error} />
+            {/* <ProtectedRoute exact path="/*" component={Error} /> */}
           </Switch>
         </Router>
       </div>

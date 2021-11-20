@@ -1,26 +1,23 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import PageLanding from "../../components/PageLanding/PageLanding";
-import ServiceStore from "../../../controllers/stores_v1/Services";
-import AuthStore from "../../../controllers/stores_v1/AuthStore";
+
+import PageLanding from "../../../../components/pageLanding";
+
 import { observer } from "mobx-react-lite";
 import { useAlert } from "react-alert";
-import ArticleSection from "../../components/Article/Article";
+import ArticleSection from "../../../../components/articleSection";
 
-import LayoutMargin from "../../components/LayoutWrapper";
+import LayoutMargin from "../../../../components/layoutWrapper";
+
+import Authentication from "../../../../controllers/authentication_store";
 
 // import SectionDescCard from "../../components/Sections/SectionDescCard";
 
 const Service = () => {
   const [openModal, setOpenModal] = useState(false);
 
-  const servicecontext = useContext(ServiceStore);
-
-  const authContext = useContext(AuthStore);
-
-  const { currUser } = authContext;
-
   const alert = useAlert();
+
   const services = [
     {
       id: 1,
@@ -92,19 +89,15 @@ const Service = () => {
       type: "by_subscription",
     },
   ];
-  const {
-    reqError,
-    reqSuccess,
-    reqErrMessage,
-    reqSuccessMessage,
-    resetActions,
-  } = servicecontext;
+
+  const { error, success, errMessage, succMessage, resetActions, user } =
+    Authentication;
 
   const options = {
-    reqError,
+    error,
   };
 
-  const btnSwitch = !currUser ? (
+  const btnSwitch = !user ? (
     <Link to="/signin">
       <button type="button" className="makerequest__btn">
         Get Started
@@ -132,19 +125,24 @@ const Service = () => {
   // );
 
   useEffect(() => {
-    if (reqError) {
-      alert.error(reqErrMessage, options);
-      ////console.log({ reqErrMessage });
+    if (error) {
+      alert.error(errMessage, options);
     }
-    if (reqSuccess) {
-      alert.success(reqSuccessMessage, options);
+    return () => {
+      resetActions();
+    };
+  }, [errMessage]);
+
+  useEffect(() => {
+    if (success) {
+      alert.success(succMessage, options);
       ////console.log({ reqSuccessMessage });
       setOpenModal(false);
     }
     return () => {
       resetActions();
     };
-  }, [reqErrMessage, reqSuccessMessage]);
+  }, [succMessage]);
 
   return (
     <div className="">

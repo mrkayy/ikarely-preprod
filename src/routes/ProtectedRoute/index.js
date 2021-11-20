@@ -7,6 +7,8 @@ const ProtectedRoute = (props) => {
   const { layout: Layout, component: Component, ...rest } = props;
   const { user } = AuthenticationStore;
 
+  console.log({ user });
+
   // TODO: add error boundary implementation
   return (
     <Route

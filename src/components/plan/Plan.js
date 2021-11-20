@@ -1,19 +1,19 @@
 import React, { useContext, useEffect } from "react";
 import currencyFormatter from "currency-formatter";
-import PaymentComponent from "../PaymentComponent";
+import PaymentComponent from "../paymentComponent";
 
-import AuthStore from "../../../controllers/stores_v1/AuthStore";
+// import AuthStore from "../../../controllers/stores_v1/AuthStore";
 
-import markicon from "../../../utils/assets/images/markicon.png";
-import markicon2 from "../../../utils/assets/images/markicon2.png";
-import planicon from "../../../utils/assets/images/planicon.png";
+import markicon from "../../utils/assets/images/markicon.png";
+import markicon2 from "../../utils/assets/images/markicon2.png";
+import planicon from "../../utils/assets/images/planicon.png";
 
-import "./Plan.css";
+import "./plan.css";
 import { observer } from "mobx-react-lite";
 
 function Plan({ type, price, offers }) {
-  const authcontext = useContext(AuthStore);
-  const { user } = authcontext;
+  // const authcontext = useContext(AuthStore);
+  const { user } = {};
 
   const showCurrency = (value, code) => {
     return currencyFormatter.format(value, { code });

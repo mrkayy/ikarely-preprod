@@ -1,15 +1,23 @@
 import React, { useContext } from "react";
 import ReactDom from "react-dom";
+import { useAlert } from "react-alert";
 
 import PropTypes from "prop-types";
 // import AuthStore from ".././../../controllers/stores_v1/AuthStore";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import "./overlay_styles.css";
+import Authentication from "../../../controllers/authentication_store";
 
 const Overlay = ({ slide, showMenu, setSlide }) => {
-  // const authcontext = useContext(AuthStore);
-  const { logout, currUser } = {};
+  const { signout, user } = Authentication;
+  const alert = useAlert();
+
+  const logout = () => {
+    signout();
+    console.log("LOGGING_OUT_OF_APPLICATION");
+    alert.success("Thank you for visiting Ikarely!", { error: false });
+  };
 
   const links = [
     {
@@ -100,7 +108,7 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
           </div>
           <div className="px-8">
             <ul className="">
-              {currUser && currUser ? (
+              {user ? (
                 <>
                   {/* <hr /> */}
                   {/* {profileLinks.map(({ value, directory }, index) => {
@@ -123,7 +131,7 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
               ) : (
                 <>
                   <li className="navbar__slide" onClick={() => viewLink(slide)}>
-                    <Link to="signin">
+                    <Link to="/signin">
                       <button
                         type="button"
                         className="my-3 bg-white rounded-md hover:bg-primary-accent hover:text-white text-primary-accent w-full p-3 translate duration-500 ease-in"

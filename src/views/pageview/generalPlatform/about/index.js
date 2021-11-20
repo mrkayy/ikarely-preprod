@@ -1,5 +1,5 @@
 import React from "react";
-import PageViewWrapper from "../../utils/GaWrapper";
+import PageViewWrapper from "../../../../utils/GaWrapper";
 import AboutUs from "./view";
 
 function AboutUsPageView(props) {

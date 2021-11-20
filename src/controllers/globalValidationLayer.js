@@ -1,9 +1,9 @@
-import React, { useState, createContext } from "react";
+import React, { createContext, useState } from "react";
 import Joi from "joi-browser";
 
 export const GlobalContext = createContext();
 
-const GlobalLayer = ({ children }) => {
+const GlobalLayer = ({children}) => {
   const [state, setState] = useState({ data: {}, errors: {} });
   const [schemas, setSchemas] = useState({});
 
@@ -36,7 +36,6 @@ const GlobalLayer = ({ children }) => {
 
     const data = { ...state.data };
     data[name] = value;
-    // ////console.log(data[name])
     setState((state) => ({
       ...state,
       data,

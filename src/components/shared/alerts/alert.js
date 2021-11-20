@@ -1,5 +1,5 @@
 import React from "react";
-import Anime, { FailAnime } from "./animated_svg";
+import Anime, { FailAnime } from "../animated/animated_svg";
 
 function Alert({ style, options, close, message }) {
   return (

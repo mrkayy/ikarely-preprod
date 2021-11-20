@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../../components/shared/Anime/Button";
+import Button from "../../../components/shared/buttons/button";
 
 import LayoutMargin from "../../../components/layoutWrapper";
 // import InputBox from "../../../../utils/InputBox";

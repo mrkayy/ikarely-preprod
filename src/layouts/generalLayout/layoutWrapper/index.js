@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
 
-import Overlay from "../Overlay";
-import NavBar from "../Navbar";
+import Overlay from "../overlay";
+import NavBar from "../navbar";
 import Footer from "../footer";
 
 // all pages are passed in as children props to the PageContainer component

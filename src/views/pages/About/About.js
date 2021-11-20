@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import PageLanding from "../../../../components/pageLanding";
-// import Teams from "../../components/Sections/Teams/Teams";
-import WhyUs from "../../../otherSections/whyChooseUs/whyUs";
-import LayoutMargin from "../../../../components/layoutWrapper";
-import ArticleSection from "./sections";
+import PageLanding from "../../../components/pageLanding";
+import Teams from "../../../components/Sections/Teams/Teams";
+import WhyUs from "../../../components/Sections/WhyChooseUs/WhyUs";
+// import "./About.css";
+import LayoutMargin from "../../components/LayoutWrapper";
+import ArticleSection from "../../../components/Sections/ArticleSection/ArticleSection";
 
 const About = () => {
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React from "react";
-import LayoutWrapper from "../../../components/LayoutWrapper";
+import LayoutWrapper from "../../../components/layoutWrapper";
 import WhyUsCard from "./whyUsCard";
 
 function WhyUs() {

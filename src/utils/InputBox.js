@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import { GlobalContext } from "../controllers/stores_v1/GlobalLayer";
-// import './InputBox.css'
+import { GlobalContext } from "../controllers/globalValidationLayer";
 
 function InputBox({
   label,
@@ -14,6 +13,7 @@ function InputBox({
   hasOption,
   options: Options,
   labelColor,
+  disable,
   optionFunciton,
 }) {
   const {
@@ -35,6 +35,7 @@ function InputBox({
         <input
           type={type}
           name={name}
+          disabled={disable}
           value={data[name]}
           required={required}
           autoFocus={autoFocus}
@@ -73,6 +74,7 @@ InputBox.propTypes = {
   optionFunciton: PropTypes.func,
   autoFocus: PropTypes.string,
   autoComplete: PropTypes.string,
+  disable: PropTypes.bool,
 };
 
 export default InputBox;

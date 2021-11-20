@@ -1,6 +1,5 @@
-
 import React from "react";
-import PageViewWrapper from "../shared/GaWrapper";
+import PageViewWrapper from "../../../../utils/GaWrapper";
 import ContactUs from "./view";
 
 function ContactPageView(props) {

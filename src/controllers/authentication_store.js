@@ -1,10 +1,4 @@
-import {
-  makeObservable,
-  observable,
-  action,
-  autorun,
-  computed,
-} from "mobx";
+import { makeObservable, observable, action, autorun, computed } from "mobx";
 import FirebaseConfig from "../configs/db";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -31,18 +25,20 @@ class AuthenticationStore {
       success: observable,
       error: observable,
 
-      createUserAccount: action,
       authenticateUserAccount: action,
-      verifyUserAccount: action,
-      getCurrentUserState: action,
       sendPasswordResetLink: action,
+      getCurrentUserState: action,
+      createUserAccount: action,
+      verifyUserAccount: action,
+      resetActions: action,
+      signout: action,
 
       user: computed,
       unsubscribeUser: computed,
     });
     this.fb = new FirebaseConfig();
     this.getCurrentUserState();
-    this.fb.auth.signOut();
+    // this.fb.auth.signOut();
   }
 
   createUserAccount = (data) => {
@@ -63,15 +59,23 @@ class AuthenticationStore {
   };
 
   authenticateUserAccount = (data) => {
+    console.log(data);
     this.loading = true;
     this.fb.auth
-      .signInWithEmailAndPassword(this.app, data.email, data.password)
+      .signInWithEmailAndPassword(data.email, data.password)
       .then((res) => {
         this.loading = false;
-        this.firebaseUser = res.user;
+        if (res != null) {
+          this.succMessage = "Successfully Logged In";
+          this.success = true;
+          this.firebaseUser = res.user;
+        }
         console.log({ res: this.firebaseUser });
       })
       .catch((err) => {
+        this.loading = false;
+        this.error = true;
+        this.errMessage = err.message;
         console.log({ err });
       });
   };
@@ -90,11 +94,24 @@ class AuthenticationStore {
 
   sendPasswordResetLink = () => {};
 
+  signout = () => {
+    this.fb.auth.signOut();
+    // this.getCurrentUserState();
+  };
+
   getCurrentUserState = () => {
     this.unsubscribe = onAuthStateChanged(this.fb.auth, (user) => {
       this.currentuser = user;
       console.log({ user });
     });
+  };
+
+  resetActions = () => {
+    this.error = null;
+    this.succMessage = null;
+    this.errMessage = null;
+    this.loading = null;
+    this.success = null;
   };
 
   get unsubscribeUser() {
