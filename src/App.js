@@ -21,6 +21,10 @@ import ReactGA from "react-ga4";
 
 //  application Routes
 import GeneralRoute from "./routes/GeneralRoute";
+import ProtectedRoute from "./routes/ProtectedRoute";
+
+import ClientLayout from "./Layouts/clientLayout/layoutWrapper";
+import GeneralLayout from "./layouts/generalLayout/layoutWrapper";
 
 const measurmentID1 = {
   trackingId: "G-HY5HEHC52K",
@@ -36,11 +40,8 @@ const measurmentID2 = {
 ReactGA.initialize([measurmentID1, measurmentID2]);
 
 // application layouts
-// import ClientLayout from "./Layouts/ClientLayout/LayoutWrapper";
-// import GeneralLayout from "./Layouts/GeneralLayout/LayoutWrapper";
 
 class App extends Component {
-
   render() {
     console.log("Environment:" + process.env.NODE_ENV);
     console.log(process.env);
@@ -62,7 +63,7 @@ class App extends Component {
               path={`/subscription/:id`}
               component={Subscription}
             />
-            <GeneralRoute exact path="/*" component={Error} />
+            <GeneralRoute exact path="/*/**" component={Error} />
           </Switch>
           <Switch>
             {/* <ProtectedRoute
@@ -77,7 +78,7 @@ class App extends Component {
               component={Checkout}
               layout={GeneralLayout}
             /> */}
-            {/* <ProtectedRoute
+            <ProtectedRoute
               exact
               path={`/subscription/general_checkup`}
               component={Subscription}
@@ -94,7 +95,7 @@ class App extends Component {
               path={`/subscription/diabetes`}
               component={Subscription}
               layout={GeneralLayout}
-            /> 
+            />
             <ProtectedRoute
               exact
               path="/dashboard"
@@ -139,7 +140,6 @@ class App extends Component {
             />
 
             <ProtectedRoute exact path="/*" component={Error} />
-          */}
           </Switch>
         </Router>
       </div>

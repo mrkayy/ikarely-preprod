@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import AuthStore from "./../../controllers/stores_v1/AuthStore";
 import { observer } from "mobx-react-lite";
+import AuthenticationStore from "../../controllers/authentication_store";
 
 const ProtectedRoute = (props) => {
   const { layout: Layout, component: Component, ...rest } = props;
-  const { currUser } = useContext(AuthStore);
+  const { user } = AuthenticationStore;
 
   // TODO: add error boundary implementation
   return (
@@ -13,7 +13,7 @@ const ProtectedRoute = (props) => {
       {...rest}
       render={(matchProps) => {
         //   renders the component passed to the Route based on the authentication state
-        return currUser ? (
+        return user ? (
           <Layout {...matchProps}>
             <Component {...props} />
           </Layout>

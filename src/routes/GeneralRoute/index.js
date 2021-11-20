@@ -1,6 +1,6 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import GeneralLayout from "../../views/layouts/GeneralLayout/LayoutWrapper";
+import { Route } from "react-router-dom";
+import GeneralLayout from "../../layouts/generalLayout/layoutWrapper";
 
 function GeneralRoute(props) {
   const { component: Component, ...rest } = props;
