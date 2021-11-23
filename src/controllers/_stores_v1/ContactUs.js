@@ -6,7 +6,7 @@ class ContactUs {
   error = false;
   loading = false;
   success = false;
-  errMessage = "";
+  errorMsg = "";
   successMessage = "";
 
   constructor() {
@@ -14,7 +14,7 @@ class ContactUs {
       error: observable,
       loading: observable,
       success: observable,
-      errMessage: observable,
+      errorMsg: observable,
       successMessage: observable,
 
       sendmessage: action,
@@ -38,7 +38,7 @@ class ContactUs {
       .catch((err) => {
         this.loading = false;
         this.error = true;
-        this.errMessage =
+        this.errorMsg =
           err.response === undefined ? err.message : err.response.data.message;
       });
   };
@@ -47,7 +47,7 @@ class ContactUs {
     this.error = false;
     this.loading = false;
     this.success = false;
-    this.errMessage = "";
+    this.errorMsg = "";
     this.successMessage = "";
   };
 }

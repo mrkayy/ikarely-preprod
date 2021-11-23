@@ -17,7 +17,7 @@ function Register(props) {
     success,
     currUser,
     loading,
-    errMessage,
+    errorMsg,
     successMessage,
     register,
     resetActions,
@@ -99,7 +99,7 @@ function Register(props) {
   //alert user on error or success
   useEffect(() => {
     if (error) {
-      alert.error(errMessage, options);
+      alert.error(errorMsg, options);
       alert.removeAll();
     }
     if (success && !error) {
@@ -110,7 +110,7 @@ function Register(props) {
     return () => {
       resetActions();
     };
-  }, [errMessage, successMessage]);
+  }, [errorMsg, successMessage]);
 
   const { data, errors } = state;
 

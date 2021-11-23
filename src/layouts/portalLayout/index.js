@@ -1,5 +1,5 @@
 import React from "react";
-import PortalLayout from "./PortalLayout";
+import PortalLayout from "./portalLayout";
 import "./modal.css";
 
 const CustomModal = ({ open, onBackdropClick, children }) => {

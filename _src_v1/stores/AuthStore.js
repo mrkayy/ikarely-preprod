@@ -8,7 +8,7 @@ class AuthStore {
   loading = false;
   error = false;
   success = false;
-  errMessage = "";
+  errorMsg = "";
   successMessage = "";
   authSuccess = "failed";
   currUser = false;
@@ -20,7 +20,7 @@ class AuthStore {
       error: observable,
       loading: observable,
       success: observable,
-      errMessage: observable,
+      errorMsg: observable,
       successMessage: observable,
       authSuccess: observable,
       user: observable,
@@ -58,7 +58,7 @@ class AuthStore {
       .catch((err) => {
         this.loading = false;
         this.error = true;
-        this.errMessage = err.response.message;
+        this.errorMsg = err.response.message;
       });
   };
 
@@ -78,7 +78,7 @@ class AuthStore {
         //console.log({ err });
         this.loading = false;
         this.error = true;
-        this.errMessage =
+        this.errorMsg =
           err.response === undefined ? err.message : err.response.data.message;
       });
   };
@@ -110,7 +110,7 @@ class AuthStore {
         this.loading = false;
         this.error = true;
         this.getCurrUser();
-        this.errMessage =
+        this.errorMsg =
           err.response === undefined ? err.message : err.response.data.message;
         //console.log(err.response.data);
       })
@@ -163,7 +163,7 @@ class AuthStore {
     this.error = false;
     this.loading = false;
     this.success = false;
-    this.errMessage = "";
+    this.errorMsg = "";
     this.successMessage = "";
   };
 }

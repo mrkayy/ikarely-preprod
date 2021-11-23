@@ -6,7 +6,7 @@
 //   loadingReq = false;
 //   reqError = false;
 //   reqSuccess = false;
-//   reqErrMessage = "";
+//   reqerrorMsg = "";
 //   reqSuccessMessage = "";
 
 //   response = [];
@@ -17,7 +17,7 @@
 //       reqError: observable,
 //       loadingReq: observable,
 //       reqSuccess: observable,
-//       reqErrMessage: observable,
+//       reqerrorMsg: observable,
 //       reqSuccessMessage: observable,
 //       response: observable,
 
@@ -44,7 +44,7 @@
 //       .catch((err) => {
 //         this.loadingReq = false;
 //         this.reqError = true;
-//         this.reqErrMessage =
+//         this.reqerrorMsg =
 //           err.response === undefined ? err.message : err.response.data.message;
 //       });
 //   };
@@ -53,7 +53,7 @@
 //     this.reqError = false;
 //     this.loadingReq = false;
 //     this.reqSuccess = false;
-//     this.reqErrMessage = "";
+//     this.reqerrorMsg = "";
 //     this.reqSuccessMessage = "";
 //   };
 // }

@@ -92,13 +92,8 @@ const Service = () => {
       type: "by_subscription",
     },
   ];
-  const {
-    reqError,
-    reqSuccess,
-    reqErrMessage,
-    reqSuccessMessage,
-    resetActions,
-  } = servicecontext;
+  const { reqError, reqSuccess, reqerrorMsg, reqSuccessMessage, resetActions } =
+    servicecontext;
 
   const options = {
     reqError,
@@ -133,8 +128,8 @@ const Service = () => {
 
   useEffect(() => {
     if (reqError) {
-      alert.error(reqErrMessage, options);
-      ////console.log({ reqErrMessage });
+      alert.error(reqerrorMsg, options);
+      ////console.log({ reqerrorMsg });
     }
     if (reqSuccess) {
       alert.success(reqSuccessMessage, options);
@@ -144,7 +139,7 @@ const Service = () => {
     return () => {
       resetActions();
     };
-  }, [reqErrMessage, reqSuccessMessage]);
+  }, [reqerrorMsg, reqSuccessMessage]);
 
   return (
     <div className="">

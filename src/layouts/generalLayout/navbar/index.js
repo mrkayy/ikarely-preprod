@@ -36,7 +36,6 @@ function NavBar({ showMenu }) {
     { title: "About Us", path: "/about" },
     { title: "Contact Us", path: "/contact" },
     // { title: "Blogs", path: "/blogs" },
-    { title: "Account", path: "/account" },
   ];
   return (
     <header
@@ -73,7 +72,7 @@ function NavBar({ showMenu }) {
             </div>
           </div>
           {/* brand logo */}
-          <div className="w-full sm:w-24 grid place-items-center">
+          <div className=" sm:w-24 grid place-items-center">
             <img
               src="../images/logo.png"
               alt="logo.png"
@@ -87,19 +86,31 @@ function NavBar({ showMenu }) {
               {navigationMenu.map(({ title, path }, index) => (
                 <li className="" key={index}>
                   <Link
-                    className="rounded hover:bg-primary-accent py-2 px-4 md:px-3 hover:text-white"
+                    className="rounded font-900 hover:bg-primary-accent py-2 px-4 md:px-3 mr-4 hover:text-white"
                     to={path}
                   >
                     {title}
                   </Link>
                 </li>
               ))}
+              {user && user !== null ? (
+                <li>
+                  <Link
+                    className="rounded font-900 hover:bg-primary-accent py-2 px-4 md:px-3 hover:text-white"
+                    to="/account"
+                  >
+                    {"Account"}
+                  </Link>
+                </li>
+              ) : (
+                <></>
+              )}
             </ul>
           </div>
 
           {/* Navigation Authentication Button */}
           <div className="">
-            <div className="flex sm:items-center lg:text-lg">
+            <div className="flex sm:mr-0">
               {user ? (
                 <>
                   <ButtonWrapper logout={logout} label="Sign Out" />
@@ -124,11 +135,13 @@ function NavBar({ showMenu }) {
 // refactor component to a seperate widget
 const ButtonWrapper = ({ label, logout }) => {
   return (
-    <div className="rounded text-center text-white px-4 py-2 bg-primary-accent sm:text-sm lg:text-md hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent hover:shadow-lg">
-      <button onClick={logout} type="button" className="lg:font-semibold">
-        {label}
-      </button>
-    </div>
+    <button
+      onClick={logout}
+      type="button"
+      className="rounded text-center text-white px-4 py-2 bg-primary-accent sm:text-xs md:text-sm hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent hover:shadow-lg"
+    >
+      {label}
+    </button>
   );
 };
 

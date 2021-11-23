@@ -1,21 +1,21 @@
-import {createContext} from 'react';
-import {makeObservable, observable, action} from 'mobx';
+import { createContext } from "react";
+import { makeObservable, observable, action } from "mobx";
 
-import api from '../Config';
+import api from "../Config";
 
 class Clients {
   error = false;
   loading = false;
   success = false;
-  errMessage = '';
-  successMessage = '';
+  errorMsg = "";
+  successMessage = "";
 
   constructor() {
     makeObservable(this, {
       error: observable,
       loading: observable,
       success: observable,
-      errMessage: observable,
+      errorMsg: observable,
       successMessage: observable,
 
       resetActions: action,
@@ -23,13 +23,12 @@ class Clients {
   }
   // all store functions starts here
 
-  
   resetActions = () => {
     this.error = false;
     this.loading = false;
     this.success = false;
-    this.errMessage = '';
-    this.successMessage = '';
+    this.errorMsg = "";
+    this.successMessage = "";
   };
 }
 

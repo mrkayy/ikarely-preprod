@@ -1,29 +1,31 @@
 import { makeObservable, observable, action, autorun, computed } from "mobx";
-import FirebaseConfig from "../configs/db";
-import { onAuthStateChanged } from "firebase/auth";
+import FirebaseConfig from "../configs/firebase-config";
+import UserAccount from "./userAccount_store";
 
 class AuthenticationStore {
-  firebaseUser = null;
   currentuser = null;
-  succMessage = null;
+  successMsg = null;
   unsubscribe = null;
-  errMessage = null;
+  errorMsg = null;
   loading = null;
   success = null;
   error = null;
+  inprogress = null;
+  inprogressMsg = null;
 
   // userviewModel =
 
   constructor() {
     makeObservable(this, {
-      firebaseUser: observable,
       currentuser: observable,
       unsubscribe: observable,
-      succMessage: observable,
-      errMessage: observable,
+      successMsg: observable,
+      errorMsg: observable,
       loading: observable,
       success: observable,
       error: observable,
+      inprogress: observable,
+      inprogressMsg: observable,
 
       authenticateUserAccount: action,
       sendPasswordResetLink: action,
@@ -36,6 +38,7 @@ class AuthenticationStore {
       user: computed,
       unsubscribeUser: computed,
     });
+    this.userAPI = new UserAccount();
     this.fb = new FirebaseConfig();
     this.getCurrentUserState();
     // this.fb.auth.signOut();
@@ -44,38 +47,55 @@ class AuthenticationStore {
   createUserAccount = (data) => {
     this.loading = true;
     this.fb.auth
-      .createUserWithEmailAndPassword(this.app, data.email, data.password)
+      .createUserWithEmailAndPassword(data.email, data.password)
       .then((res) => {
         this.loading = false;
         this.success = true;
-        this.firebaseUser = res.user;
-        console.log({ res: this.firebaseUser });
+        this.currentuser = res.user;
+        this.successMsg = "ACCOUNT CREATION SUCCESSFUL!";
+        console.log({ res: this.currentuser });
+        // create medical profile if user account was created successfully.
+        if (this.currentuser && this.currentuser) {
+          this.inprogress = true;
+          this.inprogressMsg = "CREATING YOUR MEDICAL ACCOUNT!";
+          // creating user medical profile.
+          this.userAPI
+            .createUserAccount(data, this.currentuser.uid)
+            .then((res) => {
+              console.log("creating_user_doc:" + res);
+            });
+        }
+        this.inprogress = false;
       })
       .catch((err) => {
-        this.baseModelViewModel.setFirebaseError(err);
+        this.loading = false;
         this.error = err;
+        this.errorMsg = err;
         console.log(this.error);
       });
+    // .finally(async () => {
+
+    //   this.loading = true;
   };
 
   authenticateUserAccount = (data) => {
-    console.log(data);
     this.loading = true;
     this.fb.auth
       .signInWithEmailAndPassword(data.email, data.password)
       .then((res) => {
         this.loading = false;
-        if (res != null) {
-          this.succMessage = "Successfully Logged In";
+        if (res.email) {
+          this.successMsg = "Successfully Logged In";
           this.success = true;
-          this.firebaseUser = res.user;
+          this.currentuser = res.user;
         }
-        console.log({ res: this.firebaseUser });
+        console.log({ res: this.currentuser.email });
+        console.log({ res: this.currentuser.uid });
       })
       .catch((err) => {
         this.loading = false;
         this.error = true;
-        this.errMessage = err.message;
+        this.errorMsg = err.message;
         console.log({ err });
       });
   };
@@ -87,7 +107,7 @@ class AuthenticationStore {
       .then((res) => {
         this.loading = false;
         this.success = true;
-        this.firebaseUser = res;
+        this.currentuser = res;
       })
       .catch((err) => {});
   };
@@ -96,26 +116,31 @@ class AuthenticationStore {
 
   signout = () => {
     this.fb.auth.signOut();
-    // this.getCurrentUserState();
+    this.getCurrentUserState();
   };
 
-  getCurrentUserState = () => {
-    this.unsubscribe = onAuthStateChanged(this.fb.auth, (user) => {
+  getCurrentUserState = async () => {
+    this.unsubscribe = await this.fb.auth.onAuthStateChanged((user) => {
       this.currentuser = user;
-      console.log({ user });
+      console.log({ currentUser: user });
     });
   };
 
   resetActions = () => {
     this.error = null;
-    this.succMessage = null;
-    this.errMessage = null;
+    this.successMsg = null;
+    this.errorMsg = null;
     this.loading = null;
     this.success = null;
   };
 
   get unsubscribeUser() {
     return this.unsubscribe;
+  }
+
+  get userAccount() {
+    console.log(this.currentuser.id);
+    return this.currentuser;
   }
 
   get user() {

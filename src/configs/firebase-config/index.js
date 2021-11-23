@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 // import getAnalytics from "ffirebase/compat/getAnalytics";
 import "firebase/compat/auth";
+import { getFirestore } from "@firebase/firestore";
 
 class FirebaseConfig {
   // Initialize Firebase
@@ -17,7 +18,15 @@ class FirebaseConfig {
   constructor() {
     // getAnalytics(this.init);
     this.auth = this.init.auth();
+    this.db = getFirestore(this.init);
     this.app = this.init;
+  }
+  set db(e) {
+    return (this._db = e);
+  }
+
+  get db() {
+    return this._db;
   }
 
   set auth(e) {

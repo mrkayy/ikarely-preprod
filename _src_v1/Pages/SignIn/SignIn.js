@@ -30,7 +30,7 @@ const SignIn = (props) => {
     loading,
     success,
     authSuccess,
-    errMessage,
+    errorMsg,
     successMessage,
     login,
     currUser,
@@ -72,7 +72,7 @@ const SignIn = (props) => {
 
   useEffect(() => {
     if (error) {
-      alert.error(errMessage, options);
+      alert.error(errorMsg, options);
     }
     if (success && !error) {
       alert.success(successMessage, options);
@@ -80,7 +80,7 @@ const SignIn = (props) => {
     return () => {
       resetActions();
     };
-  }, [errMessage, successMessage]);
+  }, [errorMsg, successMessage]);
 
   // useEffect(() => {
   //   if (authSuccess === "pass") {

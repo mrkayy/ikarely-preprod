@@ -10,6 +10,7 @@ import ArticleSection from "../../../../components/articleSection";
 import LayoutMargin from "../../../../components/layoutWrapper";
 
 import Authentication from "../../../../controllers/authentication_store";
+import UserAccount from "../../../../controllers/userAccount_store";
 
 // import SectionDescCard from "../../components/Sections/SectionDescCard";
 
@@ -90,9 +91,9 @@ const Service = () => {
     },
   ];
 
-  const { error, success, errMessage, succMessage, resetActions, user } =
+  const { error, success, errorMsg, successMsg, resetActions, user } =
     Authentication;
-
+const userAccount = UserAccount;
   const options = {
     error,
   };
@@ -126,23 +127,23 @@ const Service = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(errMessage, options);
+      alert.error(errorMsg, options);
     }
     return () => {
       resetActions();
     };
-  }, [errMessage]);
+  }, [errorMsg]);
 
   useEffect(() => {
     if (success) {
-      alert.success(succMessage, options);
+      alert.success(successMsg, options);
       ////console.log({ reqSuccessMessage });
       setOpenModal(false);
     }
     return () => {
       resetActions();
     };
-  }, [succMessage]);
+  }, [successMsg]);
 
   return (
     <div className="">

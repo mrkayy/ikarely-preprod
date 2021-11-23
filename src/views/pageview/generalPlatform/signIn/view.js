@@ -20,8 +20,8 @@ const SignIn = (props) => {
     error,
     loading,
     success,
-    errMessage,
-    succMessage,
+    errorMsg,
+    successMsg,
     resetActions,
   } = Authentication;
 
@@ -70,15 +70,15 @@ const SignIn = (props) => {
 
   useEffect(() => {
     if (error) {
-      alert.error(errMessage, options);
+      alert.error(errorMsg, options);
     }
     if (success && !error) {
-      alert.success(succMessage, options);
+      alert.success(successMsg, options);
     }
     return () => {
       resetActions();
     };
-  }, [errMessage, succMessage]);
+  }, [errorMsg, successMsg]);
 
   // useEffect(() => {
   //   if (authSuccess === "pass") {
@@ -131,8 +131,8 @@ const SignIn = (props) => {
         <div className="bg-opacity-50 py-10 sm:py-0 bg-white h-screen w-screen lg:flex lg:justify-between">
           <div className="w-full h-screen hidden lg:block"></div>
           <div className="w-full h-screen flex items-center justify-center">
-            <div className="md:w-8/12 lg:w-11/12 xl:w-8/12">
-              <div className="w-full h-full md:h-3/5 md:bg-white md:shadow-lg px-12 py-12  rounded-2xl">
+            <div className="w-10/12 md:w-8/12 lg:w-11/12 xl:w-8/12">
+              <div className="w-full h-full md:h-3/5 md:bg-white md:shadow-lg md:px-12 py-12 rounded-2xl">
                 <h1 className="text-lg text-typography-main md:text-2xl font-bold leading-tight text-center">
                   Welcome! {userName && userName}
                 </h1>

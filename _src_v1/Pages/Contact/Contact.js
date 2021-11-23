@@ -28,7 +28,7 @@ const Contact = (props) => {
     error,
     success,
     sendmessage,
-    errMessage,
+    errorMsg,
     successMessage,
     loading,
     resetActions,
@@ -72,7 +72,7 @@ const Contact = (props) => {
   //alert user on error or success
   useEffect(() => {
     if (error) {
-      alert.error(errMessage, options);
+      alert.error(errorMsg, options);
     }
     if (success && !error) {
       ////console.log({ successMessage });
@@ -81,7 +81,7 @@ const Contact = (props) => {
     return () => {
       resetActions();
     };
-  }, [errMessage, successMessage]);
+  }, [errorMsg, successMessage]);
 
   // if (currentUser && currentUser) {
   //   return <Redirect to={"/"} />;

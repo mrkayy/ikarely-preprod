@@ -2,26 +2,25 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link, useHistory, Redirect } from "react-router-dom";
 import Joi from "joi-browser";
 import { observer } from "mobx-react-lite";
-import AuthStore from "../../../controllers/stores_v1/AuthStore";
+import Authentication from "../../../../controllers/authentication_store";
 import { useAlert } from "react-alert";
-import InputBox from "../../../utils/InputBox";
-import { GlobalContext } from "../../../controllers/stores_v1/GlobalLayer";
-import Button from "../../components/shared/Anime/Button";
+import InputBox from "../../../../utils/InputBox";
+import { GlobalContext } from "../../../../controllers/globalValidationLayer";
+import Button from "../../../../components/shared/buttons/button";
 
-function Register(props) {
+function Register() {
   const alert = useAlert();
   const history = useHistory();
-  const authcontext = useContext(AuthStore);
   const {
+    user,
     error,
     success,
-    currUser,
     loading,
-    errMessage,
-    successMessage,
-    register,
     resetActions,
-  } = authcontext;
+    errorMsg,
+    successMsg,
+    createUserAccount,
+  } = Authentication;
 
   const options = {
     error,
@@ -99,18 +98,17 @@ function Register(props) {
   //alert user on error or success
   useEffect(() => {
     if (error) {
-      alert.error(errMessage, options);
+      alert.error(errorMsg, options);
       alert.removeAll();
     }
     if (success && !error) {
-      // ////console.log({ successMessage });
-      alert.success(successMessage, options);
+      alert.success(successMsg, options);
       alert.removeAll();
     }
     return () => {
       resetActions();
     };
-  }, [errMessage, successMessage]);
+  }, [error, errorMsg, successMsg]);
 
   const { data, errors } = state;
 
@@ -132,7 +130,7 @@ function Register(props) {
       password,
       user_type,
     };
-    register(datas);
+    createUserAccount(datas);
     ////console.log(data, "Register submitted");
   };
 
@@ -147,12 +145,12 @@ function Register(props) {
       <div className="bg-eye bg-contain h-6 w-6"></div>
     </>
   );
-  return currUser && props.location.pathname === "/register" ? (
+  return user && history.location.pathname === "/register" ? (
     <Redirect
       to={{
         pathname: "/",
         state: {
-          from: props.location,
+          from: history.location,
         },
       }}
     />
@@ -162,7 +160,7 @@ function Register(props) {
         <div className="w-full h-screen hidden xl:block"></div>
         <div className="w-full h-screen flex items-center justify-center">
           <div className="md:w-8/12 lg:w-6/12 xl:w-10/12">
-            <div className="w-full h-full md:h-3/5 lg:bg-white lg:shadow-lg px-12 py-12  rounded-2xl">
+            <div className="w-full h-full md:h-3/5 bg-white lg:shadow-lg px-8 md:px-12 lg:px-10 py-12 rounded-2xl">
               <h2 className=" text-sm text-typography-emphasis text-center xl:text-left">
                 Get qualilty healthcare at your convenience
               </h2>
@@ -176,6 +174,7 @@ function Register(props) {
                 <form action="" onSubmit={registerSubmit} className="">
                   <div className="lg:grid lg:grid-cols-2 lg:gap-x-3 xl:gap-x-8 ">
                     <InputBox
+                      disable={loading}
                       label="First Name"
                       name="first_name"
                       type={"text"}
@@ -183,6 +182,7 @@ function Register(props) {
                       placeholder={"Enter your first name"}
                     />
                     <InputBox
+                      disable={loading}
                       label="Last Name"
                       name="last_name"
                       type={"text"}
@@ -191,6 +191,7 @@ function Register(props) {
                     />
 
                     <InputBox
+                      disable={loading}
                       label="Email"
                       name="email"
                       type="email"
@@ -199,6 +200,7 @@ function Register(props) {
                     />
 
                     <InputBox
+                      disable={loading}
                       label="Phone"
                       name="phone"
                       type="text"
@@ -207,6 +209,7 @@ function Register(props) {
                     />
 
                     <InputBox
+                      disable={loading}
                       label="Password"
                       name="password"
                       placeholder={"Enter a password"}
@@ -219,6 +222,7 @@ function Register(props) {
                     />
 
                     <InputBox
+                      disable={loading}
                       label="Confirm-Password"
                       name="re_enter_password"
                       placeholder={"Confirm your password"}

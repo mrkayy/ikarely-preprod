@@ -48,7 +48,6 @@ module.exports = {
         },
       },
       backgroundImage: {
-        appointment: "url('./utils/assets/images/appointment.jpg')",
         closeEye: "url('./utils/assets/images/closeEye.svg')",
         eye: "url('./utils/assets/images/eye.svg')",
         injection: "url('./utils/assets/images/injection.svg')",
