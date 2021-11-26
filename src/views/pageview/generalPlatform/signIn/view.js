@@ -23,7 +23,7 @@ const SignIn = (props) => {
     errorMsg,
     successMsg,
     resetActions,
-  } = Authentication;
+  } = useContext(Authentication);
 
   useEffect(() => {
     autoScroll();
@@ -117,7 +117,7 @@ const SignIn = (props) => {
   return user && history.location.pathname === "/signin" ? (
     <Redirect
       to={{
-        pathname: "/",
+        pathname: "/service",
         state: {
           from: history.location,
         },

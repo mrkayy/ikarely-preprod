@@ -29,6 +29,7 @@ function NavBar({ showMenu }) {
     // { title: "Blogs", path: "/blogs" },
     // {title: '',path:''},
   ];
+  
   return (
     <header
       className={`fixed aboslute xl:font-semibold w-screen z-40 ${

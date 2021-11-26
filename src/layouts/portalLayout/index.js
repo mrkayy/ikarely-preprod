@@ -1,13 +1,15 @@
 import React from "react";
 import PortalLayout from "./portalLayout";
-import "./modal.css";
+// import "./modal.css";
 
-const CustomModal = ({ open, onBackdropClick, children }) => {
+const CustomPortalLayout = ({ children }) => {
   return (
     <PortalLayout>
-      <div className={`portal__modal`}>{children}</div>
+      <div className="aboslute z-50 fixed bg-black bg-opacity-50 w-screen h-screen flex items-center justify-center">
+        {children}
+      </div>
     </PortalLayout>
   );
 };
 
-export default CustomModal;
+export default CustomPortalLayout;

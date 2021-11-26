@@ -7,7 +7,7 @@ import { useAlert } from "react-alert";
 
 function NavBar({ showMenu }) {
   const alert = useAlert();
-  const { signout, user } = Authentication;
+  const { signout, user } = useContext(Authentication);
 
   const [show, setShow] = useState(false);
 
@@ -39,7 +39,7 @@ function NavBar({ showMenu }) {
   ];
   return (
     <header
-      className={`fixed aboslute xl:font-semibold w-screen z-40 ${
+      className={`fixed aboslute xl:font-semibold w-screen z-10 ${
         show
           ? "bg-white shadow-2xl transition ease-out duration-200"
           : "bg-transparent transition ease-in duration-300"
@@ -53,7 +53,7 @@ function NavBar({ showMenu }) {
               className=" sm:hidden relative h-8 w-12 bg-primary-accent text-white hover:border-2 border-primary-accent rounded hover:shadow-lg hover:bg-white hover:text-primary-accent"
               onClick={showMenu}
             >
-              <span className="absolute top-1 left-3 mr-4">
+              <span className="absolute top-1 left-3 mr-4 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 "
@@ -84,9 +84,16 @@ function NavBar({ showMenu }) {
           <div className="hidden sm:block md:w-6/10">
             <ul className="text-default sm:flex sm:items-center sm:justify-center sm:text-sm lg:text-base">
               {navigationMenu.map(({ title, path }, index) => (
-                <li className="" key={index}>
+                <li key={index}>
                   <Link
-                    className="rounded font-900 hover:bg-primary-accent py-2 px-4 md:px-3 mr-4 hover:text-white"
+                    // className="rounded font-900 hover:bg-primary-accent py-2 px-4 md:px-3 mr-4 hover:text-white"
+                    className={`
+                    rounded font-900 text-typography-main hover:bg-primary-accent py-2 px-4 md:px-3 mr-4 hover:text-white
+                          ${
+                            window.location.pathname === path
+                              ? "rounded-bl-none rounded-br-none border-b-2 border-primary-main text-typography-main "
+                              : ""
+                          }`}
                     to={path}
                   >
                     {title}
@@ -96,8 +103,8 @@ function NavBar({ showMenu }) {
               {user && user !== null ? (
                 <li>
                   <Link
-                    className="rounded font-900 hover:bg-primary-accent py-2 px-4 md:px-3 hover:text-white"
-                    to="/account"
+                    className="rounded font-900 text-typography-main hover:bg-primary-accent py-2 px-4 md:px-3 mr-4 hover:text-white"
+                    to="account/dashboard"
                   >
                     {"Account"}
                   </Link>
@@ -138,7 +145,7 @@ const ButtonWrapper = ({ label, logout }) => {
     <button
       onClick={logout}
       type="button"
-      className="rounded text-center text-white px-4 py-2 bg-primary-accent sm:text-xs md:text-sm hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent hover:shadow-lg"
+      className="rounded text-center text-white px-4 py-2 bg-primary-accent text-xs sm:text-sm lg:text-base hover:bg-white sm:m-0 md:px-3 hover:text-primary-accent hover:shadow-lg"
     >
       {label}
     </button>

@@ -57,7 +57,7 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
 
   const content = (
     <div
-      className={`overlay bg-transprent aboslute z-50 w-full h-screen fixed transition ease-in-out duraton-300 ${
+      className={`bg-transprent aboslute z-50 w-full h-screen fixed transition ease-in-out duraton-300 ${
         slide && "slide"
       }`}
     >
@@ -102,7 +102,6 @@ const Overlay = ({ slide, showMenu, setSlide }) => {
             <ul className="">
               {currUser && currUser ? (
                 <>
-                  {/* <hr /> */}
                   {/* {profileLinks.map(({ value, directory }, index) => {
                   return (
                     <li

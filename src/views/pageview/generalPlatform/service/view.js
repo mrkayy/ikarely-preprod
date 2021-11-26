@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import PageLanding from "../../../../components/pageLanding";
@@ -92,8 +92,8 @@ const Service = () => {
   ];
 
   const { error, success, errorMsg, successMsg, resetActions, user } =
-    Authentication;
-const userAccount = UserAccount;
+    useContext(Authentication);
+  const userAccount = UserAccount;
   const options = {
     error,
   };

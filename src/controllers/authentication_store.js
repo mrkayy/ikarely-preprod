@@ -1,6 +1,7 @@
 import { makeObservable, observable, action, autorun, computed } from "mobx";
 import FirebaseConfig from "../configs/firebase-config";
 import UserAccount from "./userAccount_store";
+import { createContext } from "react";
 
 class AuthenticationStore {
   currentuser = null;
@@ -16,6 +17,8 @@ class AuthenticationStore {
   // userviewModel =
 
   constructor() {
+    this.userAPI = new UserAccount();
+    this.fb = new FirebaseConfig();
     makeObservable(this, {
       currentuser: observable,
       unsubscribe: observable,
@@ -38,12 +41,11 @@ class AuthenticationStore {
       user: computed,
       unsubscribeUser: computed,
     });
-    this.userAPI = new UserAccount();
-    this.fb = new FirebaseConfig();
     this.getCurrentUserState();
     // this.fb.auth.signOut();
   }
 
+  // create new user account with email and password
   createUserAccount = (data) => {
     this.loading = true;
     this.fb.auth
@@ -148,4 +150,4 @@ class AuthenticationStore {
   }
 }
 
-export default new AuthenticationStore();
+export default createContext(new AuthenticationStore());

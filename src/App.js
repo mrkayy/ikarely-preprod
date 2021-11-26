@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 import ReactGA from "react-ga4";
 
 // application pages
@@ -11,12 +11,13 @@ import Error from "./views/pageview/generalPlatform/error";
 import Register from "./views/pageview/generalPlatform/register";
 import SignIn from "./views/pageview/generalPlatform/signIn";
 import Subscription from "./views/pageview/generalPlatform/subscription";
+// import AccountLayout from "./views/pageview/clientPlatform/account";
 
 //  application Routes
 import GeneralRoute from "./routes/generalRoute";
 import ProtectedRoute from "./routes/protectedRoute";
 
-// import ClientLayout from "./layouts/clientLayout/";
+import ClientLayout from "./layouts/clientLayout/layoutWrapper";
 import GeneralLayout from "./layouts/generalLayout/layoutWrapper";
 
 const measurmentID1 = {
@@ -56,83 +57,14 @@ class App extends Component {
               path={`/subscription/:id`}
               component={Subscription}
             />
+            <ProtectedRoute
+              exact
+              path={`/account/dashboard`}
+              // component={AccountLayout}
+              layout={ClientLayout}
+            />
+            <Redirect from="/account" to="/account/dashboard" />
             <GeneralRoute exact path="**/*" component={Error} />
-          </Switch>
-          <Switch>
-            {/* <ProtectedRoute
-              exact
-              path="/payments"
-              component={Payments}
-              layout={GeneralLayout}
-            /> 
-            <ProtectedRoute
-              exact
-              path={`/checkout`}
-              component={Checkout}
-              layout={GeneralLayout}
-            /> */}
-            <ProtectedRoute
-              exact
-              path={`/subscription/general_checkup`}
-              component={Subscription}
-              layout={GeneralLayout}
-            />
-            <ProtectedRoute
-              exact
-              path={`/subscription/pregnacare`}
-              component={Subscription}
-              layout={GeneralLayout}
-            />
-            <ProtectedRoute
-              exact
-              path={`/subscription/diabetes`}
-              component={Subscription}
-              layout={GeneralLayout}
-            />
-            {/* <ProtectedRoute
-              exact
-              path="/dashboard"
-              component={Profile}
-              layout={ClientLayout}
-            />
-            <ProtectedRoute
-              exact
-              path="/medicals"
-              component={Profile}
-              layout={ClientLayout}
-            />
-            <ProtectedRoute
-              exact
-              path="/medical-history"
-              component={Profile}
-              layout={ClientLayout}
-            />
-            <ProtectedRoute
-              exact
-              path="/service-requests"
-              component={Profile}
-              layout={ClientLayout}
-            />
-            <ProtectedRoute
-              exact
-              path="/appointments"
-              component={Profile}
-              layout={ClientLayout}
-            />
-            <ProtectedRoute
-              exact
-              path="/settings"
-              component={Profile}
-              layout={ClientLayout}
-            />
-            <ProtectedRoute
-              exact
-              path="/support"
-              component={Profile}
-              layout={ClientLayout}
-            /> */}
-
-            {/* <ProtectedRoute exact path="/*" component={Error} /> */}
           </Switch>
         </Router>
       </div>

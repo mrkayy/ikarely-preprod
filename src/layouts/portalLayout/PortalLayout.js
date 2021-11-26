@@ -2,6 +2,7 @@ import { Component } from "react";
 import ReactDom from "react-dom";
 
 const portal = document.getElementById("portal");
+
 export default class PortalLayout extends Component {
   constructor() {
     super();
@@ -11,6 +12,7 @@ export default class PortalLayout extends Component {
   componentDidMount = () => {
     portal.appendChild(this.element);
   };
+
   componentWillUnmount = () => {
     portal.removeChild(this.element);
   };

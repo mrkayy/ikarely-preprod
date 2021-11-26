@@ -35,7 +35,21 @@ class UserAccount {
       dashboardData: computed,
     });
   }
-  loadUserAccount = () => {};
+
+  isVerified = async () => {
+    const isVerified = this.auth.currentuser.emailVerified;
+    try {
+      if (isVerified) {
+        await this.auth.sendEmailVerification();
+      }
+    } catch (error) {
+      
+    }
+  };
+
+  loadUserAccount = () => {
+    this.loading = true;
+  };
 
   createUserAccount = async (data, userID) => {
     const uuid = genUUID();

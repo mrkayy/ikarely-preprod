@@ -4,6 +4,8 @@ import Landing from "./landing";
 import Section from "./sections";
 import ReactGA from "react-ga4";
 
+import CustomModal from "../../../../layouts/portalLayout";
+
 const Home = () => {
   React.useEffect(() => {
     ReactGA.send({ hitType: "landing_page", page: "/" });
@@ -25,3 +27,12 @@ const Home = () => {
 };
 
 export default Home;
+
+const Modal = (props) => {
+  const { children, title, closeModal, modalButton } = props;
+  return (
+    <>
+     
+    </>
+  );
+};

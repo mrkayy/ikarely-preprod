@@ -20,7 +20,7 @@ function Register() {
     errorMsg,
     successMsg,
     createUserAccount,
-  } = Authentication;
+  } = useContext(Authentication);
 
   const options = {
     error,
