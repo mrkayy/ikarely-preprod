@@ -3,7 +3,7 @@ import FirebaseConfig from "../configs/firebase-config";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { genUUID } from "../utils/generateUUID";
 import Authentication from "./authentication_store";
-import { data } from "autoprefixer";
+import { createContext } from "react";
 
 class UserAccount {
   loading = false;
@@ -42,15 +42,14 @@ class UserAccount {
       if (isVerified) {
         await this.auth.sendEmailVerification();
       }
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
 
   loadUserAccount = () => {
     this.loading = true;
   };
 
+  //TODO: create user model class
   createUserAccount = async (data, userID) => {
     const uuid = genUUID();
     console.log({ uuid });
@@ -77,4 +76,4 @@ class UserAccount {
   }
 }
 
-export default UserAccount;
+export default createContext(new UserAccount());

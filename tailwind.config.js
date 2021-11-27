@@ -10,14 +10,6 @@ module.exports = {
     // 2xl:@media (min-width: 1536px) { ... }
     // },
     extend: {
-      // height: {
-      //   300: "300px",
-      //   400: "400px",
-      //   500: "500px",
-      //   600: "600px",
-      //   700: "700px",
-      //   800: "800px",
-      // },
       colors: {
         default: "#575757",
         action: "#FE9000",

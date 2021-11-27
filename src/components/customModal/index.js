@@ -1,31 +1,37 @@
 import React, { useState } from "react";
 import CustomPortalLayout from "../../layouts/portalLayout";
 
-function CustomServiceModal({ children }) {
+function CustomServiceModal(props) {
+  const { showModal, children, title, buttonList } = props;
+  const modal_overlay = document.querySelector("#modal_overlay");
+  const modal = document.querySelector("#modal");
+
+  function openModal(showModal) {
+    const modalCl = modal.classList;
+    const overlayCl = modal_overlay;
+
+    if (showModal) {
+      overlayCl.classList.remove("hidden");
+      setTimeout(() => {
+        modalCl.remove("opacity-0");
+        modalCl.remove("-translate-y-full");
+        modalCl.remove("scale-150");
+      }, 100);
+    } else {
+      modalCl.add("-translate-y-full");
+      setTimeout(() => {
+        modalCl.add("opacity-0");
+        modalCl.add("scale-150");
+      }, 100);
+      setTimeout(() => overlayCl.classList.add("hidden"), 300);
+    }
+  }
+
+  // openModal(true)
+
   const closeModal = () => {
-    console.log("close modal");
+    showModal(false);
   };
-  const title = "";
-  const buttonList = [
-    {
-      title: "save",
-      action: () => {
-        console.log("modal_action_1");
-      },
-    },
-    {
-      title: "next",
-      action: () => {
-        console.log("modal_action_2");
-      },
-    },
-    {
-      title: "prev",
-      action: () => {
-        console.log("modal_action_3");
-      },
-    },
-  ];
 
   return (
     <>

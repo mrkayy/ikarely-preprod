@@ -6,7 +6,6 @@ import { createContext } from "react";
 class AuthenticationStore {
   currentuser = null;
   successMsg = null;
-  unsubscribe = null;
   errorMsg = null;
   loading = null;
   success = null;
@@ -17,11 +16,10 @@ class AuthenticationStore {
   // userviewModel =
 
   constructor() {
-    this.userAPI = new UserAccount();
+    this.userAPI = UserAccount;
     this.fb = new FirebaseConfig();
     makeObservable(this, {
       currentuser: observable,
-      unsubscribe: observable,
       successMsg: observable,
       errorMsg: observable,
       loading: observable,
@@ -39,7 +37,6 @@ class AuthenticationStore {
       signout: action,
 
       user: computed,
-      unsubscribeUser: computed,
     });
     this.getCurrentUserState();
     // this.fb.auth.signOut();
@@ -122,9 +119,8 @@ class AuthenticationStore {
   };
 
   getCurrentUserState = async () => {
-    this.unsubscribe = await this.fb.auth.onAuthStateChanged((user) => {
+    await this.fb.auth.onAuthStateChanged((user) => {
       this.currentuser = user;
-      console.log({ currentUser: user });
     });
   };
 
@@ -135,10 +131,6 @@ class AuthenticationStore {
     this.loading = null;
     this.success = null;
   };
-
-  get unsubscribeUser() {
-    return this.unsubscribe;
-  }
 
   get userAccount() {
     console.log(this.currentuser.id);

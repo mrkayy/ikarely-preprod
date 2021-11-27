@@ -11,13 +11,36 @@ import LayoutMargin from "../../../../components/layoutWrapper";
 
 import Authentication from "../../../../controllers/authentication_store";
 import UserAccount from "../../../../controllers/userAccount_store";
+import LoadingIndicator from "../../../../utils/loadingIndicator";
+
+import DoctorsConsultForm from "./customForm/doctorsConsult";
+import WoundCareForm from "./customForm/woundCare";
+import Covid19ScreeningForm from "./customForm/covid19";
 
 // import SectionDescCard from "../../components/Sections/SectionDescCard";
 
 const Service = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const { resetActions, user } = useContext(Authentication);
+  const { loading, error, success, errorMsg, successMsg, profile } =
+    useContext(UserAccount);
+
+  const [showDocConsult, setshowDocConsult] = useState(false);
+  const [showCovid19, setshowCovid19] = useState(false);
+  const [showWoundCare, setshowWoundCare] = useState(false);
+
+  const [showLoginBtn, setShowLoginBtn] = useState(true);
 
   const alert = useAlert();
+
+  const toggleDocConsultModal = () => {
+    setshowDocConsult(!showDocConsult);
+  };
+  const toggleWoundCareModal = () => {
+    setshowWoundCare(!showWoundCare);
+  };
+  const toggleCovid19Modal = () => {
+    setshowCovid19(!showCovid19);
+  };
 
   const services = [
     {
@@ -26,6 +49,7 @@ const Service = () => {
       title: "Dr Consultation",
       word: "With ikarely you don't have to go through the stress of going to and wait for hours in the hospital to get timely consultation, treatment and Drug prescription for your health needs",
       type: "by_request",
+      action: toggleDocConsultModal,
     },
     {
       id: 2,
@@ -33,31 +57,20 @@ const Service = () => {
       title: "Wound Care",
       word: "Why go through the stress of going to and waiting in the hospital when dealing with wounds is enough stress on its own. We offer wound dressing services for patients with minor burns, pressure ulcer, diabetic foot and any other form of wounds at your utmost convenience.",
       type: "by_request",
+      action: toggleWoundCareModal,
     },
-    // {
-    //   id: 3,
-    //   icon: "injection.svg",
-    //   title: "Vaccination",
-    //   word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
-    //   type: "by_subscription",
-    // },
     {
-      id: 4,
+      id: 3,
       icon: "bg-catherization",
       title: "Covid19 Screening",
       word: "Get you Covid 19 test done without leaving the comfort of your home. We provide home sample collection and immediate result within 24hrs",
       type: "by_subscription",
+      action: toggleCovid19Modal,
     },
-    // {
-    // id: 1,
-    // icon: 'Chemotography.svg',
-    //   title: 'Chemotography',
-    // params: 'chemotherapy',
-    //   word:
-    //     'We offer home chemotherapy psychological support for people living with cancer. ',
-    // },
+  ];
+  const subscriptions = [
     {
-      id: 5,
+      id: 1,
       icon: "bg-healthcare",
       title: "Geriatic Care",
       params: "geriatic_care",
@@ -66,23 +79,15 @@ const Service = () => {
     },
 
     {
-      id: 6,
+      id: 2,
       icon: "bg-healthcare",
       title: "General Checkup",
       params: "general_checkup",
       word: "You can request for our professional service forindividual and family general checkups like Bloodpressure, weightcheck, glucosecheck, malaria/HIVtest, BodyMassInde(BMI) all at your convenience",
       type: "by_subscription",
     },
-    // {
-    //   id: 7,
-    //   icon: "Catherization.svg",
-    //   title: "Pregnacare",
-    //   params: "pregnacare",
-    //   word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
-    //   type: "by_subscription",
-    // },
     {
-      id: 8,
+      id: 3,
       icon: "bg-healthcare",
       title: "Diabetes Care",
       params: "diabetes",
@@ -91,40 +96,22 @@ const Service = () => {
     },
   ];
 
-  const { error, success, errorMsg, successMsg, resetActions, user } =
-    useContext(Authentication);
-  const userAccount = UserAccount;
   const options = {
     error,
   };
 
-  const btnSwitch = !user ? (
-    <Link to="/signin">
-      <button type="button" className="makerequest__btn">
-        Get Started
-      </button>
-    </Link>
-  ) : (
-    <button
-      className="makerequest__btn"
-      onClick={() => setOpenModal(!openModal)}
-    >
-      Make Request
-    </button>
-  );
-
-  // const subBtnSwitch = !currUser ? (
-  //   <Link to="/signin">
-  //     <button type="button" className="makerequest__btn">
-  //       Get Started
-  //     </button>
-  //   </Link>
-  // ) : (
-  //   <button type="button" className="makerequest__btn">
-  //     Subscribe to Service
-  //   </button>
-  // );
-
+  // show login button if user is not signed in
+  useEffect(() => {
+    if (user && user !== null) return setShowLoginBtn(false);
+    return setShowLoginBtn(true);
+  }, [user]);
+  // load user profile
+  useEffect(() => {
+    return () => {
+      resetActions();
+    };
+  }, []);
+  // show error message
   useEffect(() => {
     if (error) {
       alert.error(errorMsg, options);
@@ -132,21 +119,23 @@ const Service = () => {
     return () => {
       resetActions();
     };
-  }, [errorMsg]);
-
+  }, [errorMsg, error]);
+  // show success message
   useEffect(() => {
     if (success) {
       alert.success(successMsg, options);
-      ////console.log({ reqSuccessMessage });
-      setOpenModal(false);
     }
     return () => {
       resetActions();
     };
-  }, [successMsg]);
+  }, [successMsg, success]);
 
   return (
     <div className="">
+      {loading && <LoadingIndicator action="fetching account" />}
+      {showDocConsult && <DoctorsConsultForm show={setshowDocConsult} />}
+      {showWoundCare && <WoundCareForm show={setshowWoundCare} />}
+      {showCovid19 && <Covid19ScreeningForm show={setshowCovid19} />}
       <PageLanding image={"bg-doctor3"} title="OUR SERVICES" />
       <LayoutMargin>
         <div className="md:flex md:justify-between md:items-center">
@@ -173,7 +162,7 @@ const Service = () => {
         </div>
       </LayoutMargin>
 
-      <div className="bg-section-1 my-16 py-16">
+      <div className="bg-section-1 my-16 py-16 h-9/12">
         <LayoutMargin>
           <div className="">
             <ServiceListHeading
@@ -181,36 +170,34 @@ const Service = () => {
               title="Health Services we offer"
             />
 
-            {/* {!currUser ? (
-            <Link to="/signin">
-            <button type="button" className="getstarted__btn">Get Started</button>
-            </Link>
-            ) : (
-              <button
-              className="makerequest__btn inheader"
-              onClick={() => setOpenModal(!openModal)}
-              >
-              Make Request
-              </button>
-            )} */}
-
             <div className="">
-              <div className="max-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 justify-items-center mt-4">
+              <div className="max-w-full max-h-96 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center mt-6">
                 {services
                   .filter((service) => !service.params)
-                  .map(({ icon, title, word }) => {
+                  .map(({ icon, title, word, action }) => {
                     return (
-                      // <div className="" key={title}>
                       <ServiceCard
                         icon={icon}
                         title={title}
                         word={word}
                         key={title}
+                        btnState={showLoginBtn}
+                        action={action}
                       />
-                      // </div>
                     );
                   })}
               </div>
+              {showLoginBtn ? (
+                <div className="mt-12 p-4 sm:p-5 mx-auto w-48 sm:w-2/12 bg-primary-main ring-2 ring-primary-200 rounded-md hover:bg-primary-200 shadow-xl">
+                  <Link to="/signin">
+                    <p className="text-center tex-sm sm:text-md tracking-wide font-bold text-white">
+                      Get Started
+                    </p>
+                  </Link>
+                </div>
+              ) : (
+                <div className="mt-12 p-5 ">{""}</div>
+              )}
             </div>
           </div>
         </LayoutMargin>
@@ -223,15 +210,16 @@ const Service = () => {
             title="Premium Health Services we offer"
           />
 
+          {/* subscription services section */}
           <div className="">
             <div className="max-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 justify-items-center mt-4">
-              {services
+              {subscriptions
                 .filter((service) => service.params)
                 .map(({ icon, title, word, type, params }) => {
                   return (
                     <>
                       {/* <div className="service__list" key={title}> */}
-                      <ServiceCard
+                      <SubscriptionCard
                         icon={icon}
                         title={title}
                         word={word}
@@ -239,25 +227,25 @@ const Service = () => {
                         isSubscription={type}
                       />
                       {/* <Link to={`/subscription/${params}`}>{subBtnSwitch}</Link> */}
-
-                      {/* </div> */}
                     </>
                   );
                 })}
             </div>
+            {showLoginBtn ? (
+              <div className="mt-12 p-5 mx-auto md:w-2/12 bg-primary-main ring-2 ring-primary-200 rounded-md hover:bg-primary-200 shadow-xl">
+                <Link to="/signin">
+                  <p className="text-center md:text-md tracking-wide font-bold text-white">
+                    Get Started
+                  </p>
+                </Link>
+              </div>
+            ) : (
+              <div className="mt-12 p-5 ">{""}</div>
+            )}
           </div>
         </div>
       </LayoutMargin>
     </div>
-
-    //  <Modal
-    //  disablePortal
-    //  open={openModal}
-    //  onBackdropClick={() => setOpenModal(false)}
-    //  className=""
-    // >
-    //  <ModalForm services={services} setOpenModal={setOpenModal} />
-    // </Modal>
   );
 };
 
@@ -276,7 +264,51 @@ const ServiceListHeading = ({ heading, title }) => {
   );
 };
 
-function ServiceCard({ icon, title, word, key, isSubscription }) {
+function ServiceCard({ icon, title, word, action, btnState }) {
+  return (
+    <div className="bg-white shadow-2xl rounded-xl p-5 sm:-7 xl:p-8 block justify-between h-full">
+      <div className="w-full mb-6">
+        <div className="flex justify-evenly items-center">
+          <div className="">
+            <div className="bg-primary-100 h-16 w-16 rounded-md transform -rotate-12">
+              <div className="bg-primary-100 h-16 w-16 rounded-md transform rotate-12 grid place-items-center">
+                <div
+                  className={`text-xs sm:text-sm h-9 w-9 bg-contain bg-center bg-no-repeat ${icon}`}
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div className="">
+            <h2 className="text-center text-xl text-typography-light font-bold tracking-tight xl:tracking-wider">
+              {title}
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div className="w-full">
+        <p
+          className={`text-typography-extralight text-xs sm:text-sm xl:text-base font-font-light
+              sm:tracking-tight md:leading-5 text-justify xl:tracking-normal`}
+        >
+          {word}
+        </p>
+      </div>
+      {!btnState && (
+        <div className="">
+          <button
+            type="button"
+            onClick={action}
+            className="mx-auto bg-primary-accent text-white shadow-md ring-1 ring-primary-200 hover:text-typography-main hover:bg-primary-200 py-3 px-4 capitalize font-bold rounded-lg md:mr-6 text-xs sm:text-sm"
+          >
+            Request Service
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function SubscriptionCard({ icon, title, word, key, isSubscription, params }) {
   return (
     <div
       key={key}

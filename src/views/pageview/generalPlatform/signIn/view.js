@@ -15,7 +15,6 @@ const SignIn = (props) => {
 
   const {
     user,
-    unsubscribe,
     authenticateUserAccount,
     error,
     loading,

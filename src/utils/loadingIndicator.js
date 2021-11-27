@@ -1,11 +1,11 @@
 import React from "react";
-import CustomPortalLayout from "../../layouts/portalLayout";
+import CustomPortalLayout from "../layouts/portalLayout";
 
-function LoadingIndicator({ isloading }) {
+function LoadingIndicator({ action }) {
   return (
     <>
       <CustomPortalLayout>
-        <div className="bg-primary-100 p-4 shadow-xl rounded-xl text-xs flex justify-center items-center space-x-1 text-sm">
+        <div className="bg-primary-100 p-4 shadow-xl rounded-xl text-xs flex justify-center items-center capitalize space-x-1 text-sm">
           <svg
             fill="none"
             class="w-5 h-5 md:h-6 md:w-6 animate-spin"
@@ -19,7 +19,9 @@ function LoadingIndicator({ isloading }) {
               fill-rule="evenodd"
             />
           </svg>
-          <p className="">{isloading ? isloading : "processing..."}</p>
+          <p className="text-typography-light">
+            {action ? action : "processing..."}
+          </p>
         </div>
       </CustomPortalLayout>
     </>
