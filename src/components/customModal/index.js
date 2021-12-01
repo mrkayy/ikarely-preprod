@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CustomPortalLayout from "../../layouts/portalLayout";
 
 function CustomServiceModal(props) {
-  const { showModal, children, title, buttonList } = props;
+  const { showModal, children, title } = props;
   const modal_overlay = document.querySelector("#modal_overlay");
   const modal = document.querySelector("#modal");
 
@@ -37,7 +37,7 @@ function CustomServiceModal(props) {
     <>
       <CustomPortalLayout>
         <>
-          <div className="w-11/12 h-5/6 lg:w-3/5 md:w-3/4 md:h-3/5 bg-white rounded-xl relative shadow-xl overflow-y-scroll overflow-y-hidden">
+          <div className="w-11/12 sm:w-1/2 h-3/4 bg-white rounded-xl relative shadow-xl  overflow-y-scroll overflow-y-hidden">
             <div
               onClick={closeModal}
               className="h-18 absolute right-2 top-2 md:right-3 md:top-3"
@@ -45,7 +45,7 @@ function CustomServiceModal(props) {
               <span className="w-10">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10 text-typography-extralight hover:text-typography-emphasis"
+                  className="h-8 w-8 sm:h-10 sm:w-10 text-typography-extralight hover:text-typography-emphasis"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -59,28 +59,11 @@ function CustomServiceModal(props) {
                 </svg>
               </span>
             </div>
-            <div className="flex justify-center items-center w-full pt-3 text-xl">
+            <div className="flex justify-center items-center w-full py-3 text-md sm:text-xl">
               {title ? title : "nothing_here"}
             </div>
-            <hr className="mt-3 mx-24" />
-            <div className="p-8 bg-gray-100 ">{children}</div>
-            <div className="absolute bottom-0 w-full pb-2">
-              <hr className="mb-3 mx-24 text-primary-100" />
-              <div className="mb-3 px-2 md:px-4 pt-2 flex justify-evenly md:justify-end items-center">
-                {buttonList.map(({ title, action }, index) => {
-                  return (
-                    <button
-                      key={index}
-                      type="button"
-                      onClick={action}
-                      className="bg-primary-accent text-white shadow-md ring-1 ring-primary-main hover:text-typography-main hover:bg-primary-100 p-4 capitalize font-bold rounded-lg mx-2 md:mr-6 w-28"
-                    >
-                      {title ? title : "nothing_here"}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+            <hr className="mx-24" />
+            <div className="py-4 px-8 h-full">{children}</div>
           </div>
         </>
       </CustomPortalLayout>

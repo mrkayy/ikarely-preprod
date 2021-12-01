@@ -10,24 +10,35 @@ import ArticleSection from "../../../../components/articleSection";
 import LayoutMargin from "../../../../components/layoutWrapper";
 
 import Authentication from "../../../../controllers/authentication_store";
-import UserAccount from "../../../../controllers/userAccount_store";
+import UserAccountStore from "../../../../controllers/userAccount_store";
 import LoadingIndicator from "../../../../utils/loadingIndicator";
 
 import DoctorsConsultForm from "./customForm/doctorsConsult";
 import WoundCareForm from "./customForm/woundCare";
 import Covid19ScreeningForm from "./customForm/covid19";
+import UpdateProfileForm from "./updateProfileForm";
 
 // import SectionDescCard from "../../components/Sections/SectionDescCard";
 
 const Service = () => {
-  const { resetActions, user } = useContext(Authentication);
-  const { loading, error, success, errorMsg, successMsg, profile } =
-    useContext(UserAccount);
+  const { user } = useContext(Authentication);
+  const {
+    loading,
+    error,
+    success,
+    errorMsg,
+    successMsg,
+    getprofile,
+    loadUserAccount,
+    resetActions,
+  } = useContext(UserAccountStore);
 
   const [showDocConsult, setshowDocConsult] = useState(false);
   const [showCovid19, setshowCovid19] = useState(false);
   const [showWoundCare, setshowWoundCare] = useState(false);
+  // const [showUpdateProfile, setShowUpdateProfile] = useState(false);
 
+  const [loadingUsers, setLoadingUsers] = useState(false);
   const [showLoginBtn, setShowLoginBtn] = useState(true);
 
   const alert = useAlert();
@@ -73,7 +84,7 @@ const Service = () => {
       id: 1,
       icon: "bg-healthcare",
       title: "Geriatic Care",
-      params: "geriatic_care",
+      params: "geriatic-care",
       word: "Elderly people don't always have to be hospitalized for minor health concerns that can be delivered to them at home. We provide care for the Elderly, from general checkup to catheterization and lots more.",
       type: "by_subscription",
     },
@@ -82,7 +93,7 @@ const Service = () => {
       id: 2,
       icon: "bg-healthcare",
       title: "General Checkup",
-      params: "general_checkup",
+      params: "general-checkup",
       word: "You can request for our professional service forindividual and family general checkups like Bloodpressure, weightcheck, glucosecheck, malaria/HIVtest, BodyMassInde(BMI) all at your convenience",
       type: "by_subscription",
     },
@@ -105,37 +116,68 @@ const Service = () => {
     if (user && user !== null) return setShowLoginBtn(false);
     return setShowLoginBtn(true);
   }, [user]);
-  // load user profile
+
+  // listen for user account loading event
   useEffect(() => {
-    return () => {
-      resetActions();
-    };
+    setLoadingUsers(loading);
+
+    return () => resetActions();
+  }, [loading]);
+
+  // load user profile on_page_load
+  useEffect(() => {
+    if (getprofile === null && user && user !== null) {
+      loadUserAccount(user?.uid ?? "nnn");
+    } else {
+      console.log({ getprofile });
+      return;
+    }
   }, []);
+
   // show error message
   useEffect(() => {
     if (error) {
       alert.error(errorMsg, options);
     }
-    return () => {
-      resetActions();
-    };
   }, [errorMsg, error]);
+
   // show success message
   useEffect(() => {
     if (success) {
       alert.success(successMsg, options);
     }
-    return () => {
-      resetActions();
-    };
   }, [successMsg, success]);
 
   return (
     <div className="">
-      {loading && <LoadingIndicator action="fetching account" />}
-      {showDocConsult && <DoctorsConsultForm show={setshowDocConsult} />}
-      {showWoundCare && <WoundCareForm show={setshowWoundCare} />}
-      {showCovid19 && <Covid19ScreeningForm show={setshowCovid19} />}
+      {/* TODO: work on user profile updata later */}
+      {/* {getprofile && !getprofile.address ? (
+        <UpdateProfileForm show={setShowUpdateProfile} />
+      ) : (
+        <></>
+      )} */}
+      {loadingUsers && <LoadingIndicator action="fetching account" />}
+      {showDocConsult && (
+        <DoctorsConsultForm
+          show={setshowDocConsult}
+          user={getprofile}
+          uid={user && user.uid}
+        />
+      )}
+      {showWoundCare && (
+        <WoundCareForm
+          show={setshowWoundCare}
+          user={getprofile}
+          uid={user && user.uid}
+        />
+      )}
+      {showCovid19 && (
+        <Covid19ScreeningForm
+          show={setshowCovid19}
+          user={getprofile}
+          uid={user && user.uid}
+        />
+      )}
       <PageLanding image={"bg-doctor3"} title="OUR SERVICES" />
       <LayoutMargin>
         <div className="md:flex md:justify-between md:items-center">
@@ -170,72 +212,27 @@ const Service = () => {
               title="Health Services we offer"
             />
 
-            <div className="">
-              <div className="max-w-full max-h-96 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center mt-6">
-                {services
-                  .filter((service) => !service.params)
-                  .map(({ icon, title, word, action }) => {
-                    return (
-                      <ServiceCard
-                        icon={icon}
-                        title={title}
-                        word={word}
-                        key={title}
-                        btnState={showLoginBtn}
-                        action={action}
-                      />
-                    );
-                  })}
-              </div>
-              {showLoginBtn ? (
-                <div className="mt-12 p-4 sm:p-5 mx-auto w-48 sm:w-2/12 bg-primary-main ring-2 ring-primary-200 rounded-md hover:bg-primary-200 shadow-xl">
-                  <Link to="/signin">
-                    <p className="text-center tex-sm sm:text-md tracking-wide font-bold text-white">
-                      Get Started
-                    </p>
-                  </Link>
-                </div>
-              ) : (
-                <div className="mt-12 p-5 ">{""}</div>
-              )}
-            </div>
-          </div>
-        </LayoutMargin>
-      </div>
-
-      <LayoutMargin>
-        <div className="my-16 py-16">
-          <ServiceListHeading
-            heading="Our Services"
-            title="Premium Health Services we offer"
-          />
-
-          {/* subscription services section */}
-          <div className="">
-            <div className="max-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 justify-items-center mt-4">
-              {subscriptions
-                .filter((service) => service.params)
-                .map(({ icon, title, word, type, params }) => {
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 justify-items-center mt-8">
+              {services
+                .filter((service) => !service.params)
+                .map(({ icon, title, word, action }) => {
                   return (
-                    <>
-                      {/* <div className="service__list" key={title}> */}
-                      <SubscriptionCard
-                        icon={icon}
-                        title={title}
-                        word={word}
-                        key={title}
-                        isSubscription={type}
-                      />
-                      {/* <Link to={`/subscription/${params}`}>{subBtnSwitch}</Link> */}
-                    </>
+                    <ServiceCard
+                      icon={icon}
+                      title={title}
+                      word={word}
+                      btnState={showLoginBtn}
+                      action={action}
+                      key={title}
+                    />
                   );
                 })}
             </div>
             {showLoginBtn ? (
-              <div className="mt-12 p-5 mx-auto md:w-2/12 bg-primary-main ring-2 ring-primary-200 rounded-md hover:bg-primary-200 shadow-xl">
+              <div className="mt-12 p-4 sm:p-5 mx-auto w-48 sm:w-1/3 lg:w-1/5 bg-primary-main ring-2 ring-primary-200 rounded-md hover:bg-primary-200 shadow-xl">
                 <Link to="/signin">
-                  <p className="text-center md:text-md tracking-wide font-bold text-white">
-                    Get Started
+                  <p className="text-center tex-sm sm:text-md tracking-wide font-bold text-white">
+                    Make Request
                   </p>
                 </Link>
               </div>
@@ -243,6 +240,47 @@ const Service = () => {
               <div className="mt-12 p-5 ">{""}</div>
             )}
           </div>
+        </LayoutMargin>
+      </div>
+
+      <LayoutMargin>
+        <div className="my-6 py-6">
+          <ServiceListHeading
+            heading="Our Services"
+            title="Premium Health Services we offer"
+          />
+
+          {/* subscription services section */}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 justify-items-center mt-8">
+            {" "}
+            {subscriptions
+              .filter((service) => service.params)
+              .map(({ icon, title, word, type, params }) => {
+                return (
+                  <SubscriptionCard
+                    icon={icon}
+                    title={title}
+                    word={word}
+                    key={title}
+                    params={params}
+                    isSubscription={type}
+                    btnState={showLoginBtn}
+                  />
+                );
+              })}
+          </div>
+          {showLoginBtn ? (
+            <Link to="/signin">
+              <div className="order-1 sm:order-none  mt-12 p-4 sm:p-5 mx-auto w-48 sm:w-1/3 lg:w-1/5 bg-primary-main ring-2 ring-primary-200 rounded-md hover:bg-primary-200 shadow-xl">
+                <p className="text-center tex-sm sm:text-md tracking-wide font-bold text-white">
+                  Subscribe
+                </p>
+              </div>
+            </Link>
+          ) : (
+            <div className="order-1 sm:order-none mt-12 p-5">{""}</div>
+          )}
         </div>
       </LayoutMargin>
     </div>
@@ -264,92 +302,117 @@ const ServiceListHeading = ({ heading, title }) => {
   );
 };
 
-function ServiceCard({ icon, title, word, action, btnState }) {
+function ServiceCard({ icon, title, word, action, btnState, key }) {
   return (
-    <div className="bg-white shadow-2xl rounded-xl p-5 sm:-7 xl:p-8 block justify-between h-full">
-      <div className="w-full mb-6">
-        <div className="flex justify-evenly items-center">
-          <div className="">
-            <div className="bg-primary-100 h-16 w-16 rounded-md transform -rotate-12">
-              <div className="bg-primary-100 h-16 w-16 rounded-md transform rotate-12 grid place-items-center">
-                <div
-                  className={`text-xs sm:text-sm h-9 w-9 bg-contain bg-center bg-no-repeat ${icon}`}
-                ></div>
+    <div
+      key={key}
+      className="bg-white w-10/12 sm:w-11/12 xl:w-10/12 h-96 sm:h-auto shadow-2xl rounded-3xl px-6 py-12 sm:p-7 xl:p-8"
+    >
+      <div className="max-w-full grid grid-cols-1 h-full place-content-between">
+        <div>
+          <div>
+            <div className="w-full">
+              <div className="flex justify-evenly sm:justify-between items-center">
+                <div className="">
+                  <div className="bg-primary-100 h-16 w-16 rounded-md transform -rotate-12">
+                    <div className="bg-primary-100 h-16 w-16 rounded-md transform rotate-12 grid place-items-center">
+                      <div
+                        className={`text-xs sm:text-sm h-9 w-9 bg-contain bg-center bg-no-repeat ${icon}`}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="">
+                  <h2 className="text-center text-xl text-typography-light font-bold tracking-tight xl:tracking-wider">
+                    {title}
+                  </h2>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="">
-            <h2 className="text-center text-xl text-typography-light font-bold tracking-tight xl:tracking-wider">
-              {title}
-            </h2>
-          </div>
-        </div>
-      </div>
-      <div className="w-full">
-        <p
-          className={`text-typography-extralight text-xs sm:text-sm xl:text-base font-font-light
+            <div className="w-full mt-6">
+              <p
+                className={`text-typography-extralight text-xs sm:text-sm xl:text-base font-font-light
               sm:tracking-tight md:leading-5 text-justify xl:tracking-normal`}
-        >
-          {word}
-        </p>
-      </div>
-      {!btnState && (
-        <div className="">
-          <button
-            type="button"
-            onClick={action}
-            className="mx-auto bg-primary-accent text-white shadow-md ring-1 ring-primary-200 hover:text-typography-main hover:bg-primary-200 py-3 px-4 capitalize font-bold rounded-lg md:mr-6 text-xs sm:text-sm"
-          >
-            Request Service
-          </button>
+              >
+                {word}
+              </p>
+            </div>
+          </div>
         </div>
-      )}
+        <div className="mt-2 px-10 sm:px-5">
+          {!btnState && (
+            <button
+              type="button"
+              onClick={action}
+              className="text-center w-full bg-primary-accent text-white shadow-md ring-1 ring-primary-200 hover:text-typography-main hover:bg-primary-200 py-3 px-4 capitalize font-bold rounded-lg md:mr-6 text-xs sm:text-sm"
+            >
+              Request Service
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
 
-function SubscriptionCard({ icon, title, word, key, isSubscription, params }) {
+function SubscriptionCard({
+  icon,
+  title,
+  word,
+  isSubscription,
+  params,
+  key,
+  btnState,
+}) {
   return (
     <div
       key={key}
-      className="bg-white w-10/12 sm:w-11/12 xl:w-10/12 shadow-2xl rounded-3xl p-6 sm:-7 xl:p-8"
+      className="bg-white w-10/12 sm:w-11/12 xl:w-10/12 h-96 sm:h-auto shadow-2xl rounded-3xl px-6 py-4 sm:-7 xl:p-8"
     >
-      <div className="max-w-full h-60 sm:h-72 md:h-80 xl:h-96 grid grid-cols-1">
-        <div className="w-full">
-          <div className="flex justify-evenly items-center">
-            <div className="">
-              <div className="bg-primary-100 h-16 w-16 rounded-md transform -rotate-12">
-                <div className="bg-primary-100 h-16 w-16 rounded-md transform rotate-12 grid place-items-center">
-                  <div
-                    className={`text-xs sm:text-sm h-9 w-9 bg-contain bg-center bg-no-repeat ${icon}`}
-                  ></div>
+      <div className="max-w-full grid grid-cols-1 h-full place-content-between">
+        <div>
+          <div>
+            <div className="w-full">
+              <div className="flex justify-evenly sm:justify-between items-center">
+                <div className="">
+                  <div className="bg-primary-100 h-16 w-16 rounded-md transform -rotate-12">
+                    <div className="bg-primary-100 h-16 w-16 rounded-md transform rotate-12 grid place-items-center">
+                      <div
+                        className={`text-xs sm:text-sm h-9 w-9 bg-contain bg-center bg-no-repeat ${icon}`}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="">
+                  <h2 className="text-center text-xl text-typography-light font-bold tracking-tight xl:tracking-wider">
+                    {title}
+                  </h2>
                 </div>
               </div>
             </div>
-            <div className="">
-              <h2 className="text-center text-xl text-typography-light font-bold tracking-tight xl:tracking-wider">
-                {title}
-              </h2>
+            <div className="w-full mt-6">
+              <p
+                className={`text-typography-extralight text-xs sm:text-sm xl:text-base font-font-light
+              sm:tracking-tight md:leading-5 text-justify xl:tracking-normal`}
+              >
+                {word}
+              </p>
             </div>
           </div>
         </div>
-        <div className="w-full">
-          <p
-            className={`text-typography-extralight text-xs sm:text-sm xl:text-base font-font-light
-              sm:tracking-tight md:leading-5 text-justify xl:tracking-normal`}
-          >
-            {word}
-          </p>
+        <div className="px-10 sm:px-5">
+          {isSubscription && (
+            <>
+              {!btnState && (
+                <Link to={`/subscription/${params}`}>
+                  <div className="w-full text-center bg-primary-accent text-white shadow-md ring-1 ring-primary-200 hover:text-typography-main hover:bg-primary-200 py-3 px-4 capitalize font-bold rounded-lg md:mr-6 text-xs sm:text-sm">
+                    <p className="">Subscription</p>
+                  </div>
+                </Link>
+              )}
+            </>
+          )}
         </div>
-        {isSubscription && (
-          <div className="w-full">
-            <Link to="/subscriptions">
-              <button type="button" className="">
-                Subscription
-              </button>
-            </Link>
-          </div>
-        )}
       </div>
     </div>
   );

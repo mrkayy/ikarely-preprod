@@ -32,7 +32,7 @@ class AuthStore {
       register: action,
       rememberMe: action,
       getCurrUser: action,
-      resetActions: action,
+      // resetActions: action,
       getLoggedInUser: action,
       refreshUser: action,
     });
@@ -160,13 +160,13 @@ class AuthStore {
     this.currUser = WebStorage.get("user_token") ? true : false;
   };
 
-  resetActions = () => {
-    this.error = false;
-    this.loading = false;
-    this.success = false;
-    this.errorMsg = "";
-    this.successMessage = "";
-  };
+  // resetActions = () => {
+  //   this.error = false;
+  //   this.loading = false;
+  //   this.success = false;
+  //   this.errorMsg = "";
+  //   this.successMessage = "";
+  // };
 }
 
 export default createContext(new AuthStore());

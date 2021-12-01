@@ -67,12 +67,14 @@ function Landing() {
                     </div>
                     <div className="flex justify-center sm:block mt-12 sm:mt-6 sm:mb-16">
                       <Link to="/service">
-                        <button
-                          type="button"
-                          className="text-xs sm:text-sm px-6 py-3 bg-primary-accent lg:w-48 text-white rounded sm:text-sm "
+                        <div
+                          // className="text-xs sm:text-sm px-6 py-3  bg-primary-accent lg:w-48 text-white rounded sm:text-sm "
+                          className="mt-12 p-4 sm:p-5 text-white  w-48 sm:w-1/3 lg:w-1/5 bg-primary-main ring-2 ring-primary-200 rounded-md hover:bg-primary-200 shadow-xl"
                         >
-                          Get Started
-                        </button>
+                          <p className="text-center tex-sm sm:text-md tracking-wide font-bold text-white">
+                            Get Started
+                          </p>
+                        </div>
                       </Link>
                     </div>
                   </div>

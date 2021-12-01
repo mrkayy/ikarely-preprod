@@ -50,7 +50,7 @@ function WhyUs() {
           </div>
         </div>
 
-        <div className="mb-20 sm:mb-32">
+        <div className="">
           <div className="max-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 justify-items-center mt-4">
             {whyus__options.map(({ icon, title, word }, index) => {
               return (

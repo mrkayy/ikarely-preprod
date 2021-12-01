@@ -27,12 +27,3 @@ const Home = () => {
 };
 
 export default Home;
-
-const Modal = (props) => {
-  const { children, title, closeModal, modalButton } = props;
-  return (
-    <>
-     
-    </>
-  );
-};

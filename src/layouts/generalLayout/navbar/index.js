@@ -100,7 +100,7 @@ function NavBar({ showMenu }) {
                   </Link>
                 </li>
               ))}
-              {user && user !== null ? (
+              {/* {user && user !== null ? (
                 <li>
                   <Link
                     className="rounded font-900 text-typography-main hover:bg-primary-accent py-2 px-4 md:px-3 mr-4 hover:text-white"
@@ -111,7 +111,7 @@ function NavBar({ showMenu }) {
                 </li>
               ) : (
                 <></>
-              )}
+              )} */}
             </ul>
           </div>
 

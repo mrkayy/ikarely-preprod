@@ -1,9 +1,9 @@
 import { makeObservable, observable, action, autorun, computed } from "mobx";
 import FirebaseConfig from "../configs/firebase-config";
-import UserAccount from "./userAccount_store";
+import UserAccountStore from "./userAccount_store";
 import { createContext } from "react";
 
-class AuthenticationStore {
+class AuthenticationStore extends FirebaseConfig {
   currentuser = null;
   successMsg = null;
   errorMsg = null;
@@ -16,8 +16,8 @@ class AuthenticationStore {
   // userviewModel =
 
   constructor() {
-    this.userAPI = UserAccount;
-    this.fb = new FirebaseConfig();
+    super();
+    this.userAPI = UserAccountStore;
     makeObservable(this, {
       currentuser: observable,
       successMsg: observable,
@@ -39,13 +39,13 @@ class AuthenticationStore {
       user: computed,
     });
     this.getCurrentUserState();
-    // this.fb.auth.signOut();
+    // this.auth.signOut();
   }
 
   // create new user account with email and password
   createUserAccount = (data) => {
     this.loading = true;
-    this.fb.auth
+    this.auth
       .createUserWithEmailAndPassword(data.email, data.password)
       .then((res) => {
         this.loading = false;
@@ -73,13 +73,13 @@ class AuthenticationStore {
         console.log(this.error);
       });
     // .finally(async () => {
-
+    this.resetActions();
     //   this.loading = true;
   };
 
   authenticateUserAccount = (data) => {
     this.loading = true;
-    this.fb.auth
+    this.auth
       .signInWithEmailAndPassword(data.email, data.password)
       .then((res) => {
         this.loading = false;
@@ -97,11 +97,13 @@ class AuthenticationStore {
         this.errorMsg = err.message;
         console.log({ err });
       });
+
+    this.resetActions();
   };
 
   verifyUserAccount = (data) => {
     this.loading = true;
-    this.fb.auth
+    this.auth
       .sendEmailVerification({})
       .then((res) => {
         this.loading = false;
@@ -114,14 +116,19 @@ class AuthenticationStore {
   sendPasswordResetLink = () => {};
 
   signout = () => {
-    this.fb.auth.signOut();
+    this.auth.signOut();
     this.getCurrentUserState();
+    this.resetActions();
   };
 
   getCurrentUserState = async () => {
-    await this.fb.auth.onAuthStateChanged((user) => {
-      this.currentuser = user;
-    });
+    try {
+      await this.auth.onAuthStateChanged((user) => {
+        this.currentuser = user;
+      });
+    } catch (error) {
+      console.log({ error });
+    }
   };
 
   resetActions = () => {

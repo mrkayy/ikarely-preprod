@@ -123,8 +123,6 @@ const SignIn = (props) => {
       }}
     />
   ) : (
-    // px-8 md:p-12 xl:p-16 2xl:p-28
-    // px-4 md:px-28 lg:px-8 xl:px-0
     <>
       <section className="w-screen bg-doctor3 bg-no-repeat bg-center bg-cover">
         <div className="bg-opacity-50 py-10 sm:py-0 bg-white h-screen w-screen lg:flex lg:justify-between">

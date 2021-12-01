@@ -65,6 +65,7 @@ const GlobalLayer = ({children}) => {
         validateProperty,
         handleChange,
       }}
+      
     >
       {children}
     </GlobalContext.Provider>

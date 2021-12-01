@@ -5,6 +5,30 @@ import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 function PaymentComponent(props) {
   const { email, amount, type, customer, phoneNum, subscription } = props;
 
+  const planColor = (color) => {
+    switch (color) {
+      case "Bronze plan":
+        return "bg-primary-100";
+      case "Silver plan":
+        return "bg-white";
+      case "Gold plan":
+        return "bg-white";
+      default:
+        return "bg-white";
+    }
+  };
+
+  const textColor = (param) => {
+    switch (param) {
+      case "Bronze plan":
+        return "text-bold";
+      case "Silver plan":
+        return "text-bold";
+      default:
+        return "text-typography-main";
+    }
+  };
+
   const config = {
     public_key:
       process.env.NODE_ENV === "development"
@@ -22,7 +46,10 @@ function PaymentComponent(props) {
     },
     customizations: {
       title: type,
-      description: subscription,
+      name: customer,
+      email: email,
+      phone: phoneNum,
+      description: { ...subscription },
       //   logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
     },
   };
@@ -30,9 +57,11 @@ function PaymentComponent(props) {
   const handleFlutterPayment = useFlutterwave(config);
 
   return (
-    <div>
+    <>
       <button
-        className="choose__plan"
+        className={`capitalize hover:bg-primary-200 w-full my-5 h-12 shadow-sm rounded-md ${textColor(
+          type
+        )} ${planColor(type)}`}
         onClick={() => {
           handleFlutterPayment({
             callback: (response) => {
@@ -42,9 +71,9 @@ function PaymentComponent(props) {
           });
         }}
       >
-        Choose
+        Subscribe now
       </button>
-    </div>
+    </>
   );
 }
 
