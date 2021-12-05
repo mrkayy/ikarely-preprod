@@ -7,7 +7,6 @@ import LayoutMargin from "../../../../components/layoutWrapper";
 import AuthenticationStore from "../../../../controllers/authentication_store";
 import { observer } from "mobx-react-lite";
 import { Redirect, useHistory } from "react-router-dom";
-import { options } from "joi-browser";
 
 function Subscription(props) {
   const { id } = useParams();
@@ -199,10 +198,11 @@ function Subscription(props) {
           <div className="grid gap-y-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center mt-8">
             {subscriptions
               .filter((subscription) => subscription.pathname === id)
-              .map(({ plans }) =>
+              .map(({ plans, plan }) =>
                 plans.map(({ type, price, offers }) => {
                   return (
                     <Plan
+                      plan={plan}
                       type={type}
                       price={price}
                       offers={offers}

@@ -64,7 +64,7 @@ function InputBox({
 }
 
 InputBox.propTypes = {
-  hasOption: PropTypes.bool.isRequired,
+  hasOption: PropTypes.bool,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

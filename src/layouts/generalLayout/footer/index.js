@@ -43,14 +43,14 @@ function Footer() {
                 </div>
               </div>
 
-              <div className="text-xs">
+              <div className="text-sm">
                 <div className="flex items-center justify-start mb-3">
                   <img
                     src={`images/${"Vector3.png"}`}
                     alt="location.jpg"
                     className="w-4 sm:w-6 md:w-4 lg:w-6 mr-3"
                   />
-                  <span>Location@Ikarely, Nigeria</span>
+                  <span>1-5 oba akinjobi way, GRA lagos, Nigeria</span>
                 </div>
                 <div className="flex items-center justify-start mb-3">
                   <img
@@ -58,7 +58,7 @@ function Footer() {
                     alt=""
                     className="w-4 sm:w-6 md:w-4 lg:w-6 mr-3"
                   />
-                  <span>info@ikarely.com</span>
+                  <span>support@ikarely.com</span>
                 </div>
                 <div className="flex items-center justify-start mb-3">
                   <img
@@ -66,7 +66,12 @@ function Footer() {
                     alt=""
                     className="w-4 sm:w-6 md:w-4 lg:w-6 mr-3"
                   />
-                  <span>+23490115130</span>
+                  <span>
+                    <a href={"tel:+2349063870220"} className="">
+                      {" "}
+                      +2349063870220
+                    </a>
+                  </span>
                 </div>
               </div>
 
@@ -87,22 +92,22 @@ function Footer() {
                 Our services
               </h3>
               <div className="no-underline grid grid-cols-1 gap-y-3">
-                <Link to="/sevice" className="text-white text-xs md:text-md">
+                <Link to="/sevice" className="text-white text-sm md:text-md">
                   <p>Wound Care</p>
                 </Link>
-                <Link to="/sevice" className="text-white text-xs md:text-md">
+                <Link to="/sevice" className="text-white text-sm md:text-md">
                   <p>Doctor's Consultation</p>
                 </Link>
-                <Link to="/sevice" className="text-white text-xs md:text-md">
+                <Link to="/sevice" className="text-white text-sm md:text-md">
                   <p>Covid-19 Screening</p>
                 </Link>
-                <Link to="/sevice" className="text-white text-xs md:text-md">
+                <Link to="/sevice" className="text-white text-sm md:text-md">
                   <p>Geriatic Care</p>
                 </Link>
-                <Link to="/sevice" className="text-white text-xs md:text-md">
+                <Link to="/sevice" className="text-white text-sm md:text-md">
                   <p>Diabetes Care</p>
                 </Link>
-                <Link to="/sevice" className="text-white text-xs md:text-md">
+                <Link to="/sevice" className="text-white text-sm md:text-md">
                   <p>General Checkup</p>
                 </Link>
                 {/* <Link to="/sevice" className="text-white text-sm sm:text-md">
@@ -119,16 +124,16 @@ function Footer() {
                 Quick Links
               </h3>
               <div className="grid grid-cols-1 gap-y-3">
-                <Link to="/" className="text-white text-xs md:text-md">
+                <Link to="/" className="text-white text-sm">
                   <p>Home</p>
                 </Link>
-                <Link to="/service" className="text-white text-xs md:text-md">
+                <Link to="/service" className="text-white text-sm">
                   <p>Services</p>
                 </Link>
-                <Link to="/about" className="text-white text-xs md:text-md">
+                <Link to="/about" className="text-white text-sm">
                   <p>About Us</p>
                 </Link>
-                <Link to="/contact" className="text-white text-xs md:text-md">
+                <Link to="/contact" className="text-white text-sm">
                   <p>Contact Us</p>
                 </Link>
               </div>

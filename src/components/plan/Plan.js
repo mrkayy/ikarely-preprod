@@ -10,7 +10,7 @@ import planicon from "../../utils/assets/images/planicon.png";
 // import "./plan.css";
 import { observer } from "mobx-react-lite";
 
-function Plan({ type, price, offers }) {
+function Plan({ type, price, offers, plan }) {
   const { getprofile } = useContext(UserAccountStore);
 
   const showCurrency = (value, code) => {
@@ -92,8 +92,11 @@ function Plan({ type, price, offers }) {
           email={getprofile && getprofile.email}
           amount={price}
           type={`${type} plan`}
-          customer={getprofile && getprofile.phone}
-          phoneNum={getprofile && getprofile.full_name}
+          plan={plan}
+          customer={
+            getprofile && getprofile.first_name + " " + getprofile.last_name
+          }
+          phoneNum={getprofile && getprofile.phone}
           subscription={offers}
         />
       </div>

@@ -22,6 +22,7 @@ class Covid19ScreeningStore extends FirebaseConfig {
 
   constructor() {
     super();
+    this.resetActions();
 
     this.auth = Authentication;
     this.collectionRef = collection(this.db, "service_request");
@@ -60,7 +61,7 @@ class Covid19ScreeningStore extends FirebaseConfig {
     this.successMsg = "Service Request was successful!";
     this.success = true;
 
-    this.resetActions();
+    // this.resetActions();
   };
 
   getServiceRequest = (userdocid) => {
@@ -75,7 +76,7 @@ class Covid19ScreeningStore extends FirebaseConfig {
         this.loading = false;
       });
 
-    this.resetActions();
+    // this.resetActions();
   };
 
   UpdateServiceRequest = () => {};

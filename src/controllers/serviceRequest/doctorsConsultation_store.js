@@ -22,6 +22,7 @@ class DoctorsConsultationStore extends FirebaseConfig {
 
   constructor() {
     super();
+    this.resetActions();
 
     this.auth = Authentication;
     this.collectionRef = collection(this.db, "service_request");
@@ -60,7 +61,7 @@ class DoctorsConsultationStore extends FirebaseConfig {
       return;
     }
     // clear all listeners
-    this.resetActions();
+    // this.resetActions();
   };
 
   getServiceRequest = (userdocid) => {
@@ -73,11 +74,11 @@ class DoctorsConsultationStore extends FirebaseConfig {
       })
       .catch((error) => {
         this.loading = false;
-      })
-      .finally(() =>
-        // clear all listeners
-        this.resetActions()
-      );
+      });
+    // .finally(() =>
+    //   // clear all listeners
+    //   this.resetActions()
+    // );
   };
 
   UpdateServiceRequest = () => {};

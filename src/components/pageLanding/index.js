@@ -6,7 +6,7 @@ function PageLanding({ image, title }) {
   return (
     <>
       <div
-        className={`bg-top bg-no-repeat bg-center bg-cover xl:bg-fit ${image} page__landing shadow-lg mb-8`}
+        className={`bg-center bg-no-repeat bg-cover xl:bg-fit ${image} page__landing shadow-lg mb-8`}
         // style={{
         //   backgroundImage: `url(./images/${image})`,
         // }}

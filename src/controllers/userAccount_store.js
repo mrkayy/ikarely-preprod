@@ -16,6 +16,7 @@ class UserAccountStore extends FirebaseConfig {
 
   constructor() {
     super();
+    this.resetActions();
     // this = new FirebaseConfig();
     this.auth = Authentication;
     this.collectionRef = collection(this.db, "users");
@@ -65,7 +66,7 @@ class UserAccountStore extends FirebaseConfig {
         console.log("ERR_LOADING_USER_ACCOUNT: " + error);
       });
 
-    this.resetActions();
+    // this.resetActions();
   };
 
   //TODO: create user model class
@@ -83,7 +84,7 @@ class UserAccountStore extends FirebaseConfig {
     this.loading = false;
     this.successMsg = "Serice Request was successful.";
     this.success = true;
-    this.resetActions();
+    // this.resetActions();
     return true;
   };
 

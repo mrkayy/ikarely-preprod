@@ -17,6 +17,7 @@ class AuthenticationStore extends FirebaseConfig {
 
   constructor() {
     super();
+    this.resetActions();
     this.userAPI = UserAccountStore;
     makeObservable(this, {
       currentuser: observable,
@@ -73,7 +74,7 @@ class AuthenticationStore extends FirebaseConfig {
         console.log(this.error);
       });
     // .finally(async () => {
-    this.resetActions();
+    // this.resetActions();
     //   this.loading = true;
   };
 
@@ -98,7 +99,7 @@ class AuthenticationStore extends FirebaseConfig {
         console.log({ err });
       });
 
-    this.resetActions();
+    // this.resetActions();
   };
 
   verifyUserAccount = (data) => {
@@ -118,7 +119,7 @@ class AuthenticationStore extends FirebaseConfig {
   signout = () => {
     this.auth.signOut();
     this.getCurrentUserState();
-    this.resetActions();
+    // this.resetActions();
   };
 
   getCurrentUserState = async () => {

@@ -42,7 +42,7 @@ function WhyUs() {
             </h3>
           </div>
           <div className="mx-auto sm:mx-0 w-10/12 sm:w-10/12 md:w-7/12 xl:w-3/6 lg:w-7/12">
-            <p className="text-xs md:text-sm xl:text-xl text-typography-light text-justify xl:text-left font-light leading-5 tracking-tight sm:tracking-normal sm:leading-tight xl:leading-relaxed">
+            <p className="text-sm xl:text-xl text-typography-light text-justify xl:text-left font-light leading-5 tracking-tight sm:tracking-normal sm:leading-tight xl:leading-relaxed">
               We are a healthtech Company, specializing in delivery of optimal
               and quality healthcare services to client at their own comfort and
               utmost convenience.

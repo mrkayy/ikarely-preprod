@@ -3,7 +3,7 @@ import Joi from "joi-browser";
 
 export const GlobalContext = createContext();
 
-const GlobalLayer = ({children}) => {
+const GlobalLayer = ({ children }) => {
   const [state, setState] = useState({ data: {}, errors: {} });
   const [schemas, setSchemas] = useState({});
 
@@ -35,6 +35,7 @@ const GlobalLayer = ({children}) => {
     }
 
     const data = { ...state.data };
+    
     data[name] = value;
     setState((state) => ({
       ...state,
@@ -43,16 +44,16 @@ const GlobalLayer = ({children}) => {
     }));
   };
 
-  // const handleCheckBox = (e) => {
-  //   e.persist();
-  //   const { type, checked } = e.target;
-  //   if (checked) {
-  //     setFormValue((state) => ({
-  //       ...state,
-  //       remember: type === "checkbox" ? checked : !checked,
-  //     }));
-  //   }
-  // };
+  const handleCheckBox = (e) => {
+    e.persist();
+    const { type, checked } = e.target;
+    if (checked) {
+      setState((state) => ({
+        ...state,
+        remember: type === "checkbox" ? checked : !checked,
+      }));
+    }
+  };
 
   return (
     <GlobalContext.Provider
@@ -64,8 +65,8 @@ const GlobalLayer = ({children}) => {
         validate,
         validateProperty,
         handleChange,
+        handleCheckBox,
       }}
-      
     >
       {children}
     </GlobalContext.Provider>

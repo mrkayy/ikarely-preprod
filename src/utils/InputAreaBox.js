@@ -67,7 +67,7 @@ function InputAreaBox({
 
 InputAreaBox.propTypes = {
   rows: PropTypes.number.isRequired,
-  hasOption: PropTypes.bool.isRequired,
+  hasOption: PropTypes.bool,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

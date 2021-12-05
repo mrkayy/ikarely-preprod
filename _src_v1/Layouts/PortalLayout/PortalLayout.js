@@ -5,6 +5,7 @@ const portal = document.getElementById("portal");
 export default class PortalLayout extends Component {
   constructor() {
     super();
+    this.resetActions();
     this.element = document.createElement("div");
   }
 

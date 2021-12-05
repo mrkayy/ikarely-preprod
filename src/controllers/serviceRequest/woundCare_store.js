@@ -22,6 +22,7 @@ class WoundCareStore extends FirebaseConfig {
 
   constructor() {
     super();
+    this.resetActions();
 
     this.auth = Authentication;
     this.collectionRef = collection(this.db, "service_request");
@@ -59,7 +60,7 @@ class WoundCareStore extends FirebaseConfig {
       console.log("ERR_MAKING_SERVICE_REQUEST: " + error);
       return;
     }
-    this.resetActions();
+    // this.resetActions();
   };
 
   getServiceRequest = (userdocid) => {

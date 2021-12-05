@@ -46,9 +46,11 @@ const Service = () => {
   const toggleDocConsultModal = () => {
     setshowDocConsult(!showDocConsult);
   };
+
   const toggleWoundCareModal = () => {
     setshowWoundCare(!showWoundCare);
   };
+
   const toggleCovid19Modal = () => {
     setshowCovid19(!showCovid19);
   };
@@ -79,6 +81,7 @@ const Service = () => {
       action: toggleCovid19Modal,
     },
   ];
+
   const subscriptions = [
     {
       id: 1,
@@ -215,7 +218,7 @@ const Service = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 justify-items-center mt-8">
               {services
                 .filter((service) => !service.params)
-                .map(({ icon, title, word, action }) => {
+                .map(({ icon, title, word, action }, index) => {
                   return (
                     <ServiceCard
                       icon={icon}
@@ -223,7 +226,7 @@ const Service = () => {
                       word={word}
                       btnState={showLoginBtn}
                       action={action}
-                      key={title}
+                      key={index}
                     />
                   );
                 })}
@@ -256,13 +259,13 @@ const Service = () => {
             {" "}
             {subscriptions
               .filter((service) => service.params)
-              .map(({ icon, title, word, type, params }) => {
+              .map(({ icon, title, word, type, params }, index) => {
                 return (
                   <SubscriptionCard
                     icon={icon}
                     title={title}
                     word={word}
-                    key={title}
+                    key={index}
                     params={params}
                     isSubscription={type}
                     btnState={showLoginBtn}
@@ -302,12 +305,9 @@ const ServiceListHeading = ({ heading, title }) => {
   );
 };
 
-function ServiceCard({ icon, title, word, action, btnState, key }) {
+function ServiceCard({ icon, title, word, action, btnState }) {
   return (
-    <div
-      key={key}
-      className="bg-white w-10/12 sm:w-11/12 xl:w-10/12 h-96 sm:h-auto shadow-2xl rounded-3xl px-6 py-12 sm:p-7 xl:p-8"
-    >
+    <div className="bg-white w-10/12 sm:w-11/12 xl:w-10/12 h-96 sm:h-auto shadow-2xl rounded-3xl px-6 py-12 sm:p-7 xl:p-8">
       <div className="max-w-full grid grid-cols-1 h-full place-content-between">
         <div>
           <div>
@@ -329,9 +329,9 @@ function ServiceCard({ icon, title, word, action, btnState, key }) {
                 </div>
               </div>
             </div>
-            <div className="w-full mt-6">
+            <div className="w-full my-6">
               <p
-                className={`text-typography-extralight text-xs sm:text-sm xl:text-base font-font-light
+                className={`text-typography-extralight text-sm xl:text-base font-font-light
               sm:tracking-tight md:leading-5 text-justify xl:tracking-normal`}
               >
                 {word}
@@ -390,9 +390,9 @@ function SubscriptionCard({
                 </div>
               </div>
             </div>
-            <div className="w-full mt-6">
+            <div className="w-full my-6">
               <p
-                className={`text-typography-extralight text-xs sm:text-sm xl:text-base font-font-light
+                className={`text-typography-extralight text-sm xl:text-base font-font-light
               sm:tracking-tight md:leading-5 text-justify xl:tracking-normal`}
               >
                 {word}

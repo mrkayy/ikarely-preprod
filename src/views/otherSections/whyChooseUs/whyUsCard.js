@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function WhyUsCard({ icon, title, word }) {
   return (
     <div className="bg-white w-10/12 sm:w-11/12 xl:w-10/12 shadow-2xl rounded-3xl p-8 sm:-7 xl:p-8">
-      <div className="max-w-full h-60 sm:h-64  md:h-80 xl:h-96 flex-column items-stretch">
+      <div className="max-w-full h-60 sm:h-64 mb-8 md:h-80 xl:h-96 flex-column items-stretch">
         <div className="mb-10 sm:mb-16">
           <div className="">
             <div className="bg-primary-100 h-16 w-16 rounded-md transform -rotate-12">
@@ -24,7 +24,7 @@ function WhyUsCard({ icon, title, word }) {
         </div>
         <div className="">
           <p
-            className={`text-typography-extralight text-xs xl:text-base font-font-light
+            className={`text-typography-extralight text-sm xl:text-base font-font-light
               sm:tracking-tight  text-justify xl:tracking-normal xl:leading-6`}
           >
             {word}

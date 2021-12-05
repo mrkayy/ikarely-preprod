@@ -4,12 +4,15 @@ import PageLanding from "../../../../components/pageLanding";
 import InputBox from "../../../../utils/InputBox";
 import Joi from "joi-browser";
 import { observer } from "mobx-react-lite";
-// import messagingStore from "../../../controllers/stores_v1/ContactUs";
-// import dataHero from "data-hero";
 import { useAlert } from "react-alert";
+import { useHistory } from "react-router";
 import { GlobalContext } from "../../../../controllers/globalValidationLayer";
 import Button from "../../../../components/shared/buttons/button";
 import LayoutMargin from "../../../../components/layoutWrapper";
+
+import ContactUsStore from "../../../../controllers/contactUs_store";
+
+import InputAreaBox from "../../../../utils/InputAreaBox";
 
 const Contact = (props) => {
   useEffect(() => {
@@ -21,18 +24,10 @@ const Contact = (props) => {
   };
 
   const alert = useAlert();
-  // const history = useHistory();
-  const authcontext = {};
+  const history = useHistory();
 
-  const {
-    error,
-    success,
-    sendmessage,
-    errorMsg,
-    successMessage,
-    loading,
-    resetActions,
-  } = authcontext;
+  const { error, success, errorMsg, successMsg, loading, sendmessage } =
+    useContext(ContactUsStore);
 
   const {
     state,
@@ -40,8 +35,8 @@ const Contact = (props) => {
     schema,
     setSchemas,
     validate,
-    handleSubmit,
-    handleChange,
+    // handleSubmit,
+    // handleChange,
   } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -49,14 +44,18 @@ const Contact = (props) => {
       ...prevState,
       data: {
         email: "",
+        name: "",
         message: "",
+        // phone: "",
       },
     }));
 
     setSchemas((prevState) => ({
       ...prevState,
-      email: Joi.string().email().required().label("Email"),
-      message: Joi.string().required().label("Your message"),
+      email: Joi.string().email().required().label("email"),
+      // phone: Joi.string().label("phone"),
+      name: Joi.string().required().label("name"),
+      message: Joi.string().required().label("message"),
     }));
 
     return () => {
@@ -74,18 +73,23 @@ const Contact = (props) => {
     if (error) {
       alert.error(errorMsg, options);
     }
-    if (success && !error) {
-      ////console.log({ successMessage });
-      alert.success(successMessage, options);
+    if (success) {
+      alert.success(successMsg, options);
     }
-    return () => {
-      resetActions();
-    };
-  }, [errorMsg, successMessage]);
 
-  // if (currentUser && currentUser) {
-  //   return <Redirect to={"/"} />;
-  // }
+    return () => {
+      setState({
+        data: {
+          email: "",
+          name: "",
+          message: "",
+          // phone: "",
+        },
+        errors: {},
+      });
+      setSchemas({});
+    };
+  }, [error, success]);
 
   const { data, errors } = state;
 
@@ -96,22 +100,22 @@ const Contact = (props) => {
       ...prevState,
       errors: errors || {},
     }));
+
     if (errors) return;
-    const { email, message } = data;
+    const { email, name, message } = data;
 
     const datas = {
-      medium: "email",
-      name: "contact_us",
-      recipient: [email, "support@ikarely.com"],
-      subject: "THANK YOU FOR REACHING OUT",
-      data: { user_name: message, current_year: 2021 },
+      sender_name: name,
+      sender_email: email,
+      // sender_number: phone,
+      message: message,
     };
+
     sendmessage(datas);
-    ////console.log(datas, "Register submitted");
   };
 
   return (
-    <div className="contactus">
+    <div className="">
       <PageLanding image="bg-contact" title="Contact us" />
       <LayoutMargin>
         <div className="h-6/12 py-16 sm:py-20 xl:py-8 w-9/12 sm:w-6/12 mx-auto lg:">
@@ -125,19 +129,36 @@ const Contact = (props) => {
               </h3>
             </div>
 
-            <form action="" className="contactus__inputs" onSubmit={sendMsg}>
-              <InputBox label="Email or Phone" name="email" type="email" />
-
-              <div className="">
-                {/* <label htmlFor="password">Your Name</label> */}
-                <InputBox
-                  onChange={handleChange}
-                  value={state.data.message}
-                  label="please enter your name"
-                  name="message"
-                  type="text"
-                />
+            <form className="" onSubmit={sendMsg}>
+              <InputBox
+                label="Email Address"
+                name="email"
+                type="email"
+                required={false}
+              />
+              {/* <div className="w-full">
+                <p className="m-2 text-center text-typography-light">OR</p>
               </div>
+              <InputBox
+                label="Phone Number"
+                name="phone"
+                type="tel"
+                required={false}
+              /> */}
+
+              <InputBox
+                // onChange={handleChange}
+                value={state.data.message}
+                label="Please enter your name"
+                name="name"
+                type="text"
+              />
+              <InputAreaBox
+                type="text"
+                name="message"
+                rows={6}
+                label="Please us leave a message."
+              />
 
               <Button
                 loading={loading}
@@ -148,9 +169,9 @@ const Contact = (props) => {
           </div>
           <h2 className="text-center text-typography-light">
             Would you rather phone in? <br />{" "}
-            <a href={"tel:+2348035418437"} className="text-typography-emphasis">
+            {/* <a href={"tel:+2348035418437"} className="text-typography-emphasis">
               08035418437,
-            </a>{" "}
+            </a>{" "} */}
             <a href={"tel:+2349063870220"} className="text-typography-emphasis">
               {" "}
               09063870220
