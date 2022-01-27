@@ -21,6 +21,7 @@ class FirebaseConfig {
     this.db = getFirestore(this.init);
     this.app = this.init;
   }
+  
   set db(e) {
     return (this._db = e);
   }

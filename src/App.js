@@ -45,12 +45,12 @@ class App extends Component {
         <Router>
           <Switch>
             <GeneralRoute exact path="/" component={Home} />
-            <GeneralRoute exact path="/about" component={About} />
-            <GeneralRoute exact path="/service" component={Service} />
-            <GeneralRoute exact path="/blog" component={Home} />
-            <GeneralRoute exact path="/register" component={Register} />
-            <GeneralRoute exact path="/signin" component={SignIn} />
-            <GeneralRoute exact path="/contact" component={Contact} />
+            <GeneralRoute path="/about" component={About} />
+            <GeneralRoute path="/service" component={Service} />
+            <GeneralRoute path="/blog" component={Home} />
+            <GeneralRoute path="/register" component={Register} />
+            <GeneralRoute path="/signin" component={SignIn} />
+            <GeneralRoute path="/contact" component={Contact} />
             {/* TODO: refactor client routes & subscription routes */}
             <GeneralRoute
               exact

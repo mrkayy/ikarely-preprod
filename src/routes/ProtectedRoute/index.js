@@ -17,7 +17,7 @@ const ProtectedRoute = (props) => {
       {...rest}
       render={() => {
         //   renders the component passed to the Route based on the authentication state
-        return user && user ? (
+        user ? (
           <Layout {...props} />
         ) : history.action === "PUSH" ? (
           <Redirect
